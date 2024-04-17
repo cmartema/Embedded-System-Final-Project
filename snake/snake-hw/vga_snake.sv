@@ -5,8 +5,9 @@
  * Columbia University
  */
 
-module vga_ball(input logic        clk,
-	        input logic 	   reset,
+module vga_snake(
+    input logic  clk,
+	  input logic  reset,
 		input logic [7:0]  writedata,
 		input logic 	   write,
 		input 		   chipselect,
