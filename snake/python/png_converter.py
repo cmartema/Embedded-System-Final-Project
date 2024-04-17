@@ -10,9 +10,13 @@ def image_to_mif(image, filename, output_dir):
     width, height = image.size
     pixels = list(image.getdata())
     with open(os.path.join(output_dir, filename), 'w') as f:
-        f.write(f"DEPTH = {width*height};\nWIDTH = 24;\nADDRESS_RADIX = UNS;\nDATA_RADIX = HEX;\nCONTENT\nBEGIN\n")
+        f.write(f"DEPTH = {width*height};\nWIDTH = 16;\nADDRESS_RADIX = HEX;\nDATA_RADIX = HEX;\nCONTENT\nBEGIN\n")
         for i, pixel in enumerate(pixels):
-            f.write(f"{i} : {pixel[0]:02x}{pixel[1]:02x}{pixel[2]:02x};\n")
+            r = pixel[0] >> 3
+            g = pixel[1] >> 2
+            b = pixel[2] >> 3
+            rgb = (r << 11) | (g << 5) | b
+            f.write(f"{i} : {rgb:04x};\n")
         f.write("END;\n")
 
 
