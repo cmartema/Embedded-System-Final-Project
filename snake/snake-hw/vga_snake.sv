@@ -22,7 +22,10 @@ module vga_snake(
    logic [9:0]     vcount;
 
    logic [7:0] 	   background_r, background_g, background_b;
-   logic [23:0]    apple_sprite, body_bottomleft_sprite, body_bottomright_sprite, body_horizontal_sprite;
+   logic [15:0] sprite_apple_output
+   logic [9:0] sprite_apple_addr
+   logic [1:0] sprite_apple_en
+   soc_system_apple_sprite apple_sprite(.address(sprite_apple_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(sprite_apple_output));
 	
    vga_counters counters(.clk50(clk), .*);
 
@@ -43,7 +46,7 @@ module vga_snake(
       if (VGA_BLANK_n )
 	if (hcount[10:6] == 5'd3 &&
 	    vcount[9:5] == 5'd3)
-	  {VGA_R, VGA_G, VGA_B} = {8'hff, 8'hff, 8'hff};
+	  {VGA_R, VGA_G, VGA_B} = { {sprite_apple_output[15:10], 3b'000},  {sprite_apple_output[10:4], 2b'00}, {sprite_apple_output[4:0], 3b'000}};
 	else
 	  {VGA_R, VGA_G, VGA_B} =
              {background_r, background_g, background_b};

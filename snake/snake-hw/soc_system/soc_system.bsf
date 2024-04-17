@@ -565,7 +565,7 @@ https://fpgasoftware.intel.com/eula.
 		(text "oct_rzqin" (rect 342 307 738 624)(font "Arial" (color 0 0 0)))
 		(text "reset" (rect 147 891 324 1795)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "reset_n" (rect 181 915 404 1840)(font "Arial" (color 0 0 0)))
-		(text " system " (rect 525 936 1098 1882)(font "Arial" ))
+		(text " soc_system " (rect 504 936 1080 1882)(font "Arial" ))
 		(line (pt 176 32)(pt 384 32)(line_width 1))
 		(line (pt 384 32)(pt 384 936)(line_width 1))
 		(line (pt 176 936)(pt 384 936)(line_width 1))
