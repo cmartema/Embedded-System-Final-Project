@@ -34,7 +34,6 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 for filename in os.listdir(INPUT_DIR):
     if filename.endswith('.png'):
         with Image.open(os.path.join(INPUT_DIR, filename)) as img:
-            img = img.resize((32, 32))
             image_to_mif(img, "mif_" + os.path.splitext(filename)[0] + ".mif", OUTPUT_DIR)
 
      

@@ -8,9 +8,9 @@
 module vga_snake(
     input logic  clk,
 	  input logic  reset,
-		input logic [7:0]  writedata,
-		input logic 	   write,
-		input 		   chipselect,
+		input logic [7:0] writedata,
+		input logic write,
+		input chipselect,
 		input logic [2:0]  address,
 
 		output logic [7:0] VGA_R, VGA_G, VGA_B,
