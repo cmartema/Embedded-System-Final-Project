@@ -22,6 +22,7 @@ module vga_snake(
    logic [9:0]     vcount;
 
    logic [7:0] 	   background_r, background_g, background_b;
+   logic [23:0]    apple_sprite, body_bottomleft_sprite, body_bottomright_sprite, body_horizontal_sprite
 	
    vga_counters counters(.clk50(clk), .*);
 
