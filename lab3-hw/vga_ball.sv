@@ -61,7 +61,7 @@ module vga_ball(
       if (VGA_BLANK_n )
 	if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
 	   // {VGA_R, VGA_G, VGA_B} = { {apple_sprite_output[15:11], 3b'000},  {apple_sprite_output[10:5], 2b'00}, {apple_sprite_output[4:0], 3b'000} };  
-	   {VGA_R, VGA_G, VGA_B} = { {apple_sprite_output[15:11], 3'b000},  {apple_sprite_output[10:5], 2'b00}, {apple_sprite_output[4:0], 3'b000} };
+	   {VGA_R, VGA_G, VGA_B} = {apple_sprite_output[15:11],  apple_sprite_output[10:5], apple_sprite_output[4:0]};
 	  end
 	else
 	  {VGA_R, VGA_G, VGA_B} =
