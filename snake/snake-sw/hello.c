@@ -7,7 +7,7 @@
  */
 
 #include <stdio.h>
-#include "vga_ball.h"
+#include "vga_snake.h"
 #include <sys/ioctl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -15,14 +15,14 @@
 #include <string.h>
 #include <unistd.h>
 
-int vga_ball_fd;
+int vga_snake_fd;
 
 /* Read and print the background color */
 void print_background_color() {
-  vga_ball_arg_t vla;
+  vga_snake_arg_t vla;
   
-  if (ioctl(vga_ball_fd, VGA_BALL_READ_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_READ_BACKGROUND) failed");
+  if (ioctl(vga_snake_fd, VGA_SNAKE_READ_BACKGROUND, &vla)) {
+      perror("ioctl(VGA_SNAKE_READ_BACKGROUND) failed");
       return;
   }
   printf("%02x %02x %02x\n",
@@ -30,23 +30,23 @@ void print_background_color() {
 }
 
 /* Set the background color */
-void set_background_color(const vga_ball_color_t *c)
+void set_background_color(const vga_snake_color_t *c)
 {
-  vga_ball_arg_t vla;
+  vga_snake_arg_t vla;
   vla.background = *c;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_BACKGROUND, &vla)) {
-      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+  if (ioctl(vga_snake_fd, VGA_SNAKE_WRITE_BACKGROUND, &vla)) {
+      perror("ioctl(VGA_SNAKE_SET_BACKGROUND) failed");
       return;
   }
 }
 
 int main()
 {
-  vga_ball_arg_t vla;
+  vga_snake_arg_t vla;
   int i;
-  static const char filename[] = "/dev/vga_ball";
+  static const char filename[] = "/dev/vga_snake";
 
-  static const vga_ball_color_t colors[] = {
+  static const vga_snake_color_t colors[] = {
     { 0xff, 0x00, 0x00 }, /* Red */
     { 0x00, 0xff, 0x00 }, /* Green */
     { 0x00, 0x00, 0xff }, /* Blue */
@@ -60,9 +60,9 @@ int main()
 
 # define COLORS 9
 
-  printf("VGA ball Userspace program started\n");
+  printf("VGA snake Userspace program started\n");
 
-  if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
+  if ( (vga_snake_fd = open(filename, O_RDWR)) == -1) {
     fprintf(stderr, "could not open %s\n", filename);
     return -1;
   }
@@ -76,6 +76,6 @@ int main()
     usleep(400000);
   }
   
-  printf("VGA BALL Userspace program terminating\n");
+  printf("VGA SNAKE Userspace program terminating\n");
   return 0;
 }
