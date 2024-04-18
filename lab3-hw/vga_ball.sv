@@ -32,7 +32,7 @@ module vga_ball(
 	
    vga_counters counters(.clk50(clk), .*);
 
-   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
+   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .byteena(apple_sprite_en) .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
 
    always_ff @(posedge clk)
      if (reset) begin
@@ -59,9 +59,9 @@ module vga_ball(
    always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n )
-	if (hcount[10:6] == 5'b1010 &&
-	    vcount[9:5] == 5'b1010)
+	if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
 	    {VGA_R, VGA_G, VGA_B} = { {apple_sprite_output[15:11], 3b'000},  {apple_sprite_output[10:5], 2b'00}, {apple_sprite_output[4:0], 3b'000} };  
+	  end
 	else
 	  {VGA_R, VGA_G, VGA_B} =
              {background_r, background_g, background_b};
