@@ -105,48 +105,18 @@ int main()
   //vla.coordinate.x = 600;
   //vla.coordinate.y = 0;
   //set_ball_coordinate(&vla.coordinate);
-  int y_flag = 0;
-  int x_flag = 0;
 
   while(1){
     set_ball_coordinate(&vla.coordinate);
-    if (vla.coordinate.y == 439){
-      y_flag = 1;
-    } else if (vla.coordinate.y == 0){
-      y_flag = 0;
-    }
-    if (vla.coordinate.x == 599){
-      x_flag = 1;
-    } else if (vla.coordinate.x == 0){
-      x_flag = 0;
-    }
-
-    if (y_flag == 1){
-      //vla.coordinate.x += 1;
-      vla.coordinate.y -= 1;
-    } else{
-      vla.coordinate.y += 1;
-    }
-    if (x_flag == 1){
-      vla.coordinate.x -= 1;
-      //vla.coordinate.y += 1;
-    }
-
-    else{
-      vla.coordinate.x += 1;
-    }
-
+  
+    vla.coordinate.x += 1;
+    vla.coordinate.y += 1;
     //printf("x: %d\n", vla.coordinate.x);
     //printf("y: %d\n", vla.coordinate.y);
-    usleep(5000);
+    usleep(30000);
 
   }
 
-//600 columns
-//440 rows
-  vla.coordinate.x = 599;
-  vla.coordinate.y = 439;
-  set_ball_coordinate(&vla.coordinate);
   printf("VGA BALL Userspace program terminating\n");
   return 0;
 }
