@@ -1,0 +1,4 @@
+Warning (10273): Verilog HDL warning at soc_system_top.sv(287): extended using "x" or "z" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/snake-hw/soc_system_top.sv Line: 287
+Warning (10273): Verilog HDL warning at soc_system_top.sv(296): extended using "x" or "z" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/snake-hw/soc_system_top.sv Line: 296
+Warning (10273): Verilog HDL warning at soc_system_top.sv(297): extended using "x" or "z" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/snake-hw/soc_system_top.sv Line: 297
+Warning (10236): Verilog HDL Implicit Net warning at hps_sdram_pll.sv(168): created implicit net for "pll_dr_clk" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/snake-hw/soc_system/synthesis/submodules/hps_sdram_pll.sv Line: 168
