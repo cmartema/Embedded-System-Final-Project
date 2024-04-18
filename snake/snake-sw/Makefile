@@ -20,11 +20,11 @@ clean:
 	${RM} hello
 
 TARFILES = Makefile README vga_snake.h vga_snake.c hello.c
-TARFILE = lab3-sw.tar.gz
+TARFILE = snake-sw.tar.gz
 .PHONY : tar
 tar : $(TARFILE)
 
 $(TARFILE) : $(TARFILES)
-	tar zcfC $(TARFILE) .. $(TARFILES:%=lab3-sw/%)
+	tar zcfC $(TARFILE) .. $(TARFILES:%=snake-sw/%)
 
 endif 
