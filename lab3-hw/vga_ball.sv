@@ -26,9 +26,9 @@ module vga_ball(
    logic [7:0] 	   background_r, background_g, background_b;
 
    logic [15:0]     x, y;
-   logic [15:0]     apple_sprite_output
-   logic [9:0]      apple_sprite_addr 
-   logic [1:0]      apple_sprite_en
+   logic [15:0]     apple_sprite_output;
+   logic [9:0]      apple_sprite_addr;
+   logic [1:0]      apple_sprite_en;
 	
    vga_counters counters(.clk50(clk), .*);
 
