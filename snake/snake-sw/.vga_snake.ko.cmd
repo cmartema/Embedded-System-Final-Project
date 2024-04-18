@@ -1,0 +1,1 @@
+cmd_/root/Embedded-System-Final-Project/snake/snake-sw/vga_snake.ko := ld -r  -EL -T ./scripts/module-common.lds -T ./arch/arm/kernel/module.lds  --build-id  -o /root/Embedded-System-Final-Project/snake/snake-sw/vga_snake.ko /root/Embedded-System-Final-Project/snake/snake-sw/vga_snake.o /root/Embedded-System-Final-Project/snake/snake-sw/vga_snake.mod.o ;  true
