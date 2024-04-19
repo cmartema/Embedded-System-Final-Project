@@ -47,6 +47,7 @@ module vga_ball(
        3'h0 : background_r <= writedata;
        3'h1 : background_g <= writedata;
        3'h2 : background_b <= writedata;
+
     /*
        3'h3 : x [7:0] <= writedata;
        3'h4 : x[15:8] <= writedata;
@@ -63,9 +64,9 @@ module vga_ball(
 always_ff @(posedge clk) begin
     if (VGA_BLANK_n) begin
         if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
-            a <= {3'b0, apple_sprite_output[15:11]};
-            b <= {2'b0, apple_sprite_output[10:5]};
-            c <= {3'b0, apple_sprite_output[4:0]};
+            // a <= {3'b0, apple_sprite_output[15:11]};
+            // b <= {2'b0, apple_sprite_output[10:5]};
+            // c <= {3'b0, apple_sprite_output[4:0]};
         end
         else begin
             a <= background_r;
@@ -79,68 +80,8 @@ end
 assign {VGA_R, VGA_G, VGA_B} = {a, b, c};
 
 //----------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*
-   always_comb begin
-    {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
-    if (VGA_BLANK_n)
-
-    if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) 
-      a = {3'b0, apple_sprite_output[15:11]};
-      b = {2'b0, apple_sprite_output[10:5]};
-      c = {3'b0, apple_sprite_output[4:0]};
-      {VGA_R, VGA_G, VGA_B} = {a, b, c};
-
-    
-    else 
-      {VGA_R, VGA_G, VGA_B} ={background_r, background_g, background_b};
-    
-    end
-    */
-
-    
-/*
-    always_comb begin
-      {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
-      if (VGA_BLANK_n )
-  
-	if (hcount[10:6] == 5'b1010 &&
-	    vcount[9:5] == 5'b1010)
-    
-	  a = {3'b0, apple_sprite_output[15:11]};
-    
-    b = {2'b0, apple_sprite_output[10:5]};
-    c = {3'b0, apple_sprite_output[4:0]};
-    if(a )
-    {VGA_R, VGA_G, VGA_B} = {a, b, c};
-    
-	else
-	  {VGA_R, VGA_G, VGA_B} =
-             {background_r, background_g, background_b};
-  
-   end
-   
-    */
   
    
-   
-	
-  
       /* 
      	  always_comb
 	    begin
