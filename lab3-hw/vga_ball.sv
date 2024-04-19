@@ -56,18 +56,16 @@ module vga_ball(
        endcase
 
   //logic for generating vga output
-  reg [7:0] x;
-  reg [7:0] y;
-  reg [7:0] z;
+  
   
    always_comb begin
     {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n ) begin
 	if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
-	   x = {3'b0, apple_sprite_output[15:11]};
-	   y = {2'b0, apple_sprite_output[10:5]};
-	   z = {3'b0, apple_sprite_output[4:0]};
-     {VGA_R, VGA_G, VGA_B} = {x, y, z};
+	   a = {3'b0, apple_sprite_output[15:11]};
+	   b = {2'b0, apple_sprite_output[10:5]};
+	   c = {3'b0, apple_sprite_output[4:0]};
+     {VGA_R, VGA_G, VGA_B} = {a, b, c};
 	   //{VGA_R, VGA_G, VGA_B} = { {apple_sprite_output[15:11], 3'b0},  {apple_sprite_output[10:5], 2'b00}, {apple_sprite_output[4:0], 3b'000} };  
 	   //{VGA_R, VGA_G, VGA_B} = {apple_sprite_output[15:11],  apple_sprite_output[10:5], apple_sprite_output[4:0]};
 	  end
