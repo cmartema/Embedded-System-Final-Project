@@ -69,9 +69,9 @@ always_ff @(posedge clk) begin
             // c <= {3'b0, apple_sprite_output[4:0]};
         end
         else begin
-            a <= background_r;
-            b <= background_g;
-            c <= background_b;
+            // a <= background_r;
+            // b <= background_g;
+            // c <= background_b;
         end
     end
 end
