@@ -85,10 +85,11 @@ module vga_ball(
 	    vcount[9:5] == 5'b1010)
     
 	  a = {3'b0, apple_sprite_output[15:11]};
-    /*
+    
     b = {2'b0, apple_sprite_output[10:5]};
     c = {3'b0, apple_sprite_output[4:0]};
     {VGA_R, VGA_G, VGA_B} = {a, b, c};
+    /*
 	else
 	  {VGA_R, VGA_G, VGA_B} =
              {background_r, background_g, background_b};
