@@ -56,7 +56,9 @@ module vga_ball(
        endcase
 
   //logic for generating vga output
-  
+  reg [7:0] a;
+  reg [7:0] b;
+  reg [7:0] c;
   
    always_comb begin
     {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
