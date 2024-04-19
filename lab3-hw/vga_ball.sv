@@ -55,9 +55,10 @@ module vga_ball(
        endcase
 
   //logic for generating vga output
-  reg [4:0] x;
-  reg [5:0] y;
-  reg [4:0] z;
+  reg [7:0] x;
+  reg [7:0] y;
+  reg [7:0] z;
+  
    always_comb begin
     {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
       if (VGA_BLANK_n ) begin
@@ -70,15 +71,15 @@ module vga_ball(
 	   //{VGA_R, VGA_G, VGA_B} = {apple_sprite_output[15:11],  apple_sprite_output[10:5], apple_sprite_output[4:0]};
 	  end
 	else begin
-	  {VGA_R, VGA_G, VGA_B} =
-             {background_r, background_g, background_b};
+	  {VGA_R, VGA_G, VGA_B} ={background_r, background_g, background_b};
    end
    end
    end
    
+   
 	
   
-       /*
+      /* 
      	  always_comb
 	    begin
 	      {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0}; // Initialize to black
@@ -91,7 +92,8 @@ module vga_ball(
 		end
 	      end
 	    end
-       */
+      */
+       
 endmodule
 
 module vga_counters(
