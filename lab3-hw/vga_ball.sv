@@ -79,7 +79,7 @@ module vga_ball(
 
     always_comb begin
       {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0};
-      if (VGA_BLANK_n )
+      if (VGA_BLANK_n );
   /*
 	if (hcount[10:6] == 5'b1010 &&
 	    vcount[9:5] == 5'b1010)
