@@ -32,7 +32,8 @@ module vga_ball(
 	
    vga_counters counters(.clk50(clk), .*);
 
-   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .byteena(apple_sprite_en) .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
+   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
+
 
    always_ff @(posedge clk)
      if (reset) begin
