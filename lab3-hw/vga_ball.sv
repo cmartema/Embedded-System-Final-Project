@@ -61,7 +61,7 @@ module vga_ball(
   reg [7:0] b;
   reg [7:0] c;
 // -------------------------------------
-always_ff @(posedge clk) begin
+/*always_ff @(posedge clk) begin
     if (VGA_BLANK_n) begin
         if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
             // a <= {3'b0, apple_sprite_output[15:11]};
@@ -69,18 +69,42 @@ always_ff @(posedge clk) begin
             // c <= {3'b0, apple_sprite_output[4:0]};
         end
         else begin
-            // a <= background_r;
-            // b <= background_g;
-            // c <= background_b;
+             a <= background_r;
+             b <= background_g;
+             c <= background_b;
         end
     end
 end
 
 // Assign VGA outputs
 assign {VGA_R, VGA_G, VGA_B} = {a, b, c};
-
+*/
 //----------------------------------------------------------
-  
+  always_comb begin
+      {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
+      if (VGA_BLANK_n ) begin
+	if (apple_sprite_en) begin
+          case (apple_sprite_output)
+            8'h00 : {VGA_R, VGA_G, VGA_B} = {8'hf0, 8'hf0, 8'hf0};
+            8'h01 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'ha0, 8'ha0};
+            8'h02 : {VGA_R, VGA_G, VGA_B} = {8'ha0, 8'ha0, 8'hb0};
+            8'h03 : {VGA_R, VGA_G, VGA_B} = {8'ha0, 8'ha0, 8'ha0};
+            8'h04 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'h30, 8'h20};
+            8'h05 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'h20, 8'h20};
+            8'h06 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'he0, 8'h90};
+            8'h07 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'h90, 8'h20};
+            8'h08 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'h90, 8'h10};
+            8'h09 : {VGA_R, VGA_G, VGA_B} = {8'h90, 8'h40, 8'h00};
+            8'h0a : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h60, 8'h60};
+            8'h0b : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h60, 8'h00};
+            8'h0c : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h00, 8'h00};
+            8'h0d : {VGA_R, VGA_G, VGA_B} = {8'h50, 8'h00, 8'h70};
+            8'h0e : {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h40, 8'h40};
+            8'h0f : {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
+          endcase
+        end
+      end
+  end
    
       /* 
      	  always_comb
