@@ -65,9 +65,9 @@ module vga_ball(
 always_ff @(posedge clk) begin
     if (VGA_BLANK_n) begin
         if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
-            a <= {3'b0, apple_sprite[15:11]};
-            b <= {2'b0, apple_sprite[10:5]};
-            c <= {3'b0, apple_sprite[4:0]};
+            a <= {apple_sprite[15:11], 3'b0};
+            b <= { apple_sprite[10:5], 2'b0};
+            c <= {apple_sprite[4:0], 3'b0};
         end
         else begin
              a <= background_r;
