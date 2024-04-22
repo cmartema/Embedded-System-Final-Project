@@ -27,6 +27,7 @@ module vga_ball(
 
    logic [15:0]     x, y;
    logic [15:0]     apple_sprite_output;
+   logic [15:0]     output_1;
    logic [9:0]      apple_sprite_addr;
    logic [1:0]      apple_sprite_en;
    //logic [15:0]     apple_sprite;
@@ -39,7 +40,7 @@ module vga_ball(
    always_ff @(posedge clk)
      if (reset) begin
       background_r <= 8'h0;
-      background_g <= 8'h0;
+      background_g <= 8'h80;
       background_b <= 8'h80;
      end else if (chipselect && write)
        case (address)
@@ -61,13 +62,22 @@ module vga_ball(
   reg [7:0] a;
   reg [7:0] b;
   reg [7:0] c;
+
+  reg [4:0] d = 5'b1010;
+  reg [4:0] e = 5'b1010;
+  
 // -------------------------------------
 always_ff @(posedge clk) begin
+
     if (VGA_BLANK_n) begin
-        if (hcount[10:6] == 5'b1010 && vcount[9:5] == 5'b1010) begin
-            a <= {apple_sprite[15:11], 3'b0};
-            b <= { apple_sprite[10:5], 2'b0};
-            c <= {apple_sprite[4:0], 3'b0};
+        if (hcount[10:6] == d && vcount[9:5] == e) begin
+            output_1 <= apple_sprite[hcount[5:1] + (vcount[4:0])*32]
+            a <= {output_1[15:11], 3'b0};
+            b <= { output_1[10:5], 2'b0};
+            c <= {output_1[4:0], 3'b0};
+
+
+             
         end
         else begin
              a <= background_r;
