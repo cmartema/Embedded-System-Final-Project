@@ -70,76 +70,33 @@ module vga_ball(
 always_ff @(posedge clk) begin
 
     if (VGA_BLANK_n) begin
-        if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11010 && vcount[9:5] == e) begin //10,10 26
-            apple_sprite_addr <= hcount[5:1] - 5'b11010 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-        end
-        
-        else if (hcount[10:6] == d && hcount[5:1] < 5'b11010 && vcount[9:5] == e) begin
-          apple_sprite_addr <= hcount[5:1] - 5'b11010 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-
-        else if (hcount[10:6] == (5'b00101-1) && hcount[5:1] >= 5'b11011 && vcount[9:5] == 5'b00101) begin //5,5,27
-            apple_sprite_addr <= hcount[5:1] - 5'b11011 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-
-        end
-        else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11011 && vcount[9:5] == 5'b00101) begin
-          apple_sprite_addr <= hcount[5:1] - 5'b11011 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-
-        else if (hcount[10:6] == (5'b00101-1) && hcount[5:1] >= 5'b11100 && vcount[9:5] == e) begin //5,10,28
-            apple_sprite_addr <= hcount[5:1] - 5'b11100 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-
-        end
-        else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11100 && vcount[9:5] == e) begin
-          apple_sprite_addr <= hcount[5:1] - 5'b11100 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-
-        else if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11101 && vcount[9:5] == 5'b00101) begin //10,5,29
-            apple_sprite_addr <= hcount[5:1] - 5'b11101 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-
-        end
-        else if (hcount[10:6] == d-1 && hcount[5:1] < 5'b11101 && vcount[9:5] == 5'b00101) begin 
-          apple_sprite_addr <= hcount[5:1] - 5'b11101 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-        
-        else if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11110 && vcount[9:5] == 5'b10100) begin //10,20,30
+        if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11110 && vcount[9:5] == e) begin //10,10 30
             apple_sprite_addr <= hcount[5:1] - 5'b11110 + (vcount[4:0])*32;
             a <= {apple_sprite_output[15:11], 3'b0};
             b <= { apple_sprite_output[10:5], 2'b0};
             c <= {apple_sprite_output[4:0], 3'b0};
-
         end
-        else if (hcount[10:6] == d-1 && hcount[5:1] < 5'b11110 && vcount[9:5] == 5'b10100) begin 
+        
+        else if (hcount[10:6] == d && hcount[5:1] < 5'b11110 && vcount[9:5] == e) begin
           apple_sprite_addr <= hcount[5:1] - 5'b11110 + (vcount[4:0])*32;
           a <= {apple_sprite_output[15:11], 3'b0};
           b <= { apple_sprite_output[10:5], 2'b0};
           c <= {apple_sprite_output[4:0], 3'b0};
         end
 
+        else if (hcount[10:6] == (5'b00101-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00101) begin //5,5,31
+            apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+            a <= {apple_sprite_output[15:11], 3'b0};
+            b <= { apple_sprite_output[10:5], 2'b0};
+            c <= {apple_sprite_output[4:0], 3'b0};
+
+        end
+        else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == 5'b00101) begin
+          apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+          a <= {apple_sprite_output[15:11], 3'b0};
+          b <= { apple_sprite_output[10:5], 2'b0};
+          c <= {apple_sprite_output[4:0], 3'b0};
+        end
 
              
       
