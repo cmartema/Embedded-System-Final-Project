@@ -71,10 +71,10 @@ always_ff @(posedge clk) begin
 
     if (VGA_BLANK_n) begin
         if (hcount[10:6] == d && vcount[9:5] == e) begin
-            output_1 <= apple_sprite[hcount[5:1] + (vcount[4:0])*32];
-            a <= {output_1[15:11], 3'b0};
-            b <= { output_1[10:5], 2'b0};
-            c <= {output_1[4:0], 3'b0};
+            apple_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
+            a <= {apple_sprite_output[15:11], 3'b0};
+            b <= { apple_sprite_output[10:5], 2'b0};
+            c <= {apple_sprite_output[4:0], 3'b0};
 
 
              
