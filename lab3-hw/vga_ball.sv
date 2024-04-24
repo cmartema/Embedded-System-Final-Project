@@ -26,16 +26,112 @@ module vga_ball(
    logic [7:0] 	   background_r, background_g, background_b;
 
    logic [15:0]     x, y;
+
+  //  this is for apple_sprite
    logic [15:0]     apple_sprite_output;
-   logic [15:0]     output_1;
    logic [9:0]      apple_sprite_addr;
    logic [1:0]      apple_sprite_en;
-   //logic [15:0]     apple_sprite;
+
+  // snake face forwarded to right
+   logic [15:0]     snake_head_right_sprite_output;
+   logic [9:0]      snake_head_right_sprite_addr;
+   logic [1:0]      snake_head_right_sprite_en;
+  // snake face forwarded to left
+   logic [15:0]     snake_head_left_sprite_output;
+   logic [9:0]      snake_head_left_sprite_addr;
+   logic [1:0]      snake_head_left_sprite_en;
+  // snake face forwarded to up
+   logic [15:0]     snake_head_up_sprite_output;
+   logic [9:0]      snake_head_up_sprite_addr;
+   logic [1:0]      snake_head_up_sprite_en;
+  // snake face forwarded to down
+   logic [15:0]     snake_head_down_sprite_output;
+   logic [9:0]      snake_head_down_sprite_addr;
+   logic [1:0]      snake_head_down_sprite_en;
+
+  // body bottom left
+   logic [15:0]     snake_body_bottomleft_sprite_output;
+   logic [9:0]      snake_body_bottomleft_sprite_addr;
+   logic [1:0]      snake_body_bottomleft_sprite_en;
+
+  // body bottom right
+   logic [15:0]     snake_body_bottomright_sprite_output;
+   logic [9:0]      snake_body_bottomright_sprite_addr;
+   logic [1:0]      snake_body_bottomright_sprite_en;
+
+  // body top left
+   logic [15:0]     snake_body_topleft_sprite_output;
+   logic [9:0]      snake_body_topleft_sprite_addr;
+   logic [1:0]      snake_body_topleft_sprite_en;
+
+  // body top right
+   logic [15:0]     snake_body_topright_sprite_output;
+   logic [9:0]      snake_body_topright_sprite_addr;
+   logic [1:0]      snake_body_topright_sprite_en;
+
+  // body horizontal
+   logic [15:0]     snake_body_horizontal_sprite_output;
+   logic [9:0]      snake_body_horizontal_sprite_addr;
+   logic [1:0]      snake_body_horizontal_sprite_en;
+  // body vertical
+   logic [15:0]     snake_body_vertical_sprite_output;
+   logic [9:0]      snake_body_vertical_sprite_addr;
+   logic [1:0]      snake_body_vertical_sprite_en;
+
+  // tail up
+   logic [15:0]     snake_tail_up_sprite_output;
+   logic [9:0]      snake_tail_up_sprite_addr;
+   logic [1:0]      snake_tail_up_sprite_en;
+  // tail down
+   logic [15:0]     snake_tail_down_sprite_output;
+   logic [9:0]      snake_tail_down_sprite_addr;
+   logic [1:0]      snake_tail_down_sprite_en;
+  // tail left
+   logic [15:0]     snake_tail_left_sprite_output;
+   logic [9:0]      snake_tail_left_sprite_addr;
+   logic [1:0]      snake_tail_left_sprite_en;
+  // tail right
+   logic [15:0]     snake_tail_right_sprite_output;
+   logic [9:0]      snake_tail_right_sprite_addr;
+   logic [1:0]      snake_tail_right_sprite_en;
 	
    vga_counters counters(.clk50(clk), .*);
-
+  
+  //  apple  
    soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
+  //  face right
+   soc_system_snake_head_right_spritee snake_head_right_sprite(.address(snake_head_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_right_sprite_output));
+  //  face left
+   soc_system_snake_head_left_sprite snake_head_left_sprite(.address(snake_head_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_left_sprite_output));
+  //  face up
+   soc_system_snake_head_up_sprite snake_head_up_sprite(.address(snake_head_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_up_sprite_output));
+  //  face down
+   soc_system_snake_head_down_sprite snake_head_down_sprite(.address(snake_head_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_down_sprite_output));
 
+  // snake body
+  // bottom left
+   soc_system_snake_body_bottomleft_sprite snake_body_bottomleft_sprite(.address(snake_body_bottomleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomleft_sprite_output));
+  // bottom right
+   soc_system_snake_body_bottomright_sprite snake_body_bottomright_sprite(.address(snake_body_bottomright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomright_sprite_output));
+  // top left
+   soc_system_snake_body_topleft_sprite snake_body_topleft_sprite(.address(snake_body_topleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topleft_sprite_output));
+  // top right
+   soc_system_snake_body_topright_sprite snake_body_topright_sprite(.address(snake_body_topright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topright_sprite_output));
+
+  // body horizontal
+   soc_system_snake_body_horizontal_sprite snake_body_horizontal_sprite(.address(snake_body_horizontal_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_horizontal_sprite_output));
+  // body vertical
+   soc_system_snake_body_vertical_sprite snake_body_vertical_sprite(.address(snake_body_vertical_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_vertical_sprite_output));
+
+  // tail up
+   soc_system_snake_tail_up_sprite snake_tail_up_sprite(.address(snake_tail_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_up_sprite_output));
+  // tail down
+   soc_system_snake_tail_down_sprite snake_tail_down_sprite(.address(snake_tail_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_down_sprite_output));
+  // tail left
+   soc_system_snake_tail_left_sprite snake_tail_left_sprite(.address(snake_tail_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_left_sprite_output));
+  // tail right
+   soc_system_snake_tail_right_sprite snake_tail_right_sprite(.address(snake_tail_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_right_sprite_output));
+   
 
    always_ff @(posedge clk)
      if (reset) begin
@@ -69,43 +165,39 @@ module vga_ball(
 // -------------------------------------
 always_ff @(posedge clk) begin
 
+    //this is the snake fruit
     if (VGA_BLANK_n) begin
-        if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == e) begin //10,10 31
-            apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-        end
-        
-        else if (hcount[10:6] == d-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == e) begin
-          apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-        /*
-        else if (hcount[10:6] == (5'b00101-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00101) begin //5,5,31
-            apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-            a <= {apple_sprite_output[15:11], 3'b0};
-            b <= { apple_sprite_output[10:5], 2'b0};
-            c <= {apple_sprite_output[4:0], 3'b0};
-
-        end
-        else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == 5'b00101) begin
-          apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-          a <= {apple_sprite_output[15:11], 3'b0};
-          b <= { apple_sprite_output[10:5], 2'b0};
-          c <= {apple_sprite_output[4:0], 3'b0};
-        end
-        */
-
-             
-      
-        else begin
-             a <= background_r;
-             b <= background_g;
-             c <= background_b;
-        end
+      if (hcount[10:6] == (d-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == e) begin //coordinates(10,10) 31
+        apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:6] == d-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == e) begin
+        apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end
+      //this is where we put all of our snake head code by using an if else statement
+      //well for starter we can start the head facing towards right
+      /*
+      else if (hcount[10:6] == (5'b00101-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00101) begin //5,5,31
+        apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == 5'b00101) begin
+        apple_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end
+      */
+      else begin
+        a <= background_r;
+        b <= background_g;
+        c <= background_b;
+      end
     end
 end
 
@@ -113,49 +205,19 @@ end
 assign {VGA_R, VGA_G, VGA_B} = {a, b, c};
 
 //----------------------------------------------------------
-
-/*
-  always_comb begin
-      {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
-      if (VGA_BLANK_n ) begin
-	if (apple_sprite_en) begin
-          case (apple_sprite_output)
-            8'h00 : {VGA_R, VGA_G, VGA_B} = {8'hf0, 8'hf0, 8'hf0};
-            8'h01 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'ha0, 8'ha0};
-            8'h02 : {VGA_R, VGA_G, VGA_B} = {8'ha0, 8'ha0, 8'hb0};
-            8'h03 : {VGA_R, VGA_G, VGA_B} = {8'ha0, 8'ha0, 8'ha0};
-            8'h04 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'h30, 8'h20};
-            8'h05 : {VGA_R, VGA_G, VGA_B} = {8'hb0, 8'h20, 8'h20};
-            8'h06 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'he0, 8'h90};
-            8'h07 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'h90, 8'h20};
-            8'h08 : {VGA_R, VGA_G, VGA_B} = {8'he0, 8'h90, 8'h10};
-            8'h09 : {VGA_R, VGA_G, VGA_B} = {8'h90, 8'h40, 8'h00};
-            8'h0a : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h60, 8'h60};
-            8'h0b : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h60, 8'h00};
-            8'h0c : {VGA_R, VGA_G, VGA_B} = {8'h60, 8'h00, 8'h00};
-            8'h0d : {VGA_R, VGA_G, VGA_B} = {8'h50, 8'h00, 8'h70};
-            8'h0e : {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h40, 8'h40};
-            8'h0f : {VGA_R, VGA_G, VGA_B} = {8'h00, 8'h00, 8'h00};
-          endcase
-        end
-      end
-  end
-  
-  */
-      /* 
-     	  always_comb
-	    begin
-	      {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0}; // Initialize to black
-	      if (VGA_BLANK_n) begin
-		if ((hcount[10:1]-(x+20))**2 + (vcount-(y+20))**2 <= 20**2) begin
+// I think this is the original template code or lab3 our solution
+/* 
+always_comb begin
+  {VGA_R, VGA_G, VGA_B} = {8'h0, 8'h0, 8'h0}; // Initialize to black
+  if (VGA_BLANK_n) begin
+    if ((hcount[10:1]-(x+20))**2 + (vcount-(y+20))**2 <= 20**2) begin
 		  {VGA_R, VGA_G, VGA_B} = {8'hff, 8'h00, 8'h00}; // Red color for circle
-		end
-		else begin
+		end else begin
 		  {VGA_R, VGA_G, VGA_B} = {background_r, background_g, background_b};
 		end
-	      end
-	    end
-      */
+	end
+end
+*/
        
 endmodule
 
