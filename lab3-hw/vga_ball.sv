@@ -182,6 +182,8 @@ always_ff @(posedge clk) begin
 
     //this is the snake fruit
     if (VGA_BLANK_n) begin
+
+      /*
       if (hcount[10:5] == (d-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
@@ -231,8 +233,8 @@ always_ff @(posedge clk) begin
         a <= {snake_tail_right_sprite_output[15:11], 3'b0};
         b <= { snake_tail_right_sprite_output[10:5], 2'b0};
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
-      end
-
+      end*/
+      //border wall
       if (hcount[10:6] == 5'b0) begin 
         wall_sprite_addr <= hcount[5:1];
         a <= {wall_sprite_output[15:11], 3'b0};
