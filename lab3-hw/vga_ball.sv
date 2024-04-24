@@ -231,13 +231,8 @@ always_ff @(posedge clk) begin
       end
 
       //border logic
-      else if (hcount[10:6] == (wall_pos_x-1) && hcount[5:1] >= 5'b11111) begin //coordinates(10,10) 31
+      else if (hcount[10:6] == (wall_pos_x)) begin 
         wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-        a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
-        c <= {wall_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == (head_pos_x + 1) && hcount[4:1] < 4'b1111 && vcount[9:4] == head_pos_y) begin
-        wall_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= { wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
