@@ -181,12 +181,12 @@ always_ff @(posedge clk) begin
         c <= {apple_sprite_output[4:0], 3'b0};
       end
       //snake head right
-      if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == head_pos_y) begin //coordinates(10,10) 31
+      else if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == head_pos_y) begin //coordinates(10,10) 31
         snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
         a <= {snake_head_left_sprite_output[15:11], 3'b0};
         b <= { snake_head_left_sprite_output[10:5], 2'b0};
         c <= {snake_head_left_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:6] == (head_pos_x-) && hcount[5:1] < 5'b11111 && vcount[9:5] == head_pos_y) begin
+      end else if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] < 5'b11111 && vcount[9:5] == head_pos_y) begin
         snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
         a <= {snake_head_left_sprite_output[15:11], 3'b0};
         b <= { snake_head_left_sprite_output[10:5], 2'b0};
