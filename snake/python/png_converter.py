@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 INPUT_DIR = '../../Graphics'
-OUTPUT_DIR = 'mif_output'
+OUTPUT_DIR = 'mif_output_16'
 
 
 def image_to_mif(image, filename, output_dir):
