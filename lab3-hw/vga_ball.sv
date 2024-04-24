@@ -154,15 +154,15 @@ module vga_ball(
   reg [7:0] b;
   reg [7:0] c;
 
-  reg [5:0] d = 6'b1010;
-  reg [5:0] e = 6'b1010;
+  reg [5:0] d = 6'b10100;
+  reg [5:0] e = 6'b10100;
 
   reg [7:0] head_output1;
   reg [7:0] head_output2;
   reg [7:0] head_output3;
 
-  reg [4:0] head_pos_x = 5'b0101;
-  reg [4:0] head_pos_y = 5'b0101;
+  reg [4:0] head_pos_x = 6'b1010;
+  reg [4:0] head_pos_y = 6'b1010;
   
 // -------------------------------------
 always_ff @(posedge clk) begin
@@ -180,17 +180,44 @@ always_ff @(posedge clk) begin
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
       end
-      //snake head right
-      else if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == head_pos_y) begin //coordinates(10,10) 31
-        snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+
+      //snake head left
+      else if (hcount[10:5] == (head_pos_x-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
+        snake_head_left_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_left_sprite_output[15:11], 3'b0};
         b <= { snake_head_left_sprite_output[10:5], 2'b0};
         c <= {snake_head_left_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] < 5'b11111 && vcount[9:5] == head_pos_y) begin
-        snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+      end else if (hcount[10:5] == (head_pos_x-1) && hcount[4:1] < 4'b1111 && vcount[9:4] == head_pos_y) begin
+        snake_head_left_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
         a <= {snake_head_left_sprite_output[15:11], 3'b0};
         b <= { snake_head_left_sprite_output[10:5], 2'b0};
         c <= {snake_head_left_sprite_output[4:0], 3'b0};
+      end 
+      
+      //snake body
+      else if (hcount[10:5] == (head_pos_x) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
+        snake_body_horizontal_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
+        b <= { snake_body_horizontal_sprite_output[10:5], 2'b0};
+        c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == (head_pos_x) && hcount[4:1] < 4'b1111 && vcount[9:4] == head_pos_y) begin
+        snake_body_horizontal_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
+        a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
+        b <= { snake_body_horizontal_sprite_output[10:5], 2'b0};
+        c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
+      end
+
+      //snake tail left
+      else if (hcount[10:5] == (head_pos_x+1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
+        snake_tail_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {snake_tail_right_sprite_output[15:11], 3'b0};
+        b <= { snake_tail_right_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_right_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == (head_pos_x + 1) && hcount[4:1] < 4'b1111 && vcount[9:4] == head_pos_y) begin
+        snake_tail_right_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
+        a <= {snake_tail_right_sprite_output[15:11], 3'b0};
+        b <= { snake_tail_right_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
       //this is where we put all of our snake head code by using an if else statement
       //well for starter we can start the head facing towards right
