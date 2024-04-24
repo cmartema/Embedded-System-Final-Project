@@ -1,9 +1,5 @@
 DEPTH = 1024;
-<<<<<<< Updated upstream
-WIDTH = 24;
-=======
 WIDTH = 16;
->>>>>>> Stashed changes
 ADDRESS_RADIX = HEX;
 DATA_RADIX = HEX;
 CONTENT
