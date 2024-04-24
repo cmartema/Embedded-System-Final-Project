@@ -146,12 +146,7 @@ module vga_ball(
        3'h1 : background_g <= writedata;
        3'h2 : background_b <= writedata;
 
-    /*
-       3'h3 : x [7:0] <= writedata;
-       3'h4 : x[15:8] <= writedata;
-       3'h5 : y[7:0] <= writedata;
-       3'h6 : y[15:8] <= writedata;
-    */
+    
        endcase
 
   //logic for generating vga output
@@ -161,6 +156,13 @@ module vga_ball(
 
   reg [4:0] d = 5'b1010;
   reg [4:0] e = 5'b1010;
+
+  reg [7:0] head_output1;
+  reg [7:0] head_output2;
+  reg [7:0] head_output3;
+
+  reg [4:0] head_pos_x = h'b0101;
+  reg [4:0] head_pos_y = h'b0101;
   
 // -------------------------------------
 always_ff @(posedge clk) begin
@@ -177,6 +179,18 @@ always_ff @(posedge clk) begin
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
+      end
+      //snake head right
+      if (hcount[10:6] == (head_pos_x-1) && hcount[5:1] >= 5'b11111 && vcount[9:5] == head_pos_y) begin //coordinates(10,10) 31
+        snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {snake_head_left_sprite_output[15:11], 3'b0};
+        b <= { snake_head_left_sprite_output[10:5], 2'b0};
+        c <= {snake_head_left_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:6] == (head_pos_x-) && hcount[5:1] < 5'b11111 && vcount[9:5] == head_pos_y) begin
+        snake_head_left_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+        a <= {snake_head_left_sprite_output[15:11], 3'b0};
+        b <= { snake_head_left_sprite_output[10:5], 2'b0};
+        c <= {snake_head_left_sprite_output[4:0], 3'b0};
       end
       //this is where we put all of our snake head code by using an if else statement
       //well for starter we can start the head facing towards right
