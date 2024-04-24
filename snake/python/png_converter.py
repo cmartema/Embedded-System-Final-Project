@@ -40,4 +40,8 @@ for filename in os.listdir(INPUT_DIR):
         with Image.open(os.path.join(INPUT_DIR, filename)) as img:
             image_to_mif(img, "mif_" + os.path.splitext(filename)[0] + ".mif", OUTPUT_DIR)
 
+
+
+
+
      
