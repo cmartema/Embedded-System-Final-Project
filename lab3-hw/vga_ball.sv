@@ -142,9 +142,18 @@ module vga_ball(
 
    always_ff @(posedge clk)
      if (reset) begin
-      background_r <= 8'h0;
+      background_r <= 8'h10;
       background_g <= 8'h0;
       background_b <= 8'h0;
+
+     if (hcount[10:6] == 5'b0) begin 
+        wall_sprite_addr <= hcount[5:1];
+        a <= {wall_sprite_output[15:11], 3'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
+        c <= {wall_sprite_output[4:0], 3'b0};
+      end
+
+
      end else if (chipselect && write)
        case (address)
     
@@ -230,13 +239,7 @@ always_ff @(posedge clk) begin
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
 
-      //border logic
-      else if (hcount[10:6] == (wall_pos_x)) begin 
-        wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-        a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
-        c <= {wall_sprite_output[4:0], 3'b0};
-      end
+      
       //this is where we put all of our snake head code by using an if else statement
       //well for starter we can start the head facing towards right
       /*
