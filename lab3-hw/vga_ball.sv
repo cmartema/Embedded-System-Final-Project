@@ -161,8 +161,8 @@ module vga_ball(
   reg [7:0] head_output2;
   reg [7:0] head_output3;
 
-  reg [4:0] head_pos_x = h'b0101;
-  reg [4:0] head_pos_y = h'b0101;
+  reg [4:0] head_pos_x = 5'b0101;
+  reg [4:0] head_pos_y = 5'b0101;
   
 // -------------------------------------
 always_ff @(posedge clk) begin
