@@ -154,15 +154,15 @@ module vga_ball(
   reg [7:0] b;
   reg [7:0] c;
 
-  reg [5:0] d = 6'b10100;
-  reg [5:0] e = 6'b10100;
+  reg [5:0] d = 6'b010100;
+  reg [5:0] e = 6'b010100;
 
   reg [7:0] head_output1;
   reg [7:0] head_output2;
   reg [7:0] head_output3;
 
-  reg [4:0] head_pos_x = 6'b1010;
-  reg [4:0] head_pos_y = 6'b1010;
+  reg [5:0] head_pos_x = 6'b001111;
+  reg [5:0] head_pos_y = 6'b001010;
   
 // -------------------------------------
 always_ff @(posedge clk) begin
