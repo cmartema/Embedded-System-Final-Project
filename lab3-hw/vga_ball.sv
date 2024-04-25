@@ -151,6 +151,8 @@ module vga_ball(
        3'h0 : background_r <= writedata;
        3'h1 : background_g <= writedata;
        3'h2 : background_b <= writedata;
+       3'h3 : d <= writedata;
+       3'h4 : e <= writedata;
 
     
        endcase
@@ -160,8 +162,8 @@ module vga_ball(
   reg [7:0] b;
   reg [7:0] c;
 
-  reg [5:0] d = 6'b010100;
-  reg [5:0] e = 6'b010100;
+  reg [7:0] d;
+  reg [7:0] e;
 
   reg [7:0] head_output1;
   reg [7:0] head_output2;
@@ -175,12 +177,12 @@ always_ff @(posedge clk) begin
 
     //this is the snake fruit
     if (VGA_BLANK_n) begin
-      if (hcount[10:5] == (d-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e) begin //coordinates(10,10) 31
+      if (hcount[10:5] == (d[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e[5:0]) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == d-1 && hcount[4:1] < 4'b1111 && vcount[9:4] == e) begin
+      end else if (hcount[10:5] == d[5:0]-1 && hcount[4:1] < 4'b1111 && vcount[9:4] == e[5:0]) begin
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
@@ -188,6 +190,7 @@ always_ff @(posedge clk) begin
       end
 
       //snake head left
+      /*
       else if (hcount[10:5] == (head_pos_x-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
         snake_head_left_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_left_sprite_output[15:11], 3'b0};
@@ -225,6 +228,7 @@ always_ff @(posedge clk) begin
         b <= { snake_tail_right_sprite_output[10:5], 2'b0};
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
+      */
       //wall
       else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00101) begin //5,5,31
         wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
@@ -237,6 +241,7 @@ always_ff @(posedge clk) begin
         b <= { wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end
+      
       //this is where we put all of our snake head code by using an if else statement
       //well for starter we can start the head facing towards right
       /*
