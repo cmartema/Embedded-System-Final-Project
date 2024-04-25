@@ -31,10 +31,6 @@ module vga_ball(
    logic [15:0]     apple_sprite_output;
    logic [9:0]      apple_sprite_addr;
    logic [1:0]      apple_sprite_en;
-   //wall registers
-   logic [15:0]     wall_sprite_output;
-   logic [9:0]      wall_sprite_addr;
-   logic [1:0]      wall_sprite_en;
 
   // snake face forwarded to right
    logic [15:0]     snake_head_right_sprite_output;
@@ -102,10 +98,7 @@ module vga_ball(
    vga_counters counters(.clk50(clk), .*);
   
   //  apple  
-  soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
-  //wall
-  soc_system_wall_sprite snake_wallsprite(.address(snake_wall_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_wall_output));
-
+   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
   //  face right
    soc_system_snake_head_right_sprite snake_head_right_sprite(.address(snake_head_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_right_sprite_output));
   //  face left
@@ -145,9 +138,6 @@ module vga_ball(
       background_r <= 8'h0;
       background_g <= 8'h80;
       background_b <= 8'h80;
-
-
-
      end else if (chipselect && write)
        case (address)
     
@@ -173,19 +163,14 @@ module vga_ball(
 
   reg [5:0] head_pos_x = 6'b001111;
   reg [5:0] head_pos_y = 6'b001010;
-
-  reg [4:0] wall_pos_x = 5'b0;
-  reg [4:0] wall_pos_y = 5'b0;
   
 // -------------------------------------
 always_ff @(posedge clk) begin
 
     //this is the snake fruit
     if (VGA_BLANK_n) begin
-
-      
       if (hcount[10:5] == (d-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e) begin //coordinates(10,10) 31
-        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16; //10, 10
+        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
@@ -234,17 +219,6 @@ always_ff @(posedge clk) begin
         b <= { snake_tail_right_sprite_output[10:5], 2'b0};
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
-      //border wall
-      /*
-      else if (hcount[10:6] == 5'b1 && vcount[9:3] == 5'b0) begin 
-        wall_sprite_addr <= hcount[5:1] + (vcount[4:0]) * 32;
-        a <= {wall_sprite_output[15:11], 3'b0};
-        b <= {wall_sprite_output[10:5], 2'b0};
-        c <= {wall_sprite_output[4:0], 3'b0};
-      end
-      */
-
-      
       //this is where we put all of our snake head code by using an if else statement
       //well for starter we can start the head facing towards right
       /*
