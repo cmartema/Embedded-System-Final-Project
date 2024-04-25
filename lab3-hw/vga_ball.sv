@@ -230,12 +230,12 @@ always_ff @(posedge clk) begin
       end
       */
       //wall
-      else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00101) begin //5,5,31
+      else if (hcount[10:6] == 5'b00001-1 && hcount[5:1] >= 5'b11111 && vcount[9:5] == 5'b00001) begin //5,5,31
         wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= { wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:6] == 5'b00101-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == 5'b00101) begin
+      end else if (hcount[10:6] == 5'b00001-1 && hcount[5:1] < 5'b11111 && vcount[9:5] == 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= { wall_sprite_output[10:5], 2'b0};
