@@ -235,12 +235,14 @@ always_ff @(posedge clk) begin
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
       //border wall
-      if (hcount[10:6] == 5'b0 && vcount[9:3] == 5'b0) begin 
+      /*
+      else if (hcount[10:6] == 5'b1 && vcount[9:3] == 5'b0) begin 
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0]) * 32;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end
+      */
 
       
       //this is where we put all of our snake head code by using an if else statement
