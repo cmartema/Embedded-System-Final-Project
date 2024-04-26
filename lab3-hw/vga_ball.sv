@@ -183,7 +183,7 @@ always_ff @(posedge clk) begin
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
       end else if (hcount[10:5] == d[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == e[5:0]) begin
-        apple_sprite_addr <=  hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        apple_sprite_addr <=  hcount[4:1] + 4'b0001 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
@@ -244,26 +244,16 @@ always_ff @(posedge clk) begin
       end*/
 
       //left
-      else if(hcount[10:6] == 5'b00001-1 && hcount[5:1] >= 5'b11111 && vcount[9:5] >= 5'b00001) begin
-        wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+      else if(hcount[10:6] == 5'b00000 && vcount[9:5] > 5'b00001) begin
+        wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= { wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
-        end else if (hcount[10:6] == 5'b00001 && hcount[5:1] < 5'b11111) begin
-        wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-        a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
-        c <= {wall_sprite_output[4:0], 3'b0};
-      end
+        end 
 
       //right
-      else if(hcount[10:6] == 5'b10100-1 && hcount[5:1] >= 5'b11111 && vcount[9:5] >= 5'b00001) begin
-        wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
-        a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
-        c <= {wall_sprite_output[4:0], 3'b0};
-        end else if (hcount[10:6] == 5'b10100 && hcount[5:1] < 5'b11111 && vcount[9:5] >= 5'b00001) begin
-        wall_sprite_addr <= hcount[5:1] - 5'b11111 + (vcount[4:0])*32;
+      else if(hcount[10:6] == 5'b10011 && vcount[9:5] > 5'b00001) begin
+        wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
         b <= { wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
