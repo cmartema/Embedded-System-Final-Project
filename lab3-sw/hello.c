@@ -113,7 +113,7 @@ int main()
     vla.coordinate.y += 1;
     //printf("x: %d\n", vla.coordinate.x);
     //printf("y: %d\n", vla.coordinate.y);
-    usleep(30000);
+    usleep(300000);
 
   }
 
