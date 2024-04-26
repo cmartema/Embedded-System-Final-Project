@@ -152,8 +152,8 @@ module vga_ball(
       background_b <= 8'h0;
       snake_head_pos_x <= 8'b00001010;
       snake_head_pos_y <= 8'b00001010;
-      d <= 8'b00001010;
-      e <= 8'b00001101;
+      d <= 8'b00001101;
+      e <= 8'b00001010;
 
       
      end else if (chipselect && write)
