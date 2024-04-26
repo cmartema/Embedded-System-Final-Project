@@ -41,7 +41,7 @@
          type = "int";
       }
    }
-   element snake_body_bottomright_snake
+   element snake_body_bottomright_sprite
    {
       datum _sortIndex
       {
@@ -197,8 +197,8 @@
    type="avalon"
    dir="end" />
  <interface
-   name="snake_body_bottomright_snake_s1"
-   internal="snake_body_bottomright_snake.s1"
+   name="snake_body_bottomright_sprite_s1"
+   internal="snake_body_bottomright_sprite.s1"
    type="avalon"
    dir="end" />
  <interface
@@ -863,12 +863,12 @@
   <parameter name="writable" value="false" />
  </module>
  <module
-   name="snake_body_bottomright_snake"
+   name="snake_body_bottomright_sprite"
    kind="altera_avalon_onchip_memory2"
    version="21.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_snake_body_bottomright_snake</parameter>
+  <parameter name="autoInitializationFileName">$${FILENAME}_snake_body_bottomright_sprite</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="16" />
@@ -1339,7 +1339,7 @@
    kind="clock"
    version="21.1"
    start="clk_0.clk"
-   end="snake_body_bottomright_snake.clk1" />
+   end="snake_body_bottomright_sprite.clk1" />
  <connection
    kind="clock"
    version="21.1"
@@ -1436,7 +1436,7 @@
    kind="reset"
    version="21.1"
    start="clk_0.clk_reset"
-   end="snake_body_bottomright_snake.reset1" />
+   end="snake_body_bottomright_sprite.reset1" />
  <connection
    kind="reset"
    version="21.1"

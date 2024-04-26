@@ -4,201 +4,201 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
-		input  wire [9:0]  apple_sprite_s1_address,                     //                 apple_sprite_s1.address
-		input  wire        apple_sprite_s1_debugaccess,                 //                                .debugaccess
-		input  wire        apple_sprite_s1_clken,                       //                                .clken
-		input  wire        apple_sprite_s1_chipselect,                  //                                .chipselect
-		input  wire        apple_sprite_s1_write,                       //                                .write
-		output wire [15:0] apple_sprite_s1_readdata,                    //                                .readdata
-		input  wire [15:0] apple_sprite_s1_writedata,                   //                                .writedata
-		input  wire [1:0]  apple_sprite_s1_byteenable,                  //                                .byteenable
-		input  wire        clk_clk,                                     //                             clk.clk
-		output wire        hps_hps_io_emac1_inst_TX_CLK,                //                             hps.hps_io_emac1_inst_TX_CLK
-		output wire        hps_hps_io_emac1_inst_TXD0,                  //                                .hps_io_emac1_inst_TXD0
-		output wire        hps_hps_io_emac1_inst_TXD1,                  //                                .hps_io_emac1_inst_TXD1
-		output wire        hps_hps_io_emac1_inst_TXD2,                  //                                .hps_io_emac1_inst_TXD2
-		output wire        hps_hps_io_emac1_inst_TXD3,                  //                                .hps_io_emac1_inst_TXD3
-		input  wire        hps_hps_io_emac1_inst_RXD0,                  //                                .hps_io_emac1_inst_RXD0
-		inout  wire        hps_hps_io_emac1_inst_MDIO,                  //                                .hps_io_emac1_inst_MDIO
-		output wire        hps_hps_io_emac1_inst_MDC,                   //                                .hps_io_emac1_inst_MDC
-		input  wire        hps_hps_io_emac1_inst_RX_CTL,                //                                .hps_io_emac1_inst_RX_CTL
-		output wire        hps_hps_io_emac1_inst_TX_CTL,                //                                .hps_io_emac1_inst_TX_CTL
-		input  wire        hps_hps_io_emac1_inst_RX_CLK,                //                                .hps_io_emac1_inst_RX_CLK
-		input  wire        hps_hps_io_emac1_inst_RXD1,                  //                                .hps_io_emac1_inst_RXD1
-		input  wire        hps_hps_io_emac1_inst_RXD2,                  //                                .hps_io_emac1_inst_RXD2
-		input  wire        hps_hps_io_emac1_inst_RXD3,                  //                                .hps_io_emac1_inst_RXD3
-		inout  wire        hps_hps_io_sdio_inst_CMD,                    //                                .hps_io_sdio_inst_CMD
-		inout  wire        hps_hps_io_sdio_inst_D0,                     //                                .hps_io_sdio_inst_D0
-		inout  wire        hps_hps_io_sdio_inst_D1,                     //                                .hps_io_sdio_inst_D1
-		output wire        hps_hps_io_sdio_inst_CLK,                    //                                .hps_io_sdio_inst_CLK
-		inout  wire        hps_hps_io_sdio_inst_D2,                     //                                .hps_io_sdio_inst_D2
-		inout  wire        hps_hps_io_sdio_inst_D3,                     //                                .hps_io_sdio_inst_D3
-		inout  wire        hps_hps_io_usb1_inst_D0,                     //                                .hps_io_usb1_inst_D0
-		inout  wire        hps_hps_io_usb1_inst_D1,                     //                                .hps_io_usb1_inst_D1
-		inout  wire        hps_hps_io_usb1_inst_D2,                     //                                .hps_io_usb1_inst_D2
-		inout  wire        hps_hps_io_usb1_inst_D3,                     //                                .hps_io_usb1_inst_D3
-		inout  wire        hps_hps_io_usb1_inst_D4,                     //                                .hps_io_usb1_inst_D4
-		inout  wire        hps_hps_io_usb1_inst_D5,                     //                                .hps_io_usb1_inst_D5
-		inout  wire        hps_hps_io_usb1_inst_D6,                     //                                .hps_io_usb1_inst_D6
-		inout  wire        hps_hps_io_usb1_inst_D7,                     //                                .hps_io_usb1_inst_D7
-		input  wire        hps_hps_io_usb1_inst_CLK,                    //                                .hps_io_usb1_inst_CLK
-		output wire        hps_hps_io_usb1_inst_STP,                    //                                .hps_io_usb1_inst_STP
-		input  wire        hps_hps_io_usb1_inst_DIR,                    //                                .hps_io_usb1_inst_DIR
-		input  wire        hps_hps_io_usb1_inst_NXT,                    //                                .hps_io_usb1_inst_NXT
-		output wire        hps_hps_io_spim1_inst_CLK,                   //                                .hps_io_spim1_inst_CLK
-		output wire        hps_hps_io_spim1_inst_MOSI,                  //                                .hps_io_spim1_inst_MOSI
-		input  wire        hps_hps_io_spim1_inst_MISO,                  //                                .hps_io_spim1_inst_MISO
-		output wire        hps_hps_io_spim1_inst_SS0,                   //                                .hps_io_spim1_inst_SS0
-		input  wire        hps_hps_io_uart0_inst_RX,                    //                                .hps_io_uart0_inst_RX
-		output wire        hps_hps_io_uart0_inst_TX,                    //                                .hps_io_uart0_inst_TX
-		inout  wire        hps_hps_io_i2c0_inst_SDA,                    //                                .hps_io_i2c0_inst_SDA
-		inout  wire        hps_hps_io_i2c0_inst_SCL,                    //                                .hps_io_i2c0_inst_SCL
-		inout  wire        hps_hps_io_i2c1_inst_SDA,                    //                                .hps_io_i2c1_inst_SDA
-		inout  wire        hps_hps_io_i2c1_inst_SCL,                    //                                .hps_io_i2c1_inst_SCL
-		inout  wire        hps_hps_io_gpio_inst_GPIO09,                 //                                .hps_io_gpio_inst_GPIO09
-		inout  wire        hps_hps_io_gpio_inst_GPIO35,                 //                                .hps_io_gpio_inst_GPIO35
-		inout  wire        hps_hps_io_gpio_inst_GPIO40,                 //                                .hps_io_gpio_inst_GPIO40
-		inout  wire        hps_hps_io_gpio_inst_GPIO48,                 //                                .hps_io_gpio_inst_GPIO48
-		inout  wire        hps_hps_io_gpio_inst_GPIO53,                 //                                .hps_io_gpio_inst_GPIO53
-		inout  wire        hps_hps_io_gpio_inst_GPIO54,                 //                                .hps_io_gpio_inst_GPIO54
-		inout  wire        hps_hps_io_gpio_inst_GPIO61,                 //                                .hps_io_gpio_inst_GPIO61
-		output wire [14:0] hps_ddr3_mem_a,                              //                        hps_ddr3.mem_a
-		output wire [2:0]  hps_ddr3_mem_ba,                             //                                .mem_ba
-		output wire        hps_ddr3_mem_ck,                             //                                .mem_ck
-		output wire        hps_ddr3_mem_ck_n,                           //                                .mem_ck_n
-		output wire        hps_ddr3_mem_cke,                            //                                .mem_cke
-		output wire        hps_ddr3_mem_cs_n,                           //                                .mem_cs_n
-		output wire        hps_ddr3_mem_ras_n,                          //                                .mem_ras_n
-		output wire        hps_ddr3_mem_cas_n,                          //                                .mem_cas_n
-		output wire        hps_ddr3_mem_we_n,                           //                                .mem_we_n
-		output wire        hps_ddr3_mem_reset_n,                        //                                .mem_reset_n
-		inout  wire [31:0] hps_ddr3_mem_dq,                             //                                .mem_dq
-		inout  wire [3:0]  hps_ddr3_mem_dqs,                            //                                .mem_dqs
-		inout  wire [3:0]  hps_ddr3_mem_dqs_n,                          //                                .mem_dqs_n
-		output wire        hps_ddr3_mem_odt,                            //                                .mem_odt
-		output wire [3:0]  hps_ddr3_mem_dm,                             //                                .mem_dm
-		input  wire        hps_ddr3_oct_rzqin,                          //                                .oct_rzqin
-		input  wire        reset_reset_n,                               //                           reset.reset_n
-		input  wire [7:0]  snake_body_bottomleft_sprite_s1_address,     // snake_body_bottomleft_sprite_s1.address
-		input  wire        snake_body_bottomleft_sprite_s1_debugaccess, //                                .debugaccess
-		input  wire        snake_body_bottomleft_sprite_s1_clken,       //                                .clken
-		input  wire        snake_body_bottomleft_sprite_s1_chipselect,  //                                .chipselect
-		input  wire        snake_body_bottomleft_sprite_s1_write,       //                                .write
-		output wire [15:0] snake_body_bottomleft_sprite_s1_readdata,    //                                .readdata
-		input  wire [15:0] snake_body_bottomleft_sprite_s1_writedata,   //                                .writedata
-		input  wire [1:0]  snake_body_bottomleft_sprite_s1_byteenable,  //                                .byteenable
-		input  wire [7:0]  snake_body_bottomright_snake_s1_address,     // snake_body_bottomright_snake_s1.address
-		input  wire        snake_body_bottomright_snake_s1_debugaccess, //                                .debugaccess
-		input  wire        snake_body_bottomright_snake_s1_clken,       //                                .clken
-		input  wire        snake_body_bottomright_snake_s1_chipselect,  //                                .chipselect
-		input  wire        snake_body_bottomright_snake_s1_write,       //                                .write
-		output wire [15:0] snake_body_bottomright_snake_s1_readdata,    //                                .readdata
-		input  wire [15:0] snake_body_bottomright_snake_s1_writedata,   //                                .writedata
-		input  wire [1:0]  snake_body_bottomright_snake_s1_byteenable,  //                                .byteenable
-		input  wire [7:0]  snake_body_horizontal_sprite_s1_address,     // snake_body_horizontal_sprite_s1.address
-		input  wire        snake_body_horizontal_sprite_s1_debugaccess, //                                .debugaccess
-		input  wire        snake_body_horizontal_sprite_s1_clken,       //                                .clken
-		input  wire        snake_body_horizontal_sprite_s1_chipselect,  //                                .chipselect
-		input  wire        snake_body_horizontal_sprite_s1_write,       //                                .write
-		output wire [15:0] snake_body_horizontal_sprite_s1_readdata,    //                                .readdata
-		input  wire [15:0] snake_body_horizontal_sprite_s1_writedata,   //                                .writedata
-		input  wire [1:0]  snake_body_horizontal_sprite_s1_byteenable,  //                                .byteenable
-		input  wire [7:0]  snake_body_topleft_sprite_s1_address,        //    snake_body_topleft_sprite_s1.address
-		input  wire        snake_body_topleft_sprite_s1_debugaccess,    //                                .debugaccess
-		input  wire        snake_body_topleft_sprite_s1_clken,          //                                .clken
-		input  wire        snake_body_topleft_sprite_s1_chipselect,     //                                .chipselect
-		input  wire        snake_body_topleft_sprite_s1_write,          //                                .write
-		output wire [15:0] snake_body_topleft_sprite_s1_readdata,       //                                .readdata
-		input  wire [15:0] snake_body_topleft_sprite_s1_writedata,      //                                .writedata
-		input  wire [1:0]  snake_body_topleft_sprite_s1_byteenable,     //                                .byteenable
-		input  wire [7:0]  snake_body_topright_sprite_s1_address,       //   snake_body_topright_sprite_s1.address
-		input  wire        snake_body_topright_sprite_s1_debugaccess,   //                                .debugaccess
-		input  wire        snake_body_topright_sprite_s1_clken,         //                                .clken
-		input  wire        snake_body_topright_sprite_s1_chipselect,    //                                .chipselect
-		input  wire        snake_body_topright_sprite_s1_write,         //                                .write
-		output wire [15:0] snake_body_topright_sprite_s1_readdata,      //                                .readdata
-		input  wire [15:0] snake_body_topright_sprite_s1_writedata,     //                                .writedata
-		input  wire [1:0]  snake_body_topright_sprite_s1_byteenable,    //                                .byteenable
-		input  wire [7:0]  snake_body_vertical_sprite_s1_address,       //   snake_body_vertical_sprite_s1.address
-		input  wire        snake_body_vertical_sprite_s1_debugaccess,   //                                .debugaccess
-		input  wire        snake_body_vertical_sprite_s1_clken,         //                                .clken
-		input  wire        snake_body_vertical_sprite_s1_chipselect,    //                                .chipselect
-		input  wire        snake_body_vertical_sprite_s1_write,         //                                .write
-		output wire [15:0] snake_body_vertical_sprite_s1_readdata,      //                                .readdata
-		input  wire [15:0] snake_body_vertical_sprite_s1_writedata,     //                                .writedata
-		input  wire [1:0]  snake_body_vertical_sprite_s1_byteenable,    //                                .byteenable
-		input  wire [7:0]  snake_head_down_sprite_s1_address,           //       snake_head_down_sprite_s1.address
-		input  wire        snake_head_down_sprite_s1_debugaccess,       //                                .debugaccess
-		input  wire        snake_head_down_sprite_s1_clken,             //                                .clken
-		input  wire        snake_head_down_sprite_s1_chipselect,        //                                .chipselect
-		input  wire        snake_head_down_sprite_s1_write,             //                                .write
-		output wire [15:0] snake_head_down_sprite_s1_readdata,          //                                .readdata
-		input  wire [15:0] snake_head_down_sprite_s1_writedata,         //                                .writedata
-		input  wire [1:0]  snake_head_down_sprite_s1_byteenable,        //                                .byteenable
-		input  wire [7:0]  snake_head_left_sprite_s1_address,           //       snake_head_left_sprite_s1.address
-		input  wire        snake_head_left_sprite_s1_debugaccess,       //                                .debugaccess
-		input  wire        snake_head_left_sprite_s1_clken,             //                                .clken
-		input  wire        snake_head_left_sprite_s1_chipselect,        //                                .chipselect
-		input  wire        snake_head_left_sprite_s1_write,             //                                .write
-		output wire [15:0] snake_head_left_sprite_s1_readdata,          //                                .readdata
-		input  wire [15:0] snake_head_left_sprite_s1_writedata,         //                                .writedata
-		input  wire [1:0]  snake_head_left_sprite_s1_byteenable,        //                                .byteenable
-		input  wire [7:0]  snake_head_right_sprite_s1_address,          //      snake_head_right_sprite_s1.address
-		input  wire        snake_head_right_sprite_s1_debugaccess,      //                                .debugaccess
-		input  wire        snake_head_right_sprite_s1_clken,            //                                .clken
-		input  wire        snake_head_right_sprite_s1_chipselect,       //                                .chipselect
-		input  wire        snake_head_right_sprite_s1_write,            //                                .write
-		output wire [15:0] snake_head_right_sprite_s1_readdata,         //                                .readdata
-		input  wire [15:0] snake_head_right_sprite_s1_writedata,        //                                .writedata
-		input  wire [1:0]  snake_head_right_sprite_s1_byteenable,       //                                .byteenable
-		input  wire [7:0]  snake_head_up_sprite_s1_address,             //         snake_head_up_sprite_s1.address
-		input  wire        snake_head_up_sprite_s1_debugaccess,         //                                .debugaccess
-		input  wire        snake_head_up_sprite_s1_clken,               //                                .clken
-		input  wire        snake_head_up_sprite_s1_chipselect,          //                                .chipselect
-		input  wire        snake_head_up_sprite_s1_write,               //                                .write
-		output wire [15:0] snake_head_up_sprite_s1_readdata,            //                                .readdata
-		input  wire [15:0] snake_head_up_sprite_s1_writedata,           //                                .writedata
-		input  wire [1:0]  snake_head_up_sprite_s1_byteenable,          //                                .byteenable
-		input  wire [7:0]  snake_tail_down_sprite_s1_address,           //       snake_tail_down_sprite_s1.address
-		input  wire        snake_tail_down_sprite_s1_debugaccess,       //                                .debugaccess
-		input  wire        snake_tail_down_sprite_s1_clken,             //                                .clken
-		input  wire        snake_tail_down_sprite_s1_chipselect,        //                                .chipselect
-		input  wire        snake_tail_down_sprite_s1_write,             //                                .write
-		output wire [15:0] snake_tail_down_sprite_s1_readdata,          //                                .readdata
-		input  wire [15:0] snake_tail_down_sprite_s1_writedata,         //                                .writedata
-		input  wire [1:0]  snake_tail_down_sprite_s1_byteenable,        //                                .byteenable
-		input  wire [7:0]  snake_tail_left_sprite_s1_address,           //       snake_tail_left_sprite_s1.address
-		input  wire        snake_tail_left_sprite_s1_debugaccess,       //                                .debugaccess
-		input  wire        snake_tail_left_sprite_s1_clken,             //                                .clken
-		input  wire        snake_tail_left_sprite_s1_chipselect,        //                                .chipselect
-		input  wire        snake_tail_left_sprite_s1_write,             //                                .write
-		output wire [15:0] snake_tail_left_sprite_s1_readdata,          //                                .readdata
-		input  wire [15:0] snake_tail_left_sprite_s1_writedata,         //                                .writedata
-		input  wire [1:0]  snake_tail_left_sprite_s1_byteenable,        //                                .byteenable
-		input  wire [7:0]  snake_tail_right_sprite_s1_address,          //      snake_tail_right_sprite_s1.address
-		input  wire        snake_tail_right_sprite_s1_debugaccess,      //                                .debugaccess
-		input  wire        snake_tail_right_sprite_s1_clken,            //                                .clken
-		input  wire        snake_tail_right_sprite_s1_chipselect,       //                                .chipselect
-		input  wire        snake_tail_right_sprite_s1_write,            //                                .write
-		output wire [15:0] snake_tail_right_sprite_s1_readdata,         //                                .readdata
-		input  wire [15:0] snake_tail_right_sprite_s1_writedata,        //                                .writedata
-		input  wire [1:0]  snake_tail_right_sprite_s1_byteenable,       //                                .byteenable
-		output wire [7:0]  vga_b,                                       //                             vga.b
-		output wire        vga_blank_n,                                 //                                .blank_n
-		output wire        vga_clk,                                     //                                .clk
-		output wire [7:0]  vga_g,                                       //                                .g
-		output wire        vga_hs,                                      //                                .hs
-		output wire [7:0]  vga_r,                                       //                                .r
-		output wire        vga_sync_n,                                  //                                .sync_n
-		output wire        vga_vs,                                      //                                .vs
-		input  wire [9:0]  wall_sprite_s1_address,                      //                  wall_sprite_s1.address
-		input  wire        wall_sprite_s1_debugaccess,                  //                                .debugaccess
-		input  wire        wall_sprite_s1_clken,                        //                                .clken
-		input  wire        wall_sprite_s1_chipselect,                   //                                .chipselect
-		input  wire        wall_sprite_s1_write,                        //                                .write
-		output wire [15:0] wall_sprite_s1_readdata,                     //                                .readdata
-		input  wire [15:0] wall_sprite_s1_writedata,                    //                                .writedata
-		input  wire [1:0]  wall_sprite_s1_byteenable                    //                                .byteenable
+		input  wire [9:0]  apple_sprite_s1_address,                      //                  apple_sprite_s1.address
+		input  wire        apple_sprite_s1_debugaccess,                  //                                 .debugaccess
+		input  wire        apple_sprite_s1_clken,                        //                                 .clken
+		input  wire        apple_sprite_s1_chipselect,                   //                                 .chipselect
+		input  wire        apple_sprite_s1_write,                        //                                 .write
+		output wire [15:0] apple_sprite_s1_readdata,                     //                                 .readdata
+		input  wire [15:0] apple_sprite_s1_writedata,                    //                                 .writedata
+		input  wire [1:0]  apple_sprite_s1_byteenable,                   //                                 .byteenable
+		input  wire        clk_clk,                                      //                              clk.clk
+		output wire        hps_hps_io_emac1_inst_TX_CLK,                 //                              hps.hps_io_emac1_inst_TX_CLK
+		output wire        hps_hps_io_emac1_inst_TXD0,                   //                                 .hps_io_emac1_inst_TXD0
+		output wire        hps_hps_io_emac1_inst_TXD1,                   //                                 .hps_io_emac1_inst_TXD1
+		output wire        hps_hps_io_emac1_inst_TXD2,                   //                                 .hps_io_emac1_inst_TXD2
+		output wire        hps_hps_io_emac1_inst_TXD3,                   //                                 .hps_io_emac1_inst_TXD3
+		input  wire        hps_hps_io_emac1_inst_RXD0,                   //                                 .hps_io_emac1_inst_RXD0
+		inout  wire        hps_hps_io_emac1_inst_MDIO,                   //                                 .hps_io_emac1_inst_MDIO
+		output wire        hps_hps_io_emac1_inst_MDC,                    //                                 .hps_io_emac1_inst_MDC
+		input  wire        hps_hps_io_emac1_inst_RX_CTL,                 //                                 .hps_io_emac1_inst_RX_CTL
+		output wire        hps_hps_io_emac1_inst_TX_CTL,                 //                                 .hps_io_emac1_inst_TX_CTL
+		input  wire        hps_hps_io_emac1_inst_RX_CLK,                 //                                 .hps_io_emac1_inst_RX_CLK
+		input  wire        hps_hps_io_emac1_inst_RXD1,                   //                                 .hps_io_emac1_inst_RXD1
+		input  wire        hps_hps_io_emac1_inst_RXD2,                   //                                 .hps_io_emac1_inst_RXD2
+		input  wire        hps_hps_io_emac1_inst_RXD3,                   //                                 .hps_io_emac1_inst_RXD3
+		inout  wire        hps_hps_io_sdio_inst_CMD,                     //                                 .hps_io_sdio_inst_CMD
+		inout  wire        hps_hps_io_sdio_inst_D0,                      //                                 .hps_io_sdio_inst_D0
+		inout  wire        hps_hps_io_sdio_inst_D1,                      //                                 .hps_io_sdio_inst_D1
+		output wire        hps_hps_io_sdio_inst_CLK,                     //                                 .hps_io_sdio_inst_CLK
+		inout  wire        hps_hps_io_sdio_inst_D2,                      //                                 .hps_io_sdio_inst_D2
+		inout  wire        hps_hps_io_sdio_inst_D3,                      //                                 .hps_io_sdio_inst_D3
+		inout  wire        hps_hps_io_usb1_inst_D0,                      //                                 .hps_io_usb1_inst_D0
+		inout  wire        hps_hps_io_usb1_inst_D1,                      //                                 .hps_io_usb1_inst_D1
+		inout  wire        hps_hps_io_usb1_inst_D2,                      //                                 .hps_io_usb1_inst_D2
+		inout  wire        hps_hps_io_usb1_inst_D3,                      //                                 .hps_io_usb1_inst_D3
+		inout  wire        hps_hps_io_usb1_inst_D4,                      //                                 .hps_io_usb1_inst_D4
+		inout  wire        hps_hps_io_usb1_inst_D5,                      //                                 .hps_io_usb1_inst_D5
+		inout  wire        hps_hps_io_usb1_inst_D6,                      //                                 .hps_io_usb1_inst_D6
+		inout  wire        hps_hps_io_usb1_inst_D7,                      //                                 .hps_io_usb1_inst_D7
+		input  wire        hps_hps_io_usb1_inst_CLK,                     //                                 .hps_io_usb1_inst_CLK
+		output wire        hps_hps_io_usb1_inst_STP,                     //                                 .hps_io_usb1_inst_STP
+		input  wire        hps_hps_io_usb1_inst_DIR,                     //                                 .hps_io_usb1_inst_DIR
+		input  wire        hps_hps_io_usb1_inst_NXT,                     //                                 .hps_io_usb1_inst_NXT
+		output wire        hps_hps_io_spim1_inst_CLK,                    //                                 .hps_io_spim1_inst_CLK
+		output wire        hps_hps_io_spim1_inst_MOSI,                   //                                 .hps_io_spim1_inst_MOSI
+		input  wire        hps_hps_io_spim1_inst_MISO,                   //                                 .hps_io_spim1_inst_MISO
+		output wire        hps_hps_io_spim1_inst_SS0,                    //                                 .hps_io_spim1_inst_SS0
+		input  wire        hps_hps_io_uart0_inst_RX,                     //                                 .hps_io_uart0_inst_RX
+		output wire        hps_hps_io_uart0_inst_TX,                     //                                 .hps_io_uart0_inst_TX
+		inout  wire        hps_hps_io_i2c0_inst_SDA,                     //                                 .hps_io_i2c0_inst_SDA
+		inout  wire        hps_hps_io_i2c0_inst_SCL,                     //                                 .hps_io_i2c0_inst_SCL
+		inout  wire        hps_hps_io_i2c1_inst_SDA,                     //                                 .hps_io_i2c1_inst_SDA
+		inout  wire        hps_hps_io_i2c1_inst_SCL,                     //                                 .hps_io_i2c1_inst_SCL
+		inout  wire        hps_hps_io_gpio_inst_GPIO09,                  //                                 .hps_io_gpio_inst_GPIO09
+		inout  wire        hps_hps_io_gpio_inst_GPIO35,                  //                                 .hps_io_gpio_inst_GPIO35
+		inout  wire        hps_hps_io_gpio_inst_GPIO40,                  //                                 .hps_io_gpio_inst_GPIO40
+		inout  wire        hps_hps_io_gpio_inst_GPIO48,                  //                                 .hps_io_gpio_inst_GPIO48
+		inout  wire        hps_hps_io_gpio_inst_GPIO53,                  //                                 .hps_io_gpio_inst_GPIO53
+		inout  wire        hps_hps_io_gpio_inst_GPIO54,                  //                                 .hps_io_gpio_inst_GPIO54
+		inout  wire        hps_hps_io_gpio_inst_GPIO61,                  //                                 .hps_io_gpio_inst_GPIO61
+		output wire [14:0] hps_ddr3_mem_a,                               //                         hps_ddr3.mem_a
+		output wire [2:0]  hps_ddr3_mem_ba,                              //                                 .mem_ba
+		output wire        hps_ddr3_mem_ck,                              //                                 .mem_ck
+		output wire        hps_ddr3_mem_ck_n,                            //                                 .mem_ck_n
+		output wire        hps_ddr3_mem_cke,                             //                                 .mem_cke
+		output wire        hps_ddr3_mem_cs_n,                            //                                 .mem_cs_n
+		output wire        hps_ddr3_mem_ras_n,                           //                                 .mem_ras_n
+		output wire        hps_ddr3_mem_cas_n,                           //                                 .mem_cas_n
+		output wire        hps_ddr3_mem_we_n,                            //                                 .mem_we_n
+		output wire        hps_ddr3_mem_reset_n,                         //                                 .mem_reset_n
+		inout  wire [31:0] hps_ddr3_mem_dq,                              //                                 .mem_dq
+		inout  wire [3:0]  hps_ddr3_mem_dqs,                             //                                 .mem_dqs
+		inout  wire [3:0]  hps_ddr3_mem_dqs_n,                           //                                 .mem_dqs_n
+		output wire        hps_ddr3_mem_odt,                             //                                 .mem_odt
+		output wire [3:0]  hps_ddr3_mem_dm,                              //                                 .mem_dm
+		input  wire        hps_ddr3_oct_rzqin,                           //                                 .oct_rzqin
+		input  wire        reset_reset_n,                                //                            reset.reset_n
+		input  wire [7:0]  snake_body_bottomleft_sprite_s1_address,      //  snake_body_bottomleft_sprite_s1.address
+		input  wire        snake_body_bottomleft_sprite_s1_debugaccess,  //                                 .debugaccess
+		input  wire        snake_body_bottomleft_sprite_s1_clken,        //                                 .clken
+		input  wire        snake_body_bottomleft_sprite_s1_chipselect,   //                                 .chipselect
+		input  wire        snake_body_bottomleft_sprite_s1_write,        //                                 .write
+		output wire [15:0] snake_body_bottomleft_sprite_s1_readdata,     //                                 .readdata
+		input  wire [15:0] snake_body_bottomleft_sprite_s1_writedata,    //                                 .writedata
+		input  wire [1:0]  snake_body_bottomleft_sprite_s1_byteenable,   //                                 .byteenable
+		input  wire [7:0]  snake_body_bottomright_sprite_s1_address,     // snake_body_bottomright_sprite_s1.address
+		input  wire        snake_body_bottomright_sprite_s1_debugaccess, //                                 .debugaccess
+		input  wire        snake_body_bottomright_sprite_s1_clken,       //                                 .clken
+		input  wire        snake_body_bottomright_sprite_s1_chipselect,  //                                 .chipselect
+		input  wire        snake_body_bottomright_sprite_s1_write,       //                                 .write
+		output wire [15:0] snake_body_bottomright_sprite_s1_readdata,    //                                 .readdata
+		input  wire [15:0] snake_body_bottomright_sprite_s1_writedata,   //                                 .writedata
+		input  wire [1:0]  snake_body_bottomright_sprite_s1_byteenable,  //                                 .byteenable
+		input  wire [7:0]  snake_body_horizontal_sprite_s1_address,      //  snake_body_horizontal_sprite_s1.address
+		input  wire        snake_body_horizontal_sprite_s1_debugaccess,  //                                 .debugaccess
+		input  wire        snake_body_horizontal_sprite_s1_clken,        //                                 .clken
+		input  wire        snake_body_horizontal_sprite_s1_chipselect,   //                                 .chipselect
+		input  wire        snake_body_horizontal_sprite_s1_write,        //                                 .write
+		output wire [15:0] snake_body_horizontal_sprite_s1_readdata,     //                                 .readdata
+		input  wire [15:0] snake_body_horizontal_sprite_s1_writedata,    //                                 .writedata
+		input  wire [1:0]  snake_body_horizontal_sprite_s1_byteenable,   //                                 .byteenable
+		input  wire [7:0]  snake_body_topleft_sprite_s1_address,         //     snake_body_topleft_sprite_s1.address
+		input  wire        snake_body_topleft_sprite_s1_debugaccess,     //                                 .debugaccess
+		input  wire        snake_body_topleft_sprite_s1_clken,           //                                 .clken
+		input  wire        snake_body_topleft_sprite_s1_chipselect,      //                                 .chipselect
+		input  wire        snake_body_topleft_sprite_s1_write,           //                                 .write
+		output wire [15:0] snake_body_topleft_sprite_s1_readdata,        //                                 .readdata
+		input  wire [15:0] snake_body_topleft_sprite_s1_writedata,       //                                 .writedata
+		input  wire [1:0]  snake_body_topleft_sprite_s1_byteenable,      //                                 .byteenable
+		input  wire [7:0]  snake_body_topright_sprite_s1_address,        //    snake_body_topright_sprite_s1.address
+		input  wire        snake_body_topright_sprite_s1_debugaccess,    //                                 .debugaccess
+		input  wire        snake_body_topright_sprite_s1_clken,          //                                 .clken
+		input  wire        snake_body_topright_sprite_s1_chipselect,     //                                 .chipselect
+		input  wire        snake_body_topright_sprite_s1_write,          //                                 .write
+		output wire [15:0] snake_body_topright_sprite_s1_readdata,       //                                 .readdata
+		input  wire [15:0] snake_body_topright_sprite_s1_writedata,      //                                 .writedata
+		input  wire [1:0]  snake_body_topright_sprite_s1_byteenable,     //                                 .byteenable
+		input  wire [7:0]  snake_body_vertical_sprite_s1_address,        //    snake_body_vertical_sprite_s1.address
+		input  wire        snake_body_vertical_sprite_s1_debugaccess,    //                                 .debugaccess
+		input  wire        snake_body_vertical_sprite_s1_clken,          //                                 .clken
+		input  wire        snake_body_vertical_sprite_s1_chipselect,     //                                 .chipselect
+		input  wire        snake_body_vertical_sprite_s1_write,          //                                 .write
+		output wire [15:0] snake_body_vertical_sprite_s1_readdata,       //                                 .readdata
+		input  wire [15:0] snake_body_vertical_sprite_s1_writedata,      //                                 .writedata
+		input  wire [1:0]  snake_body_vertical_sprite_s1_byteenable,     //                                 .byteenable
+		input  wire [7:0]  snake_head_down_sprite_s1_address,            //        snake_head_down_sprite_s1.address
+		input  wire        snake_head_down_sprite_s1_debugaccess,        //                                 .debugaccess
+		input  wire        snake_head_down_sprite_s1_clken,              //                                 .clken
+		input  wire        snake_head_down_sprite_s1_chipselect,         //                                 .chipselect
+		input  wire        snake_head_down_sprite_s1_write,              //                                 .write
+		output wire [15:0] snake_head_down_sprite_s1_readdata,           //                                 .readdata
+		input  wire [15:0] snake_head_down_sprite_s1_writedata,          //                                 .writedata
+		input  wire [1:0]  snake_head_down_sprite_s1_byteenable,         //                                 .byteenable
+		input  wire [7:0]  snake_head_left_sprite_s1_address,            //        snake_head_left_sprite_s1.address
+		input  wire        snake_head_left_sprite_s1_debugaccess,        //                                 .debugaccess
+		input  wire        snake_head_left_sprite_s1_clken,              //                                 .clken
+		input  wire        snake_head_left_sprite_s1_chipselect,         //                                 .chipselect
+		input  wire        snake_head_left_sprite_s1_write,              //                                 .write
+		output wire [15:0] snake_head_left_sprite_s1_readdata,           //                                 .readdata
+		input  wire [15:0] snake_head_left_sprite_s1_writedata,          //                                 .writedata
+		input  wire [1:0]  snake_head_left_sprite_s1_byteenable,         //                                 .byteenable
+		input  wire [7:0]  snake_head_right_sprite_s1_address,           //       snake_head_right_sprite_s1.address
+		input  wire        snake_head_right_sprite_s1_debugaccess,       //                                 .debugaccess
+		input  wire        snake_head_right_sprite_s1_clken,             //                                 .clken
+		input  wire        snake_head_right_sprite_s1_chipselect,        //                                 .chipselect
+		input  wire        snake_head_right_sprite_s1_write,             //                                 .write
+		output wire [15:0] snake_head_right_sprite_s1_readdata,          //                                 .readdata
+		input  wire [15:0] snake_head_right_sprite_s1_writedata,         //                                 .writedata
+		input  wire [1:0]  snake_head_right_sprite_s1_byteenable,        //                                 .byteenable
+		input  wire [7:0]  snake_head_up_sprite_s1_address,              //          snake_head_up_sprite_s1.address
+		input  wire        snake_head_up_sprite_s1_debugaccess,          //                                 .debugaccess
+		input  wire        snake_head_up_sprite_s1_clken,                //                                 .clken
+		input  wire        snake_head_up_sprite_s1_chipselect,           //                                 .chipselect
+		input  wire        snake_head_up_sprite_s1_write,                //                                 .write
+		output wire [15:0] snake_head_up_sprite_s1_readdata,             //                                 .readdata
+		input  wire [15:0] snake_head_up_sprite_s1_writedata,            //                                 .writedata
+		input  wire [1:0]  snake_head_up_sprite_s1_byteenable,           //                                 .byteenable
+		input  wire [7:0]  snake_tail_down_sprite_s1_address,            //        snake_tail_down_sprite_s1.address
+		input  wire        snake_tail_down_sprite_s1_debugaccess,        //                                 .debugaccess
+		input  wire        snake_tail_down_sprite_s1_clken,              //                                 .clken
+		input  wire        snake_tail_down_sprite_s1_chipselect,         //                                 .chipselect
+		input  wire        snake_tail_down_sprite_s1_write,              //                                 .write
+		output wire [15:0] snake_tail_down_sprite_s1_readdata,           //                                 .readdata
+		input  wire [15:0] snake_tail_down_sprite_s1_writedata,          //                                 .writedata
+		input  wire [1:0]  snake_tail_down_sprite_s1_byteenable,         //                                 .byteenable
+		input  wire [7:0]  snake_tail_left_sprite_s1_address,            //        snake_tail_left_sprite_s1.address
+		input  wire        snake_tail_left_sprite_s1_debugaccess,        //                                 .debugaccess
+		input  wire        snake_tail_left_sprite_s1_clken,              //                                 .clken
+		input  wire        snake_tail_left_sprite_s1_chipselect,         //                                 .chipselect
+		input  wire        snake_tail_left_sprite_s1_write,              //                                 .write
+		output wire [15:0] snake_tail_left_sprite_s1_readdata,           //                                 .readdata
+		input  wire [15:0] snake_tail_left_sprite_s1_writedata,          //                                 .writedata
+		input  wire [1:0]  snake_tail_left_sprite_s1_byteenable,         //                                 .byteenable
+		input  wire [7:0]  snake_tail_right_sprite_s1_address,           //       snake_tail_right_sprite_s1.address
+		input  wire        snake_tail_right_sprite_s1_debugaccess,       //                                 .debugaccess
+		input  wire        snake_tail_right_sprite_s1_clken,             //                                 .clken
+		input  wire        snake_tail_right_sprite_s1_chipselect,        //                                 .chipselect
+		input  wire        snake_tail_right_sprite_s1_write,             //                                 .write
+		output wire [15:0] snake_tail_right_sprite_s1_readdata,          //                                 .readdata
+		input  wire [15:0] snake_tail_right_sprite_s1_writedata,         //                                 .writedata
+		input  wire [1:0]  snake_tail_right_sprite_s1_byteenable,        //                                 .byteenable
+		output wire [7:0]  vga_b,                                        //                              vga.b
+		output wire        vga_blank_n,                                  //                                 .blank_n
+		output wire        vga_clk,                                      //                                 .clk
+		output wire [7:0]  vga_g,                                        //                                 .g
+		output wire        vga_hs,                                       //                                 .hs
+		output wire [7:0]  vga_r,                                        //                                 .r
+		output wire        vga_sync_n,                                   //                                 .sync_n
+		output wire        vga_vs,                                       //                                 .vs
+		input  wire [9:0]  wall_sprite_s1_address,                       //                   wall_sprite_s1.address
+		input  wire        wall_sprite_s1_debugaccess,                   //                                 .debugaccess
+		input  wire        wall_sprite_s1_clken,                         //                                 .clken
+		input  wire        wall_sprite_s1_chipselect,                    //                                 .chipselect
+		input  wire        wall_sprite_s1_write,                         //                                 .write
+		output wire [15:0] wall_sprite_s1_readdata,                      //                                 .readdata
+		input  wire [15:0] wall_sprite_s1_writedata,                     //                                 .writedata
+		input  wire [1:0]  wall_sprite_s1_byteenable                     //                                 .byteenable
 	);
 
 	wire   [1:0] hps_0_h2f_axi_master_awburst;                           // hps_0:h2f_AWBURST -> mm_interconnect_0:hps_0_h2f_axi_master_awburst
@@ -287,8 +287,8 @@ module soc_system (
 	wire   [7:0] mm_interconnect_1_vga_ball_0_avalon_slave_0_writedata;  // mm_interconnect_1:vga_ball_0_avalon_slave_0_writedata -> vga_ball_0:writedata
 	wire  [31:0] hps_0_f2h_irq0_irq;                                     // irq_mapper:sender_irq -> hps_0:f2h_irq_p0
 	wire  [31:0] hps_0_f2h_irq1_irq;                                     // irq_mapper_001:sender_irq -> hps_0:f2h_irq_p1
-	wire         rst_controller_reset_out_reset;                         // rst_controller:reset_out -> [apple_sprite:reset, mm_interconnect_0:snake_tail_up_sprite_reset1_reset_bridge_in_reset_reset, mm_interconnect_1:vga_ball_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_body_bottomleft_sprite:reset, snake_body_bottomright_snake:reset, snake_body_horizontal_sprite:reset, snake_body_topleft_sprite:reset, snake_body_topright_sprite:reset, snake_body_vertical_sprite:reset, snake_head_down_sprite:reset, snake_head_left_sprite:reset, snake_head_right_sprite:reset, snake_head_up_sprite:reset, snake_tail_down_sprite:reset, snake_tail_left_sprite:reset, snake_tail_right_sprite:reset, snake_tail_up_sprite:reset, vga_ball_0:reset, wall_sprite:reset]
-	wire         rst_controller_reset_out_reset_req;                     // rst_controller:reset_req -> [apple_sprite:reset_req, rst_translator:reset_req_in, snake_body_bottomleft_sprite:reset_req, snake_body_bottomright_snake:reset_req, snake_body_horizontal_sprite:reset_req, snake_body_topleft_sprite:reset_req, snake_body_topright_sprite:reset_req, snake_body_vertical_sprite:reset_req, snake_head_down_sprite:reset_req, snake_head_left_sprite:reset_req, snake_head_right_sprite:reset_req, snake_head_up_sprite:reset_req, snake_tail_down_sprite:reset_req, snake_tail_left_sprite:reset_req, snake_tail_right_sprite:reset_req, snake_tail_up_sprite:reset_req, wall_sprite:reset_req]
+	wire         rst_controller_reset_out_reset;                         // rst_controller:reset_out -> [apple_sprite:reset, mm_interconnect_0:snake_tail_up_sprite_reset1_reset_bridge_in_reset_reset, mm_interconnect_1:vga_ball_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_body_bottomleft_sprite:reset, snake_body_bottomright_sprite:reset, snake_body_horizontal_sprite:reset, snake_body_topleft_sprite:reset, snake_body_topright_sprite:reset, snake_body_vertical_sprite:reset, snake_head_down_sprite:reset, snake_head_left_sprite:reset, snake_head_right_sprite:reset, snake_head_up_sprite:reset, snake_tail_down_sprite:reset, snake_tail_left_sprite:reset, snake_tail_right_sprite:reset, snake_tail_up_sprite:reset, vga_ball_0:reset, wall_sprite:reset]
+	wire         rst_controller_reset_out_reset_req;                     // rst_controller:reset_req -> [apple_sprite:reset_req, rst_translator:reset_req_in, snake_body_bottomleft_sprite:reset_req, snake_body_bottomright_sprite:reset_req, snake_body_horizontal_sprite:reset_req, snake_body_topleft_sprite:reset_req, snake_body_topright_sprite:reset_req, snake_body_vertical_sprite:reset_req, snake_head_down_sprite:reset_req, snake_head_left_sprite:reset_req, snake_head_right_sprite:reset_req, snake_head_up_sprite:reset_req, snake_tail_down_sprite:reset_req, snake_tail_left_sprite:reset_req, snake_tail_right_sprite:reset_req, snake_tail_up_sprite:reset_req, wall_sprite:reset_req]
 	wire         rst_controller_001_reset_out_reset;                     // rst_controller_001:reset_out -> [mm_interconnect_0:hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset]
 	wire         hps_0_h2f_reset_reset;                                  // hps_0:h2f_rst_n -> rst_controller_001:reset_in0
 
@@ -510,19 +510,19 @@ module soc_system (
 		.freeze      (1'b0)                                         // (terminated)
 	);
 
-	soc_system_snake_body_bottomright_snake snake_body_bottomright_snake (
-		.clk         (clk_clk),                                     //   clk1.clk
-		.address     (snake_body_bottomright_snake_s1_address),     //     s1.address
-		.debugaccess (snake_body_bottomright_snake_s1_debugaccess), //       .debugaccess
-		.clken       (snake_body_bottomright_snake_s1_clken),       //       .clken
-		.chipselect  (snake_body_bottomright_snake_s1_chipselect),  //       .chipselect
-		.write       (snake_body_bottomright_snake_s1_write),       //       .write
-		.readdata    (snake_body_bottomright_snake_s1_readdata),    //       .readdata
-		.writedata   (snake_body_bottomright_snake_s1_writedata),   //       .writedata
-		.byteenable  (snake_body_bottomright_snake_s1_byteenable),  //       .byteenable
-		.reset       (rst_controller_reset_out_reset),              // reset1.reset
-		.reset_req   (rst_controller_reset_out_reset_req),          //       .reset_req
-		.freeze      (1'b0)                                         // (terminated)
+	soc_system_snake_body_bottomright_sprite snake_body_bottomright_sprite (
+		.clk         (clk_clk),                                      //   clk1.clk
+		.address     (snake_body_bottomright_sprite_s1_address),     //     s1.address
+		.debugaccess (snake_body_bottomright_sprite_s1_debugaccess), //       .debugaccess
+		.clken       (snake_body_bottomright_sprite_s1_clken),       //       .clken
+		.chipselect  (snake_body_bottomright_sprite_s1_chipselect),  //       .chipselect
+		.write       (snake_body_bottomright_sprite_s1_write),       //       .write
+		.readdata    (snake_body_bottomright_sprite_s1_readdata),    //       .readdata
+		.writedata   (snake_body_bottomright_sprite_s1_writedata),   //       .writedata
+		.byteenable  (snake_body_bottomright_sprite_s1_byteenable),  //       .byteenable
+		.reset       (rst_controller_reset_out_reset),               // reset1.reset
+		.reset_req   (rst_controller_reset_out_reset_req),           //       .reset_req
+		.freeze      (1'b0)                                          // (terminated)
 	);
 
 	soc_system_snake_body_horizontal_sprite snake_body_horizontal_sprite (

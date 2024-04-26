@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="system" version="21.1" fabric="QSYS">
  <!-- Format version 21.1 842 (Future versions may contain additional information.) -->
- <!-- 2024.04.26.15:43:36 -->
+ <!-- 2024.04.26.16:07:17 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1714160538</value>
+  <value>1714161949</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -1270,9 +1270,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>snake_body_bottomright_snake</moduleName>
+    <moduleName>snake_body_bottomright_sprite</moduleName>
     <slaveName>clk1</slaveName>
-    <name>snake_body_bottomright_snake.clk1</name>
+    <name>snake_body_bottomright_sprite.clk1</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -44196,10 +44196,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="snake_body_bottomright_snake"
+   name="snake_body_bottomright_sprite"
    kind="altera_avalon_onchip_memory2"
    version="21.1"
-   path="snake_body_bottomright_snake">
+   path="snake_body_bottomright_sprite">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <assignment>
@@ -44500,7 +44500,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="autoInitializationFileName">
    <type>java.lang.String</type>
-   <value>soc_system_snake_body_bottomright_snake</value>
+   <value>soc_system_snake_body_bottomright_sprite</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -60203,11 +60203,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
-   name="clk_0.clk/snake_body_bottomright_snake.clk1"
+   name="clk_0.clk/snake_body_bottomright_sprite.clk1"
    kind="clock"
    version="21.1"
    start="clk_0.clk"
-   end="snake_body_bottomright_snake.clk1">
+   end="snake_body_bottomright_sprite.clk1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -60226,7 +60226,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>clk_0</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>snake_body_bottomright_snake</endModule>
+  <endModule>snake_body_bottomright_sprite</endModule>
   <endConnectionPoint>clk1</endConnectionPoint>
  </connection>
  <connection
@@ -61071,11 +61071,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
  <connection
-   name="rst_controller.reset_out/snake_body_bottomright_snake.reset1"
+   name="rst_controller.reset_out/snake_body_bottomright_sprite.reset1"
    kind="reset"
    version="21.1"
    start="rst_controller.reset_out"
-   end="snake_body_bottomright_snake.reset1">
+   end="snake_body_bottomright_sprite.reset1">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -61094,7 +61094,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>rst_controller</startModule>
   <startConnectionPoint>reset_out</startConnectionPoint>
-  <endModule>snake_body_bottomright_snake</endModule>
+  <endModule>snake_body_bottomright_sprite</endModule>
   <endConnectionPoint>reset1</endConnectionPoint>
  </connection>
  <connection
@@ -62040,5 +62040,5 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <reportVersion>21.1 842</reportVersion>
- <uniqueIdentifier>CC96E51A77870000018F1BEE63D2</uniqueIdentifier>
+ <uniqueIdentifier>CC96E51A77870000018F1C03FA40</uniqueIdentifier>
 </EnsembleReport>
