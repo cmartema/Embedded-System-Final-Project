@@ -23,12 +23,12 @@ lab2:  $(OBJECTS)
 lab2.tar.gz : $(TARFILES)
 	rm -rf lab2
 	mkdir lab2
-	cp $(TARFILES) lab2
+	ln $(TARFILES) lab2
 	tar zcf lab2.tar.gz lab2
 	rm -rf lab2
 lab2.o : lab2.c fbputchar.h usbkeyboard.h
 fbputchar.o : fbputchar.c fbputchar.h
-usbkeyboard.o : usbkeyboard.h usbkeyboard.c
+usbkeyboard.o : usbkeyboard.c usbkeyboard.h
 
 module:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules

@@ -61,7 +61,6 @@ printf("test1\n");
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
-    printf("in for\n");
     //fbputchar('-', 20, col);
   }
   printf("test2\n");
