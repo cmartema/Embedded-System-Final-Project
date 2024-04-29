@@ -94,7 +94,7 @@ printf("test1\n");
 		libusb_exit(ctx);                 // close the session
 		return 0;
 	}
-  printf("TEST\n")
+  printf("TEST\n");
 	else
 	{
 		printf("%s\n", "Device opened");
