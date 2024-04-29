@@ -1,29 +1,41 @@
 #ifndef _USBKEYBOARD_H
 #define _USBKEYBOARD_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <libusb-1.0/libusb.h>
 
-#define USB_HID_KEYBOARD_PROTOCOL 1
+struct controller_list {
 
-/* Modifier bits */
-#define USB_LCTRL  (1 << 0)
-#define USB_LSHIFT (1 << 1)
-#define USB_LALT   (1 << 2)
-#define USB_LGUI   (1 << 3)
-#define USB_RCTRL  (1 << 4)
-#define USB_RSHIFT (1 << 5)
-#define USB_RALT   (1 << 6) 
-#define USB_RGUI   (1 << 7)
+        struct libusb_device_handle *device1;
+        struct libusb_device_handle *device2;
+        uint8_t device1_addr;
+        uint8_t device2_addr;
 
-struct usb_keyboard_packet {
-  uint8_t modifiers;
-  uint8_t reserved;
-  uint8_t keycode[6];
 };
 
-/* Find and open a USB keyboard device.  Argument should point to
-   space to store an endpoint address.  Returns NULL if no keyboard
-   device was found. */
-extern struct libusb_device_handle *openkeyboard(uint8_t *);
+struct controller_pkt {
+
+        uint8_t const1;
+        uint8_t const2;
+        uint8_t const3;
+        uint8_t h_arrows;
+        uint8_t v_arrows;
+        uint8_t xyab;
+        uint8_t rl;
+
+};
+
+struct args_list {
+
+        struct controller_list devices;
+        char * buttons;
+        int mode;
+        int print;
+
+};
+
+extern struct controller_list open_controller(uint8_t *);
 
 #endif
+
