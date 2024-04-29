@@ -117,7 +117,7 @@ printf("test1\n");
     
   /* Create a TCP communications socket */
   if ( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ) {
-    fprintf(stderr, "Error: Could not create socket\n");
+    //fprintf(stderr, "Error: Could not create socket\n");
     exit(1);
   }
 
