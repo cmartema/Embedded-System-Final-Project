@@ -86,10 +86,12 @@ printf("test1\n");
   	{
     	printf("%s\n", "Get Device Error"); // there was an error
   	}
+	//Address Here for controller
   	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
 	if (keyboard == NULL)
 	{
 		printf("%s\n", "Cannot open device");
+		libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
 		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
 		libusb_exit(ctx);                 // close the session
 		return 0;
