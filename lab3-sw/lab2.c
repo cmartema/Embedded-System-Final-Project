@@ -2,10 +2,7 @@
  *
  * CSEE 4840 Lab 2 for 2019
  *
- * Name/UNI: Please Changeto Yourname (pcy2301)
  */
-//SAHER IQBAL si2443
-//Chenyang Zhou cz2791
 
 #include "fbputchar.h"
 #include <stdio.h>
@@ -56,11 +53,11 @@ int main()
   int transferred;
   char keystate[12];
 
-  /*if ((err = fbopen()) != 0) {
+  if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
     exit(1);
   }
-*/
+
 
 printf("test1\n");
 
