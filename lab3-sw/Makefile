@@ -13,13 +13,12 @@ else
     CFLAGS = -Wall
 
     OBJECTS = lab2.o fbputchar.o usbkeyboard.o
-
     TARFILES = Makefile README vga_ball.h vga_ball.c hello.c lab2.c fbputchar.h fbputchar.c usbkeyboard.h usbkeyboard.c
 
 default: module hello lab2
 
-lab2 : $(OBJECTS)
-    cc $(CFLAGS) -o lab2 $(OBJECTS) -lusb-1.0 -pthread
+lab2:  $(OBJECTS)
+	cc $(CFLAGS) -o lab2 $(OBJECTS) -lusb-1.0 -pthread
 
 lab2.tar.gz : $(TARFILES)
     rm -rf lab2
