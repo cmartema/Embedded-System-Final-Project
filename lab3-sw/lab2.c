@@ -32,6 +32,11 @@
 
 int sockfd; /* Socket file descriptor */
 
+libusb_context *ctx = NULL;
+libusb_device **devs;
+int r;
+ssize_t cnt;
+
 struct libusb_device_handle *keyboard;
 uint8_t endpoint_address;
 
@@ -69,10 +74,46 @@ printf("test1\n");
   //fbputs("Hello CSEE 4840 World!", 4, 10);
 
   /* Open the keyboard */
-  if ( (keyboard = openkeyboard(&endpoint_address)) == NULL ) {
-    fprintf(stderr, "Did not find a keyboard\n");
-    exit(1);
-  }
+  r = libusb_init(&ctx);      // initialize a library session
+  	if (r < 0)
+  	{
+    	printf("%s  %d\n", "Init Error", r); // there was an error
+    	return 1;
+  	}
+  	libusb_set_debug(ctx, 3);                 // set verbosity level to 3, as suggested in the documentation
+  	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
+  	if (cnt < 0)
+  	{
+    	printf("%s\n", "Get Device Error"); // there was an error
+  	}
+  	keyboard = libusb_open_device_with_vid_pid(ctx, 0x0079, 0x0011);
+	if (keyboard == NULL)
+	{
+		printf("%s\n", "Cannot open device");
+		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
+		libusb_exit(ctx);                 // close the session
+		return 0;
+	}
+	else
+	{
+		printf("%s\n", "Device opened");
+		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
+		if (libusb_kernel_driver_active(keyboard, 0) == 1)
+		{ // find out if kernel driver is attached
+			printf("%s\n", "Kernel Driver Active");
+		  	if (libusb_detach_kernel_driver(keyboard, 0) == 0) // detach it
+		    printf("%s\n", "Kernel Driver Detached!");
+		}
+		r = libusb_claim_interface(keyboard, 0); // claim interface 0 (the first) of device (mine had just 1)
+		if (r < 0)
+		{
+		  	printf("%s\n", "Cannot Claim Interface");
+		  	return 1;
+		}
+	}
+	printf("%s\n", "Claimed Interface");
+
+
     
   /* Create a TCP communications socket */
   if ( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ) {
