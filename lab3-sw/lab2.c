@@ -86,7 +86,7 @@ printf("test1\n");
   	{
     	printf("%s\n", "Get Device Error"); // there was an error
   	}
-  	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
+  	keyboard = libusb_open_device_with_vid_pid(ctx, 0x0ce6, 0x054c);
 	if (keyboard == NULL)
 	{
 		printf("%s\n", "Cannot open device");
