@@ -5,7 +5,7 @@ ifneq (${KERNELRELEASE},)
 
 else
 
-#We are being compiled as a module: use the Kernel build system
+#Wee are being compiled as a module: use the Kernel build system
 
 	KERNEL_SOURCE := /usr/src/linux-headers-$(shell uname -r)
         PWD := $(shell pwd)
