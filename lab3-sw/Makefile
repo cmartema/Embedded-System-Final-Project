@@ -45,7 +45,7 @@ else
     # Clean rule
     clean:
         ${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
-#        rm -rf *.o hello lab2 lab2.tar.gz
+        #rm -rf *.o hello lab2 lab2.tar.gz
 
     # Archival rules for kernel module sources
     TARFILE = lab3-sw.tar.gz
