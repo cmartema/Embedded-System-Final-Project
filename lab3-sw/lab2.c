@@ -57,10 +57,13 @@ int main()
   }
 */
 
+printf("test1\n")
+
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
     fbputchar('-', 20, col);
   }
+  printf("test2\n")
 
 
   fbputs("Hello CSEE 4840 World!", 4, 10);
