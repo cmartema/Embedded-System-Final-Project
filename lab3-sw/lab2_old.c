@@ -81,7 +81,6 @@ printf("test1\n");
     	return 1;
   	}
   	libusb_set_debug(ctx, 5);                 // set verbosity level to 3, as suggested in the documentation
- 
   	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
   	if (cnt < 0)
   	{
