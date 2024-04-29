@@ -77,14 +77,14 @@ printf("test1\n");
     	printf("%s  %d\n", "Init Error", r); // there was an error
     	return 1;
   	}
-  	libusb_set_debug(ctx, 5);                 // set verbosity level to 3, as suggested in the documentation
+  	libusb_set_debug(ctx, 3);                 // set verbosity level to 3, as suggested in the documentation
   	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
   	if (cnt < 0)
   	{
     	printf("%s\n", "Get Device Error"); // there was an error
   	}
 	//Address Here for controller
-	libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
+	//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
   	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
 	if (keyboard == NULL)
 	{
