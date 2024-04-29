@@ -13,6 +13,8 @@ else
 lab2.o : lab2.c usbkeyboard.h
 usbkeyboard.o : usbkeyboard.c usbkeyboard.h
 default: module hello
+lab2: lab2.o usbkeyboard.o
+    $(CC) -o lab2 lab2.o usbkeyboard.o
 
 module:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
