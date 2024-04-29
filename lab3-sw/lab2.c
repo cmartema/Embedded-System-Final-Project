@@ -67,7 +67,7 @@ printf("test1\n");
   printf("test2\n");
 
 
-  fbputs("Hello CSEE 4840 World!", 4, 10);
+  //fbputs("Hello CSEE 4840 World!", 4, 10);
 
   /* Open the keyboard */
   if ( (keyboard = openkeyboard(&endpoint_address)) == NULL ) {
@@ -104,7 +104,7 @@ clear_screen();
 char copy_stored_characters[129];
 //horiz_line(700);
   for (col = 0 ; col < 64 ; col++) {
-    fbputchar('-', 22, col);
+    //fbputchar('-', 22, col);
   }
 
 scroll_display_area();
@@ -191,12 +191,12 @@ erase_cursor(row, col);
       
       
       for (int i = 0; i < 64; i++){
-        fbputchar(stored_characters[i], 22, i);
+        //fbputchar(stored_characters[i], 22, i);
       }
 
       if (last_character_position >= 64){
         for (int i = 64; i < 128; i++){
-          fbputchar(stored_characters[i], 23, i - 64);
+          //fbputchar(stored_characters[i], 23, i - 64);
         }
       }
 
@@ -223,9 +223,9 @@ erase_cursor(row, col);
       //printf("seg fault.\n");
       memset(stored_characters, ' ', sizeof(stored_characters));
       printf("seg fault.1\n");
-      fbputs(empty_row, 22, 0);
+      //fbputs(empty_row, 22, 0);
       printf("seg fault.2\n");
-      fbputs(empty_row, 23, 0);
+      //fbputs(empty_row, 23, 0);
       printf("seg fault.3\n");
     } else if (packet.keycode[0] == 0x4F){
       //right arrow
@@ -322,12 +322,12 @@ erase_cursor(row, col);
       }
 
       for (int i = 0; i < 64; i++){
-        fbputchar(stored_characters[i], 22, i);
+        //fbputchar(stored_characters[i], 22, i);
       }
       //printf("segmentation fail %d?\n", 3);
       if (last_character_position >= 64){
         for (int i = 64; i < 128; i++){
-          fbputchar(stored_characters[i], 23, i - 64);
+          //fbputchar(stored_characters[i], 23, i - 64);
         }
       }
 
@@ -504,7 +504,7 @@ void *network_thread_f(void *ignored)
         receive_row++;
         break;
       }
-      fbputchar(recvBuf[i], receive_row, col);
+      //fbputchar(recvBuf[i], receive_row, col);
       col++;
       if (col == 64){
         receive_row++;
@@ -516,7 +516,7 @@ void *network_thread_f(void *ignored)
     if (receive_row == 21){
       receive_row = 0;
     }
-    fbputs(empty_row, receive_row, 0);
+    //fbputs(empty_row, receive_row, 0);
     
   }
 
