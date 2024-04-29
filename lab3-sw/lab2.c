@@ -47,7 +47,7 @@ int main()
     exit(1);
   }
 
-  fprintf("Hi, I am here\n");
+  printf("Hi, I am here\n");
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
