@@ -69,7 +69,7 @@ static void write_background(vga_ball_color_t *background)
 	dev.background = *background;
 }
 
-//created write coordinate
+//created write coordinate for all the sprites
 static void write_coordinate(vga_ball_coordinate *coordinate){
 	iowrite8(coordinate->x, X(dev.virtbase));
 	iowrite8(coordinate->y, Y(dev.virtbase));
@@ -81,6 +81,8 @@ static void write_coordinate(vga_ball_coordinate *coordinate){
  * Read or write the segments on single digits.
  * Note extensive error checking of arguments
  */
+
+//this will write backgrounds for apple and snake sprites 
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;

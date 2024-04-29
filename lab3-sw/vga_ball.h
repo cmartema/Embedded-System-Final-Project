@@ -3,6 +3,7 @@
 
 #include <linux/ioctl.h>
 
+// this will set the coordinates for any sprites 
 typedef struct {
   unsigned short int x;
   unsigned short int y;
