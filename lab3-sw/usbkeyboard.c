@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h> 
-
+#define VENDOR_ID 0x054c  // Sony Corporation
+#define PRODUCT_ID_1 0x0ce6  // Product ID for the first controller
+#define USB_HID_KEYBOARD_PROTOCOL 1
 /* References on libusb 1.0 and the USB HID/keyboard protocol
  *
  * http://libusb.org
@@ -40,41 +42,46 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
 
   /* Look at each device, remembering the first HID device that speaks
      the keyboard protocol */
+      for (d = 0; d < num_devs; d++) {
+        libusb_device *dev = devs[d];
+        if (libusb_get_device_descriptor(dev, &desc) < 0) {
+            fprintf(stderr, "Error: libusb_get_device_descriptor failed\n");
+            exit(1);
+        }
 
-  for (d = 0 ; d < num_devs ; d++) {
-    libusb_device *dev = devs[d];
-    if ( libusb_get_device_descriptor(dev, &desc) < 0 ) {
-      fprintf(stderr, "Error: libusb_get_device_descriptor failed\n");
-      exit(1);
-    }
+        if (desc.idVendor == VENDOR_ID && (desc.idProduct == PRODUCT_ID_1)) {
+            struct libusb_config_descriptor *config;
+            if (libusb_get_config_descriptor(dev, 0, &config) < 0) {
+                fprintf(stderr, "Error: libusb_get_config_descriptor failed\n");
+                continue;  // Skip to the next device
+            }
 
-    if (desc.bDeviceClass == LIBUSB_CLASS_PER_INTERFACE) {
-      struct libusb_config_descriptor *config;
-      libusb_get_config_descriptor(dev, 0, &config);
-      for (i = 0 ; i < config->bNumInterfaces ; i++)	       
-	for ( k = 0 ; k < config->interface[i].num_altsetting ; k++ ) {
-	  const struct libusb_interface_descriptor *inter =
-	    config->interface[i].altsetting + k ;
-	  if ( inter->bInterfaceClass == LIBUSB_CLASS_HID &&
-	       inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
-	    int r;
-	    if ((r = libusb_open(dev, &keyboard)) != 0) {
-	      fprintf(stderr, "Error: libusb_open failed: %d\n", r);
-	      exit(1);
-	    }
-	    if (libusb_kernel_driver_active(keyboard,i))
-	      libusb_detach_kernel_driver(keyboard, i);
-	    libusb_set_auto_detach_kernel_driver(keyboard, i);
-	    if ((r = libusb_claim_interface(keyboard, i)) != 0) {
-	      fprintf(stderr, "Error: libusb_claim_interface failed: %d\n", r);
-	      exit(1);
-	    }
-	    *endpoint_address = inter->endpoint[0].bEndpointAddress;
-	    goto found;
-	  }
-	}
+            for (i = 0; i < config->bNumInterfaces; i++) {
+                for (k = 0; k < config->interface[i].num_altsetting; k++) {
+                    const struct libusb_interface_descriptor *inter = config->interface[i].altsetting + k;
+                    if (inter->bInterfaceClass == LIBUSB_CLASS_HID && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
+                        int r;
+                        if ((r = libusb_open(dev, &keyboard)) != 0) {
+                            fprintf(stderr, "Error: libusb_open failed: %d\n", r);
+                            continue;  // Skip to the next device
+                        }
+                        if (libusb_kernel_driver_active(keyboard, i))
+                            libusb_detach_kernel_driver(keyboard, i);
+                        libusb_set_auto_detach_kernel_driver(keyboard, 1);
+                        if ((r = libusb_claim_interface(keyboard, i)) != 0) {
+                            fprintf(stderr, "Error: libusb_claim_interface failed: %d\n", r);
+                            libusb_close(keyboard);
+                            continue;  // Skip to the next device
+                        }
+                        *endpoint_address = inter->endpoint[0].bEndpointAddress;
+                        libusb_free_config_descriptor(config);
+                        goto found;
+                    }
+                }
+            }
+            libusb_free_config_descriptor(config);
+        }
     }
-  }
 
  found:
   libusb_free_device_list(devs, 1);
