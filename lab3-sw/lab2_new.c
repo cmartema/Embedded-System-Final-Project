@@ -1,12 +1,3 @@
-/*
- *
- * CSEE 4840 Lab 2 for 2019
- *
- * Name/UNI: Please Changeto Yourname (pcy2301)
- */
-//SAHER IQBAL si2443
-//Chenyang Zhou cz2791
-
 #include "fbputchar.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,11 +23,6 @@
 
 int sockfd; /* Socket file descriptor */
 
-libusb_context *ctx = NULL;
-libusb_device **devs;
-int r;
-ssize_t cnt;
-
 struct libusb_device_handle *keyboard;
 uint8_t endpoint_address;
 
@@ -56,67 +42,26 @@ int main()
   int transferred;
   char keystate[12];
 
-  /*if ((err = fbopen()) != 0) {
+  if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
     exit(1);
   }
-*/
 
-printf("test1\n");
+  printf("Hi, I am here\n");
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
-    //fbputchar('-', 20, col);
+   // fbputchar('-', 20, col);
   }
-  printf("test2\n");
 
 
   //fbputs("Hello CSEE 4840 World!", 4, 10);
 
   /* Open the keyboard */
-  r = libusb_init(&ctx);      // initialize a library session
-  	if (r < 0)
-  	{
-    	printf("%s  %d\n", "Init Error", r); // there was an error
-    	return 1;
-  	}
-  	libusb_set_debug(ctx, 5);                 // set verbosity level to 3, as suggested in the documentation
-  	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
-  	if (cnt < 0)
-  	{
-    	printf("%s\n", "Get Device Error"); // there was an error
-  	}
-	//Address Here for controller
-	libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
-  	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
-	if (keyboard == NULL)
-	{
-		printf("%s\n", "Cannot open device");
-		//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
-		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
-		libusb_exit(ctx);                 // close the session
-		return 0;
-	}
-	else
-	{
-		printf("%s\n", "Device opened");
-		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
-		if (libusb_kernel_driver_active(keyboard, 0) == 1)
-		{ // find out if kernel driver is attached
-			printf("%s\n", "Kernel Driver Active");
-		  	if (libusb_detach_kernel_driver(keyboard, 0) == 0) // detach it
-		    printf("%s\n", "Kernel Driver Detached!");
-		}
-		r = libusb_claim_interface(keyboard, 0); // claim interface 0 (the first) of device (mine had just 1)
-		if (r < 0)
-		{
-		  	printf("%s\n", "Cannot Claim Interface");
-		  	return 1;
-		}
-	}
-	printf("%s\n", "Claimed Interface");
-
-
+  if ( (keyboard = openkeyboard(&endpoint_address)) == NULL ) {
+    fprintf(stderr, "Did not find a keyboard\n");
+    exit(1);
+  }
     
   /* Create a TCP communications socket */
   if ( (sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0 ) {
@@ -147,7 +92,7 @@ clear_screen();
 char copy_stored_characters[129];
 //horiz_line(700);
   for (col = 0 ; col < 64 ; col++) {
-    //fbputchar('-', 22, col);
+    fbputchar('-', 22, col);
   }
 
 scroll_display_area();
@@ -234,12 +179,12 @@ erase_cursor(row, col);
       
       
       for (int i = 0; i < 64; i++){
-        //fbputchar(stored_characters[i], 22, i);
+        fbputchar(stored_characters[i], 22, i);
       }
 
       if (last_character_position >= 64){
         for (int i = 64; i < 128; i++){
-          //fbputchar(stored_characters[i], 23, i - 64);
+          fbputchar(stored_characters[i], 23, i - 64);
         }
       }
 
@@ -266,9 +211,9 @@ erase_cursor(row, col);
       //printf("seg fault.\n");
       memset(stored_characters, ' ', sizeof(stored_characters));
       printf("seg fault.1\n");
-      //fbputs(empty_row, 22, 0);
+      fbputs(empty_row, 22, 0);
       printf("seg fault.2\n");
-      //fbputs(empty_row, 23, 0);
+      fbputs(empty_row, 23, 0);
       printf("seg fault.3\n");
     } else if (packet.keycode[0] == 0x4F){
       //right arrow
@@ -365,12 +310,12 @@ erase_cursor(row, col);
       }
 
       for (int i = 0; i < 64; i++){
-        //fbputchar(stored_characters[i], 22, i);
+        fbputchar(stored_characters[i], 22, i);
       }
       //printf("segmentation fail %d?\n", 3);
       if (last_character_position >= 64){
         for (int i = 64; i < 128; i++){
-          //fbputchar(stored_characters[i], 23, i - 64);
+          fbputchar(stored_characters[i], 23, i - 64);
         }
       }
 
@@ -547,7 +492,7 @@ void *network_thread_f(void *ignored)
         receive_row++;
         break;
       }
-      //fbputchar(recvBuf[i], receive_row, col);
+      fbputchar(recvBuf[i], receive_row, col);
       col++;
       if (col == 64){
         receive_row++;
@@ -559,9 +504,10 @@ void *network_thread_f(void *ignored)
     if (receive_row == 21){
       receive_row = 0;
     }
-    //fbputs(empty_row, receive_row, 0);
+    fbputs(empty_row, receive_row, 0);
     
   }
 
   return NULL;
 }
+
