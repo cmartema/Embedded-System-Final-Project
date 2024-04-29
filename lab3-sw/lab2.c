@@ -41,12 +41,13 @@ int main()
   struct usb_keyboard_packet packet;
   int transferred;
   char keystate[12];
-/*
+
   if ((err = fbopen()) != 0) {
     fprintf(stderr, "Error: Could not open framebuffer: %d\n", err);
     exit(1);
   }
-*/
+
+  fprintf("Hi, I am here\n");
 
   /* Draw rows of asterisks across the top and bottom of the screen */
   for (col = 0 ; col < 64 ; col++) {
