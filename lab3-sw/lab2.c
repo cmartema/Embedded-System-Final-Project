@@ -133,7 +133,7 @@ printf("test1\n");
  
   /* Connect the socket to the server */
   if ( connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
-    fprintf(stderr, "Error: connect() failed.  Is the server running?\n");
+    // fprintf(stderr, "Error: connect() failed.  Is the server running?\n");
     exit(1);
   }
 
