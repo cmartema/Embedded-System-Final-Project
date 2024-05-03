@@ -83,7 +83,7 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                             libusb_close(keyboard);
                             continue;  // Skip to the next device
                         }
-                        *endpoint_address = inter->endpoint[0].bEndpointAddress;
+                        *endpoint_address = inter->endpoint[1].bEndpointAddress;
                         libusb_free_config_descriptor(config);
                         printf("Debugg print line 80\n");
                         goto found;
