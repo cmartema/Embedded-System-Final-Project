@@ -186,7 +186,7 @@ printf("test1\n");
 
       
     if (transferred == sizeof(packet)) {
-      printf("in in statement\n")
+      printf("in in statement\n");
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);     
 printf("%s\n", keystate);
