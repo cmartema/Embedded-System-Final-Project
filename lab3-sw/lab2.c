@@ -404,26 +404,26 @@ if (packet.keycode[1] == 0x00){
 
 //   return 0;
 // }
-// char convert_keycode_to_ASCII(unsigned char modifier, unsigned char scancode){
-//   static const unsigned char offset = 0x04;
-//   //solve for num, 31 -39 is 1-9, keycode 1E - 26
-//   if (scancode >= 0x04 && scancode <= 0x1D) {
-//       // Convert scancode to ASCII by adding the offset.
-//       // if the modifier is left shift or right shift.
-//       if (modifier == 0x01 || modifier == 0x02){
-//         return 'A' + (scancode - offset);
-//       }
-//       return 'a' + (scancode - offset);
-//   } 
+char convert_keycode_to_ASCII(unsigned char modifier, unsigned char scancode){
+  static const unsigned char offset = 0x04;
+  //solve for num, 31 -39 is 1-9, keycode 1E - 26
+  if (scancode >= 0x04 && scancode <= 0x1D) {
+      // Convert scancode to ASCII by adding the offset.
+      // if the modifier is left shift or right shift.
+      if (modifier == 0x01 || modifier == 0x02){
+        return 'A' + (scancode - offset);
+      }
+      return 'a' + (scancode - offset);
+  } 
 
-//   else if (scancode >= 0x1E && scancode <= 0x27 && modifier == 0x00){
-//       // Return 0 for non-alphabetic keys or invalid scancodes
-//       unsigned char num_offset = 0x1E;
-//       if (scancode >= 0x1E && scancode <= 0x26){
-//         return '1' + (scancode - num_offset);
-//       }
-//       return '0';
-//   } 
+  else if (scancode >= 0x1E && scancode <= 0x27 && modifier == 0x00){
+      // Return 0 for non-alphabetic keys or invalid scancodes
+      unsigned char num_offset = 0x1E;
+      if (scancode >= 0x1E && scancode <= 0x26){
+        return '1' + (scancode - num_offset);
+      }
+      return '0';
+  } 
 
 //   else if (scancode == 0x1E && (modifier == 0x01 || modifier == 0x02)){
 //     return '!';
