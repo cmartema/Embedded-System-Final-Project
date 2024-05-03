@@ -111,14 +111,26 @@ printf("test1\n");
 		  	return 1;
 		}
 	}
-	printf("%s\n", "Claimed Interface");
+  printf("%s\n", "Claimed Interface");
 
   r = libusb_reset_device(keyboard);
-    if (r != 0) {
-        fprintf(stderr, "Failed to reset device: %s\n", libusb_error_name(r));
-        libusb_exit(ctx);
-        return 1;
-    }
+  if (r != 0) {
+      fprintf(stderr, "Failed to reset device: %s\n", libusb_error_name(r));
+      libusb_exit(ctx);
+      return 1;
+  }
+
+  // Define buffer and transferred variables
+  unsigned char buff[0x0040];
+  int transferred;
+
+  // Perform the interrupt transfer
+  r = libusb_interrupt_transfer(keyboard, 0x084, buff, 0x0040, &transferred, 0);
+  if (r < 0) {
+      fprintf(stderr, "Failed to perform interrupt transfer: %s\n", libusb_error_name(r));
+      libusb_exit(ctx);
+      return 1;
+  }
 //}
 
 
