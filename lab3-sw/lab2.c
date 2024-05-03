@@ -179,6 +179,10 @@ if (packet.keycode[1] == 0x00){
 } else{
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[1]);
 }
+    }
+  }
+}
+
 
 
 // if (row == 23 && col == 64){
