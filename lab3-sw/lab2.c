@@ -167,9 +167,15 @@ printf("test1\n");
 //   //int cursor_column = 0;
   
   for (;;) {
-    libusb_interrupt_transfer(keyboard, endpoint_address,
-		      (unsigned char *) &packet, sizeof(packet),
-			      &transferred, 0);
+    printf("Keyboard: \n");
+    printf(keyboard);
+    printf("\nendpont addr\n");
+    printf(endpoint_address);
+    printf("\npacket\n");
+    printf(packet);
+    //libusb_interrupt_transfer(keyboard, endpoint_address,
+		 //     (unsigned char *) &packet, sizeof(packet),
+			//      &transferred, 0);
 
       //printf("test\n");
     if (transferred == sizeof(packet)) {
