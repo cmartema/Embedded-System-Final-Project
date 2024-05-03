@@ -169,7 +169,7 @@ printf("test1\n");
   for (;;) {
     unsigned char buff[64];
     transferred = 8;
-    /*
+    
     printf("\nKeyboard: \n");
     printf( "%p", (void*)keyboard);
     printf("\nEndpoint addr: %u", endpoint_address);
@@ -177,8 +177,7 @@ printf("test1\n");
     printf("Modifiers: %u\n", packet.modifiers);
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
-    */
-    libusb_set_option(ctx, LIBUSB_OPTION_LOG_LEVEL, LIBUSB_LOG_LEVEL_DEBUG);
+    
     libusb_interrupt_transfer(keyboard, 0x084,
 		      buff, 0x0040,
 			      &transferred, 0);
