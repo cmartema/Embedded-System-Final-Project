@@ -184,7 +184,7 @@ printf("test1\n");
 
       //printf("test\n");
 
-      sprintf("%s/n", buff);
+      //sprintf("%s/n", buff);
 
       
     if (transferred == sizeof(buff)) {
