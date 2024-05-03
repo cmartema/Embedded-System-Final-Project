@@ -178,19 +178,18 @@ printf("test1\n");
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
     */
+    libusb_set_option(ctx, LIBUSB_OPTION_LOG_LEVEL, LIBUSB_LOG_LEVEL_DEBUG);
     libusb_interrupt_transfer(keyboard, 0x084,
 		      buff, 0x0040,
 			      &transferred, 0);
 
       //printf("test\n");
 
-      //sprintf("%s/n", buff);
-
       
-    if (transferred == sizeof(buff)) {
+    if (transferred == sizeof(packet)) {
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
-       packet.keycode[1]);     
-//printf("%s\n", buff);
+        packet.keycode[1]);     
+printf("%s\n", keystate);
 /*unsigned char character;
 if (packet.keycode[1] == 0x00){
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
@@ -200,6 +199,7 @@ if (packet.keycode[1] == 0x00){
 */
     }
   }
+  libusb_exit(ctx);
 }
 
 
