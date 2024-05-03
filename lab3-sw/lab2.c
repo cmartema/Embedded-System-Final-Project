@@ -168,11 +168,12 @@ printf("test1\n");
   
   for (;;) {
     printf("Keyboard: \n");
-    printf(keyboard);
-    printf("\nendpont addr\n");
-    printf(endpoint_address);
-    printf("\npacket\n");
-    printf(packet);
+    printf( "%p", (void*)keyboard);
+    printf("\nEndpoint addr: %u\n", endpoint_address);
+    printf("\nPacket:\n");
+    printf("Modifiers: %u\n", packet.modifiers);
+    printf("Keycode[0]: %u\n", packet.keycode[0]);
+    printf("Keycode[1]: %u\n", packet.keycode[1]);
     //libusb_interrupt_transfer(keyboard, endpoint_address,
 		 //     (unsigned char *) &packet, sizeof(packet),
 			//      &transferred, 0);
