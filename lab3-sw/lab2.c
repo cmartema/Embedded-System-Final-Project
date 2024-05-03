@@ -169,6 +169,7 @@ printf("test1\n");
   for (;;) {
     unsigned char buff[64];
     transferred = 8;
+    /*
     printf("\nKeyboard: \n");
     printf( "%p", (void*)keyboard);
     printf("\nEndpoint addr: %u", endpoint_address);
@@ -176,6 +177,7 @@ printf("test1\n");
     printf("Modifiers: %u\n", packet.modifiers);
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
+    */
     libusb_interrupt_transfer(keyboard, 0x084,
 		      buff, 0x0040,
 			      &transferred, 0);
@@ -183,10 +185,10 @@ printf("test1\n");
       //printf("test\n");
 
       
-    if (transferred == sizeof(packet)) {
-sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
-        packet.keycode[1]);     
-printf("%s\n", keystate);
+    if (transferred == sizeof(buff)) {
+//sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
+//        packet.keycode[1]);     
+printf("%s\n", buff);
 /*unsigned char character;
 if (packet.keycode[1] == 0x00){
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
