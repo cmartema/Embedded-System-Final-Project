@@ -212,6 +212,7 @@ printf("test1\n");
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);     
 printf("%s\n", keystate);
+sleep(10);
 /*unsigned char character;
 if (packet.keycode[1] == 0x00){
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
