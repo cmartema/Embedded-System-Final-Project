@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h> 
-#define VENDOR_ID 0x054c  // Sony Corporation
-#define PRODUCT_ID_1 0x0ce6  // Product ID for the first controller
-#define USB_HID_KEYBOARD_PROTOCOL 0
+// #define VENDOR_ID 0x054c  // Sony Corporation
+// #define PRODUCT_ID_1 0x0ce6  // Product ID for the first controller
+// #define USB_HID_KEYBOARD_PROTOCOL 0
 
 
 /* References on libusb 1.0 and the USB HID/keyboard protocol
@@ -25,11 +25,6 @@
  */
 
 
-
-#include "usbkeyboard.h"
-
-#include <stdio.h>
-#include <stdlib.h> 
 
 /* References on libusb 1.0 and the USB HID/keyboard protocol
  *
