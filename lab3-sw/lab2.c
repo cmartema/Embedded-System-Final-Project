@@ -50,7 +50,7 @@ int main()
   struct sockaddr_in serv_addr;
 
   struct usb_keyboard_packet packet;
-  // unsigned char buff[0x0040];
+  unsigned char buff[0x0040];
   int transferred;
   char keystate[12];
 /*
