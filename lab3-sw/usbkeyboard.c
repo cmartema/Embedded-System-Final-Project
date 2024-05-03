@@ -67,7 +67,7 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                     const struct libusb_interface_descriptor *inter = config->interface[i].altsetting + k;
                     printf("debugging: line 68\n");
                     printf("%d %d %d\n", inter->bInterfaceClass, inter->bInterfaceProtocol, LIBUSB_CLASS_HID);
-                    if (inter->bInterfaceClass == LIBUSB_CLASS_HID && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
+                    if (inter->bInterfaceClass == 1 && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
                         printf("debugging: line 67\n");
                         int r;
                         if ((r = libusb_open(dev, &keyboard)) != 0) {
