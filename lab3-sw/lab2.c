@@ -67,59 +67,64 @@ printf("test1\n");
   }
   printf("test2\n");
 
+  if ((keyboard = openkeyboard(&endpoint_address)) == NULL ) {
+   fprintf(stderr, "Did not find a keyboard\n");
+   exit(1);
+ }
+
 
   //fbputs("Hello CSEE 4840 World!", 4, 10);
+  
+//   /* Open the keyboard */
+//   r = libusb_init(&ctx);      // initialize a library session
+//   	if (r < 0)
+//   	{
+//     	printf("%s  %d\n", "Init Error", r); // there was an error
+//     	return 1;
+//   	}
+//   	libusb_set_debug(ctx, 3);                 // set verbosity level to 3, as suggested in the documentation
+//   	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
+//   	if (cnt < 0)
+//   	{
+//     	printf("%s\n", "Get Device Error"); // there was an error
+//   	}
+// 	//Address Here for controller
+// 	//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
+//   	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
+// 	if (keyboard == NULL)
+// 	{
+// 		printf("%s\n", "Cannot open device");
+// 		//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
+// 		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
+// 		libusb_exit(ctx);                 // close the session
+// 		return 0;
+// 	}
+// 	else
+// 	{
+// 		printf("%s\n", "Device opened");
+// 		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
+// 		if (libusb_kernel_driver_active(keyboard, 0) == 1)
+// 		{ // find out if kernel driver is attached
+// 			printf("%s\n", "Kernel Driver Active");
+// 		  	if (libusb_detach_kernel_driver(keyboard, 0) == 0) // detach it
+// 		    printf("%s\n", "Kernel Driver Detached!");
+// 		}
+// 		r = libusb_claim_interface(keyboard, 0); // claim interface 0 (the first) of device (mine had just 1)
+// 		if (r < 0)
+// 		{
+// 		  	printf("%s\n", "Cannot Claim Interface");
+// 		  	return 1;
+// 		}
+// 	}
+// 	printf("%s\n", "Claimed Interface");
 
-  /* Open the keyboard */
-  r = libusb_init(&ctx);      // initialize a library session
-  	if (r < 0)
-  	{
-    	printf("%s  %d\n", "Init Error", r); // there was an error
-    	return 1;
-  	}
-  	libusb_set_debug(ctx, 3);                 // set verbosity level to 3, as suggested in the documentation
-  	cnt = libusb_get_device_list(ctx, &devs); // get the list of devices
-  	if (cnt < 0)
-  	{
-    	printf("%s\n", "Get Device Error"); // there was an error
-  	}
-	//Address Here for controller
-	//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
-  	keyboard = libusb_open_device_with_vid_pid(ctx, 0x054c, 0x0ce6);
-	if (keyboard == NULL)
-	{
-		printf("%s\n", "Cannot open device");
-		//libusb_set_debug(ctx, LIBUSB_LOG_LEVEL_DEBUG);
-		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
-		libusb_exit(ctx);                 // close the session
-		return 0;
-	}
-	else
-	{
-		printf("%s\n", "Device opened");
-		libusb_free_device_list(devs, 1); // free the list, unref the devices in it
-		if (libusb_kernel_driver_active(keyboard, 0) == 1)
-		{ // find out if kernel driver is attached
-			printf("%s\n", "Kernel Driver Active");
-		  	if (libusb_detach_kernel_driver(keyboard, 0) == 0) // detach it
-		    printf("%s\n", "Kernel Driver Detached!");
-		}
-		r = libusb_claim_interface(keyboard, 0); // claim interface 0 (the first) of device (mine had just 1)
-		if (r < 0)
-		{
-		  	printf("%s\n", "Cannot Claim Interface");
-		  	return 1;
-		}
-	}
-	printf("%s\n", "Claimed Interface");
-
-  r = libusb_reset_device(keyboard);
-    if (r != 0) {
-        fprintf(stderr, "Failed to reset device: %s\n", libusb_error_name(r));
-        libusb_exit(ctx);
-        return 1;
-    }
-//}
+//   r = libusb_reset_device(keyboard);
+//     if (r != 0) {
+//         fprintf(stderr, "Failed to reset device: %s\n", libusb_error_name(r));
+//         libusb_exit(ctx);
+//         return 1;
+//     }
+// //}
 
 
   
@@ -184,10 +189,18 @@ printf("test1\n");
     printf("Modifiers: %u\n", packet.modifiers);
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
+
+    libusb_interrupt_transfer(keyboard, endpoint_address,
+           (unsigned char *) &packet, sizeof(packet),
+           &transferred, 0);
+   if (transferred == sizeof(packet)) {
+     sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
+       packet.keycode[1]);
+     printf("%s\n", keystate);
     
-    libusb_interrupt_transfer(keyboard, 0x083,
-		      buff, 0x0040,
-			      &transferred, 0);
+   // libusb_interrupt_transfer(keyboard, 0x083,
+	//	      buff, 0x0040,
+	//		      &transferred, 0);
 
       //printf("test\n");
 
