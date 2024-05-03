@@ -6,6 +6,8 @@
 #define VENDOR_ID 0x054c  // Sony Corporation
 #define PRODUCT_ID_1 0x0ce6  // Product ID for the first controller
 #define USB_HID_KEYBOARD_PROTOCOL 1
+
+
 /* References on libusb 1.0 and the USB HID/keyboard protocol
  *
  * http://libusb.org
@@ -63,6 +65,8 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                 for (k = 0; k < config->interface[i].num_altsetting; k++) {
                     printf("debugging: line 64\n");
                     const struct libusb_interface_descriptor *inter = config->interface[i].altsetting + k;
+                    printf("debugging: line 68\n");
+                    printf("%d %d\n", inter->bInterfaceClass, inter->bInterfaceProtocol);
                     if (inter->bInterfaceClass == LIBUSB_CLASS_HID && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
                         printf("debugging: line 67\n");
                         int r;
