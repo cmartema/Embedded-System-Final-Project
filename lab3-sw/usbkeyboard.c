@@ -60,14 +60,16 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                 continue;  // Skip to the next device
             }
             printf("Debugging: line60\n");
+            int j = 0;
             for (i = 0; i < config->bNumInterfaces; i++) {
                 printf("debugg: line62\n");
                 for (k = 0; k < config->interface[i].num_altsetting; k++) {
                     printf("debugging: line 64\n");
                     const struct libusb_interface_descriptor *inter = config->interface[i].altsetting + k;
                     printf("debugging: line 68\n");
+                    j++;
                     printf("%d %d %d\n", inter->bInterfaceClass, inter->bInterfaceProtocol, LIBUSB_CLASS_HID);
-                    if (inter->bInterfaceClass == 1 && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
+                    if (inter->bInterfaceClass == 1 && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL && j == 1) {
                         printf("debugging: line 67\n");
                         int r;
                         if ((r = libusb_open(dev, &keyboard)) != 0) {
