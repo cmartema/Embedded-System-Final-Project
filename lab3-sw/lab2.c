@@ -185,7 +185,7 @@ printf("test1\n");
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
     
-    libusb_interrupt_transfer(keyboard, 0x083,
+    libusb_interrupt_transfer(keyboard, 0x03,
 		      buff, 0x0040,
 			      &transferred, 0);
 
