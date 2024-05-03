@@ -1,8 +1,0 @@
-test1
-test2
-Device opened
-Claimed Interface
-test1
-test2
-Device opened
-Claimed Interface
