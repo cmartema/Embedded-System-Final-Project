@@ -171,7 +171,7 @@ printf("test1\n");
 			      (unsigned char *) &packet, sizeof(packet),
 			      &transferred, 0);
 
-      print("test")
+      printf("test\n");
     if (transferred == sizeof(packet)) {
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);     
