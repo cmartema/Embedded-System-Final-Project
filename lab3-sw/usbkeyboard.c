@@ -51,7 +51,7 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
         printf("VID: %d\n ", desc.idVendor);
         printf("PID: %d\n ", desc.idProduct);
         if (desc.idVendor == VENDOR_ID && (desc.idProduct == PRODUCT_ID_1)) {
-            printf("debug line 53\n")
+            printf("debug line 53\n");
             struct libusb_config_descriptor *config;
             if (libusb_get_config_descriptor(dev, 0, &config) < 0) {
                 fprintf(stderr, "Error: libusb_get_config_descriptor failed\n");
