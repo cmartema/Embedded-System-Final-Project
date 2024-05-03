@@ -184,11 +184,13 @@ printf("test1\n");
 
       //printf("test\n");
 
+      sprintf("%s/n", buff);
+
       
     if (transferred == sizeof(buff)) {
-//sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
-//        packet.keycode[1]);     
-printf("%s\n", buff);
+sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
+       packet.keycode[1]);     
+//printf("%s\n", buff);
 /*unsigned char character;
 if (packet.keycode[1] == 0x00){
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
