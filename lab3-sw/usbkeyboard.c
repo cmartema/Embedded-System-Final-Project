@@ -57,8 +57,9 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                 fprintf(stderr, "Error: libusb_get_config_descriptor failed\n");
                 continue;  // Skip to the next device
             }
-
+            printf("Debugging: line60\n");
             for (i = 0; i < config->bNumInterfaces; i++) {
+                printf("debugg: line62\n");
                 for (k = 0; k < config->interface[i].num_altsetting; k++) {
                     const struct libusb_interface_descriptor *inter = config->interface[i].altsetting + k;
                     if (inter->bInterfaceClass == LIBUSB_CLASS_HID && inter->bInterfaceProtocol == USB_HID_KEYBOARD_PROTOCOL) {
