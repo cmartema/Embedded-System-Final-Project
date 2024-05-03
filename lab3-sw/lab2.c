@@ -173,12 +173,13 @@ printf("test1\n");
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);     
 printf("%s\n", keystate);
-unsigned char character;
+/*unsigned char character;
 if (packet.keycode[1] == 0x00){
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
 } else{
   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[1]);
 }
+*/
     }
   }
 }
@@ -425,109 +426,109 @@ char convert_keycode_to_ASCII(unsigned char modifier, unsigned char scancode){
       return '0';
   } 
 
-//   else if (scancode == 0x1E && (modifier == 0x01 || modifier == 0x02)){
-//     return '!';
-//   }
+  else if (scancode == 0x1E && (modifier == 0x01 || modifier == 0x02)){
+    return '!';
+  }
 
-//   else if (scancode == 0x1F && (modifier == 0x01 || modifier == 0x02)){
-//     return '@';
-//   }
+  else if (scancode == 0x1F && (modifier == 0x01 || modifier == 0x02)){
+    return '@';
+  }
 
-//   else if (scancode == 0x20 && (modifier == 0x01 || modifier == 0x02)){
-//     return '#';
-//   }
+  else if (scancode == 0x20 && (modifier == 0x01 || modifier == 0x02)){
+    return '#';
+  }
 
-//   else if (scancode == 0x21 && (modifier == 0x01 || modifier == 0x02)){
-//     return '$';
-//   }
+  else if (scancode == 0x21 && (modifier == 0x01 || modifier == 0x02)){
+    return '$';
+  }
 
-//   else if (scancode == 0x22 && (modifier == 0x01 || modifier == 0x02)){
-//     return '%';
-//   }
+  else if (scancode == 0x22 && (modifier == 0x01 || modifier == 0x02)){
+    return '%';
+  }
 
-//   else if (scancode == 0x23 && (modifier == 0x01 || modifier == 0x02)){
-//     return '^';
-//   }
+  else if (scancode == 0x23 && (modifier == 0x01 || modifier == 0x02)){
+    return '^';
+  }
 
-//   else if (scancode == 0x24 && (modifier == 0x01 || modifier == 0x02)){
-//     return '&';
-//   }
+  else if (scancode == 0x24 && (modifier == 0x01 || modifier == 0x02)){
+    return '&';
+  }
 
-//   else if (scancode == 0x25 && (modifier == 0x01 || modifier == 0x02)){
-//     return '*';
-//   }
+  else if (scancode == 0x25 && (modifier == 0x01 || modifier == 0x02)){
+    return '*';
+  }
 
-//   else if (scancode == 0x26 && (modifier == 0x01 || modifier == 0x02)){
-//     return '(';
-//   }
+  else if (scancode == 0x26 && (modifier == 0x01 || modifier == 0x02)){
+    return '(';
+  }
 
-//   else if (scancode == 0x27 && (modifier == 0x01 || modifier == 0x02)){
-//     return ')';
-//   }
+  else if (scancode == 0x27 && (modifier == 0x01 || modifier == 0x02)){
+    return ')';
+  }
 
-//   else if (scancode == 0x35 && (modifier == 0x01 || modifier == 0x02)){
-//     return '~';
-//   }
+  else if (scancode == 0x35 && (modifier == 0x01 || modifier == 0x02)){
+    return '~';
+  }
 
-//   else if (scancode == 0x36 && (modifier == 0x01 || modifier == 0x02)){
-//     return '<';
-//   } 
-//   else if (scancode == 0x37 && (modifier == 0x01 || modifier == 0x02)){
-//     return '>';
-//   }
+  else if (scancode == 0x36 && (modifier == 0x01 || modifier == 0x02)){
+    return '<';
+  } 
+  else if (scancode == 0x37 && (modifier == 0x01 || modifier == 0x02)){
+    return '>';
+  }
 
-//   else if (scancode == 0x38 && (modifier == 0x01 || modifier == 0x02)){
-//     return '?';
-//   }
+  else if (scancode == 0x38 && (modifier == 0x01 || modifier == 0x02)){
+    return '?';
+  }
 
-//   else if (scancode == 0x33 && (modifier == 0x01 || modifier == 0x02)){
-//     return ':';
-//   }
+  else if (scancode == 0x33 && (modifier == 0x01 || modifier == 0x02)){
+    return ':';
+  }
 
-//   else if (scancode == 0x34 && (modifier == 0x01 || modifier == 0x02)){
-//     return '"';
-//   }
+  else if (scancode == 0x34 && (modifier == 0x01 || modifier == 0x02)){
+    return '"';
+  }
 
-//   else if (scancode == 0x2F && (modifier == 0x01 || modifier == 0x02)){
-//     return '{';
-//   }
+  else if (scancode == 0x2F && (modifier == 0x01 || modifier == 0x02)){
+    return '{';
+  }
 
-//   else if (scancode == 0x30 && (modifier == 0x01 || modifier == 0x02)){
-//     return '}';
-//   }
+  else if (scancode == 0x30 && (modifier == 0x01 || modifier == 0x02)){
+    return '}';
+  }
   
-//   else if (scancode == 0x2E && (modifier == 0x01 || modifier == 0x02)){
-//     return '+';
-//   }
+  else if (scancode == 0x2E && (modifier == 0x01 || modifier == 0x02)){
+    return '+';
+  }
 
-//   else if (scancode == 0x2D && (modifier == 0x01 || modifier == 0x02)){
-//     return '_';
-//   }
+  else if (scancode == 0x2D && (modifier == 0x01 || modifier == 0x02)){
+    return '_';
+  }
     
-//   else if (scancode == 0x31 && (modifier == 0x01 || modifier == 0x02)){
-//     return '|';
-//   }
+  else if (scancode == 0x31 && (modifier == 0x01 || modifier == 0x02)){
+    return '|';
+  }
 
-//   else
-//   {
-//       switch(scancode)
-//       {
-//           case 0x2C: return ' ';
-//           case 0x36: return ',';
-//           case 0x37: return '.';
-//           case 0x38: return '/';
-//           case 0x2D: return '-';
-//           case 0x2E: return '=';
-//           case 0x2F: return '[';
-//           case 0x30: return ']';
-//           case 0x31: return '\\';
-//           case 0x33: return ';';
-//           case 0x35: return '`';
-//           case 0x34: return '\'';
-//       }
-//   }
+  else
+  {
+      switch(scancode)
+      {
+          case 0x2C: return ' ';
+          case 0x36: return ',';
+          case 0x37: return '.';
+          case 0x38: return '/';
+          case 0x2D: return '-';
+          case 0x2E: return '=';
+          case 0x2F: return '[';
+          case 0x30: return ']';
+          case 0x31: return '\\';
+          case 0x33: return ';';
+          case 0x35: return '`';
+          case 0x34: return '\'';
+      }
+  }
 
-// }
+}
 
 
 // void *network_thread_f(void *ignored)
