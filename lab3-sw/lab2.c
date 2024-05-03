@@ -167,16 +167,16 @@ printf("test1\n");
 //   //int cursor_column = 0;
   
   for (;;) {
-    printf("Keyboard: \n");
+    printf("\nKeyboard: \n");
     printf( "%p", (void*)keyboard);
-    printf("\nEndpoint addr: %u\n", endpoint_address);
+    printf("\nEndpoint addr: %u", endpoint_address);
     printf("\nPacket:\n");
     printf("Modifiers: %u\n", packet.modifiers);
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
-    //libusb_interrupt_transfer(keyboard, endpoint_address,
-		 //     (unsigned char *) &packet, sizeof(packet),
-			//      &transferred, 0);
+    libusb_interrupt_transfer(keyboard, 0x084,
+		      (unsigned char *) &packet, 0x0040,
+			      &transferred, 0);
 
       //printf("test\n");
     if (transferred == sizeof(packet)) {
