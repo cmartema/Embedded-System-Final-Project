@@ -167,6 +167,8 @@ printf("test1\n");
 //   //int cursor_column = 0;
   
   for (;;) {
+    unsigned char buff[64];
+    transferred = 8;
     printf("\nKeyboard: \n");
     printf( "%p", (void*)keyboard);
     printf("\nEndpoint addr: %u", endpoint_address);
@@ -175,10 +177,12 @@ printf("test1\n");
     printf("Keycode[0]: %u\n", packet.keycode[0]);
     printf("Keycode[1]: %u\n", packet.keycode[1]);
     libusb_interrupt_transfer(keyboard, 0x084,
-		      (unsigned char *) &packet, 0x0040,
+		      buff, 0x0040,
 			      &transferred, 0);
 
       //printf("test\n");
+
+      
     if (transferred == sizeof(packet)) {
 sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
         packet.keycode[1]);     
