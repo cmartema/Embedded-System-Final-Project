@@ -165,24 +165,24 @@ printf("test1\n");
 //   //left arrow and right arrow does not works now.
 //   //int cursor_column = 0;
   
-  for (;;) {
-    libusb_interrupt_transfer(keyboard, endpoint_address,
-			      (unsigned char *) &packet, sizeof(packet),
-			      &transferred, 0);
-    if (transferred == sizeof(packet)) {
-sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
-        packet.keycode[1]);     
-printf("%s\n", keystate);
-/*unsigned char character;
-if (packet.keycode[1] == 0x00){
-  character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
-} else{
-  character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[1]);
-}
-*/
-    }
-  }
-}
+//   for (;;) {
+//     libusb_interrupt_transfer(keyboard, endpoint_address,
+// 			      (unsigned char *) &packet, sizeof(packet),
+// 			      &transferred, 0);
+//     if (transferred == sizeof(packet)) {
+// sprintf(keystate, "%02x %02x %02x", packet.modifiers, packet.keycode[0],
+//         packet.keycode[1]);     
+// printf("%s\n", keystate);
+// /*unsigned char character;
+// if (packet.keycode[1] == 0x00){
+//   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[0]);
+// } else{
+//   character = convert_keycode_to_ASCII(packet.modifiers, packet.keycode[1]);
+// }
+// */
+//     }
+//   }
+// }
 
 
 
