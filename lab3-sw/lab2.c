@@ -113,7 +113,7 @@ printf("test1\n");
 	}
 	printf("%s\n", "Claimed Interface");
 
-  r = libusb_reset_device(dev_handle);
+  r = libusb_reset_device(keyboard);
     if (r != 0) {
         fprintf(stderr, "Failed to reset device: %s\n", libusb_error_name(r));
         libusb_exit(ctx);
