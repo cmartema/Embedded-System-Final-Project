@@ -69,6 +69,7 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                         }
                         if (libusb_kernel_driver_active(keyboard, i))
                             libusb_detach_kernel_driver(keyboard, i);
+                        printf("Debugg line 72\n");
                         libusb_set_auto_detach_kernel_driver(keyboard, 1);
                         if ((r = libusb_claim_interface(keyboard, i)) != 0) {
                             fprintf(stderr, "Error: libusb_claim_interface failed: %d\n", r);
@@ -77,6 +78,7 @@ struct libusb_device_handle *openkeyboard(uint8_t *endpoint_address) {
                         }
                         *endpoint_address = inter->endpoint[0].bEndpointAddress;
                         libusb_free_config_descriptor(config);
+                        printf("Debugg print line 80\n");
                         goto found;
                     }
                 }
