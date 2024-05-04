@@ -309,19 +309,35 @@ int main()
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
+  static const vga_ball_color_t colors[] = {
+    { 0xff, 0x00, 0x00 }, /* Red */
+    { 0x00, 0xff, 0x00 }, /* Green */
+    { 0x00, 0x00, 0xff }, /* Blue */
+    { 0xff, 0xff, 0x00 }, /* Yellow */
+    { 0x00, 0xff, 0xff }, /* Cyan */
+    { 0xff, 0x00, 0xff }, /* Magenta */
+    { 0x80, 0x80, 0x80 }, /* Gray */
+    { 0x00, 0x00, 0x00 }, /* Black */
+    { 0xff, 0xff, 0xff }  /* White */
+  };
+  
+  #define COLORS 9
 
   printf("VGA ball Userspace program started\n");
   
   // opening and connecting to keyboard
+  /*
   uint8_t endpoint_address_temp;
   struct libusb_device_handle *sony_temp;
   if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
     fprintf(stderr, "Did not find sony\n");
     exit(1);
   }	
+  
 
   args.sony = sony_temp;
   args.endpoint_address = endpoint_address_temp;
+  */
 
   
 
