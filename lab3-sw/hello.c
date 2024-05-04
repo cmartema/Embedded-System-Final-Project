@@ -343,7 +343,7 @@ int main()
 
   // Cast the argument pointer to the correct type
 
-  pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
+//   pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
   pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
   printf("After pthread create\n");
 
