@@ -120,7 +120,6 @@ int main() {
     if (transferred > 0) {
       for(int i = 0; i < transferred ; i++){
         printf("%02x ",packet.keycode[i]);
-        sleep(10000);
       }
      
       printf("\n");
