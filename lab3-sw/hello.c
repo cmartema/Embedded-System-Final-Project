@@ -329,7 +329,7 @@ int main()
 
 //   pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
   pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
-  print("After pthread create\n");
+  printf("After pthread create\n");
 
    if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
      fprintf(stderr, "could not open %s\n", filename);
