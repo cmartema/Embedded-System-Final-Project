@@ -19,6 +19,7 @@ clean:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
 	${RM} hello
 
+OBJECTS = sony.o
 TARFILES = Makefile README vga_ball.h vga_ball.c hello.c sony.c sony.h
 TARFILE = lab3-sw.tar.gz
 .PHONY : tar
