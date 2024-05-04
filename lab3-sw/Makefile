@@ -11,7 +11,7 @@ ifneq (${KERNELRELEASE},)
 	obj-m := vga_ball.o
 else
 	# We are being compiled as a module: use the Kernel build system
-	default: module combined_executable
+	default: module hello
 
 	module:
 		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
@@ -27,7 +27,7 @@ else
 
 	clean:
 		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
-		rm -rf *.o combined_executable
+		rm -rf *.o hello
 
 	tar : $(TARFILES)
 		tar zcvf lab3-sw.tar.gz $(TARFILES)
