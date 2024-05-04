@@ -287,7 +287,7 @@ int main()
             (unsigned char *) &packet, sizeof(packet),
             &transferred, 0);
 
-    if (transferred > 0) {
+    if (transferred > 0 && packet.keycode[8] != 0x08 ) {
       printf("%02x \n", packet.keycode[8]);
     }
   }
