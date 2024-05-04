@@ -280,9 +280,9 @@
   <parameter name="enPRInitMode" value="false" />
   <parameter name="enableDiffWidth" value="false" />
   <parameter name="initMemContent" value="true" />
-  <parameter name="initializationFileName">/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif</parameter>
+  <parameter name="initializationFileName">/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif</parameter>
   <parameter name="instanceID" value="NONE" />
-  <parameter name="memorySize" value="2048" />
+  <parameter name="memorySize" value="512" />
   <parameter name="readDuringWriteMode" value="DONT_CARE" />
   <parameter name="resetrequest_enabled" value="true" />
   <parameter name="simAllowMRAMContentsFile" value="false" />

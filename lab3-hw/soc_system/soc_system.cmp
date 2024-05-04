@@ -1,6 +1,6 @@
 	component soc_system is
 		port (
-			apple_sprite_s1_address                      : in    std_logic_vector(9 downto 0)  := (others => 'X'); -- address
+			apple_sprite_s1_address                      : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- address
 			apple_sprite_s1_debugaccess                  : in    std_logic                     := 'X';             -- debugaccess
 			apple_sprite_s1_clken                        : in    std_logic                     := 'X';             -- clken
 			apple_sprite_s1_chipselect                   : in    std_logic                     := 'X';             -- chipselect

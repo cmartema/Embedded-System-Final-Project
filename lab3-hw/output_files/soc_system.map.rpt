@@ -1,5 +1,5 @@
 Analysis & Synthesis report for soc_system
-Fri Apr 26 16:13:42 2024
+Mon Apr 29 14:29:43 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -23,7 +23,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
  15. General Register Statistics
  16. Inverted Register Statistics
  17. Multiplexer Restructuring Statistics (Restructuring Performed)
- 18. Source assignments for soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated
+ 18. Source assignments for soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated
  19. Source assignments for soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll
  20. Source assignments for soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0
  21. Source assignments for soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_acv_hard_addr_cmd_pads:uaddr_cmd_pads|altddio_out:clock_gen[0].umem_ck_pad
@@ -49,7 +49,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
  41. Source assignments for soc_system:soc_system0|soc_system_snake_tail_left_sprite:snake_tail_left_sprite|altsyncram:the_altsyncram|altsyncram_rfv1:auto_generated
  42. Source assignments for soc_system:soc_system0|soc_system_snake_tail_right_sprite:snake_tail_right_sprite|altsyncram:the_altsyncram|altsyncram_ejv1:auto_generated
  43. Source assignments for soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram|altsyncram_l9v1:auto_generated
- 44. Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated
+ 44. Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated
  45. Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated
  46. Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_left_sprite:snake_head_left_sprite|altsyncram:the_altsyncram|altsyncram_3fv1:auto_generated
  47. Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_up_sprite:snake_head_up_sprite|altsyncram:the_altsyncram|altsyncram_t8v1:auto_generated
@@ -418,16 +418,16 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Apr 26 16:13:41 2024       ;
+; Analysis & Synthesis Status     ; Successful - Mon Apr 29 14:29:42 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; soc_system                                  ;
 ; Top-level Entity Name           ; soc_system_top                              ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 820                                         ;
+; Total registers                 ; 826                                         ;
 ; Total pins                      ; 362                                         ;
 ; Total virtual pins              ; 0                                           ;
-; Total block memory bits         ; 36,864                                      ;
+; Total block memory bits         ; 28,672                                      ;
 ; Total DSP Blocks                ; 0                                           ;
 ; Total HSSI RX PCSs              ; 0                                           ;
 ; Total HSSI PMA RX Deserializers ; 0                                           ;
@@ -628,8 +628,8 @@ https://fpgasoftware.intel.com/eula.
 ; altrom.inc                                                                                                                    ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altrom.inc                                                                                                                    ;            ;
 ; altram.inc                                                                                                                    ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altram.inc                                                                                                                    ;            ;
 ; altdpram.inc                                                                                                                  ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altdpram.inc                                                                                                                  ;            ;
-; db/altsyncram_g0v1.tdf                                                                                                        ; yes             ; Auto-Generated Megafunction            ; /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf                                                                            ;            ;
-; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif               ; yes             ; Auto-Found Memory Initialization File  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif                                                                           ;            ;
+; db/altsyncram_p2v1.tdf                                                                                                        ; yes             ; Auto-Generated Megafunction            ; /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf                                                                            ;            ;
+; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif            ; yes             ; Auto-Found Memory Initialization File  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif                                                                        ;            ;
 ; altddio_out.tdf                                                                                                               ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altddio_out.tdf                                                                                                               ;            ;
 ; stratix_ddio.inc                                                                                                              ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/stratix_ddio.inc                                                                                                              ;            ;
 ; cyclone_ddio.inc                                                                                                              ; yes             ; Megafunction                           ; /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/cyclone_ddio.inc                                                                                                              ;            ;
@@ -673,29 +673,29 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 729            ;
+; Estimate of Logic utilization (ALMs needed) ; 730            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1104           ;
+; Combinational ALUT usage for logic          ; 1100           ;
 ;     -- 7 input functions                    ; 30             ;
-;     -- 6 input functions                    ; 298            ;
+;     -- 6 input functions                    ; 303            ;
 ;     -- 5 input functions                    ; 192            ;
-;     -- 4 input functions                    ; 174            ;
-;     -- <=3 input functions                  ; 410            ;
+;     -- 4 input functions                    ; 178            ;
+;     -- <=3 input functions                  ; 397            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 634            ;
+; Dedicated logic registers                   ; 640            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 362            ;
 ; I/O registers                               ; 186            ;
 ; Total MLAB memory bits                      ; 0              ;
-; Total block memory bits                     ; 36864          ;
+; Total block memory bits                     ; 28672          ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Total DLLs                                  ; 1              ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 649            ;
-; Total fan-out                               ; 10139          ;
-; Average fan-out                             ; 3.05           ;
+; Maximum fan-out                             ; 671            ;
+; Total fan-out                               ; 10319          ;
+; Average fan-out                             ; 3.09           ;
 +---------------------------------------------+----------------+
 
 
@@ -704,8 +704,8 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                                                                    ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                                                                                                                                                                                                                                                         ; Entity Name                                       ; Library Name ;
 +-----------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+--------------+
-; |soc_system_top                                                                               ; 1104 (1)            ; 634 (0)                   ; 36864             ; 0          ; 362  ; 0            ; |soc_system_top                                                                                                                                                                                                                                                                                                                                                             ; soc_system_top                                    ; work         ;
-;    |soc_system:soc_system0|                                                                   ; 1103 (0)            ; 634 (0)                   ; 36864             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0                                                                                                                                                                                                                                                                                                                                      ; soc_system                                        ; soc_system   ;
+; |soc_system_top                                                                               ; 1100 (1)            ; 640 (0)                   ; 28672             ; 0          ; 362  ; 0            ; |soc_system_top                                                                                                                                                                                                                                                                                                                                                             ; soc_system_top                                    ; work         ;
+;    |soc_system:soc_system0|                                                                   ; 1099 (0)            ; 640 (0)                   ; 28672             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0                                                                                                                                                                                                                                                                                                                                      ; soc_system                                        ; soc_system   ;
 ;       |altera_reset_controller:rst_controller_001|                                            ; 0 (0)               ; 3 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|altera_reset_controller:rst_controller_001                                                                                                                                                                                                                                                                                           ; altera_reset_controller                           ; soc_system   ;
 ;          |altera_reset_synchronizer:alt_rst_sync_uq1|                                         ; 0 (0)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|altera_reset_controller:rst_controller_001|altera_reset_synchronizer:alt_rst_sync_uq1                                                                                                                                                                                                                                                ; altera_reset_synchronizer                         ; soc_system   ;
 ;       |altera_reset_controller:rst_controller|                                                ; 6 (5)               ; 16 (10)                   ; 0                 ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|altera_reset_controller:rst_controller                                                                                                                                                                                                                                                                                               ; altera_reset_controller                           ; soc_system   ;
@@ -799,27 +799,31 @@ https://fpgasoftware.intel.com/eula.
 ;       |soc_system_snake_tail_up_sprite:snake_tail_up_sprite|                                  ; 1 (1)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite                                                                                                                                                                                                                                                                                 ; soc_system_snake_tail_up_sprite                   ; soc_system   ;
 ;          |altsyncram:the_altsyncram|                                                          ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram                                                                                                                                                                                                                                                       ; altsyncram                                        ; work         ;
 ;             |altsyncram_l9v1:auto_generated|                                                  ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram|altsyncram_l9v1:auto_generated                                                                                                                                                                                                                        ; altsyncram_l9v1                                   ; work         ;
-;       |vga_ball:vga_ball_0|                                                                   ; 107 (76)            ; 101 (80)                  ; 32768             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0                                                                                                                                                                                                                                                                                                                  ; vga_ball                                          ; soc_system   ;
-;          |soc_system_apple_sprite:apple_sprite|                                               ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite                                                                                                                                                                                                                                                                             ; soc_system_apple_sprite                           ; soc_system   ;
-;             |altsyncram:the_altsyncram|                                                       ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                                                                                                                                                                                                                                   ; altsyncram                                        ; work         ;
-;                |altsyncram_g0v1:auto_generated|                                               ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated                                                                                                                                                                                                                    ; altsyncram_g0v1                                   ; work         ;
+;       |vga_ball:vga_ball_0|                                                                   ; 103 (69)            ; 107 (86)                  ; 24576             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0                                                                                                                                                                                                                                                                                                                  ; vga_ball                                          ; soc_system   ;
+;          |soc_system_apple_sprite:apple_sprite|                                               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite                                                                                                                                                                                                                                                                             ; soc_system_apple_sprite                           ; soc_system   ;
+;             |altsyncram:the_altsyncram|                                                       ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                                                                                                                                                                                                                                   ; altsyncram                                        ; work         ;
+;                |altsyncram_p2v1:auto_generated|                                               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated                                                                                                                                                                                                                    ; altsyncram_p2v1                                   ; work         ;
+;          |soc_system_snake_head_right_sprite:snake_head_right_sprite|                         ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite                                                                                                                                                                                                                                                       ; soc_system_snake_head_right_sprite                ; soc_system   ;
+;             |altsyncram:the_altsyncram|                                                       ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram                                                                                                                                                                                                                             ; altsyncram                                        ; work         ;
+;                |altsyncram_miv1:auto_generated|                                               ; 0 (0)               ; 0 (0)                     ; 4096              ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated                                                                                                                                                                                              ; altsyncram_miv1                                   ; work         ;
 ;          |soc_system_wall_sprite:wall_sprite|                                                 ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite                                                                                                                                                                                                                                                                               ; soc_system_wall_sprite                            ; soc_system   ;
 ;             |altsyncram:the_altsyncram|                                                       ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite|altsyncram:the_altsyncram                                                                                                                                                                                                                                                     ; altsyncram                                        ; work         ;
 ;                |altsyncram_umv1:auto_generated|                                               ; 0 (0)               ; 0 (0)                     ; 16384             ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite|altsyncram:the_altsyncram|altsyncram_umv1:auto_generated                                                                                                                                                                                                                      ; altsyncram_umv1                                   ; work         ;
-;          |vga_counters:counters|                                                              ; 31 (31)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|vga_counters:counters                                                                                                                                                                                                                                                                                            ; vga_counters                                      ; soc_system   ;
+;          |vga_counters:counters|                                                              ; 34 (34)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|vga_counters:counters                                                                                                                                                                                                                                                                                            ; vga_counters                                      ; soc_system   ;
 +-----------------------------------------------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                                                                                                                       ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
-; Name                                                                                                                                                ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                                                                                                     ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
-; soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram|altsyncram_l9v1:auto_generated|ALTSYNCRAM     ; AUTO ; Single Port ; 256          ; 16           ; --           ; --           ; 4096  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_tail_up.mif    ;
-; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 1024         ; 16           ; --           ; --           ; 16384 ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif         ;
-; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite|altsyncram:the_altsyncram|altsyncram_umv1:auto_generated|ALTSYNCRAM   ; AUTO ; Single Port ; 1024         ; 16           ; --           ; --           ; 16384 ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_brick_wall.mif ;
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                                                                                                                                                                                             ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
+; Name                                                                                                                                                                      ; Type ; Mode        ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size  ; MIF                                                                                                                     ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
+; soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram|altsyncram_l9v1:auto_generated|ALTSYNCRAM                           ; AUTO ; Single Port ; 256          ; 16           ; --           ; --           ; 4096  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_tail_up.mif    ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|ALTSYNCRAM                       ; AUTO ; Single Port ; 256          ; 16           ; --           ; --           ; 4096  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif      ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|ALTSYNCRAM ; AUTO ; Single Port ; 256          ; 16           ; --           ; --           ; 4096  ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_head_right.mif ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite|altsyncram:the_altsyncram|altsyncram_umv1:auto_generated|ALTSYNCRAM                         ; AUTO ; Single Port ; 1024         ; 16           ; --           ; --           ; 16384 ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_brick_wall.mif ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+-------------+--------------+--------------+--------------+--------------+-------+-------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -975,6 +979,15 @@ Encoding Type:  One-Hot
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[49,79]                ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_uncompressed_read_reg          ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_translator:snake_tail_up_sprite_s1_translator|av_chipselect_pre                                                                                                 ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|e[0]                                                                                                                                                                                                           ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|e[1]                                                                                                                                                                                                           ; Stuck at VCC due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|e[2]                                                                                                                                                                                                           ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|e[3]                                                                                                                                                                                                           ; Stuck at VCC due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|e[4,5]                                                                                                                                                                                                         ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|d[0]                                                                                                                                                                                                           ; Stuck at VCC due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|d[1]                                                                                                                                                                                                           ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|d[2,3]                                                                                                                                                                                                         ; Stuck at VCC due to stuck port data_in                                                                                                                                                                                                                         ;
+; soc_system:soc_system0|vga_ball:vga_ball_0|d[4,5]                                                                                                                                                                                                         ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|out_byte_cnt_reg[1..6]          ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|out_byte_cnt_reg[0,2..7]          ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_width_adapter:vga_ball_0_avalon_slave_0_rsp_width_adapter|p0_reg_endofpacket                                                                                          ; Lost fanout                                                                                                                                                                                                                                                    ;
@@ -998,10 +1011,10 @@ Encoding Type:  One-Hot
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_size_reg[0]                  ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[50]          ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[30]                 ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[33]          ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|out_addr_masked[0]              ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|int_nxt_addr_reg_dly[0]  ;
+; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][4]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
+; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][1]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][6]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][8]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
-; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][1]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
-; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][4]                                                                                                          ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rdata_fifo|mem[1][9]                                                                                                   ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_size_reg[2]                    ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[72]            ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_size_reg[1]                    ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[71]            ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_size_reg[0]                    ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[70]            ;
@@ -1293,7 +1306,7 @@ Encoding Type:  One-Hot
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:snake_tail_up_sprite_s1_agent_rsp_fifo|mem[0][72]                                                                                                             ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:snake_tail_up_sprite_s1_agent_rsp_fifo|mem[0][71]                                                                                                             ; Stuck at GND due to stuck port data_in                                                                                                                                                                                                                         ;
 ; soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|int_byte_cnt_narrow_reg[0]      ; Merged with soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|out_byte_cnt_reg[0]      ;
-; Total Number of Removed Registers = 616                                                                                                                                                                                                                   ;                                                                                                                                                                                                                                                                ;
+; Total Number of Removed Registers = 628                                                                                                                                                                                                                   ;                                                                                                                                                                                                                                                                ;
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
@@ -1648,12 +1661,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 634   ;
-; Number of registers using Synchronous Clear  ; 104   ;
-; Number of registers using Synchronous Load   ; 52    ;
+; Total registers                              ; 640   ;
+; Number of registers using Synchronous Clear  ; 120   ;
+; Number of registers using Synchronous Load   ; 58    ;
 ; Number of registers using Asynchronous Clear ; 502   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 464   ;
+; Number of registers using Clock Enable       ; 472   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -1690,18 +1703,23 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                                                                                                                                                                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|b[3]                                                                                                                                                                                                           ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|apple_sprite_addr[0]                                                                                                                                                                                           ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_slave_translator:vga_ball_0_avalon_slave_0_translator|wait_latency_counter[0]                                                                                         ;
-; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[1]                  ;
-; 4:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[11]                   ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_slave_agent:vga_ball_0_avalon_slave_0_agent|altera_merlin_burst_uncompressor:uncompressor|burst_uncompress_byte_counter[0]                                            ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:snake_tail_up_sprite_s1_agent|altera_merlin_burst_uncompressor:uncompressor|burst_uncompress_byte_counter[6]                                              ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_b[4]                                                                                                                                                                                                ;
-; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_g[4]                                                                                                                                                                                                ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_r[6]                                                                                                                                                                                                ;
-; 5:1                ; 8 bits    ; 24 LEs        ; 0 LEs                ; 24 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|c[2]                                                                                                                                                                                                           ;
-; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_axi_master_ni:hps_0_h2f_axi_master_agent|altera_merlin_address_alignment:align_address_to_size|address_burst[19]                                                      ;
-; 4:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_axi_master_ni:hps_0_h2f_lw_axi_master_agent|altera_merlin_address_alignment:align_address_to_size|address_burst[17]                                                   ;
+; 4:1                ; 9 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[2]                  ;
+; 4:1                ; 18 bits   ; 36 LEs        ; 36 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_burst_adapter:snake_tail_up_sprite_s1_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|in_data_reg[0]                    ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_slave_agent:vga_ball_0_avalon_slave_0_agent|altera_merlin_burst_uncompressor:uncompressor|burst_uncompress_byte_counter[4]                                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_slave_agent:snake_tail_up_sprite_s1_agent|altera_merlin_burst_uncompressor:uncompressor|burst_uncompress_byte_counter[1]                                              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|snake_head_pos_y[3]                                                                                                                                                                                            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|snake_head_pos_y[0]                                                                                                                                                                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|snake_head_pos_x[1]                                                                                                                                                                                            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|snake_head_pos_x[2]                                                                                                                                                                                            ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_b[1]                                                                                                                                                                                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_g[0]                                                                                                                                                                                                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|background_r[5]                                                                                                                                                                                                ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 32 LEs               ; 0 LEs                  ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|a[3]                                                                                                                                                                                                           ;
+; 4:1                ; 23 bits   ; 46 LEs        ; 0 LEs                ; 46 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_merlin_axi_master_ni:hps_0_h2f_axi_master_agent|altera_merlin_address_alignment:align_address_to_size|address_burst[24]                                                      ;
+; 4:1                ; 15 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_axi_master_ni:hps_0_h2f_lw_axi_master_agent|altera_merlin_address_alignment:align_address_to_size|address_burst[15]                                                   ;
+; 9:1                ; 8 bits    ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |soc_system_top|soc_system:soc_system0|vga_ball:vga_ball_0|a[2]                                                                                                                                                                                                           ;
 ; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_avalon_sc_fifo:vga_ball_0_avalon_slave_0_agent_rsp_fifo|mem                                                                                                                  ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_0:mm_interconnect_0|altera_avalon_sc_fifo:snake_tail_up_sprite_s1_agent_rsp_fifo|mem                                                                                                                    ;
 ; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |soc_system_top|soc_system:soc_system0|soc_system_mm_interconnect_1:mm_interconnect_1|altera_merlin_burst_adapter:vga_ball_0_avalon_slave_0_burst_adapter|altera_merlin_burst_adapter_13_1:altera_merlin_burst_adapter_13_1.burst_adapter|nxt_uncomp_subburst_byte_cnt[4] ;
@@ -1722,7 +1740,7 @@ Encoding Type:  One-Hot
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated ;
+; Source assignments for soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated ;
 +---------------------------------+--------------------+------+-------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                            ;
 +---------------------------------+--------------------+------+-------------------------------------------------------------------------------+
@@ -2045,7 +2063,7 @@ Encoding Type:  One-Hot
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated ;
+; Source assignments for soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                                                ;
 +---------------------------------+--------------------+------+---------------------------------------------------------------------------------------------------+
@@ -2310,74 +2328,74 @@ Encoding Type:  One-Hot
 +-------------------+-------+------+------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: soc_system:soc_system0|soc_system_apple_sprite:apple_sprite                                  ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
-; Parameter Name ; Value                                                                                                           ; Type   ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
-; INIT_FILE      ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif ; String ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: soc_system:soc_system0|soc_system_apple_sprite:apple_sprite                                     ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
+; Parameter Name ; Value                                                                                                              ; Type   ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
+; INIT_FILE      ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif ; String ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                    ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
-; Parameter Name                     ; Value                                                                                                           ; Type           ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                                                                                                               ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                                                                                                              ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                                                                                                             ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                                                                                                              ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                                                                                                             ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                                                                                                               ; Untyped        ;
-; OPERATION_MODE                     ; SINGLE_PORT                                                                                                     ; Untyped        ;
-; WIDTH_A                            ; 16                                                                                                              ; Signed Integer ;
-; WIDTHAD_A                          ; 10                                                                                                              ; Signed Integer ;
-; NUMWORDS_A                         ; 1024                                                                                                            ; Signed Integer ;
-; OUTDATA_REG_A                      ; UNREGISTERED                                                                                                    ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                                                                                                            ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                                                                                                            ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; WIDTH_B                            ; 1                                                                                                               ; Untyped        ;
-; WIDTHAD_B                          ; 1                                                                                                               ; Untyped        ;
-; NUMWORDS_B                         ; 1                                                                                                               ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1                                                                                                          ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                                                                                          ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1                                                                                                          ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1                                                                                                          ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED                                                                                                    ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1                                                                                                          ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                                                                                                            ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                                                                                                            ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                                                                                                            ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 2                                                                                                               ; Signed Integer ;
-; WIDTH_BYTEENA_B                    ; 1                                                                                                               ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                                                                                                            ; Untyped        ;
-; BYTE_SIZE                          ; 8                                                                                                               ; Signed Integer ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                       ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; DONT_CARE                                                                                                       ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                                                                                            ; Untyped        ;
-; INIT_FILE                          ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A                                                                                                          ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 1024                                                                                                            ; Signed Integer ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                                                                                 ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                                                                                 ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                                                                                                           ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                                                                                           ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                                                                                                               ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone V                                                                                                       ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_g0v1                                                                                                 ; Untyped        ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                       ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                                                                                              ; Type           ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                                                                                                  ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                                                                                                 ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                                                                                                ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                                                                                                 ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                                                                                                ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                                                                                                  ; Untyped        ;
+; OPERATION_MODE                     ; SINGLE_PORT                                                                                                        ; Untyped        ;
+; WIDTH_A                            ; 16                                                                                                                 ; Signed Integer ;
+; WIDTHAD_A                          ; 8                                                                                                                  ; Signed Integer ;
+; NUMWORDS_A                         ; 256                                                                                                                ; Signed Integer ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                                                                                       ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                                                                                               ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                                                                                               ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; WIDTH_B                            ; 1                                                                                                                  ; Untyped        ;
+; WIDTHAD_B                          ; 1                                                                                                                  ; Untyped        ;
+; NUMWORDS_B                         ; 1                                                                                                                  ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                                                                                             ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                                                                                             ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                                                                                             ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                                                                                             ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                                                                                       ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                                                                                             ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                                                                                               ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                                                                                               ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                                                                                               ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 2                                                                                                                  ; Signed Integer ;
+; WIDTH_BYTEENA_B                    ; 1                                                                                                                  ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                                                                                               ; Untyped        ;
+; BYTE_SIZE                          ; 8                                                                                                                  ; Signed Integer ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                          ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; DONT_CARE                                                                                                          ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                                                                                               ; Untyped        ;
+; INIT_FILE                          ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                                                                                             ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 256                                                                                                                ; Signed Integer ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                                                                                    ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                                                                                    ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                                                                                              ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                                                                                              ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                                                                                                  ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                                                                                          ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_p2v1                                                                                                    ; Untyped        ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -4700,74 +4718,74 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite              ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
-; Parameter Name ; Value                                                                                                           ; Type   ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
-; INIT_FILE      ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif ; String ;
-+----------------+-----------------------------------------------------------------------------------------------------------------+--------+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite                 ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
+; Parameter Name ; Value                                                                                                              ; Type   ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
+; INIT_FILE      ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif ; String ;
++----------------+--------------------------------------------------------------------------------------------------------------------+--------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Parameter Settings for User Entity Instance: soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
-; Parameter Name                     ; Value                                                                                                           ; Type           ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
-; BYTE_SIZE_BLOCK                    ; 8                                                                                                               ; Untyped        ;
-; AUTO_CARRY_CHAINS                  ; ON                                                                                                              ; AUTO_CARRY     ;
-; IGNORE_CARRY_BUFFERS               ; OFF                                                                                                             ; IGNORE_CARRY   ;
-; AUTO_CASCADE_CHAINS                ; ON                                                                                                              ; AUTO_CASCADE   ;
-; IGNORE_CASCADE_BUFFERS             ; OFF                                                                                                             ; IGNORE_CASCADE ;
-; WIDTH_BYTEENA                      ; 1                                                                                                               ; Untyped        ;
-; OPERATION_MODE                     ; SINGLE_PORT                                                                                                     ; Untyped        ;
-; WIDTH_A                            ; 16                                                                                                              ; Signed Integer ;
-; WIDTHAD_A                          ; 10                                                                                                              ; Signed Integer ;
-; NUMWORDS_A                         ; 1024                                                                                                            ; Signed Integer ;
-; OUTDATA_REG_A                      ; UNREGISTERED                                                                                                    ; Untyped        ;
-; ADDRESS_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; OUTDATA_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; WRCONTROL_ACLR_A                   ; NONE                                                                                                            ; Untyped        ;
-; INDATA_ACLR_A                      ; NONE                                                                                                            ; Untyped        ;
-; BYTEENA_ACLR_A                     ; NONE                                                                                                            ; Untyped        ;
-; WIDTH_B                            ; 1                                                                                                               ; Untyped        ;
-; WIDTHAD_B                          ; 1                                                                                                               ; Untyped        ;
-; NUMWORDS_B                         ; 1                                                                                                               ; Untyped        ;
-; INDATA_REG_B                       ; CLOCK1                                                                                                          ; Untyped        ;
-; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                                                                                          ; Untyped        ;
-; RDCONTROL_REG_B                    ; CLOCK1                                                                                                          ; Untyped        ;
-; ADDRESS_REG_B                      ; CLOCK1                                                                                                          ; Untyped        ;
-; OUTDATA_REG_B                      ; UNREGISTERED                                                                                                    ; Untyped        ;
-; BYTEENA_REG_B                      ; CLOCK1                                                                                                          ; Untyped        ;
-; INDATA_ACLR_B                      ; NONE                                                                                                            ; Untyped        ;
-; WRCONTROL_ACLR_B                   ; NONE                                                                                                            ; Untyped        ;
-; ADDRESS_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; OUTDATA_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; RDCONTROL_ACLR_B                   ; NONE                                                                                                            ; Untyped        ;
-; BYTEENA_ACLR_B                     ; NONE                                                                                                            ; Untyped        ;
-; WIDTH_BYTEENA_A                    ; 2                                                                                                               ; Signed Integer ;
-; WIDTH_BYTEENA_B                    ; 1                                                                                                               ; Untyped        ;
-; RAM_BLOCK_TYPE                     ; AUTO                                                                                                            ; Untyped        ;
-; BYTE_SIZE                          ; 8                                                                                                               ; Signed Integer ;
-; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                       ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_A      ; DONT_CARE                                                                                                       ; Untyped        ;
-; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                                                                                            ; Untyped        ;
-; INIT_FILE                          ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif ; Untyped        ;
-; INIT_FILE_LAYOUT                   ; PORT_A                                                                                                          ; Untyped        ;
-; MAXIMUM_DEPTH                      ; 1024                                                                                                            ; Signed Integer ;
-; CLOCK_ENABLE_INPUT_A               ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_INPUT_B               ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                                                                                          ; Untyped        ;
-; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                                                                                 ; Untyped        ;
-; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                                                                                 ; Untyped        ;
-; ENABLE_ECC                         ; FALSE                                                                                                           ; Untyped        ;
-; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                                                                                           ; Untyped        ;
-; WIDTH_ECCSTATUS                    ; 3                                                                                                               ; Untyped        ;
-; DEVICE_FAMILY                      ; Cyclone V                                                                                                       ; Untyped        ;
-; CBXI_PARAMETER                     ; altsyncram_g0v1                                                                                                 ; Untyped        ;
-+------------------------------------+-----------------------------------------------------------------------------------------------------------------+----------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                   ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                                                                                              ; Type           ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                                                                                                  ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                                                                                                 ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                                                                                                ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                                                                                                 ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                                                                                                ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                                                                                                  ; Untyped        ;
+; OPERATION_MODE                     ; SINGLE_PORT                                                                                                        ; Untyped        ;
+; WIDTH_A                            ; 16                                                                                                                 ; Signed Integer ;
+; WIDTHAD_A                          ; 8                                                                                                                  ; Signed Integer ;
+; NUMWORDS_A                         ; 256                                                                                                                ; Signed Integer ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                                                                                       ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                                                                                               ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                                                                                               ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                                                                                               ; Untyped        ;
+; WIDTH_B                            ; 1                                                                                                                  ; Untyped        ;
+; WIDTHAD_B                          ; 1                                                                                                                  ; Untyped        ;
+; NUMWORDS_B                         ; 1                                                                                                                  ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                                                                                             ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                                                                                             ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                                                                                             ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK1                                                                                                             ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                                                                                       ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                                                                                             ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                                                                                               ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                                                                                               ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                                                                                               ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                                                                                               ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 2                                                                                                                  ; Signed Integer ;
+; WIDTH_BYTEENA_B                    ; 1                                                                                                                  ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                                                                                               ; Untyped        ;
+; BYTE_SIZE                          ; 8                                                                                                                  ; Signed Integer ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                                                          ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; DONT_CARE                                                                                                          ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                                                                                               ; Untyped        ;
+; INIT_FILE                          ; /user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                                                                                             ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 256                                                                                                                ; Signed Integer ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                                                                                             ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                                                                                    ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                                                                                    ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                                                                                              ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                                                                                              ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                                                                                                  ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                                                                                          ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_p2v1                                                                                                    ; Untyped        ;
++------------------------------------+--------------------------------------------------------------------------------------------------------------------+----------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -7436,7 +7454,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Entity Instance                           ; soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                                       ;
 ;     -- OPERATION_MODE                     ; SINGLE_PORT                                                                                                                                 ;
 ;     -- WIDTH_A                            ; 16                                                                                                                                          ;
-;     -- NUMWORDS_A                         ; 1024                                                                                                                                        ;
+;     -- NUMWORDS_A                         ; 256                                                                                                                                         ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                                                                                ;
 ;     -- WIDTH_B                            ; 1                                                                                                                                           ;
 ;     -- NUMWORDS_B                         ; 1                                                                                                                                           ;
@@ -7601,7 +7619,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; Entity Instance                           ; soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram                                   ;
 ;     -- OPERATION_MODE                     ; SINGLE_PORT                                                                                                                                 ;
 ;     -- WIDTH_A                            ; 16                                                                                                                                          ;
-;     -- NUMWORDS_A                         ; 1024                                                                                                                                        ;
+;     -- NUMWORDS_A                         ; 256                                                                                                                                         ;
 ;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                                                                                ;
 ;     -- WIDTH_B                            ; 1                                                                                                                                           ;
 ;     -- NUMWORDS_B                         ; 1                                                                                                                                           ;
@@ -8778,25 +8796,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite"                                                                                      ;
-+---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                                                                                                                            ;
-+---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; address       ; Input  ; Warning  ; Input port expression (10 bits) is wider than the input port (8 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts.  ;
-; clken         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; clken[-1]     ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                       ;
-; reset_req     ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
-; reset_req[-1] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                       ;
-; readdata      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                ;
-; byteenable    ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; chipselect    ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; debugaccess   ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; freeze        ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; reset         ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; write         ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-; writedata     ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
-+---------------+--------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite"                                                                                     ;
++---------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port          ; Type  ; Severity ; Details                                                                                                                                                                            ;
++---------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; address       ; Input ; Warning  ; Input port expression (10 bits) is wider than the input port (8 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts.  ;
+; clken         ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; clken[-1]     ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
+; reset_req     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; reset_req[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
+; byteenable    ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; chipselect    ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; debugaccess   ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; freeze        ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; reset         ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; write         ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
+; writedata     ; Input ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND.                                       ;
++---------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -8804,6 +8821,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port          ; Type  ; Severity ; Details                                                                                                                                                                            ;
 +---------------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; address       ; Input ; Warning  ; Input port expression (10 bits) is wider than the input port (8 bits) it drives.  The 2 most-significant bit(s) in the expression will be dangling if they have no other fanouts.  ;
 ; clken         ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
 ; clken[-1]     ; Input ; Info     ; Stuck at VCC                                                                                                                                                                       ;
 ; reset_req     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
@@ -9740,15 +9758,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------------------------------------+-------+
 ; Type                                                 ; Count ;
 +------------------------------------------------------+-------+
-; arriav_ff                                            ; 598   ;
+; arriav_ff                                            ; 604   ;
 ;     CLR                                              ; 105   ;
 ;     CLR SCLR                                         ; 11    ;
-;     ENA                                              ; 62    ;
+;     ENA                                              ; 46    ;
 ;     ENA CLR                                          ; 259   ;
 ;     ENA CLR SCLR                                     ; 77    ;
 ;     ENA CLR SLD                                      ; 50    ;
-;     ENA SCLR                                         ; 16    ;
-;     SLD                                              ; 2     ;
+;     ENA SCLR                                         ; 32    ;
+;     ENA SLD                                          ; 8     ;
 ;     plain                                            ; 16    ;
 ; arriav_hps_interface_boot_from_fpga                  ; 1     ;
 ; arriav_hps_interface_clocks_resets                   ; 1     ;
@@ -9760,24 +9778,24 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; arriav_hps_interface_interrupts                      ; 1     ;
 ; arriav_hps_interface_tpiu_trace                      ; 1     ;
 ; arriav_io_obuf                                       ; 97    ;
-; arriav_lcell_comb                                    ; 1105  ;
-;     arith                                            ; 140   ;
+; arriav_lcell_comb                                    ; 1101  ;
+;     arith                                            ; 148   ;
 ;         0 data inputs                                ; 4     ;
-;         1 data inputs                                ; 80    ;
+;         1 data inputs                                ; 88    ;
 ;         2 data inputs                                ; 3     ;
 ;         3 data inputs                                ; 10    ;
 ;         4 data inputs                                ; 28    ;
 ;         5 data inputs                                ; 15    ;
 ;     extend                                           ; 30    ;
 ;         7 data inputs                                ; 30    ;
-;     normal                                           ; 905   ;
+;     normal                                           ; 893   ;
 ;         0 data inputs                                ; 2     ;
 ;         1 data inputs                                ; 14    ;
-;         2 data inputs                                ; 71    ;
-;         3 data inputs                                ; 199   ;
-;         4 data inputs                                ; 144   ;
+;         2 data inputs                                ; 67    ;
+;         3 data inputs                                ; 182   ;
+;         4 data inputs                                ; 148   ;
 ;         5 data inputs                                ; 177   ;
-;         6 data inputs                                ; 298   ;
+;         6 data inputs                                ; 303   ;
 ;     shared                                           ; 30    ;
 ;         1 data inputs                                ; 26    ;
 ;         2 data inputs                                ; 2     ;
@@ -9785,10 +9803,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; blackbox                                             ; 1     ;
 ;                 oc_system_hps_0_hps_io_border:border ; 1     ;
 ; boundary_port                                        ; 362   ;
-; stratixv_ram_block                                   ; 48    ;
+; stratixv_ram_block                                   ; 64    ;
 ;                                                      ;       ;
 ; Max LUT depth                                        ; 6.00  ;
-; Average LUT depth                                    ; 2.50  ;
+; Average LUT depth                                    ; 2.49  ;
 +------------------------------------------------------+-------+
 
 
@@ -9844,8 +9862,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------------------------------+--------------+
 ; Partition Name                        ; Elapsed Time ;
 +---------------------------------------+--------------+
-; Top                                   ; 00:00:10     ;
-; soc_system_hps_0_hps_io_border:border ; 00:00:04     ;
+; Top                                   ; 00:00:06     ;
+; soc_system_hps_0_hps_io_border:border ; 00:00:02     ;
 +---------------------------------------+--------------+
 
 
@@ -9869,7 +9887,7 @@ Info: Running Quartus Prime Analysis & Synthesis
     Info: Intel and sold by Intel or its authorized distributors.  Please
     Info: refer to the applicable agreement for further details, at
     Info: https://fpgasoftware.intel.com/eula.
-    Info: Processing started: Fri Apr 26 16:07:49 2024
+    Info: Processing started: Mon Apr 29 14:24:18 2024
 Info: Command: quartus_map soc_system
 Info (20032): Parallel compilation is enabled and will use up to 4 processors
 Warning (10275): Verilog HDL Module Instantiation warning at soc_system_top.sv(279): ignored dangling comma in List of Port Connections File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system_top.sv Line: 279
@@ -9964,9 +9982,10 @@ Info (12021): Found 2 design units, including 2 entities, in source file soc_sys
     Info (12023): Found entity 2: soc_system_mm_interconnect_0_router File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_mm_interconnect_0_router.sv Line: 84
 Info (12021): Found 1 design units, including 1 entities, in source file soc_system/synthesis/submodules/soc_system_wall_sprite.v
     Info (12023): Found entity 1: soc_system_wall_sprite File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_wall_sprite.v Line: 21
+Warning (10229): Verilog HDL Expression warning at vga_ball.sv(212): truncated literal to match 4 bits File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 212
 Info (12021): Found 2 design units, including 2 entities, in source file soc_system/synthesis/submodules/vga_ball.sv
     Info (12023): Found entity 1: vga_ball File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 8
-    Info (12023): Found entity 2: vga_counters File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 300
+    Info (12023): Found entity 2: vga_counters File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 333
 Info (12021): Found 1 design units, including 1 entities, in source file soc_system/synthesis/submodules/soc_system_snake_tail_up_sprite.v
     Info (12023): Found entity 1: soc_system_snake_tail_up_sprite File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_snake_tail_up_sprite.v Line: 21
 Info (12021): Found 1 design units, including 1 entities, in source file soc_system/synthesis/submodules/soc_system_snake_tail_right_sprite.v
@@ -10050,10 +10069,10 @@ Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_system:soc_syst
 Info (12130): Elaborated megafunction instantiation "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_apple_sprite.v Line: 71
 Info (12133): Instantiated megafunction "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram" with the following parameter: File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_apple_sprite.v Line: 71
     Info (12134): Parameter "byte_size" = "8"
-    Info (12134): Parameter "init_file" = "/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif"
+    Info (12134): Parameter "init_file" = "/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif"
     Info (12134): Parameter "lpm_type" = "altsyncram"
-    Info (12134): Parameter "maximum_depth" = "1024"
-    Info (12134): Parameter "numwords_a" = "1024"
+    Info (12134): Parameter "maximum_depth" = "256"
+    Info (12134): Parameter "numwords_a" = "256"
     Info (12134): Parameter "operation_mode" = "SINGLE_PORT"
     Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
     Info (12134): Parameter "ram_block_type" = "AUTO"
@@ -10061,10 +10080,10 @@ Info (12133): Instantiated megafunction "soc_system:soc_system0|soc_system_apple
     Info (12134): Parameter "read_during_write_mode_port_a" = "DONT_CARE"
     Info (12134): Parameter "width_a" = "16"
     Info (12134): Parameter "width_byteena_a" = "2"
-    Info (12134): Parameter "widthad_a" = "10"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g0v1.tdf
-    Info (12023): Found entity 1: altsyncram_g0v1 File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_g0v1" for hierarchy "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated" File: /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+    Info (12134): Parameter "widthad_a" = "8"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_p2v1.tdf
+    Info (12023): Found entity 1: altsyncram_p2v1 File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_p2v1" for hierarchy "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated" File: /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "soc_system_hps_0" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/soc_system.v Line: 496
 Info (12128): Elaborating entity "soc_system_hps_0_fpga_interfaces" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_fpga_interfaces:fpga_interfaces" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_hps_0.v Line: 341
 Info (12128): Elaborating entity "soc_system_hps_0_hps_io" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_hps_0.v Line: 409
@@ -10111,7 +10130,6 @@ Info (12128): Elaborating entity "hps_sdram_p0_clock_pair_generator" for hierarc
 Info (12128): Elaborating entity "hps_sdram_p0_altdqdqs" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/hps_sdram_p0_acv_hard_io_pads.v Line: 317
 Info (12128): Elaborating entity "altdq_dqs2_acv_connect_to_hard_phy_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_p0:p0|hps_sdram_p0_acv_hard_memphy:umemphy|hps_sdram_p0_acv_hard_io_pads:uio_pads|hps_sdram_p0_altdqdqs:dq_ddio[0].ubidir_dq_dqs|altdq_dqs2_acv_connect_to_hard_phy_cyclonev:altdq_dqs2_inst" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/hps_sdram_p0_altdqdqs.v Line: 146
 Info (12128): Elaborating entity "altera_mem_if_hhp_qseq_synth_top" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hhp_qseq_synth_top:seq" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/hps_sdram.v Line: 238
-Warning (12158): Entity "altera_mem_if_hhp_qseq_synth_top" contains only dangling pins File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/hps_sdram.v Line: 238
 Info (12128): Elaborating entity "altera_mem_if_hard_memory_controller_top_cyclonev" for hierarchy "soc_system:soc_system0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|altera_mem_if_hard_memory_controller_top_cyclonev:c0" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/hps_sdram.v Line: 794
 Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1166): truncated value with size 320 to match size of target (1) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv Line: 1166
 Warning (10230): Verilog HDL assignment warning at altera_mem_if_hard_memory_controller_top_cyclonev.sv(1167): truncated value with size 320 to match size of target (1) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/altera_mem_if_hard_memory_controller_top_cyclonev.sv Line: 1167
@@ -10402,12 +10420,14 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/alts
     Info (12023): Found entity 1: altsyncram_l9v1 File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_l9v1.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_l9v1" for hierarchy "soc_system:soc_system0|soc_system_snake_tail_up_sprite:snake_tail_up_sprite|altsyncram:the_altsyncram|altsyncram_l9v1:auto_generated" File: /tools/intel/intelFPGA/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "vga_ball" for hierarchy "soc_system:soc_system0|vga_ball:vga_ball_0" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/soc_system.v Line: 723
-Warning (10036): Verilog HDL or VHDL warning at vga_ball.sv(172): object "head_pos_x" assigned a value but never read File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 172
-Warning (10036): Verilog HDL or VHDL warning at vga_ball.sv(173): object "head_pos_y" assigned a value but never read File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 173
-Warning (10230): Verilog HDL assignment warning at vga_ball.sv(181): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 181
-Warning (10230): Verilog HDL assignment warning at vga_ball.sv(186): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 186
-Warning (10230): Verilog HDL assignment warning at vga_ball.sv(246): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 246
-Warning (10230): Verilog HDL assignment warning at vga_ball.sv(251): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 251
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(193): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 193
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(198): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 198
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(207): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 207
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(212): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 212
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(260): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 260
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(268): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 268
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(276): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 276
+Warning (10230): Verilog HDL assignment warning at vga_ball.sv(284): truncated value with size 32 to match size of target (10) File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 284
 Info (12128): Elaborating entity "vga_counters" for hierarchy "soc_system:soc_system0|vga_ball:vga_ball_0|vga_counters:counters" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 103
 Info (12128): Elaborating entity "soc_system_wall_sprite" for hierarchy "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/vga_ball.sv Line: 140
 Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_wall_sprite:wall_sprite|altsyncram:the_altsyncram" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system/synthesis/submodules/soc_system_wall_sprite.v Line: 71
@@ -10730,22 +10750,6 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_left_sprite:snake_head_left_sprite|altsyncram:the_altsyncram|altsyncram_3fv1:auto_generated|q_a[13]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_3fv1.tdf Line: 338
         Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_left_sprite:snake_head_left_sprite|altsyncram:the_altsyncram|altsyncram_3fv1:auto_generated|q_a[14]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_3fv1.tdf Line: 361
         Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_left_sprite:snake_head_left_sprite|altsyncram:the_altsyncram|altsyncram_3fv1:auto_generated|q_a[15]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_3fv1.tdf Line: 384
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[0]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 39
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[1]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 62
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[2]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 85
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[3]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 108
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[4]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 131
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[5]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 154
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[6]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 177
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[7]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 200
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[8]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 223
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[9]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 246
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[10]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 269
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[11]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 292
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[12]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 315
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[13]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 338
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[14]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 361
-        Warning (14320): Synthesized away node "soc_system:soc_system0|vga_ball:vga_ball_0|soc_system_snake_head_right_sprite:snake_head_right_sprite|altsyncram:the_altsyncram|altsyncram_miv1:auto_generated|q_a[15]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_miv1.tdf Line: 384
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_tail_right_sprite:snake_tail_right_sprite|altsyncram:the_altsyncram|altsyncram_ejv1:auto_generated|q_a[0]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_ejv1.tdf Line: 39
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_tail_right_sprite:snake_tail_right_sprite|altsyncram:the_altsyncram|altsyncram_ejv1:auto_generated|q_a[1]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_ejv1.tdf Line: 62
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_tail_right_sprite:snake_tail_right_sprite|altsyncram:the_altsyncram|altsyncram_ejv1:auto_generated|q_a[2]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_ejv1.tdf Line: 85
@@ -10954,22 +10958,22 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_body_bottomleft_sprite:snake_body_bottomleft_sprite|altsyncram:the_altsyncram|altsyncram_k402:auto_generated|q_a[13]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_k402.tdf Line: 338
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_body_bottomleft_sprite:snake_body_bottomleft_sprite|altsyncram:the_altsyncram|altsyncram_k402:auto_generated|q_a[14]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_k402.tdf Line: 361
         Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_snake_body_bottomleft_sprite:snake_body_bottomleft_sprite|altsyncram:the_altsyncram|altsyncram_k402:auto_generated|q_a[15]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_k402.tdf Line: 384
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[0]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 39
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[1]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 62
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[2]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 85
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[3]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 108
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[4]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 131
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[5]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 154
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[6]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 177
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[7]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 200
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[8]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 223
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[9]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 246
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[10]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 269
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[11]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 292
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[12]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 315
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[13]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 338
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[14]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 361
-        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_g0v1:auto_generated|q_a[15]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_g0v1.tdf Line: 384
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[0]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 39
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[1]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 62
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[2]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 85
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[3]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 108
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[4]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 131
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[5]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 154
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[6]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 177
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[7]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 200
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[8]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 223
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[9]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 246
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[10]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 269
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[11]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 292
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[12]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 315
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[13]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 338
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[14]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 361
+        Warning (14320): Synthesized away node "soc_system:soc_system0|soc_system_apple_sprite:apple_sprite|altsyncram:the_altsyncram|altsyncram_p2v1:auto_generated|q_a[15]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/db/altsyncram_p2v1.tdf Line: 384
 Warning (12241): 49 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "HPS_CONV_USB_N~synth" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system_top.sv Line: 104
@@ -11070,18 +11074,18 @@ Warning (21074): Design contains 23 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "TD_DATA[7]" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system_top.sv Line: 175
     Warning (15610): No output dependent on input pin "TD_HS" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system_top.sv Line: 176
     Warning (15610): No output dependent on input pin "TD_VS" File: /homes/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/lab3-hw/soc_system_top.sv Line: 178
-Info (21057): Implemented 2502 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 2525 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 44 input pins
     Info (21059): Implemented 155 output pins
     Info (21060): Implemented 163 bidirectional pins
-    Info (21061): Implemented 1442 logic cells
-    Info (21064): Implemented 48 RAM segments
+    Info (21061): Implemented 1449 logic cells
+    Info (21064): Implemented 64 RAM segments
     Info (21066): Implemented 1 delay-locked loops
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 598 warnings
-    Info: Peak virtual memory: 1040 megabytes
-    Info: Processing ended: Fri Apr 26 16:13:44 2024
-    Info: Elapsed time: 00:05:55
-    Info: Total CPU time (on all processors): 00:04:12
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 584 warnings
+    Info: Peak virtual memory: 1041 megabytes
+    Info: Processing ended: Mon Apr 29 14:29:43 2024
+    Info: Elapsed time: 00:05:25
+    Info: Total CPU time (on all processors): 00:04:07
 
 
 +------------------------------------------+

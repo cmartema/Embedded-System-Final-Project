@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="system" version="21.1" fabric="QSYS">
  <!-- Format version 21.1 842 (Future versions may contain additional information.) -->
- <!-- 2024.04.26.16:07:17 -->
+ <!-- 2024.04.29.14:24:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="clockCrossingAdapter">
   <type>com.altera.sopcmodel.ensemble.EClockAdapter</type>
@@ -53,7 +53,7 @@
  </parameter>
  <parameter name="generationId">
   <type>int</type>
-  <value>1714161949</value>
+  <value>1714414956</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>true</visible>
@@ -208,7 +208,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SIZE_VALUE</name>
-   <value>2048</value>
+   <value>512</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.WRITABLE</name>
@@ -316,7 +316,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="initializationFileName">
    <type>java.lang.String</type>
-   <value>/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif</value>
+   <value>/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -340,7 +340,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="memorySize">
    <type>long</type>
-   <value>2048</value>
+   <value>512</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -479,7 +479,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_set_addr_width">
    <type>int</type>
-   <value>10</value>
+   <value>8</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -487,7 +487,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_set_addr_width2">
    <type>int</type>
-   <value>10</value>
+   <value>8</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -527,7 +527,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="derived_init_file_name">
    <type>java.lang.String</type>
-   <value>/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output/mif_apple.mif</value>
+   <value>/user/stud/fall22/sm5169/Documents/embedded/Embedded-System-Final-Project/snake/python/mif_output_16/mif_apple.mif</value>
    <derived>true</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -624,7 +624,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="addressSpan">
     <type>java.math.BigInteger</type>
-    <value>2048</value>
+    <value>512</value>
     <derived>true</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -712,7 +712,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="explicitAddressSpan">
     <type>java.math.BigInteger</type>
-    <value>2048</value>
+    <value>512</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -923,7 +923,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>address</name>
     <direction>Input</direction>
-    <width>10</width>
+    <width>8</width>
     <role>address</role>
    </port>
    <port>
@@ -62040,5 +62040,5 @@ parameters are a RESULT of the module parameters. -->
   <version>21.1</version>
  </plugin>
  <reportVersion>21.1 842</reportVersion>
- <uniqueIdentifier>CC96E51A77870000018F1C03FA40</uniqueIdentifier>
+ <uniqueIdentifier>CC96E51A76C80000018F2B188584</uniqueIdentifier>
 </EnsembleReport>

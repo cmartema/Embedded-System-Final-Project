@@ -4,7 +4,7 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
-		input  wire [9:0]  apple_sprite_s1_address,                      //                  apple_sprite_s1.address
+		input  wire [7:0]  apple_sprite_s1_address,                      //                  apple_sprite_s1.address
 		input  wire        apple_sprite_s1_debugaccess,                  //                                 .debugaccess
 		input  wire        apple_sprite_s1_clken,                        //                                 .clken
 		input  wire        apple_sprite_s1_chipselect,                   //                                 .chipselect
