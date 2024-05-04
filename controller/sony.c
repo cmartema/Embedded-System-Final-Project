@@ -118,7 +118,7 @@ int main() {
            (unsigned char *) &packet, sizeof(packet),
            &transferred, 0);
     if (transferred > 0) {
-      printf("02x \n", packet.keycode[8]);
+      printf("%02x \n", packet.keycode[8]);
       /*for(int i = 0; i < transferred ; i++){
         printf("%02x ",packet.keycode[i]);
       }
