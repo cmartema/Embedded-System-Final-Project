@@ -334,10 +334,10 @@ int main()
   printf("thread killed\n");
 
 
-//   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
-//     fprintf(stderr, "could not open %s\n", filename);
-//     return -1;
-//   }
+   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
+     fprintf(stderr, "could not open %s\n", filename);
+     return -1;
+   }
 
 //   printf("initial state: ");
   /*
@@ -359,16 +359,16 @@ int main()
   //vla.coordinate.y = 0;
   //set_ball_coordinate(&vla.coordinate);
 
-//   while(1){
-//     set_ball_coordinate(&vla.coordinate);
+   while(1){
+    set_ball_coordinate(&vla.coordinate);
   
-//     vla.coordinate.x += 1;
-//     vla.coordinate.y += 1;
-//     //printf("x: %d\n", vla.coordinate.x);
-//     //printf("y: %d\n", vla.coordinate.y);
-//     usleep(300000);
+     vla.coordinate.x += 1;
+     vla.coordinate.y += 1;
+     //printf("x: %d\n", vla.coordinate.x);
+     //printf("y: %d\n", vla.coordinate.y);
+     usleep(300000);
 
-//   }
+   }
 
 //   printf("VGA BALL Userspace program terminating\n");
   return 0;
