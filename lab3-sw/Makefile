@@ -12,16 +12,16 @@ else
 
     CFLAGS = -Wall
 
-    OBJECTS = sony.o 
+    OBJECTS = sony.o
     TARFILES = Makefile README vga_ball.h vga_ball.c hello.c sony.c sony.h
 
 default: module hello sony
 
 hello:  $(OBJECTS)
-	cc $(CFLAGS) -o sony $(OBJECTS) -lusb-1.0 -pthread
+	cc $(CFLAGS) -o hello $(OBJECTS) -lusb-1.0 -pthread
 
 
-lab2.o : sony.c sony.h 
+sony.o : sony.c sony.h 
 
 
 module:
