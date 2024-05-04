@@ -16,7 +16,7 @@ module:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
 
 hello: hello.c sony.c
-	$(CC) -o $@ $^
+	$(CC) -o $@ $^ -lusb-1.0 -pthread
 
 clean:
 	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
