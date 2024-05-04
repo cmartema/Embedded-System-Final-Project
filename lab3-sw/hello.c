@@ -328,7 +328,7 @@ int main()
   // Cast the argument pointer to the correct type
 
 //   pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
-  pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
+  //pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
   printf("After pthread create\n");
 
    if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
@@ -370,7 +370,7 @@ int main()
 
 //   printf("VGA BALL Userspace program terminating\n");
 
-  pthread_join(sony_thread, NULL);
+ // pthread_join(sony_thread, NULL);
   printf("thread killed\n");
   return 0;
 }
