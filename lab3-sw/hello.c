@@ -15,6 +15,7 @@
 #include <string.h>
 #include <unistd.h>
 // we added these libraries
+#include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -223,6 +224,9 @@ void deleteQueue(Queue* queue) {
 
 int vga_ball_fd;
 
+pthread_t sony_thread;
+void *sony_thread_f(void *);
+
 /* Read and print the background color */
 void print_background_color() {
   vga_ball_arg_t vla;
@@ -262,6 +266,21 @@ void set_ball_coordinate(const vga_ball_coordinate *c)
       return;
   }
 }
+void *sony_thread_f(void *ignored){ 
+    for(;;){
+        libusb_interrupt_transfer(sony, endpoint_address,
+                (unsigned char *) &packet, sizeof(packet),
+                &transferred, 0);
+
+        if (transferred > 0 && packet.keycode[8] != 0x08 ) {
+            printf("%02x \n", packet.keycode[8]);
+        }
+  }
+  
+
+  return NULL;
+}
+
 
 
 int main()
@@ -282,15 +301,11 @@ int main()
   struct usb_sony_packet packet;
   int transferred;
 
-  for(;;){
-    libusb_interrupt_transfer(sony, endpoint_address,
-            (unsigned char *) &packet, sizeof(packet),
-            &transferred, 0);
+  pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
 
-    if (transferred > 0 && packet.keycode[8] != 0x08 ) {
-      printf("%02x \n", packet.keycode[8]);
-    }
-  }
+  pthread_join(sony_thread, NULL);
+  printf("thread killed\n");
+
 
 //   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
 //     fprintf(stderr, "could not open %s\n", filename);
