@@ -297,7 +297,7 @@ void *sony_thread_f(void *args) {
 
         if (transferred > 0 && packet.keycode[8] != 0x08 ) {
             printf("%02x \n", packet.keycode[8]);
-            direction = packet.keycode[8]
+            direction = packet.keycode[8];
         }
   }
 
