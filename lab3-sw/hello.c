@@ -266,7 +266,28 @@ void set_ball_coordinate(const vga_ball_coordinate *c)
       return;
   }
 }
-void *sony_thread_f(void *ignored){ 
+
+// Define a structure to hold the arguments
+struct ThreadArgs {
+    // Define the arguments here
+    struct libusb_device_handle *sony;
+    uint8_t endpoint_address;
+    // Add more arguments as needed
+};
+
+// Function to be executed in the new thread
+void *sony_thread_f(void *args) {
+    // Cast the argument pointer to the correct type
+    struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
+    
+    // Now you can use the arguments
+    struct libusb_device_handle *sony = threadArgs->sony;
+    uint8_t endpoint_address = threadArgs->endpoint_address;
+    // Use the arguments as needed
+    
+    // Don't forget to free the memory allocated for args if necessary
+    struct usb_sony_packet packet;
+    int transferred;
     for(;;){
         libusb_interrupt_transfer(sony, endpoint_address,
                 (unsigned char *) &packet, sizeof(packet),
@@ -276,7 +297,6 @@ void *sony_thread_f(void *ignored){
             printf("%02x \n", packet.keycode[8]);
         }
   }
-  
 
   return NULL;
 }
@@ -285,6 +305,7 @@ void *sony_thread_f(void *ignored){
 
 int main()
 {
+  struct ThreadArgs args;
   vga_ball_arg_t vla;
   int i;
   static const char filename[] = "/dev/vga_ball";
@@ -292,16 +313,22 @@ int main()
   printf("VGA ball Userspace program started\n");
   
   // opening and connecting to keyboard
-  uint8_t endpoint_address;
-  struct libusb_device_handle *sony;
-  if ((sony = opensony(&endpoint_address)) == NULL ) {
+  uint8_t endpoint_address_temp;
+  struct libusb_device_handle *sony_temp;
+  if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
     fprintf(stderr, "Did not find sony\n");
     exit(1);
   }	
-  struct usb_sony_packet packet;
-  int transferred;
 
-  pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
+  args.sony = sony_temp;
+  args.endpoint_address = endpoint_address_temp;
+
+  
+
+  // Cast the argument pointer to the correct type
+
+//   pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
+  pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
 
   pthread_join(sony_thread, NULL);
   printf("thread killed\n");
