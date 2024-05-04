@@ -83,18 +83,20 @@ struct libusb_device_handle *opensony(uint8_t *endpoint_address) {
                 fprintf(stderr, "Error: libusb_claim_interface failed: %d\n", r);
                 exit(1);
               }
+
+              *endpoint_address = inter->endpoint[0].bEndpointAddress;
+              goto found;
             }
           }
         }
       }
-    *endpoint_address = inter->endpoint[0].bEndpointAddress;
-    goto found;
+    
 	  
 	
     }
   }
 
- found:
+  found:
   libusb_free_device_list(devs, 1);
 
   return sony;
