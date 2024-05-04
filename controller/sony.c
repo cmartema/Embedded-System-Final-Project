@@ -104,32 +104,32 @@ struct libusb_device_handle *opensony(uint8_t *endpoint_address) {
 
 
 
-// int main() {
-// 	uint8_t endpoint_address;
-// 	struct libusb_device_handle *sony;
-// 	if ((sony = opensony(&endpoint_address)) == NULL ) {
-// 		fprintf(stderr, "Did not find sony\n");
-// 		exit(1);
-// 	}	
-//   struct usb_sony_packet packet;
-//   int transferred;
-//   // char keystate[12];
+int main() {
+	uint8_t endpoint_address;
+	struct libusb_device_handle *sony;
+	if ((sony = opensony(&endpoint_address)) == NULL ) {
+		fprintf(stderr, "Did not find sony\n");
+		exit(1);
+	}	
+  struct usb_sony_packet packet;
+  int transferred;
+  // char keystate[12];
 
-//   for(;;){
-//     libusb_interrupt_transfer(sony, endpoint_address,
-//            (unsigned char *) &packet, sizeof(packet),
-//            &transferred, 0);
-//     if (transferred > 0) {
-//       printf("%02x \n", packet.keycode[8]);
-//       /*for(int i = 0; i < transferred ; i++){
-//         printf("%02x ",packet.keycode[i]);
-//       }
-//       */
+  for(;;){
+    libusb_interrupt_transfer(sony, endpoint_address,
+           (unsigned char *) &packet, sizeof(packet),
+           &transferred, 0);
+    if (transferred > 0) {
+      printf("%02x \n", packet.keycode[8]);
+      /*for(int i = 0; i < transferred ; i++){
+        printf("%02x ",packet.keycode[i]);
+      }
+      */
      
-//       //printf("\n");
-//     }
-//   }
-// 	return 0;
-// }
+      //printf("\n");
+    }
+  }
+	return 0;
+}
 
 
