@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "opensony.h"
 
 // customized hashmap
 /*
@@ -269,29 +270,34 @@ int main()
   int i;
   static const char filename[] = "/dev/vga_ball";
 
-  static const vga_ball_color_t colors[] = {
-    { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0xff, 0x00 }, /* Green */
-    { 0x00, 0x00, 0xff }, /* Blue */
-    { 0xff, 0xff, 0x00 }, /* Yellow */
-    { 0x00, 0xff, 0xff }, /* Cyan */
-    { 0xff, 0x00, 0xff }, /* Magenta */
-    { 0x80, 0x80, 0x80 }, /* Gray */
-    { 0x00, 0x00, 0x00 }, /* Black */
-    { 0xff, 0xff, 0xff }  /* White */
-  };
-  
-  #define COLORS 9
-
   printf("VGA ball Userspace program started\n");
+  
+  // opening and connecting to keyboard
+  uint8_t endpoint_address;
+  struct libusb_device_handle *sony;
+  if ((sony = opensony(&endpoint_address)) == NULL ) {
+    fprintf(stderr, "Did not find sony\n");
+    exit(1);
+  }	
+  struct usb_sony_packet packet;
+  int transferred;
 
-  if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
-    fprintf(stderr, "could not open %s\n", filename);
-    return -1;
+  for(;;){
+    libusb_interrupt_transfer(sony, endpoint_address,
+            (unsigned char *) &packet, sizeof(packet),
+            &transferred, 0);
+
+    if (transferred > 0) {
+      printf("%02x \n", packet.keycode[8]);
+    }
   }
 
-  printf("initial state: ");
-  print_background_color();
+//   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
+//     fprintf(stderr, "could not open %s\n", filename);
+//     return -1;
+//   }
+
+//   printf("initial state: ");
   /*
   for (i = 0 ; i < 24 ; i++) {
     //set_background_color(&colors[i % COLORS ]);
@@ -311,17 +317,18 @@ int main()
   //vla.coordinate.y = 0;
   //set_ball_coordinate(&vla.coordinate);
 
-  while(1){
-    set_ball_coordinate(&vla.coordinate);
+//   while(1){
+//     set_ball_coordinate(&vla.coordinate);
   
-    vla.coordinate.x += 1;
-    vla.coordinate.y += 1;
-    //printf("x: %d\n", vla.coordinate.x);
-    //printf("y: %d\n", vla.coordinate.y);
-    usleep(300000);
+//     vla.coordinate.x += 1;
+//     vla.coordinate.y += 1;
+//     //printf("x: %d\n", vla.coordinate.x);
+//     //printf("y: %d\n", vla.coordinate.y);
+//     usleep(300000);
 
-  }
+//   }
 
-  printf("VGA BALL Userspace program terminating\n");
+//   printf("VGA BALL Userspace program terminating\n");
   return 0;
 }
+
