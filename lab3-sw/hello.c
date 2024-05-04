@@ -222,6 +222,8 @@ void deleteQueue(Queue* queue) {
 }
 */
 
+int direction;
+
 int vga_ball_fd;
 
 pthread_t sony_thread;
@@ -295,6 +297,7 @@ void *sony_thread_f(void *args) {
 
         if (transferred > 0 && packet.keycode[8] != 0x08 ) {
             printf("%02x \n", packet.keycode[8]);
+            direction = packet.keycode[8]
         }
   }
 
@@ -374,12 +377,14 @@ int main()
 
    while(1){
     set_ball_coordinate(&vla.coordinate);
-  
-     vla.coordinate.x += 1;
-     vla.coordinate.y += 1;
+
+    if (direction == 0x02) {
+        vla.coordinate.x += 1;
+        vla.coordinate.y += 1;
+        usleep(300000);
+    }
      //printf("x: %d\n", vla.coordinate.x);
-     //printf("y: %d\n", vla.coordinate.y);
-     usleep(300000);
+     //printf("y: %d\n", vla.coordinate.y)
 
    }
 
