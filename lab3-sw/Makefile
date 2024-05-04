@@ -1,31 +1,35 @@
+CFLAGS = -Wall
+KERNEL_SOURCE := /usr/src/linux-headers-$(shell uname -r)
+PWD := $(shell pwd)
+
+OBJECTS = sony.o hello.o
+
+TARFILES = Makefile sony.c hello.c vga_ball.c sony.h vga_ball.h README
+
 ifneq (${KERNELRELEASE},)
-
-# KERNELRELEASE defined: we are being compiled as part of the Kernel
-        obj-m := vga_ball.o
-
+	# KERNELRELEASE defined: we are being compiled as part of the Kernel
+	obj-m := vga_ball.o
 else
+	# We are being compiled as a module: use the Kernel build system
+	default: module combined_executable
 
-# We are being compiled as a module: use the Kernel build system
+	module:
+		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
 
-	KERNEL_SOURCE := /usr/src/linux-headers-$(shell uname -r)
-        PWD := $(shell pwd)
+	hello : $(OBJECTS)
+		cc $(CFLAGS) -o hello $(OBJECTS) -lusb-1.0 -pthread
 
-default: module hello
+	sony.o : sony.c sony.h
+		cc $(CFLAGS) -c -o sony.o sony.c
 
-module:
-	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
+	hello.o : hello.c
+		cc $(CFLAGS) -c -o hello.o hello.c
 
-clean:
-	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
-	${RM} hello
+	clean:
+		${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
+		rm -rf *.o combined_executable
 
-OBJECTS = sony.o
-TARFILES = Makefile README vga_ball.h vga_ball.c hello.c sony.c sony.h
-TARFILE = lab3-sw.tar.gz
-.PHONY : tar
-tar : $(TARFILE)
+	tar : $(TARFILES)
+		tar zcvf lab3-sw.tar.gz $(TARFILES)
 
-$(TARFILE) : $(TARFILES)
-	tar zcfC $(TARFILE) .. $(TARFILES:%=lab3-sw/%)
-
-endif 
+endif
