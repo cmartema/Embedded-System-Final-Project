@@ -145,6 +145,9 @@ module vga_ball(
   reg [7:0] snake_head_pos_x;
   reg [7:0] snake_head_pos_y;
 
+  reg [7:0] snake_head_up_pos_x;
+  reg [7:0] snake_head_up_pos_y;
+
    always_ff @(posedge clk)
      if (reset) begin
       background_r <= 8'h0;
@@ -167,6 +170,8 @@ module vga_ball(
        3'h4 : snake_head_pos_y <= writedata;
        3'h5 : d <= writedata;
        3'h6 : e <= writedata;
+       3'h7 : snake_head_up_pos_x <= writedata;
+       3'h8 : snake_head_up_pos_y <= writedata;
 
     
        endcase
@@ -201,7 +206,7 @@ always_ff @(posedge clk) begin
         c <= {apple_sprite_output[4:0], 3'b0};
       end
 
-      //snake head left
+      //snake head right
       
       else if (hcount[10:5] == (snake_head_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin //coordinates(10,10) 31
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
@@ -214,6 +219,20 @@ always_ff @(posedge clk) begin
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
       end 
+
+      //snake head up
+
+       else if (hcount[10:5] == (snake_head_up_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]) begin //coordinates(10,10) 31
+        snake_head_up_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {snake_head_up_sprite_output[15:11], 3'b0};
+        b <= { snake_head_up_sprite_output[10:5], 2'b0};
+        c <= {snake_head_up_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == (snake_head_up_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]) begin
+        snake_head_up_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
+        a <= {snake_head_up_sprite_output[15:11], 3'b0};
+        b <= { snake_head_up_sprite_output[10:5], 2'b0};
+        c <= {snake_head_up_sprite_output[4:0], 3'b0};
+      end
       /*
       //snake body
       else if (hcount[10:5] == (head_pos_x) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31

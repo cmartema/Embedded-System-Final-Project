@@ -47,6 +47,9 @@
 #define X_FRUIT(x)((x)+5)
 #define Y_FRUIT(x)((x)+6)
 
+#define X_HEAD_UP(x)((x)+7)
+#define Y_HEAD_UP(x)((x)+8)
+
 
 /*
  * Information about our device
@@ -73,9 +76,14 @@ static void write_background(vga_ball_color_t *background)
 }
 
 //created write coordinate for all the sprites
-static void write_coordinate(vga_ball_coordinate *coordinate){
-	iowrite8(coordinate->x, X(dev.virtbase));
-	iowrite8(coordinate->y, Y(dev.virtbase));
+static void write_coordinate(vga_ball_coordinate *coordinate, int flag){
+	if (flag == 0){
+		iowrite8(coordinate->x, X(dev.virtbase));
+		iowrite8(coordinate->y, Y(dev.virtbase));
+	} else if (flage == 1){
+		iowrite8(coordinate->x, X_HEAD_UP(dev.virtbase));
+		iowrite8(coordinate->y, Y_HEAD_UP(dev.virtbase));
+	}
 	dev.coordinate = *coordinate;
 }
 
@@ -116,7 +124,14 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.coordinate);
+		write_coordinate(&vla.coordinate, 0);
+		break;
+	
+	case VGA_HEAD_UP_WRITE_COORDINATE:
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_coordinate(&vla.coordinate, 1);
 		break;
 	
 	case VGA_FRUIT_WRITE_COORDINATE:

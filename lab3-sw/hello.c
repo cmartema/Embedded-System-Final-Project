@@ -259,21 +259,30 @@ void set_background_color(const vga_ball_color_t *c)
 
 
 //set the ball position
-void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate *a)
+void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate *a, const vga_ball_coordinate *b)
 {
   vga_ball_arg_t vla;
   vga_ball_arg_t fruit;
+  vga_ball_arg_t head_up;
   vla.coordinate = *c;
   fruit.coordinate = *a;
+  head_up.coordinate = *b;
   if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
-      perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+      perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
       return;
   }
     
   if (ioctl(vga_ball_fd, VGA_FRUIT_WRITE_COORDINATE, &fruit)){
-    perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+    perror("ioctl(VGA_FRUIT_WRITE_COORDINATE) failed");
     return;
   }
+
+  if (ioctl(vga_ball_fd, VGA_HEAD_UP_WRITE_COORDINATE, &head_up)) {
+      perror("ioctl(VGA_HEAD_UP_WRITE_COORDINATE) failed");
+      return;
+  }
+
+  
 }
 
 // Define a structure to hold the arguments
@@ -318,6 +327,7 @@ int main()
   struct ThreadArgs args;
   vga_ball_arg_t vla;
   vga_ball_arg_t fruit;
+  vga_ball_arg_t head_up;
   int i;
   static const char filename[] = "/dev/vga_ball";
   static const vga_ball_color_t colors[] = {
@@ -377,7 +387,8 @@ int main()
     } else if (direction == 0x06){
         vla.coordinate.x -= 1;
     } else if (direction == 0x00) {
-        vla.coordinate.y -= 1;
+        head_up.coordinate.y = vla.coordinate.y - 1;
+        head_up.coordinate.x = vla.coordinate.x;
     } else if (direction == 0x04) {
         vla.coordinate.y += 1;
     }
