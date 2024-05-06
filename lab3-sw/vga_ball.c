@@ -73,14 +73,16 @@ static void write_background(vga_ball_color_t *background)
 }
 
 //created write coordinate for all the sprites
-static void write_coordinate(vga_ball_coordinate *coordinate, int flag){
-	if (flag == 0){
-		iowrite8(coordinate->x, X(dev.virtbase));
-		iowrite8(coordinate->y, Y(dev.virtbase));
-	} else if (flag == 1){
-		iowrite8(coordinate->x, X_FRUIT(dev.virtbase));
-		iowrite8(coordinate->y, Y_FRUIT(dev.virtbase));
-	}
+static void write_coordinate(vga_ball_coordinate *coordinate){
+	iowrite8(coordinate->x, X(dev.virtbase));
+	iowrite8(coordinate->y, Y(dev.virtbase));
+	dev.coordinate = *coordinate;
+}
+
+//write fruit coordinate
+static void write_fruit_coordinate(vga_ball_coordinate *coordinate){
+	iowrite8(coordinate->x, X_FRUIT(dev.virtbase));
+	iowrite8(coordinate->y, Y_FRUIT(dev.virtbase));
 	dev.coordinate = *coordinate;
 }
 
@@ -114,16 +116,15 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.coordinate, 0);
+		write_coordinate(&vla.coordinate);
 		break;
 	
-	case VGA_BALL_FRUIT_COORDINATE:
+	case VGA_FRUIT_WRITE_COORDINATE:
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.coordinate, 1);
+		write_fruit_coordinate(&vla.coordinate);
 		break;
-
 	default:
 		return -EINVAL;
 	}
