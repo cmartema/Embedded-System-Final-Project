@@ -114,7 +114,14 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.coordinate);
+		write_coordinate(&vla.coordinate, 0);
+		break;
+	
+	case VGA_BALL_FRUIT_COORDINATE:
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_coordinate(&vla.coordinate, 1);
 		break;
 
 	default:

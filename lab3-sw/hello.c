@@ -265,12 +265,12 @@ void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate
   vga_ball_arg_t fruit;
   vla.coordinate = *c;
   fruit.coordinate = *a;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla, 0)) {
+  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
       return;
   }
     
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &fruit, 1)){
+  if (ioctl(vga_ball_fd, VGA_FRUIT_WRITE_COORDINATE, &fruit)){
     perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
     return;
   }
