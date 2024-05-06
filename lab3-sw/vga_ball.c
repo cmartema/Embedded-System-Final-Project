@@ -80,7 +80,7 @@ static void write_coordinate(vga_ball_coordinate *coordinate, int flag){
 	if (flag == 0){
 		iowrite8(coordinate->x, X(dev.virtbase));
 		iowrite8(coordinate->y, Y(dev.virtbase));
-	} else if (flage == 1){
+	} else if (flag == 1){
 		iowrite8(coordinate->x, X_HEAD_UP(dev.virtbase));
 		iowrite8(coordinate->y, Y_HEAD_UP(dev.virtbase));
 	}
