@@ -317,6 +317,7 @@ int main()
 {
   struct ThreadArgs args;
   vga_ball_arg_t vla;
+  vga_ball_arg_t fruit;
   int i;
   static const char filename[] = "/dev/vga_ball";
   static const vga_ball_color_t colors[] = {
