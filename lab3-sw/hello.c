@@ -362,8 +362,12 @@ int main()
      fprintf(stderr, "could not open %s\n", filename);
      return -1;
    }
-    //fruit.coordinate.y = 10;
-    //set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
+    fruit.coordinate.x = 10;
+    fruit.coordinate.y = 10;
+
+    snake.coordinae.x = 0;
+    snake.coordinate.y = 5;
+    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
 
    while(1){
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
