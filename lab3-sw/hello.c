@@ -384,7 +384,7 @@ int main()
     if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
         printf("same coordinates\n");
     }
-    if (vla.coordinate.x == 38 || vla.coordinate.x == 1 || vla.coordinate.y == 4 || vla.coordinate.y == 28){
+    if (vla.coordinate.x == 38 || vla.coordinate.x == 1 || vla.coordinate.y == 3 || vla.coordinate.y == 28){
         break;
     }
 
