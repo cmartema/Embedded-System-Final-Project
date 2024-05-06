@@ -35,20 +35,16 @@
 
 #define DRIVER_NAME "vga_ball"
 
-/* Device registers */
-#define BG_RED(x) (x)
-#define BG_GREEN(x) ((x)+1)
-#define BG_BLUE(x) ((x)+2)
 
 // X & Y coordinates 
-#define X(x)((x)+3)
-#define Y(x)((x)+4)
+#define X(x)((x))
+#define Y(x)((x)+1)
 
-#define X_FRUIT(x)((x)+5)
-#define Y_FRUIT(x)((x)+6)
+#define X_FRUIT(x)((x)+2)
+#define Y_FRUIT(x)((x)+3)
 
-#define X_HEAD_UP(x)((x)+7)
-#define Y_HEAD_UP(x)((x)+8)
+#define X_HEAD_UP(x)((x)+4)
+#define Y_HEAD_UP(x)((x)+5)
 
 
 /*
@@ -63,17 +59,6 @@ struct vga_ball_dev {
 	vga_ball_coordinate coordinate;
 } dev;
 
-/*
- * Write segments of a single digit
- * Assumes digit is in range and the device information has been set up
- */
-static void write_background(vga_ball_color_t *background)
-{
-	iowrite8(background->red, BG_RED(dev.virtbase) );
-	iowrite8(background->green, BG_GREEN(dev.virtbase) );
-	iowrite8(background->blue, BG_BLUE(dev.virtbase) );
-	dev.background = *background;
-}
 
 //created write coordinate for all the sprites
 static void write_coordinate(vga_ball_coordinate *coordinate){
@@ -108,20 +93,6 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 	vga_ball_arg_t vla;
 
 	switch (cmd) {
-	case VGA_BALL_WRITE_BACKGROUND:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		write_background(&vla.background);
-		break;
-
-	case VGA_BALL_READ_BACKGROUND:
-	  	vla.background = dev.background;
-		if (copy_to_user((vga_ball_arg_t *) arg, &vla,
-				 sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		break;
-	
 	case VGA_BALL_WRITE_COORDINATE:
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
