@@ -362,11 +362,10 @@ int main()
      return -1;
    }
     fruit.coordinate.y = 10;
-    set_ball_coordinate(&fruit.coordinate);
+    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
 
    while(1){
-    set_ball_coordinate(&vla.coordinate);
-    set_ball_coordinate(&fruit.coordinate);
+    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
     fruit.coordinate.y += 1;
     if (direction == 0x02) {
         vla.coordinate.x += 1;
