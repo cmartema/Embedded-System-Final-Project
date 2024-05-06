@@ -377,9 +377,9 @@ int main()
     } else if (direction == 0x06){
         vla.coordinate.x -= 1;
     } else if (direction == 0x00) {
-        vla.coordinate.y += 1;
-    } else if (direction == 0x04) {
         vla.coordinate.y -= 1;
+    } else if (direction == 0x04) {
+        vla.coordinate.y += 1;
     }
     if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
         printf("same coordinates\n");
