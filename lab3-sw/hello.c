@@ -365,8 +365,8 @@ int main()
     fruit.coordinate.x = 10;
     fruit.coordinate.y = 10;
 
-    vla.coordinate.x = 5;
-    vla.coordinate.y = 5;
+    vla.coordinate.x = 10;
+    vla.coordinate.y = 20;
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
 
    while(1){
