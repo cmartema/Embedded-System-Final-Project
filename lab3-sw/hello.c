@@ -384,17 +384,13 @@ int main()
     if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
         printf("same coordinates\n");
     }
-    if (vla.coordinate.x == 38 || vla.coordinate.x == 1){
+    if (vla.coordinate.x == 39 || vla.coordinate.x == 1){
         break;
     }
 
     usleep(300000);
    }
-   printf("GAME OVER\n");
-
-
-//   printf("VGA BALL Userspace program terminating\n");
-
+  printf("GAME OVER\n");
   pthread_join(sony_thread, NULL);
   printf("thread killed\n");
   return 0;
