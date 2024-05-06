@@ -377,10 +377,10 @@ int main()
 
     vla.coordinate.x = 10;
     vla.coordinate.y = 20;
-    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
+    set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
 
    while(1){
-    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
+    set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
     //fruit.coordinate.y += 1;
     if (direction == 0x02) {
         vla.coordinate.x += 1;
