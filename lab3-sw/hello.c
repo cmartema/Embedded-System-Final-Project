@@ -362,21 +362,25 @@ int main()
      fprintf(stderr, "could not open %s\n", filename);
      return -1;
    }
-    fruit.coordinate.y = 10;
-    set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
+    //fruit.coordinate.y = 10;
+    //set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
 
    while(1){
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate);
-    fruit.coordinate.y += 1;
+    //fruit.coordinate.y += 1;
     if (direction == 0x02) {
         vla.coordinate.x += 1;
+    } else if (direction == 0x06){
+        vla.coordinate.x -= 1;
+    } else if (direction == 0x00) {
         vla.coordinate.y += 1;
-        
+    } else if (direction == 0x04) {
+        vla.coordinate.y -= 1;
+    }
+    if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
+        printf("same coordinates\n");
     }
     usleep(300000);
-     //printf("x: %d\n", vla.coordinate.x);
-     //printf("y: %d\n", vla.coordinate.y)
-
    }
 
 
