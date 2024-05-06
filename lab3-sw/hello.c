@@ -371,8 +371,9 @@ int main()
     if (direction == 0x02) {
         vla.coordinate.x += 1;
         vla.coordinate.y += 1;
-        usleep(300000);
+        
     }
+    usleep(300000);
      //printf("x: %d\n", vla.coordinate.x);
      //printf("y: %d\n", vla.coordinate.y)
 
