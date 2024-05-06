@@ -370,9 +370,10 @@ int main()
 
 
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
+    direction = 0x08;
 
    while(1){
-    direction = 0x08;
+    
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
     //fruit.coordinate.y += 1;
     if (direction == 0x02) {
