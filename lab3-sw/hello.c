@@ -259,13 +259,20 @@ void set_background_color(const vga_ball_color_t *c)
 
 
 //set the ball position
-void set_ball_coordinate(const vga_ball_coordinate *c)
+void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate *a)
 {
   vga_ball_arg_t vla;
+  vga_ball_arg_t fruit;
   vla.coordinate = *c;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
+  fruit.coordinate = *a;
+  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla, 0)) {
       perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
       return;
+  }
+    
+  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &fruit, 1)){
+    perror("ioctl(VGA_BALL_SET_BACKGROUND) failed");
+    return;
   }
 }
 
@@ -355,29 +362,11 @@ int main()
      return -1;
    }
 
-//   printf("initial state: ");
-  /*
-  for (i = 0 ; i < 24 ; i++) {
-    //set_background_color(&colors[i % COLORS ]);
-    //print_background_color();
-    usleep(400000);
-  }
-  vla.coordinate.x = 20;
-  vla.coordinate.y = 20;
-  for (i = 0 ; i < 2 ; i++) {
-    set_ball_coordinate(&vla.coordinate);
-    //print_background_color();
-    usleep(400000);
-    vla.coordinate.x = 280;
-    vla.coordinate.y = 280;
-  }*/
-  //vla.coordinate.x = 600;
-  //vla.coordinate.y = 0;
-  //set_ball_coordinate(&vla.coordinate);
 
    while(1){
     set_ball_coordinate(&vla.coordinate);
-
+    // add set_ball_coordinate
+    fruit.coordinate.y += 1;
     if (direction == 0x02) {
         vla.coordinate.x += 1;
         vla.coordinate.y += 1;

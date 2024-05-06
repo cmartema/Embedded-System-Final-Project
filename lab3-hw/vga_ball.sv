@@ -165,8 +165,8 @@ module vga_ball(
        3'h2 : background_b <= writedata;
        3'h3 : snake_head_pos_x <= writedata;
        3'h4 : snake_head_pos_y <= writedata;
-      //  3'h5 : d <= writedata;
-      //  3'h6 : e <= writedata;
+       3'h5 : d <= writedata;
+       3'h6 : e <= writedata;
 
     
        endcase

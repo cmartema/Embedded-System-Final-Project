@@ -42,7 +42,10 @@
 
 // X & Y coordinates 
 #define X(x)((x)+3)
-#define Y(x)((x)+5)
+#define Y(x)((x)+4)
+
+#define X_FRUIT(x)((x)+5)
+#define Y_FRUIT(x)((x)+6)
 
 
 /*
@@ -70,9 +73,14 @@ static void write_background(vga_ball_color_t *background)
 }
 
 //created write coordinate for all the sprites
-static void write_coordinate(vga_ball_coordinate *coordinate){
-	iowrite8(coordinate->x, X(dev.virtbase));
-	iowrite8(coordinate->y, Y(dev.virtbase));
+static void write_coordinate(vga_ball_coordinate *coordinate, int flag){
+	if (flag == 0){
+		iowrite8(coordinate->x, X(dev.virtbase));
+		iowrite8(coordinate->y, Y(dev.virtbase));
+	} else if (flag == 1){
+		iowrite8(coordinate->x, X_FRUIT(dev.virtbase));
+		iowrite8(coordinate->y, Y_FRUIT(dev.virtbase));
+	}
 	dev.coordinate = *coordinate;
 }
 
