@@ -330,19 +330,6 @@ int main()
   vga_ball_arg_t head_up;
   int i;
   static const char filename[] = "/dev/vga_ball";
-  static const vga_ball_color_t colors[] = {
-    { 0xff, 0x00, 0x00 }, /* Red */
-    { 0x00, 0xff, 0x00 }, /* Green */
-    { 0x00, 0x00, 0xff }, /* Blue */
-    { 0xff, 0xff, 0x00 }, /* Yellow */
-    { 0x00, 0xff, 0xff }, /* Cyan */
-    { 0xff, 0x00, 0xff }, /* Magenta */
-    { 0x80, 0x80, 0x80 }, /* Gray */
-    { 0x00, 0x00, 0x00 }, /* Black */
-    { 0xff, 0xff, 0xff }  /* White */
-  };
-  
-  #define COLORS 9
 
   printf("VGA ball Userspace program started\n");
   
@@ -389,6 +376,8 @@ int main()
     } else if (direction == 0x00) {
         head_up.coordinate.y = vla.coordinate.y;
         head_up.coordinate.x = vla.coordinate.x;
+        vla.coordinate.y = -1;
+        vla.coordinate.x = -1;
     } else if (direction == 0x04) {
         vla.coordinate.y += 1;
     }
