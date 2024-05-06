@@ -384,8 +384,13 @@ int main()
     if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
         printf("same coordinates\n");
     }
+    if (vla.coordnate.x == 18 || vla.coordinate.x == 1){
+        break;
+    }
+
     usleep(300000);
    }
+   printf("GAME OVER\n");
 
 
 //   printf("VGA BALL Userspace program terminating\n");
