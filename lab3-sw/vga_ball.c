@@ -167,8 +167,7 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		goto out_release_mem_region;
 	}
         
-	/* Set an initial color */
-    write_background(&beige);
+	
 
 
 
