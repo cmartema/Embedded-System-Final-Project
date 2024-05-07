@@ -362,8 +362,7 @@ int main()
             head_up.coordinate.x = vla.coordinate.x;
             vla.coordinate.y = 40;
             vla.coordinate.x = 40;
-        }
-        head_up.coordinate.y -= 1;
+        } else head_up.coordinate.y -= 1;
     } else if (direction == 0x04) {
         vla.coordinate.y += 1;
     }
