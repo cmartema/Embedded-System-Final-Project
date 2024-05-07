@@ -62,22 +62,22 @@ struct vga_ball_dev {
 
 //created write coordinate for all the sprites
 static void write_coordinate(vga_ball_coordinate *coordinate){
-	iowrite8(coordinate->x, X(dev.virtbase));
-	iowrite8(coordinate->y, Y(dev.virtbase));
+	iowrite64(coordinate->x, X(dev.virtbase));
+	iowrite64(coordinate->y, Y(dev.virtbase));
 	dev.coordinate = *coordinate;
 }
 
 //write fruit coordinate
 static void write_fruit_coordinate(vga_ball_coordinate *coordinate){
-	iowrite8(coordinate->x, X_FRUIT(dev.virtbase));
-	iowrite8(coordinate->y, Y_FRUIT(dev.virtbase));
+	iowrite64(coordinate->x, X_FRUIT(dev.virtbase));
+	iowrite64(coordinate->y, Y_FRUIT(dev.virtbase));
 	dev.coordinate = *coordinate;
 }
 
 //write head up coordinate
 static void write_head_up_coordinate(vga_ball_coordinate *coordinate){
-	iowrite8(coordinate->x, X_HEAD_UP(dev.virtbase));
-	iowrite8(coordinate->y, Y_HEAD_UP(dev.virtbase));
+	iowrite64(coordinate->x, X_HEAD_UP(dev.virtbase));
+	iowrite64(coordinate->y, Y_HEAD_UP(dev.virtbase));
 	dev.coordinate = *coordinate;
 }
 
