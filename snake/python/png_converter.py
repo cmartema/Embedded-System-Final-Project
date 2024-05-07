@@ -2,7 +2,7 @@ import binascii
 from PIL import Image
 import os
 
-INPUT_DIR = '../../Graphics'
+INPUT_DIR = '../../Score'
 OUTPUT_DIR = 'mif_output_16'
 
 
