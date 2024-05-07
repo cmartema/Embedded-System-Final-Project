@@ -140,8 +140,85 @@ module vga_ball(
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
 
 
+  //Register for the offsetting the screen
+  reg [0:63] map1;
+  reg [0:63] map2;
+  reg [0:63] map3;
+  reg [0:63] map4;
+  reg [0:63] map5;
+  reg [0:63] map6;
+  reg [0:63] map7;
+  reg [0:63] map8;
+  reg [0:63] map9;
+  reg [0:63] map10;
+  reg [0:63] map11;
+  reg [0:63] map12;
+  reg [0:63] map13;
+  reg [0:63] map14;
+  reg [0:63] map15;
+  reg [0:63] map16;
+  reg [0:63] map17;
+  reg [0:63] map18;
+  reg [0:63] map19;
+  reg [0:63] map20;
+  reg [0:63] map21;
+  reg [0:63] map22;
+  reg [0:63] map23;
+  reg [0:63] map24;
+  reg [0:63] map25;
+  reg [0:63] map26;
+  reg [0:63] map27;
+  reg [0:63] map28;
+  reg [0:63] map29;
+  reg [0:63] map30;
+  reg [0:63] map31;
+  reg [0:63] map32;
+  reg [0:63] map33;
+  reg [0:63] map34;
+  reg [0:63] map35;
+  reg [0:63] map36;
+  reg [0:63] map37;
+  reg [0:63] map38;
+  reg [0:63] map39;
+  reg [0:63] map40;
+  reg [0:63] map41;
+  reg [0:63] map42;
+  reg [0:63] map43;
+  reg [0:63] map44;
+  reg [0:63] map45;
+  reg [0:63] map46;
+  reg [0:63] map47;
+  reg [0:63] map48;
+  reg [0:63] map49;
+  reg [0:63] map50;
+  reg [0:63] map51;
+  reg [0:63] map52;
+  reg [0:63] map53;
+  reg [0:63] map54;
+  reg [0:63] map55;
+  reg [0:63] map56;
+  reg [0:63] map57;
+  reg [0:63] map58;
+  reg [0:63] map59;
+  reg [0:63] map60;
+  reg [0:63] map61;
+  reg [0:63] map62;
+  reg [0:63] map63;
+  reg [0:63] map64;
+  reg [0:63] map65;
+  reg [0:63] map66;
+  reg [0:63] map67;
+  reg [0:63] map68;
+  reg [0:63] map69;
+  reg [0:63] map70;
+  reg [0:63] map71;
+  reg [0:63] map72;
+  reg [0:63] map73;
+  reg [0:63] map74;
+  reg [0:63] map75; 
 
-
+  
+  
   reg [7:0] snake_head_pos_x;
   reg [7:0] snake_head_pos_y;
 
