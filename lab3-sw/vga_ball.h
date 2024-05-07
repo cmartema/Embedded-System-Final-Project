@@ -10,6 +10,10 @@ typedef struct {
 } vga_ball_coordinate;
 
 typedef struct {
+  uint64_t data;
+} sv_map;
+
+typedef struct {
 	unsigned char red, green, blue;
   //vga_ball_coordinate coordinate;
 } vga_ball_color_t;
@@ -24,8 +28,8 @@ typedef struct {
 
 /* ioctls and their arguments */
 #define VGA_BALL_WRITE_COORDINATE _IOW(VGA_BALL_MAGIC, 1, vga_ball_arg_t *)
-#define VGA_HEAD_UP_WRITE_COORDINATE _IOW(VGA_BALL_MAGIC, 2, vga_ball_arg_t *)
-#define VGA_FRUIT_WRITE_COORDINATE _IOW(VGA_BALL_MAGIC, 3, vga_ball_arg_t *)
+// #define VGA_HEAD_UP_WRITE_COORDINATE _IOW(VGA_BALL_MAGIC, 2, vga_ball_arg_t *)
+// #define VGA_FRUIT_WRITE_COORDINATE _IOW(VGA_BALL_MAGIC, 3, vga_ball_arg_t *)
 
 
 #endif
