@@ -10,7 +10,7 @@ typedef struct {
 } vga_ball_coordinate;
 
 typedef struct {
-  uint32_t data;
+  int32_t data;
 } sv_map;
 
 typedef struct {
