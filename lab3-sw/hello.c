@@ -300,6 +300,7 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
+    int wholeScreen[1200];
   struct ThreadArgs args;
   vga_ball_arg_t vla;
   vga_ball_arg_t fruit;
