@@ -356,6 +356,8 @@ int main()
     } else if (direction == 0x00) {
         head_up.coordinate.y = vla.coordinate.y;
         head_up.coordinate.x = vla.coordinate.x;
+        vla.coordinate.y = 40;
+        vla.coordinate.x = 40;
     } else if (direction == 0x04) {
         vla.coordinate.y += 1;
     }
