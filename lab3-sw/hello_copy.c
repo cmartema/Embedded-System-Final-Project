@@ -142,7 +142,7 @@ typedef struct {
 // Function to create a new empty queue
 Queue* createQueue() {
     Queue* queue = (Queue*)malloc(sizeof(Queue));
-    queue->front = -1;tyy
+    queue->front = -1;
     queue->rear = -1;
     return queue;
 }
@@ -224,7 +224,7 @@ void deleteQueue(Queue* queue) {
 
 int direction;
 
-// int direction_flag = 0;
+int direction_flag = 0;
 
 int vga_ball_fd;
 
@@ -234,7 +234,6 @@ void *sony_thread_f(void *);
 
 
 //set the ball position
-/*
 void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate *a, const vga_ball_coordinate *b)
 {
   vga_ball_arg_t vla;
@@ -260,17 +259,6 @@ void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate
 
   
 }
-*/
-//set the ball position
-void set_ball_coordinate(const sv_map *c)
-{
-    sv_map vla = *c;
-    if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
-        perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
-        return;
-    }
-}
-
 
 // Define a structure to hold the arguments
 struct ThreadArgs {
@@ -312,56 +300,56 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
-    /*
     int wholeScreen[1200];
-    struct ThreadArgs args;
-    
-    // vga_ball_arg_t vla;
-    // vga_ball_arg_t fruit;
-    // vga_ball_arg_t head_up;
+  struct ThreadArgs args;
+  vga_ball_arg_t vla;
+  vga_ball_arg_t fruit;
+  vga_ball_arg_t head_up;
+  int i;
+  static const char filename[] = "/dev/vga_ball";
 
-    sv_map data;
-
-    int i;
-    static const char filename[] = "/dev/vga_ball";
-
-    printf("VGA ball Userspace program started\n");
+  printf("VGA ball Userspace program started\n");
   
-    // opening and connecting to controller
-    uint8_t endpoint_address_temp;
-    struct libusb_device_handle *sony_temp;
-    if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
-        fprintf(stderr, "Did not find sony\n");
-        exit(1);
-    }	
-    
-    args.sony = sony_temp;
-    args.endpoint_address = endpoint_address_temp;
-    
-    // Cast the argument pointer to the correct type
-    // pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
-    pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
-    printf("After pthread create\n");
-    
-    if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
-        fprintf(stderr, "could not open %s\n", filename);
-        return -1;
-    }
+  // opening and connecting to keyboard
+  
+  uint8_t endpoint_address_temp;
+  struct libusb_device_handle *sony_temp;
+  if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
+    fprintf(stderr, "Did not find sony\n");
+    exit(1);
+  }	
+  
 
-    // fruit.coordinate.x = 10;
-    // fruit.coordinate.y = 10;
+  args.sony = sony_temp;
+  args.endpoint_address = endpoint_address_temp;
+  
 
-    // vla.coordinate.x = 10;
-    // vla.coordinate.y = 20;
+  
 
-    // head_up.coordinate.x = 40;
-    // head_up.coordinate.y = 40;
+  // Cast the argument pointer to the correct type
+
+//   pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
+  pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
+  printf("After pthread create\n");
+
+   if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
+     fprintf(stderr, "could not open %s\n", filename);
+     return -1;
+   }
+    fruit.coordinate.x = 10;
+    fruit.coordinate.y = 10;
+
+    vla.coordinate.x = 10;
+    vla.coordinate.y = 20;
+
+    head_up.coordinate.x = 40;
+    head_up.coordinate.y = 40;
 
 
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
     direction = 0x08;
 
-    while(1){
+   while(1){
     
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
     //fruit.coordinate.y += 1;
@@ -386,12 +374,11 @@ int main()
         break;
     }
 
-        usleep(300000);
-    }
-    printf("GAME OVER\n");
-    pthread_join(sony_thread, NULL);
-    printf("thread killed\n");
-    */
+    usleep(300000);
+   }
+  printf("GAME OVER\n");
+  pthread_join(sony_thread, NULL);
+  printf("thread killed\n");
   return 0;
 }
 

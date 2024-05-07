@@ -37,49 +37,45 @@
 
 
 // X & Y coordinates 
-#define X(x)((x))
-#define Y(x)((x)+1)
-
-#define X_FRUIT(x)((x)+2)
-#define Y_FRUIT(x)((x)+3)
-
-#define X_HEAD_UP(x)((x)+4)
-#define Y_HEAD_UP(x)((x)+5)
-
+#define X(x)((x)+7)
 
 /*
- * Information about our device
- */
 struct vga_ball_dev {
-	struct resource res; /* Resource: our registers */
-	void __iomem *virtbase; /* Where registers can be accessed in memory */
+	struct resource res; 
+	void __iomem *virtbase; 
     vga_ball_color_t background;
 
-	//our change
 	vga_ball_coordinate coordinate;
 } dev;
 
-
-//created write coordinate for all the sprites
 static void write_coordinate(vga_ball_coordinate *coordinate){
 	iowrite64(coordinate->x, X(dev.virtbase));
 	iowrite64(coordinate->y, Y(dev.virtbase));
 	dev.coordinate = *coordinate;
 }
+*/
 
-//write fruit coordinate
-static void write_fruit_coordinate(vga_ball_coordinate *coordinate){
-	iowrite64(coordinate->x, X_FRUIT(dev.virtbase));
-	iowrite64(coordinate->y, Y_FRUIT(dev.virtbase));
-	dev.coordinate = *coordinate;
+struct vga_ball_dev{
+	struct resource res; /* Resource: our registers */
+	void __iomem *virtbase; /* Where registers can be accessed in memory */
+    // vga_ball_color_t background;
+
+	//our change
+	// vga_ball_coordinate coordinate;
+	// sv_map data;
+	sv_map data;
+} dev;
+
+
+//created write coordinate for all the sprites
+static void write_coordinate(uint64_t *data){
+    // Write the data to some register using iowrite64
+    iowrite64(*data, X(dev.virtbase));
+	dev.data = *data;
+    // Free the allocated memory
+    // kfree(data);
 }
 
-//write head up coordinate
-static void write_head_up_coordinate(vga_ball_coordinate *coordinate){
-	iowrite64(coordinate->x, X_HEAD_UP(dev.virtbase));
-	iowrite64(coordinate->y, Y_HEAD_UP(dev.virtbase));
-	dev.coordinate = *coordinate;
-}
 
 /*
  * Handle ioctl() calls from userspace:
@@ -88,6 +84,25 @@ static void write_head_up_coordinate(vga_ball_coordinate *coordinate){
  */
 
 //this will write backgrounds for apple and snake sprites 
+static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
+{
+	sv_map vla;
+
+	switch (cmd) {
+	case VGA_BALL_WRITE_COORDINATE:
+		if (copy_from_user(&vla, (sv_map *) arg,
+				   sizeof(sv_map)))
+			return -EACCES;
+		write_coordinate(&vla.data);
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
+}
+
+/*
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 {
 	vga_ball_arg_t vla;
@@ -119,6 +134,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
 
 	return 0;
 }
+*/
 
 /* The operations our device knows how to do */
 static const struct file_operations vga_ball_fops = {
@@ -167,16 +183,14 @@ static int __init vga_ball_probe(struct platform_device *pdev)
 		goto out_release_mem_region;
 	}
         
-	
-
-
 
 	return 0;
-
-out_release_mem_region:
+	
+	out_release_mem_region:
 	release_mem_region(dev.res.start, resource_size(&dev.res));
-out_deregister:
+	out_deregister:
 	misc_deregister(&vga_ball_misc_device);
+	
 	return ret;
 }
 
