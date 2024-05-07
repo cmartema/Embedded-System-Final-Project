@@ -21,6 +21,7 @@ typedef struct {
 typedef struct {
   vga_ball_color_t background;
   vga_ball_coordinate coordinate;
+  sv_map data;
 } vga_ball_arg_t;
 
 

@@ -88,14 +88,14 @@ static void write_coordinate(sv_map *data){
 //this will write backgrounds for apple and snake sprites 
 static long vga_ball_ioctl(struct file *f, unsigned int cmd, uint32_t arg)
 {
-	sv_map vla;
+	vga_ball_arg_t vla;
 
 	switch (cmd) {
 	case VGA_BALL_WRITE_COORDINATE:
-		if (copy_from_user(&vla, (sv_map *) arg,
-				   sizeof(vla.data)))
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla);
+		write_coordinate(&vla.data);
 		break;
 	default:
 		return -EINVAL;
