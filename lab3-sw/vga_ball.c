@@ -34,7 +34,6 @@
 #include "vga_ball.h"
 
 #include <asm/io.h>
-#include <stdint.h>
 
 #define DRIVER_NAME "vga_ball"
 

@@ -2,7 +2,7 @@
 #define _VGA_BALL_H
 
 #include <linux/ioctl.h>
-#include <stdint.h>
+
 
 // this will set the coordinates for any sprites 
 typedef struct {
@@ -11,7 +11,7 @@ typedef struct {
 } vga_ball_coordinate;
 
 typedef struct {
-  int32_t data;
+  int data;
 } sv_map;
 
 typedef struct {
