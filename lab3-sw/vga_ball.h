@@ -2,6 +2,7 @@
 #define _VGA_BALL_H
 
 #include <linux/ioctl.h>
+#include <stdint.h>
 
 // this will set the coordinates for any sprites 
 typedef struct {
