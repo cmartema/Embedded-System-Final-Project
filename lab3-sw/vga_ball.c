@@ -93,7 +93,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, uint32_t arg)
 	switch (cmd) {
 	case VGA_BALL_WRITE_COORDINATE:
 		if (copy_from_user(&vla, (sv_map *) arg,
-				   sizeof(sv_map)))
+				   sizeof(vla.data)))
 			return -EACCES;
 		write_coordinate(&vla);
 		break;
