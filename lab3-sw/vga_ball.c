@@ -39,7 +39,7 @@
 
 
 // X & Y coordinates 
-#define X(x)((x)+7)
+#define X(x)((x)+3)
 
 /*
 struct vga_ball_dev {
@@ -70,9 +70,9 @@ struct vga_ball_dev{
 
 
 //created write coordinate for all the sprites
-static void write_coordinate(uint64_t *data){
+static void write_coordinate(uint32_t *data){
     // Write the data to some register using iowrite64
-    iowrite64(*data, X(dev.virtbase));
+    iowrite32(*data, X(dev.virtbase));
 	dev.data = *data;
     // Free the allocated memory
     // kfree(data);
