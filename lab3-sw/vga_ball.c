@@ -33,6 +33,8 @@
 #include <linux/uaccess.h>
 #include "vga_ball.h"
 
+#include <asm/io.h>
+
 #define DRIVER_NAME "vga_ball"
 
 
