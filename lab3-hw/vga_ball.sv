@@ -140,6 +140,8 @@ module vga_ball(
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
 
 
+  //Register for the offsetting the screen
+  reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
 
 
   reg [7:0] snake_head_pos_x;
@@ -160,15 +162,93 @@ module vga_ball(
 
       
      end else if (chipselect && write)
-       case (address)
-       3'h0 : snake_head_pos_x <= writedata;
-       3'h1 : snake_head_pos_y <= writedata;
-       3'h2 : d <= writedata;
-       3'h3 : e <= writedata;
-       3'h4 : snake_head_up_pos_x <= writedata;
-       3'h5 : snake_head_up_pos_y <= writedata;
+      case (address)
+      //  3'h0 : snake_head_pos_x <= writedata;
+      //  3'h1 : snake_head_pos_y <= writedata;
+      //  3'h2 : d <= writedata;
+      //  3'h3 : e <= writedata;
+      //  3'h4 : snake_head_up_pos_x <= writedata;
+      //  3'h5 : snake_head_up_pos_y <= writedata;
 
-    
+      /* Using a 7 bit switch statement to write to each of the 75 registers */
+        7'h0 : map[0] <= writedata;
+        7'h1 : map[1] <= writedata;
+        7'h2 : map[2] <= writedata;
+        7'h3 : map[3] <= writedata;
+        7'h4 : map[4] <= writedata;
+        7'h5 : map[5] <= writedata;
+        7'h6 : map[6] <= writedata;
+        7'h7 : map[7] <= writedata;
+        7'h8 : map[8] <= writedata;
+        7'h9 : map[9] <= writedata;
+        7'h0A : map[10] <= writedata;
+        7'h0B : map[11] <= writedata;
+        7'h0C : map[12] <= writedata;
+        7'h0D : map[13] <= writedata;
+        7'h0E : map[14] <= writedata;
+        7'h0F : map[15] <= writedata;
+        7'h10 : map[16] <= writedata;
+        7'h11 : map[17] <= writedata;
+        7'h12 : map[18] <= writedata;
+        7'h13 : map[19] <= writedata;
+        7'h14 : map[20] <= writedata;
+        7'h15 : map[21] <= writedata;
+        7'h16 : map[22] <= writedata;
+        7'h17 : map[23] <= writedata;
+        7'h18 : map[24] <= writedata;
+        7'h19 : map[25] <= writedata;
+        7'h1A : map[26] <= writedata;
+        7'h1B : map[27] <= writedata;
+        7'h1C : map[28] <= writedata;
+        7'h1D : map[29] <= writedata;
+        7'h1E : map[30] <= writedata;
+        7'h1F : map[31] <= writedata;
+        7'h20 : map[32] <= writedata;
+        7'h21 : map[33] <= writedata;
+        7'h22 : map[34] <= writedata;
+        7'h23 : map[35] <= writedata;
+        7'h24 : map[36] <= writedata;
+        7'h25 : map[37] <= writedata;
+        7'h26 : map[38] <= writedata;
+        7'h27 : map[39] <= writedata;
+        7'h28 : map[40] <= writedata;
+        7'h29 : map[41] <= writedata;
+        7'h2A : map[42] <= writedata;
+        7'h2B : map[43] <= writedata;
+        7'h2C : map[44] <= writedata;
+        7'h2D : map[45] <= writedata;
+        7'h2E : map[46] <= writedata;
+        7'h2F : map[47] <= writedata;
+        7'h30 : map[48] <= writedata;
+        7'h31 : map[49] <= writedata;
+        7'h32 : map[50] <= writedata;
+        7'h33 : map[51] <= writedata;
+        7'h34 : map[52] <= writedata;
+        7'h35 : map[53] <= writedata;
+        7'h36 : map[54] <= writedata;
+        7'h37 : map[55] <= writedata;
+        7'h38 : map[56] <= writedata;
+        7'h39 : map[57] <= writedata;
+        7'h3A : map[58] <= writedata;
+        7'h3B : map[59] <= writedata;
+        7'h3C : map[60] <= writedata;
+        7'h3D : map[61] <= writedata;
+        7'h3E : map[62] <= writedata;
+        7'h3F : map[63] <= writedata;
+        7'h40 : map[64] <= writedata;
+        7'h41 : map[65] <= writedata;
+        7'h42 : map[66] <= writedata;
+        7'h43 : map[67] <= writedata;
+        7'h44 : map[68] <= writedata;
+        7'h45 : map[69] <= writedata;
+        7'h46 : map[70] <= writedata;
+        7'h47 : map[71] <= writedata;
+        7'h48 : map[72] <= writedata;
+        7'h49 : map[73] <= writedata;
+        7'h4A : map[74] <= writedata;
+        default: ;
+
+
        endcase
 
   //logic for generating vga output
