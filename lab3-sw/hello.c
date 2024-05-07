@@ -338,8 +338,8 @@ int main()
     vla.coordinate.x = 10;
     vla.coordinate.y = 20;
 
-    head_up.coordinate.x = vla.coordinate.x;
-    head_up.coordinate.y = vla.coordinate.y;
+    head_up.coordinate.x = 40;
+    head_up.coordinate.y = 40;
 
 
     set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
@@ -354,14 +354,8 @@ int main()
     } else if (direction == 0x06){
         vla.coordinate.x -= 1;
     } else if (direction == 0x00) {
-        printf("%d, %d\n", vla.coordinate.x, vla.coordinate.y);
-        printf("%d, %d\n", head_up.coordinate.x, head_up.coordinate.y);
-        head_up.coordinate.y -= 1;
-        //head_up.coordinate.x = vla.coordinate.x;
-        printf("%d, %d\n", vla.coordinate.x, vla.coordinate.y);
-        printf("%d, %d\n", head_up.coordinate.x, head_up.coordinate.y);
-        //vla.coordinate.x -= 1;
-       // vla.coordinate.y -= 1;
+        head_up.coordinate.y -= vla.coordinate.y;
+        head_up.coordinate.x = vla.coordinate.x;
     } else if (direction == 0x04) {
         vla.coordinate.y += 1;
     }
