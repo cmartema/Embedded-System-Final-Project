@@ -233,10 +233,10 @@ void *sony_thread_f(void *);
 
 
 //set the ball position
-void set_ball_coordinate(const sv_map *c, const vga_ball_coordinate *coordinate)
+void set_ball_coordinate(const vga_ball_coordinate_and_map *coordinate_and_map)
 {
     vga_ball_arg_t vla;
-    vla.coordinate = *coordinate;
+    vla.coordinate_and_map = *coordinate_and_map;
     vla.data = *c; 
     if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
         perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
@@ -327,7 +327,7 @@ int main()
 
 
     // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
-    
+    /*
     vla.coordinate.x = 10;
     vla.coordinate.y = 10;
     vla.data = 1;

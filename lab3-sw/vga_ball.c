@@ -48,19 +48,19 @@
 struct vga_ball_dev{
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
-	sv_map data;
-	vga_ball_coordinate coordinate;
+	// unsigned short int data;
+	vga_ball_coordinate_and_map coordinate_and_map;
 } dev;
 
 
 //created write coordinate for all the sprites
-static void write_coordinate(sv_map *data, vga_ball_coordinate *coordinate){
+static void write_coordinate(vga_ball_coordinate *coordinate_and_map){
     // Write the data to some register using iowrite64
-	iowrite8(coordinate->x, X(dev.virtbase));
-	iowrite8(coordinate->y, Y(dev.virtbase));
-    iowrite8(data->data, KEY(dev.virtbase));
-	dev.data = *data;
-	dev.coordinate = *coordinate;
+	iowrite8(coordinate_and_map->x, X(dev.virtbase));
+	iowrite8(coordinate_and_map->y, Y(dev.virtbase));
+    iowrite8(coordinate_and_map->map, KEY(dev.virtbase));
+	// dev.data = *data;
+	dev.coordinate = *coordinate_and_map;
 }
 
 
@@ -80,7 +80,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int a
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.data, &vla.coordinate);
+		write_coordinate(&vla.coordinate_and_map);
 		break;
 	default:
 		return -EINVAL;
@@ -89,39 +89,6 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int a
 	return 0;
 }
 
-/*
-static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
-{
-	vga_ball_arg_t vla;
-
-	switch (cmd) {
-	case VGA_BALL_WRITE_COORDINATE:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		write_coordinate(&vla.coordinate);
-		break;
-	
-	case VGA_HEAD_UP_WRITE_COORDINATE:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		write_head_up_coordinate(&vla.coordinate);
-		break;
-	
-	case VGA_FRUIT_WRITE_COORDINATE:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		write_fruit_coordinate(&vla.coordinate);
-		break;
-	default:
-		return -EINVAL;
-	}
-
-	return 0;
-}
-*/
 
 /* The operations our device knows how to do */
 static const struct file_operations vga_ball_fops = {
