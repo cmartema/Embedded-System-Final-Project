@@ -203,7 +203,7 @@ always_ff @(posedge clk) begin
         apple_y <= y_pos;
       end 
 
-      if (hcount[10:5] == (apple_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == apple_y[5:0]) begin //coordinates(10,10) 31
+      else if (hcount[10:5] == (apple_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == apple_y[5:0]) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
