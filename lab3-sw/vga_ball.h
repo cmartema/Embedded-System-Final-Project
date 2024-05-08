@@ -11,7 +11,7 @@ typedef struct {
 } vga_ball_coordinate;
 
 typedef struct {
-  uint32_t data;
+  unsigned long long data;
 } sv_map;
 
 typedef struct {

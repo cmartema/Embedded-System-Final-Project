@@ -39,8 +39,8 @@
 #define DRIVER_NAME "vga_ball"
 
 
-// X & Y coordinates 
-#define X(x)((x)+3)
+/* Device registers */
+#define X(x) (x)
 
 /*
 struct vga_ball_dev {
@@ -73,7 +73,7 @@ struct vga_ball_dev{
 //created write coordinate for all the sprites
 static void write_coordinate(sv_map *data){
     // Write the data to some register using iowrite64
-    iowrite32(data->data, X(dev.virtbase));
+    iowrite64(data->data, X(dev.virtbase));
 	dev.data = *data;
     // Free the allocated memory
     // kfree(data);
