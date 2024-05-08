@@ -204,6 +204,7 @@ always_ff @(posedge clk) begin
         apple_x <= x_pos;
         apple_y <= y_pos;
       end 
+
       if (hcount[10:5] == (apple_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == apple_y[5:0]) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
@@ -217,8 +218,7 @@ always_ff @(posedge clk) begin
       end
 
       //snake head right
-      
-      if (hcount[10:5] == (x_pos[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin //coordinates(10,10) 31
+      else if (hcount[10:5] == (x_pos[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin //coordinates(10,10) 31
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
