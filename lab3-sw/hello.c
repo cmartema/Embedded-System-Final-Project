@@ -338,8 +338,8 @@ int main()
     x = 20;
     y = 20;
     map = 2;
-    vla.coordinate.x = x;
-    vla.coordinate.y = y;
+    vla.x = x;
+    vla.y = y;
     vla.map = map;
     set_ball_coordinate(&vla);
     // vla.data = 25;
