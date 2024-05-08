@@ -328,6 +328,10 @@ int main()
 
     vla.data = 10;
     set_ball_coordinate(&vla);
+    vla.data = 18;
+    set_ball_coordinate(&vla);
+    vla.data = 25;
+    set_ball_coordinate(&vla);
     /*
     direction = 0x08;
 
