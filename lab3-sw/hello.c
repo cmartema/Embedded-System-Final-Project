@@ -327,14 +327,20 @@ int main()
 
 
     // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
-    /*
-    vla.coordinate.x = 10;
-    vla.coordinate.y = 10;
-    vla.data = 1;
+
+    unsigned short int x = 10;
+    unsigned short int y = 10;
+    unsigned short int map = 1;
+    vla.x = x;
+    vla.y = y;
+    vla.map = map;
     set_ball_coordinate(&vla);
-    vla.coordinate.x = 20;
-    vla.coordinate.y = 20;
-    vla.data = 2;
+    x = 20;
+    y = 20;
+    map = 2;
+    vla.coordinate.x = x;
+    vla.coordinate.y = y;
+    vla.map = map;
     set_ball_coordinate(&vla);
     // vla.data = 25;
     // set_ball_coordinate(&vla);
