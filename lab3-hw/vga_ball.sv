@@ -144,6 +144,8 @@ module vga_ball(
   //reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
 
   reg [0:31] map_test;
+  reg [0:31] map_test1;
+  reg [0:31] map_test2;
 
 
   reg [7:0] snake_head_pos_x;
@@ -161,6 +163,8 @@ module vga_ball(
       snake_head_pos_y <= 8'b00001010;
       d <= 8'b00001101;
       e <= 8'b00001010;
+      snake_head_up_pos_x <= 8'b1111
+      snake_head_up_pos_y <= 8'b1111
 
       
      end else if (chipselect && write)
@@ -172,6 +176,8 @@ module vga_ball(
       //  3'h4 : snake_head_up_pos_x <= writedata;
       //  3'h5 : snake_head_up_pos_y <= writedata;
       3'h0 : map_test <= writedata;
+      //3'h1 : map_test1 <= writedata;
+      //3'h2 : map_test2 <= writedata;
 
       /* Using a 7 bit switch statement to write to each of the 75 registers */
       /*
@@ -280,7 +286,7 @@ always_ff @(posedge clk) begin
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == d[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == e[5:0]) begin
+      end else if (hcount[10:5] == d[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == e[5:0] && map_test == 32'b1010) begin
         apple_sprite_addr <=  hcount[4:1] + 4'b0001 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
@@ -288,13 +294,13 @@ always_ff @(posedge clk) begin
       end
 
       //snake head right
-      /*
-      else if (hcount[10:5] == (snake_head_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin //coordinates(10,10) 31
+      
+      else if (hcount[10:5] == (snake_head_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0] && map_test == 32'b10001) begin //coordinates(10,10) 31
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == (snake_head_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin
+      end else if (hcount[10:5] == (snake_head_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0] && map_test == 32'b10001) begin
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
@@ -303,18 +309,18 @@ always_ff @(posedge clk) begin
 
       //snake head up
 
-       else if (hcount[10:5] == (snake_head_up_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]) begin //coordinates(10,10) 31
+       else if (hcount[10:5] == (snake_head_up_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]&& map_test == 32'b11001) begin //coordinates(10,10) 31
         snake_head_up_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_up_sprite_output[15:11], 3'b0};
         b <= { snake_head_up_sprite_output[10:5], 2'b0};
         c <= {snake_head_up_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == (snake_head_up_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]) begin
+      end else if (hcount[10:5] == (snake_head_up_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]&& map_test == 32'b11001) begin
         snake_head_up_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
         a <= {snake_head_up_sprite_output[15:11], 3'b0};
         b <= { snake_head_up_sprite_output[10:5], 2'b0};
         c <= {snake_head_up_sprite_output[4:0], 3'b0};
       end
-      */
+      
       /*
       //snake body
       else if (hcount[10:5] == (head_pos_x) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
