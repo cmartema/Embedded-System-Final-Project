@@ -283,7 +283,7 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
-    unsigned long wholeScreen[1200];
+    unsigned short int wholeScreen[1200];
     struct ThreadArgs args;
     
     sv_map data;

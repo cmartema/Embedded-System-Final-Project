@@ -67,7 +67,7 @@ static void write_coordinate(sv_map *data){
  */
 
 //this will write backgrounds for apple and snake sprites 
-static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long arg)
+static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int arg)
 {
 	vga_ball_arg_t vla;
 
