@@ -325,14 +325,14 @@ int main()
 
 
     // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
-
+    /*
     vla.data = 10;
     set_ball_coordinate(&vla);
     vla.data = 18;
     set_ball_coordinate(&vla);
     vla.data = 25;
     set_ball_coordinate(&vla);
-    /*
+
     direction = 0x08;
 
     while(1){
