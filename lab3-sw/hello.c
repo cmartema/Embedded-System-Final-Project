@@ -286,8 +286,8 @@ int main()
     unsigned short int wholeScreen[1200];
     struct ThreadArgs args;
     
-    sv_map data;
-    /*
+    sv_map vla;
+    
     int i;
 
     printf("VGA ball Userspace program started\n");
@@ -313,7 +313,7 @@ int main()
         fprintf(stderr, "could not open %s\n", filename);
         return -1;
     }
-
+    
     // fruit.coordinate.x = 10;
     // fruit.coordinate.y = 10;
 
@@ -324,7 +324,11 @@ int main()
     // head_up.coordinate.y = 40;
 
 
-    set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
+    // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
+
+    vla.data = 10;
+    set_ball_coordinate(&vla);
+    /*
     direction = 0x08;
 
     while(1){
