@@ -8,7 +8,7 @@
 module vga_ball(
     input logic         clk,
 	  input logic 	      reset,
-		input logic [7:0]   writedata,
+		input logic [31:0]   writedata,
 		input logic 	      write,
 		input 		          chipselect,
 		input logic [2:0]   address,
@@ -141,7 +141,9 @@ module vga_ball(
 
 
   //Register for the offsetting the screen
-  reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
+  //reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
+
+  reg [0:31] map_test;
 
 
   reg [7:0] snake_head_pos_x;
@@ -169,8 +171,10 @@ module vga_ball(
       //  3'h3 : e <= writedata;
       //  3'h4 : snake_head_up_pos_x <= writedata;
       //  3'h5 : snake_head_up_pos_y <= writedata;
+      3'h0 : map_test <= writedata;
 
       /* Using a 7 bit switch statement to write to each of the 75 registers */
+      /*
         7'h0 : map[0] <= writedata;
         7'h1 : map[1] <= writedata;
         7'h2 : map[2] <= writedata;
@@ -248,8 +252,9 @@ module vga_ball(
         7'h4A : map[74] <= writedata;
         default: ;
 
-
+      */
        endcase
+       
 
   //logic for generating vga output
   reg [7:0] a;
@@ -269,7 +274,8 @@ always_ff @(posedge clk) begin
 
     //this is the snake fruit
     if (VGA_BLANK_n) begin
-      if (hcount[10:5] == (d[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e[5:0]) begin //coordinates(10,10) 31
+      $display("Data_out = %d", map_test);
+      if (hcount[10:5] == (d[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e[5:0] && map_test == 32'b1010) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
@@ -282,7 +288,7 @@ always_ff @(posedge clk) begin
       end
 
       //snake head right
-      
+      /*
       else if (hcount[10:5] == (snake_head_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin //coordinates(10,10) 31
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
@@ -308,6 +314,7 @@ always_ff @(posedge clk) begin
         b <= { snake_head_up_sprite_output[10:5], 2'b0};
         c <= {snake_head_up_sprite_output[4:0], 3'b0};
       end
+      */
       /*
       //snake body
       else if (hcount[10:5] == (head_pos_x) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
