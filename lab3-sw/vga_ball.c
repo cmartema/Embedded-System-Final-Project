@@ -60,7 +60,7 @@ static void write_coordinate(vga_ball_coordinate_and_map *coordinate_and_map){
 	iowrite8(coordinate_and_map->y, Y(dev.virtbase));
     iowrite8(coordinate_and_map->map, KEY(dev.virtbase));
 	// dev.data = *data;
-	dev.coordinate = *coordinate_and_map;
+	dev.coordinate_and_map = *coordinate_and_map;
 }
 
 
