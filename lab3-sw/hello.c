@@ -237,7 +237,7 @@ void set_ball_coordinate(const sv_map *c, const vga_ball_coordinate *coordinate)
 {
     vga_ball_arg_t vla;
     vla.coordinate = *coordinate;
-    vla.sv_map.data = *c; 
+    vla.data = *c; 
     if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
         perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
         return;
@@ -288,7 +288,7 @@ int main()
     unsigned short int wholeScreen[1200];
     struct ThreadArgs args;
     
-    sv_map vla;
+    vga_ball_arg_t vla;
     
     int i;
 
