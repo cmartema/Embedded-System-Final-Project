@@ -335,6 +335,7 @@ int main()
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
+    usleep(300000);
     x = 20;
     y = 20;
     map = 2;
