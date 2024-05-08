@@ -232,35 +232,6 @@ pthread_t sony_thread;
 void *sony_thread_f(void *);
 
 
-
-//set the ball position
-/*
-void set_ball_coordinate(const vga_ball_coordinate *c, const vga_ball_coordinate *a, const vga_ball_coordinate *b)
-{
-  vga_ball_arg_t vla;
-  vga_ball_arg_t fruit;
-  vga_ball_arg_t head_up;
-  vla.coordinate = *c;
-  fruit.coordinate = *a;
-  head_up.coordinate = *b;
-  if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
-      perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
-      return;
-  }
-    
-  if (ioctl(vga_ball_fd, VGA_FRUIT_WRITE_COORDINATE, &fruit)){
-    perror("ioctl(VGA_FRUIT_WRITE_COORDINATE) failed");
-    return;
-  }
-
-  if (ioctl(vga_ball_fd, VGA_HEAD_UP_WRITE_COORDINATE, &head_up)) {
-      perror("ioctl(VGA_HEAD_UP_WRITE_COORDINATE) failed");
-      return;
-  }
-
-  
-}
-*/
 //set the ball position
 void set_ball_coordinate(const sv_map *c)
 {
@@ -316,14 +287,10 @@ int main()
     int wholeScreen[1200];
     struct ThreadArgs args;
     
-    // vga_ball_arg_t vla;
-    // vga_ball_arg_t fruit;
-    // vga_ball_arg_t head_up;
 
     sv_map data;
 
     int i;
-    static const char filename[] = "/dev/vga_ball";
 
     printf("VGA ball Userspace program started\n");
   
@@ -342,7 +309,8 @@ int main()
     // pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
     pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
     printf("After pthread create\n");
-    
+
+    static const char filename[] = "/dev/vga_ball";
     if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
         fprintf(stderr, "could not open %s\n", filename);
         return -1;
