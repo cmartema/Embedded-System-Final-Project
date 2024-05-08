@@ -41,22 +41,26 @@
 
 /* Device registers */
 #define X(x) (x)
+#define Y(x) ((x)+1)
+#define KEY(x) ((x)+2)
 
 
 struct vga_ball_dev{
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
 	sv_map data;
+	vga_ball_coordinate coordinate;
 } dev;
 
 
 //created write coordinate for all the sprites
-static void write_coordinate(sv_map *data){
+static void write_coordinate(sv_map *data, vga_ball_coordinate *coordinate){
     // Write the data to some register using iowrite64
-    iowrite32(data->data, X(dev.virtbase));
+	iowrite8(coordinate->x, X(dev.virtbase));
+	iowrite8(coordinate->y, Y(dev.virtbase));
+    iowrite8(data->data, KEY(dev.virtbase));
 	dev.data = *data;
-    // Free the allocated memory
-    // kfree(data);
+	dev.coordinate = *coordinate;
 }
 
 
@@ -76,7 +80,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int a
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.data);
+		write_coordinate(&vla.data, &vla.coordinate);
 		break;
 	default:
 		return -EINVAL;

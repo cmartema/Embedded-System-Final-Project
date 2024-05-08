@@ -11,16 +11,22 @@ typedef struct {
 } vga_ball_coordinate;
 
 typedef struct {
-  unsigned long int data;
+  unsigned short int data;
 } sv_map;
 
 typedef struct {
 	unsigned char red, green, blue;
   //vga_ball_coordinate coordinate;
 } vga_ball_color_t;
-
+/*
 typedef struct {
   vga_ball_color_t background;
+  vga_ball_coordinate coordinate;
+  sv_map data;
+} vga_ball_arg_t;*/
+
+typedef struct {
+  // vga_ball_color_t background;
   vga_ball_coordinate coordinate;
   sv_map data;
 } vga_ball_arg_t;
