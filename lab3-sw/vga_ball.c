@@ -54,7 +54,7 @@ struct vga_ball_dev{
 
 
 //created write coordinate for all the sprites
-static void write_coordinate(vga_ball_coordinate *coordinate_and_map){
+static void write_coordinate(vga_ball_coordinate_and_map *coordinate_and_map){
     // Write the data to some register using iowrite64
 	iowrite8(coordinate_and_map->x, X(dev.virtbase));
 	iowrite8(coordinate_and_map->y, Y(dev.virtbase));
