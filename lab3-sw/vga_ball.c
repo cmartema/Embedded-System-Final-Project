@@ -42,30 +42,10 @@
 /* Device registers */
 #define X(x) (x)
 
-/*
-struct vga_ball_dev {
-	struct resource res; 
-	void __iomem *virtbase; 
-    vga_ball_color_t background;
-
-	vga_ball_coordinate coordinate;
-} dev;
-
-static void write_coordinate(vga_ball_coordinate *coordinate){
-	iowrite64(coordinate->x, X(dev.virtbase));
-	iowrite64(coordinate->y, Y(dev.virtbase));
-	dev.coordinate = *coordinate;
-}
-*/
 
 struct vga_ball_dev{
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
-    // vga_ball_color_t background;
-
-	//our change
-	// vga_ball_coordinate coordinate;
-	// sv_map data;
 	sv_map data;
 } dev;
 

@@ -283,13 +283,11 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
-    /*
-    int wholeScreen[1200];
+    unsigned long wholeScreen[1200];
     struct ThreadArgs args;
     
-
     sv_map data;
-
+    /*
     int i;
 
     printf("VGA ball Userspace program started\n");
