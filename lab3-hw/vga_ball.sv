@@ -157,7 +157,7 @@ module vga_ball(
   reg [7:0] sprite_type;
 
 
-    unsigned shortint map[15][15];
+    unsigned short map[15][15];
 
 
    always_ff @(posedge clk)
