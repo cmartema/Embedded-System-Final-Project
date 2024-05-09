@@ -236,7 +236,7 @@ always_ff @(posedge clk) begin
       end 
       end
     end
-  end
+  
 
     //this is the snake fruit
     if (VGA_BLANK_n) begin
@@ -377,7 +377,8 @@ always_ff @(posedge clk) begin
         b <= background_g;
         c <= background_b;
       end
-    end
+    end 
+end module
 
 
 // Assign VGA outputs
