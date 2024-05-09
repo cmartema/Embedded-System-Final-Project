@@ -201,9 +201,8 @@ always_ff @(posedge clk) begin
   
   for (int i = 0; i < 16; i++) begin
     for (int j = 0; j < 16; j++) begin
-      $display("myArray[%0d][%0d] = %0d", i, j, myArray[i][j]);
-    end
-         //this is the snake fruit
+      //$display("myArray[%0d][%0d] = %0d", i, j, myArray[i][j]);
+              //this is the snake fruit
     if (VGA_BLANK_n) begin
       if (sprite_type == 8'b1) begin
         apple_x <= x_pos;
@@ -235,6 +234,7 @@ always_ff @(posedge clk) begin
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
       end 
       end
+    end
     end
   
 
