@@ -378,12 +378,12 @@ always_ff @(posedge clk) begin
         c <= background_b;
       end
     end 
-end module
 
 
 // Assign VGA outputs
-assign {VGA_R, VGA_G, VGA_B} = {a, b, c};
+assign {VGA_R, VGA_G, VGA_B} = {a, b, c}; 
 
+end module
 //----------------------------------------------------------
 // I think this is the original template code or lab3 our solution
 /* 
