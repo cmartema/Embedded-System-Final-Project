@@ -336,6 +336,7 @@ int main()
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
     
+    
     x = 20;
     y = 20;
     map = 2;
