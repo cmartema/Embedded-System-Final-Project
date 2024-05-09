@@ -157,7 +157,7 @@ module vga_ball(
   reg [7:0] sprite_type;
 
 
-  int map [15:0][15:0];
+  int map [7:0][7:0];
   
   always_ff @(posedge clk) begin
     if (reset) begin
@@ -175,7 +175,6 @@ module vga_ball(
         3'h1 : y_pos <= writedata;
         3'h2 : sprite_type <= writedata;
       endcase
-      map[x_pos][y_pos] <= sprite_type;
    end
   end
    
@@ -192,12 +191,16 @@ module vga_ball(
   reg [7:0] head_output3;
    
   // -------------------------------------
+  always_comb begin
+    map[x_pos][y_pos] = sprite_type;
+  end
+
   always_ff @(posedge clk) begin
     
     //this is the snake fruit
     if (VGA_BLANK_n) begin
       if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin //fruit map = 1
-        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        apple_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= {apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
@@ -205,14 +208,14 @@ module vga_ball(
       end 
       // this is snake head right 
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10) begin //snake head right map = 2
-        snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        snake_head_right_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
         // map[hcount[10:5]][vcount[9:4]] <= 8'b0;
       end 
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b11) begin //snake horizontal body map = 3
-        snake_body_horizontal_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        snake_body_horizontal_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
         b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
         c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
