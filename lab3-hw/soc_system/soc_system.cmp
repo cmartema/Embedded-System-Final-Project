@@ -74,6 +74,30 @@
 			hps_ddr3_mem_odt                             : out   std_logic;                                        -- mem_odt
 			hps_ddr3_mem_dm                              : out   std_logic_vector(3 downto 0);                     -- mem_dm
 			hps_ddr3_oct_rzqin                           : in    std_logic                     := 'X';             -- oct_rzqin
+			map1_0_avalon_slave_0_address                : in    std_logic_vector(2 downto 0)  := (others => 'X'); -- address
+			map1_0_avalon_slave_0_chipselect             : in    std_logic                     := 'X';             -- chipselect
+			map1_0_avalon_slave_0_write                  : in    std_logic                     := 'X';             -- write
+			map1_0_avalon_slave_0_writedata              : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- writedata
+			map1_0_vga_b                                 : out   std_logic_vector(7 downto 0);                     -- b
+			map1_0_vga_blank_n                           : out   std_logic;                                        -- blank_n
+			map1_0_vga_clk                               : out   std_logic;                                        -- clk
+			map1_0_vga_g                                 : out   std_logic_vector(7 downto 0);                     -- g
+			map1_0_vga_hs                                : out   std_logic;                                        -- hs
+			map1_0_vga_r                                 : out   std_logic_vector(7 downto 0);                     -- r
+			map1_0_vga_sync_n                            : out   std_logic;                                        -- sync_n
+			map1_0_vga_vs                                : out   std_logic;                                        -- vs
+			map1_1_avalon_slave_0_address                : in    std_logic_vector(2 downto 0)  := (others => 'X'); -- address
+			map1_1_avalon_slave_0_chipselect             : in    std_logic                     := 'X';             -- chipselect
+			map1_1_avalon_slave_0_write                  : in    std_logic                     := 'X';             -- write
+			map1_1_avalon_slave_0_writedata              : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- writedata
+			map1_1_vga_b                                 : out   std_logic_vector(7 downto 0);                     -- b
+			map1_1_vga_blank_n                           : out   std_logic;                                        -- blank_n
+			map1_1_vga_clk                               : out   std_logic;                                        -- clk
+			map1_1_vga_g                                 : out   std_logic_vector(7 downto 0);                     -- g
+			map1_1_vga_hs                                : out   std_logic;                                        -- hs
+			map1_1_vga_r                                 : out   std_logic_vector(7 downto 0);                     -- r
+			map1_1_vga_sync_n                            : out   std_logic;                                        -- sync_n
+			map1_1_vga_vs                                : out   std_logic;                                        -- vs
 			reset_reset_n                                : in    std_logic                     := 'X';             -- reset_n
 			snake_body_bottomleft_sprite_s1_address      : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- address
 			snake_body_bottomleft_sprite_s1_debugaccess  : in    std_logic                     := 'X';             -- debugaccess

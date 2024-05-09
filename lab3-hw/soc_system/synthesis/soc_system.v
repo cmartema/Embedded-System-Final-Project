@@ -78,6 +78,30 @@ module soc_system (
 		output wire        hps_ddr3_mem_odt,                             //                                 .mem_odt
 		output wire [3:0]  hps_ddr3_mem_dm,                              //                                 .mem_dm
 		input  wire        hps_ddr3_oct_rzqin,                           //                                 .oct_rzqin
+		input  wire [2:0]  map1_0_avalon_slave_0_address,                //            map1_0_avalon_slave_0.address
+		input  wire        map1_0_avalon_slave_0_chipselect,             //                                 .chipselect
+		input  wire        map1_0_avalon_slave_0_write,                  //                                 .write
+		input  wire [7:0]  map1_0_avalon_slave_0_writedata,              //                                 .writedata
+		output wire [7:0]  map1_0_vga_b,                                 //                       map1_0_vga.b
+		output wire        map1_0_vga_blank_n,                           //                                 .blank_n
+		output wire        map1_0_vga_clk,                               //                                 .clk
+		output wire [7:0]  map1_0_vga_g,                                 //                                 .g
+		output wire        map1_0_vga_hs,                                //                                 .hs
+		output wire [7:0]  map1_0_vga_r,                                 //                                 .r
+		output wire        map1_0_vga_sync_n,                            //                                 .sync_n
+		output wire        map1_0_vga_vs,                                //                                 .vs
+		input  wire [2:0]  map1_1_avalon_slave_0_address,                //            map1_1_avalon_slave_0.address
+		input  wire        map1_1_avalon_slave_0_chipselect,             //                                 .chipselect
+		input  wire        map1_1_avalon_slave_0_write,                  //                                 .write
+		input  wire [7:0]  map1_1_avalon_slave_0_writedata,              //                                 .writedata
+		output wire [7:0]  map1_1_vga_b,                                 //                       map1_1_vga.b
+		output wire        map1_1_vga_blank_n,                           //                                 .blank_n
+		output wire        map1_1_vga_clk,                               //                                 .clk
+		output wire [7:0]  map1_1_vga_g,                                 //                                 .g
+		output wire        map1_1_vga_hs,                                //                                 .hs
+		output wire [7:0]  map1_1_vga_r,                                 //                                 .r
+		output wire        map1_1_vga_sync_n,                            //                                 .sync_n
+		output wire        map1_1_vga_vs,                                //                                 .vs
 		input  wire        reset_reset_n,                                //                            reset.reset_n
 		input  wire [7:0]  snake_body_bottomleft_sprite_s1_address,      //  snake_body_bottomleft_sprite_s1.address
 		input  wire        snake_body_bottomleft_sprite_s1_debugaccess,  //                                 .debugaccess
@@ -287,7 +311,7 @@ module soc_system (
 	wire   [7:0] mm_interconnect_1_vga_ball_0_avalon_slave_0_writedata;  // mm_interconnect_1:vga_ball_0_avalon_slave_0_writedata -> vga_ball_0:writedata
 	wire  [31:0] hps_0_f2h_irq0_irq;                                     // irq_mapper:sender_irq -> hps_0:f2h_irq_p0
 	wire  [31:0] hps_0_f2h_irq1_irq;                                     // irq_mapper_001:sender_irq -> hps_0:f2h_irq_p1
-	wire         rst_controller_reset_out_reset;                         // rst_controller:reset_out -> [apple_sprite:reset, mm_interconnect_0:snake_tail_up_sprite_reset1_reset_bridge_in_reset_reset, mm_interconnect_1:vga_ball_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_body_bottomleft_sprite:reset, snake_body_bottomright_sprite:reset, snake_body_horizontal_sprite:reset, snake_body_topleft_sprite:reset, snake_body_topright_sprite:reset, snake_body_vertical_sprite:reset, snake_head_down_sprite:reset, snake_head_left_sprite:reset, snake_head_right_sprite:reset, snake_head_up_sprite:reset, snake_tail_down_sprite:reset, snake_tail_left_sprite:reset, snake_tail_right_sprite:reset, snake_tail_up_sprite:reset, vga_ball_0:reset, wall_sprite:reset]
+	wire         rst_controller_reset_out_reset;                         // rst_controller:reset_out -> [apple_sprite:reset, map1_0:reset, map1_1:reset, mm_interconnect_0:snake_tail_up_sprite_reset1_reset_bridge_in_reset_reset, mm_interconnect_1:vga_ball_0_reset_reset_bridge_in_reset_reset, rst_translator:in_reset, snake_body_bottomleft_sprite:reset, snake_body_bottomright_sprite:reset, snake_body_horizontal_sprite:reset, snake_body_topleft_sprite:reset, snake_body_topright_sprite:reset, snake_body_vertical_sprite:reset, snake_head_down_sprite:reset, snake_head_left_sprite:reset, snake_head_right_sprite:reset, snake_head_up_sprite:reset, snake_tail_down_sprite:reset, snake_tail_left_sprite:reset, snake_tail_right_sprite:reset, snake_tail_up_sprite:reset, vga_ball_0:reset, wall_sprite:reset]
 	wire         rst_controller_reset_out_reset_req;                     // rst_controller:reset_req -> [apple_sprite:reset_req, rst_translator:reset_req_in, snake_body_bottomleft_sprite:reset_req, snake_body_bottomright_sprite:reset_req, snake_body_horizontal_sprite:reset_req, snake_body_topleft_sprite:reset_req, snake_body_topright_sprite:reset_req, snake_body_vertical_sprite:reset_req, snake_head_down_sprite:reset_req, snake_head_left_sprite:reset_req, snake_head_right_sprite:reset_req, snake_head_up_sprite:reset_req, snake_tail_down_sprite:reset_req, snake_tail_left_sprite:reset_req, snake_tail_right_sprite:reset_req, snake_tail_up_sprite:reset_req, wall_sprite:reset_req]
 	wire         rst_controller_001_reset_out_reset;                     // rst_controller_001:reset_out -> [mm_interconnect_0:hps_0_h2f_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset]
 	wire         hps_0_h2f_reset_reset;                                  // hps_0:h2f_rst_n -> rst_controller_001:reset_in0
@@ -493,6 +517,40 @@ module soc_system (
 		.h2f_lw_RREADY            (hps_0_h2f_lw_axi_master_rready),  //                  .rready
 		.f2h_irq_p0               (hps_0_f2h_irq0_irq),              //          f2h_irq0.irq
 		.f2h_irq_p1               (hps_0_f2h_irq1_irq)               //          f2h_irq1.irq
+	);
+
+	vga_ball map1_0 (
+		.clk         (clk_clk),                          //          clock.clk
+		.reset       (rst_controller_reset_out_reset),   //          reset.reset
+		.address     (map1_0_avalon_slave_0_address),    // avalon_slave_0.address
+		.chipselect  (map1_0_avalon_slave_0_chipselect), //               .chipselect
+		.write       (map1_0_avalon_slave_0_write),      //               .write
+		.writedata   (map1_0_avalon_slave_0_writedata),  //               .writedata
+		.VGA_B       (map1_0_vga_b),                     //            vga.b
+		.VGA_BLANK_n (map1_0_vga_blank_n),               //               .blank_n
+		.VGA_CLK     (map1_0_vga_clk),                   //               .clk
+		.VGA_G       (map1_0_vga_g),                     //               .g
+		.VGA_HS      (map1_0_vga_hs),                    //               .hs
+		.VGA_R       (map1_0_vga_r),                     //               .r
+		.VGA_SYNC_n  (map1_0_vga_sync_n),                //               .sync_n
+		.VGA_VS      (map1_0_vga_vs)                     //               .vs
+	);
+
+	vga_ball map1_1 (
+		.clk         (clk_clk),                          //          clock.clk
+		.reset       (rst_controller_reset_out_reset),   //          reset.reset
+		.address     (map1_1_avalon_slave_0_address),    // avalon_slave_0.address
+		.chipselect  (map1_1_avalon_slave_0_chipselect), //               .chipselect
+		.write       (map1_1_avalon_slave_0_write),      //               .write
+		.writedata   (map1_1_avalon_slave_0_writedata),  //               .writedata
+		.VGA_B       (map1_1_vga_b),                     //            vga.b
+		.VGA_BLANK_n (map1_1_vga_blank_n),               //               .blank_n
+		.VGA_CLK     (map1_1_vga_clk),                   //               .clk
+		.VGA_G       (map1_1_vga_g),                     //               .g
+		.VGA_HS      (map1_1_vga_hs),                    //               .hs
+		.VGA_R       (map1_1_vga_r),                     //               .r
+		.VGA_SYNC_n  (map1_1_vga_sync_n),                //               .sync_n
+		.VGA_VS      (map1_1_vga_vs)                     //               .vs
 	);
 
 	soc_system_snake_body_bottomleft_sprite snake_body_bottomleft_sprite (
