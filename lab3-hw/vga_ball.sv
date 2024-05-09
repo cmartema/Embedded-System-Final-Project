@@ -155,13 +155,11 @@ module vga_ball(
   reg [7:0] x_pos;
   reg [7:0] y_pos;
   reg [7:0] sprite_type;
+  
+  unsigned short map[15][15];
 
-
-    int map[30][40];
-
-
-   always_ff @(posedge clk)
-     if (reset) begin
+  always_ff @(posedge clk)
+    if (reset) begin
       background_r <= 8'h0;
       background_g <= 8'h0;
       background_b <= 8'h0;
@@ -169,21 +167,15 @@ module vga_ball(
       snake_head_pos_y <= 8'b00001010;
       snake_head_up_pos_x <= 8'b1111;
       snake_head_up_pos_y <= 8'b1111;
-
-      
-     end else if (chipselect && write)
+    
+    end else if (chipselect && write)
       case (address)
         3'h0 : x_pos <= writedata;
         3'h1 : y_pos <= writedata;
         3'h2 : sprite_type <= writedata;
-      //  3'h3 : e <= writedata;
-      //  3'h4 : snake_head_up_pos_x <= writedata;
-      //  3'h5 : snake_head_up_pos_y <= writedata;
 
-
-       endcase
-       map[x_pos][y_pos] <= sprite_type;
-       
+        map[x_pos][y_pos] <= sprite_type;
+      endcase
 
   //logic for generating vga output
   reg [7:0] a;
