@@ -140,80 +140,150 @@ module vga_ball(
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
 
 
+  //Register for the offsetting the screen
+  //reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
+
+  
 
 
   reg [7:0] snake_head_pos_x;
   reg [7:0] snake_head_pos_y;
 
-   always_ff @(posedge clk)
+  reg [7:0] snake_head_up_pos_x;
+  reg [7:0] snake_head_up_pos_y;
+
+  reg [7:0] x_pos;
+  reg [7:0] y_pos;
+  reg [7:0] sprite_type;
+
+
+   int map [15:0][15:0];
+
+
+   always_ff @(posedge clk) begin
      if (reset) begin
       background_r <= 8'h0;
       background_g <= 8'h0;
       background_b <= 8'h0;
       snake_head_pos_x <= 8'b00001010;
       snake_head_pos_y <= 8'b00001010;
-      d <= 8'b00001101;
-      e <= 8'b00001010;
+      snake_head_up_pos_x <= 8'b1111;
+      snake_head_up_pos_y <= 8'b1111;
 
       
      end else if (chipselect && write)
-       case (address)
-    
-   
-       3'h0 : background_r <= writedata;
-       3'h1 : background_g <= writedata;
-       3'h2 : background_b <= writedata;
-       3'h3 : snake_head_pos_x <= writedata;
-       3'h4 : snake_head_pos_y <= writedata;
-      //  3'h5 : d <= writedata;
-      //  3'h6 : e <= writedata;
+      case (address)
+        3'h0 : x_pos <= writedata;
+        3'h1 : y_pos <= writedata;
+        3'h2 : sprite_type <= writedata;
+      endcase
+      map[x_pos][y_pos] <= sprite_type;
 
-    
-       endcase
+   end
+       
 
   //logic for generating vga output
   reg [7:0] a;
   reg [7:0] b;
   reg [7:0] c;
 
-  reg [7:0] d;
-  reg [7:0] e;
+  reg [7:0] apple_x;
+  reg [7:0] apple_y;
 
   reg [7:0] head_output1;
   reg [7:0] head_output2;
   reg [7:0] head_output3;
 
+
   
 // -------------------------------------
 always_ff @(posedge clk) begin
-
-    //this is the snake fruit
+  
+  for (int i = 0; i < 16; i++) begin
+    for (int j = 0; j < 16; j++) begin
+      //$display("myArray[%0d][%0d] = %0d", i, j, myArray[i][j]);
+              //this is the snake fruit
     if (VGA_BLANK_n) begin
-      if (hcount[10:5] == (d[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == e[5:0]) begin //coordinates(10,10) 31
+      if (sprite_type == 8'b1) begin
+        apple_x <= x_pos;
+        apple_y <= y_pos;
+      end 
+
+      else if (hcount[10:5] == (apple_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == apple_y[5:0]) begin //coordinates(10,10) 31
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == d[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == e[5:0]) begin
+      end else if (hcount[10:5] == apple_x[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == apple_y[5:0]) begin
         apple_sprite_addr <=  hcount[4:1] + 4'b0001 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= { apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
       end
 
-      //snake head left
-      
-      else if (hcount[10:5] == (snake_head_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin //coordinates(10,10) 31
+      //snake head right
+      else if (hcount[10:5] == (x_pos[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin //coordinates(10,10) 31
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
-      end else if (hcount[10:5] == (snake_head_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_pos_y[5:0]) begin
+      end else if (hcount[10:5] == (x_pos[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= { snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
       end 
+      end
+    end
+    end
+  
+
+    //this is the snake fruit
+    if (VGA_BLANK_n) begin
+      if (sprite_type == 8'b1) begin
+        apple_x <= x_pos;
+        apple_y <= y_pos;
+      end 
+
+      else if (hcount[10:5] == (apple_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == apple_y[5:0]) begin //coordinates(10,10) 31
+        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == apple_x[5:0] && hcount[4:1] < 4'b1111 && vcount[9:4] == apple_y[5:0]) begin
+        apple_sprite_addr <=  hcount[4:1] + 4'b0001 + (vcount[3:0])*16;
+        a <= {apple_sprite_output[15:11], 3'b0};
+        b <= { apple_sprite_output[10:5], 2'b0};
+        c <= {apple_sprite_output[4:0], 3'b0};
+      end
+
+      //snake head right
+      else if (hcount[10:5] == (x_pos[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin //coordinates(10,10) 31
+        snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {snake_head_right_sprite_output[15:11], 3'b0};
+        b <= { snake_head_right_sprite_output[10:5], 2'b0};
+        c <= {snake_head_right_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == (x_pos[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == y_pos[5:0] && sprite_type == 8'b10) begin
+        snake_head_right_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
+        a <= {snake_head_right_sprite_output[15:11], 3'b0};
+        b <= { snake_head_right_sprite_output[10:5], 2'b0};
+        c <= {snake_head_right_sprite_output[4:0], 3'b0};
+      end 
+
+      //snake head up
+      /*
+       else if (hcount[10:5] == (snake_head_up_pos_x[5:0]-1) && hcount[4:1] >= 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]&& map_test == 32'b11001) begin //coordinates(10,10) 31
+        snake_head_up_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        a <= {snake_head_up_sprite_output[15:11], 3'b0};
+        b <= { snake_head_up_sprite_output[10:5], 2'b0};
+        c <= {snake_head_up_sprite_output[4:0], 3'b0};
+      end else if (hcount[10:5] == (snake_head_up_pos_x[5:0]) && hcount[4:1] < 4'b1111 && vcount[9:4] == snake_head_up_pos_y[5:0]&& map_test == 32'b11001) begin
+        snake_head_up_sprite_addr <= hcount[4:1] - 4'b41111 + (vcount[3:0])*16;
+        a <= {snake_head_up_sprite_output[15:11], 3'b0};
+        b <= { snake_head_up_sprite_output[10:5], 2'b0};
+        c <= {snake_head_up_sprite_output[4:0], 3'b0};
+      end
+      */
       /*
       //snake body
       else if (hcount[10:5] == (head_pos_x) && hcount[4:1] >= 4'b1111 && vcount[9:4] == head_pos_y) begin //coordinates(10,10) 31
@@ -307,11 +377,14 @@ always_ff @(posedge clk) begin
         b <= background_g;
         c <= background_b;
       end
-    end
-end
+    end 
+
 
 // Assign VGA outputs
-assign {VGA_R, VGA_G, VGA_B} = {a, b, c};
+  assign {VGA_R, VGA_G, VGA_B} = {a, b, c}; 
+end
+
+endmodule
 
 //----------------------------------------------------------
 // I think this is the original template code or lab3 our solution
@@ -327,8 +400,8 @@ always_comb begin
 	end
 end
 */
-       
-endmodule
+
+
 
 module vga_counters(
  input logic 	     clk50, reset,

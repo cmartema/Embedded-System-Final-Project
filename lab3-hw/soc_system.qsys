@@ -33,6 +33,27 @@
          type = "int";
       }
    }
+   element map1_0
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+   }
+   element map1_1
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "1";
+         type = "boolean";
+      }
+   }
    element snake_body_bottomleft_sprite
    {
       datum _sortIndex
@@ -190,6 +211,18 @@
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface name="hps" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="hps_ddr3" internal="hps_0.memory" type="conduit" dir="end" />
+ <interface
+   name="map1_0_avalon_slave_0"
+   internal="map1_0.avalon_slave_0"
+   type="avalon"
+   dir="end" />
+ <interface name="map1_0_vga" internal="map1_0.vga" type="conduit" dir="end" />
+ <interface
+   name="map1_1_avalon_slave_0"
+   internal="map1_1.avalon_slave_0"
+   type="avalon"
+   dir="end" />
+ <interface name="map1_1_vga" internal="map1_1.vga" type="conduit" dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface
    name="snake_body_bottomleft_sprite_s1"
@@ -830,6 +863,8 @@
   <parameter name="usb_mp_clk_div" value="0" />
   <parameter name="use_default_mpu_clk" value="true" />
  </module>
+ <module name="map1_0" kind="map1" version="1.0" enabled="1" />
+ <module name="map1_1" kind="map1" version="1.0" enabled="1" />
  <module
    name="snake_body_bottomleft_sprite"
    kind="altera_avalon_onchip_memory2"
@@ -1402,6 +1437,8 @@
    start="clk_0.clk"
    end="snake_tail_up_sprite.clk1" />
  <connection kind="clock" version="21.1" start="clk_0.clk" end="vga_ball_0.clock" />
+ <connection kind="clock" version="21.1" start="clk_0.clk" end="map1_1.clock" />
+ <connection kind="clock" version="21.1" start="clk_0.clk" end="map1_0.clock" />
  <connection
    kind="clock"
    version="21.1"
@@ -1422,6 +1459,16 @@
    version="21.1"
    start="clk_0.clk_reset"
    end="vga_ball_0.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="clk_0.clk_reset"
+   end="map1_1.reset" />
+ <connection
+   kind="reset"
+   version="21.1"
+   start="clk_0.clk_reset"
+   end="map1_0.reset" />
  <connection
    kind="reset"
    version="21.1"

@@ -2,7 +2,7 @@ set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_N
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_VERSION "21.1"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "soc_system" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../soc_system.sopcinfo"]
-set_global_assignment -entity "soc_system" -library "soc_system" -name SLD_INFO "QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1714414956"
+set_global_assignment -entity "soc_system" -library "soc_system" -name SLD_INFO "QSYS_NAME soc_system HAS_SOPCINFO 1 GENERATION_ID 1715221517"
 set_global_assignment -library "soc_system" -name MISC_FILE [file join $::quartus(qip_path) "../soc_system.cmp"]
 set_global_assignment -library "soc_system" -name SLD_FILE [file join $::quartus(qip_path) "soc_system.regmap"]
 set_global_assignment -library "soc_system" -name MISC_FILE [file join $::quartus(qip_path) "soc_system_hps_0_hps.svd"]
@@ -17,7 +17,7 @@ set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPON
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "On"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
-set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcxNDQxNDk1Ng==::QXV0byBHRU5FUkFUSU9OX0lE"
+set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19HRU5FUkFUSU9OX0lE::MTcxNTIyMTUxNw==::QXV0byBHRU5FUkFUSU9OX0lE"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfRkFNSUxZ::Q3ljbG9uZSBW::QXV0byBERVZJQ0VfRkFNSUxZ"
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0U=::NUNTRU1BNUYzMUM2::QXV0byBERVZJQ0U="
 set_global_assignment -entity "soc_system" -library "soc_system" -name IP_COMPONENT_PARAMETER "QVVUT19ERVZJQ0VfU1BFRURHUkFERQ==::Ng==::QXV0byBERVZJQ0VfU1BFRURHUkFERQ=="
@@ -757,11 +757,6 @@ set_global_assignment -entity "soc_system_wall_sprite" -library "soc_system" -na
 set_global_assignment -entity "soc_system_wall_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9ndWlfcmFtX2Jsb2NrX3R5cGU=::QXV0b21hdGlj::ZGVyaXZlZF9ndWlfcmFtX2Jsb2NrX3R5cGU="
 set_global_assignment -entity "soc_system_wall_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pc19oYXJkY29weQ==::ZmFsc2U=::ZGVyaXZlZF9pc19oYXJkY29weQ=="
 set_global_assignment -entity "soc_system_wall_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pbml0X2ZpbGVfbmFtZQ==::L3VzZXIvc3R1ZC9mYWxsMjIvc201MTY5L0RvY3VtZW50cy9lbWJlZGRlZC9FbWJlZGRlZC1TeXN0ZW0tRmluYWwtUHJvamVjdC9zbmFrZS9weXRob24vbWlmX291dHB1dF8xNi9taWZfYnJpY2tfd2FsbC5taWY=::ZGVyaXZlZF9pbml0X2ZpbGVfbmFtZQ=="
-set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_NAME "dmdhX2JhbGw="
-set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "VkdBIEJhbGw="
-set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
-set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
-set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
 set_global_assignment -entity "soc_system_snake_tail_up_sprite" -library "soc_system" -name IP_COMPONENT_NAME "c29jX3N5c3RlbV9zbmFrZV90YWlsX3VwX3Nwcml0ZQ=="
 set_global_assignment -entity "soc_system_snake_tail_up_sprite" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "T24tQ2hpcCBNZW1vcnkgKFJBTSBvciBST00pIEludGVsIEZQR0EgSVA="
 set_global_assignment -entity "soc_system_snake_tail_up_sprite" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
@@ -1252,6 +1247,11 @@ set_global_assignment -entity "soc_system_snake_body_bottomleft_sprite" -library
 set_global_assignment -entity "soc_system_snake_body_bottomleft_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9ndWlfcmFtX2Jsb2NrX3R5cGU=::QXV0b21hdGlj::ZGVyaXZlZF9ndWlfcmFtX2Jsb2NrX3R5cGU="
 set_global_assignment -entity "soc_system_snake_body_bottomleft_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pc19oYXJkY29weQ==::ZmFsc2U=::ZGVyaXZlZF9pc19oYXJkY29weQ=="
 set_global_assignment -entity "soc_system_snake_body_bottomleft_sprite" -library "soc_system" -name IP_COMPONENT_PARAMETER "ZGVyaXZlZF9pbml0X2ZpbGVfbmFtZQ==::L3VzZXIvc3R1ZC9mYWxsMjIvc201MTY5L0RvY3VtZW50cy9lbWJlZGRlZC9FbWJlZGRlZC1TeXN0ZW0tRmluYWwtUHJvamVjdC9zbmFrZS9weXRob24vbWlmX291dHB1dF8xNi9taWZfYm9keV9ib3R0b21sZWZ0Lm1pZg==::ZGVyaXZlZF9pbml0X2ZpbGVfbmFtZQ=="
+set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_NAME "dmdhX2JhbGw="
+set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_DISPLAY_NAME "TWFwMQ=="
+set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_REPORT_HIERARCHY "Off"
+set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_INTERNAL "Off"
+set_global_assignment -entity "vga_ball" -library "soc_system" -name IP_COMPONENT_VERSION "MS4w"
 set_instance_assignment -name HPS_LOCATION PIN_P19A0T -entity soc_system_hps_0 -to hps_io|border|hps_io_emac1_inst_TX_CLK[0]
 set_instance_assignment -name HPS_LOCATION PIN_P19B0T -entity soc_system_hps_0 -to hps_io|border|hps_io_emac1_inst_TXD0[0]
 set_instance_assignment -name HPS_LOCATION PIN_P19A1T -entity soc_system_hps_0 -to hps_io|border|hps_io_emac1_inst_TXD1[0]
@@ -7074,7 +7074,6 @@ set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join 
 set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_mm_interconnect_0_router_002.sv"]
 set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_mm_interconnect_0_router.sv"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_wall_sprite.v"]
-set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/vga_ball.sv"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_tail_up_sprite.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_tail_right_sprite.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_tail_left_sprite.v"]
@@ -7089,6 +7088,7 @@ set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::qua
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_body_horizontal_sprite.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_body_bottomright_sprite.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_snake_body_bottomleft_sprite.v"]
+set_global_assignment -library "soc_system" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/vga_ball.sv"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_hps_0.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/soc_system_hps_0_hps_io.v"]
 set_global_assignment -library "soc_system" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/hps_sdram.v"]
