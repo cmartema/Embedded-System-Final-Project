@@ -195,6 +195,7 @@ module vga_ball(
     map[x_pos][y_pos] = sprite_type;
   end
 
+
   always_ff @(posedge clk) begin
     
     //this is the snake fruit
