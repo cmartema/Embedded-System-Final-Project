@@ -160,7 +160,7 @@ module vga_ball(
    output reg [7:0] map [15:0][15:0];
 
 
-   always_ff @(posedge clk)
+   always_ff @(posedge clk) begin
      if (reset) begin
       background_r <= 8'h0;
       background_g <= 8'h0;
@@ -178,6 +178,8 @@ module vga_ball(
         3'h2 : sprite_type <= writedata;
       endcase
       map[x_pos][y_pos] <= sprite_type;
+
+   end
        
 
   //logic for generating vga output
