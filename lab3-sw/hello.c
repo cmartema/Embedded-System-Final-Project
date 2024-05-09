@@ -346,7 +346,7 @@ int main()
 
     x = 10;
     y = 20;
-    map = 2;
+    map = 3;
     vla.coordinate_and_map.x = x;
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
@@ -354,7 +354,7 @@ int main()
 
     x = 15;
     y = 20;
-    map = 2;
+    map = 3;
     vla.coordinate_and_map.x = x;
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
