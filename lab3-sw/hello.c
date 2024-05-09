@@ -331,12 +331,11 @@ int main()
     unsigned short int x = 10;
     unsigned short int y = 10;
     unsigned short int map = 1;
-/*    vla.coordinate_and_map.x = x;
+    vla.coordinate_and_map.x = x;
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
-  */  
-
+    
     x = 20;
     y = 20;
     map = 2;
