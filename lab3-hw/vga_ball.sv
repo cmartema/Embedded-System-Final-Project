@@ -157,7 +157,7 @@ module vga_ball(
   reg [7:0] sprite_type;
 
 
-    int map[15][15];
+    unsigned shortint map[15][15];
 
 
    always_ff @(posedge clk)
@@ -176,8 +176,8 @@ module vga_ball(
         3'h0 : x_pos <= writedata;
         3'h1 : y_pos <= writedata;
         3'h2 : sprite_type <= writedata;
-        map[x_pos][y_pos] <= sprite_type;
       endcase
+      map[x_pos][y_pos] <= sprite_type;
        
 
   //logic for generating vga output
