@@ -157,7 +157,7 @@ module vga_ball(
   reg [7:0] sprite_type;
 
 
-    unsigned short map[15][15];
+   output reg [7:0] map [15:0][15:0];
 
 
    always_ff @(posedge clk)
@@ -197,8 +197,8 @@ module vga_ball(
 // -------------------------------------
 always_ff @(posedge clk) begin
   
-  for (int i = 0; i < 3; i++) begin
-    for (int j = 0; j < 4; j++) begin
+  for (int i = 0; i < 16; i++) begin
+    for (int j = 0; j < 16; j++) begin
       $display("myArray[%0d][%0d] = %0d", i, j, myArray[i][j]);
     end
          //this is the snake fruit
