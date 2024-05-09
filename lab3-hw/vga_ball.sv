@@ -196,45 +196,50 @@ module vga_ball(
     
     //this is the snake fruit
     if (VGA_BLANK_n) begin
-      if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin
+      if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin //fruit map = 1
         apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= {apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
       end 
       // this is snake head right 
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10) begin
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10) begin //snake head right map = 2
         snake_head_right_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
-        b <= { snake_head_right_sprite_output[10:5], 2'b0};
+        b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
+      end 
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b11) begin //snake horizontal body map = 3
+        a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
+        b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
+        c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
       end
       //left wall column
       else if(hcount[10:6] == 5'b00000 && vcount[9:5] > 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       //right
       else if(hcount[10:6] == 5'b10011 && vcount[9:5] > 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end
       //top
       else if( vcount[9:5] == 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       //bottom
       else if( vcount[9:5] == 5'b01110) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       else begin
