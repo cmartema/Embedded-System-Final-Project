@@ -157,7 +157,7 @@ module vga_ball(
   reg [7:0] sprite_type;
 
 
-   output reg [7:0] map [15:0][15:0];
+   int map [15:0][15:0];
 
 
    always_ff @(posedge clk) begin
