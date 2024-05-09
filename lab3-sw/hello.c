@@ -345,6 +345,13 @@ int main()
     set_ball_coordinate(&vla);
     // vla.data = 25;
     // set_ball_coordinate(&vla);
+    x = 10;
+    y = 20;
+    map = 3;
+    vla.coordinate_and_map.x = x;
+    vla.coordinate_and_map.y = y;
+    vla.coordinate_and_map.map = map;
+    set_ball_coordinate(&vla);
 
     /*
     direction = 0x08;

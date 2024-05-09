@@ -204,13 +204,13 @@ module vga_ball(
         c <= {apple_sprite_output[4:0], 3'b0};
       end 
       // this is snake head right 
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10) begin
+      else if (map[{2'b00, hcount[10:5]}][{2'b00, vcount[9:4]}] == 8'b10) begin
         snake_head_right_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
       end 
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b11) begin
+      else if (map[{2'b00, hcount[10:5]}][{2'b00, vcount[9:4]}] == 8'b11) begin
         snake_body_horizontal_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
         b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
