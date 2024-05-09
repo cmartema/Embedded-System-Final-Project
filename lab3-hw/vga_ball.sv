@@ -200,6 +200,7 @@ always_ff @(posedge clk) begin
   for (int i = 0; i < 3; i++) begin
     for (int j = 0; j < 4; j++) begin
       $display("myArray[%0d][%0d] = %0d", i, j, myArray[i][j]);
+    end
          //this is the snake fruit
     if (VGA_BLANK_n) begin
       if (sprite_type == 8'b1) begin
