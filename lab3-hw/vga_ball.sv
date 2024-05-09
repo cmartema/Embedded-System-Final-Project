@@ -242,9 +242,10 @@ module vga_ball(
         c <= background_b;
       end
     end 
+  end 
 // Assign VGA outputs
 assign {VGA_R, VGA_G, VGA_B} = {a, b, c}; 
-end
+
 
 endmodule
 
