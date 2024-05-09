@@ -183,7 +183,10 @@ module vga_ball(
   reg [7:0] a;
   reg [7:0] b;
   reg [7:0] c;
-   
+
+  reg [7:0] apple_x;
+  reg [7:0] apple_y;
+
   reg [7:0] head_output1;
   reg [7:0] head_output2;
   reg [7:0] head_output3;
