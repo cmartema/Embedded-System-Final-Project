@@ -383,7 +383,7 @@ always_ff @(posedge clk) begin
 // Assign VGA outputs
 assign {VGA_R, VGA_G, VGA_B} = {a, b, c}; 
 
-end module
+endmodule
 //----------------------------------------------------------
 // I think this is the original template code or lab3 our solution
 /* 
@@ -398,8 +398,8 @@ always_comb begin
 	end
 end
 */
-       
-endmodule
+
+
 
 module vga_counters(
  input logic 	     clk50, reset,
