@@ -156,7 +156,6 @@ module vga_ball(
   reg [7:0] y_pos;
   reg [7:0] sprite_type;
 
-
   int map [39:0][29:0];
   
   always_ff @(posedge clk) begin
