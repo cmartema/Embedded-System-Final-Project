@@ -21,206 +21,6 @@
 #include <time.h>
 #include "sony.h"
 
-// customized hashmap
-/*
-
-#define TABLE_SIZE 100
-
-typedef struct HashNode {
-    int key;
-    int value;
-    struct HashNode* next;
-} HashNode;
-
-typedef struct HashMap {
-    HashNode* buckets[TABLE_SIZE];
-} HashMap;
-
-// Function to create a hash node
-HashNode* createHashNode(int key, int value) {
-    HashNode* newNode = (HashNode*) malloc(sizeof(HashNode));
-    newNode->key = key;
-    newNode->value = value;
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Hash function to convert a key into an index
-unsigned int hashFunction(int key) {
-    return key % TABLE_SIZE;
-}
-
-// Function to create a hashmap
-HashMap* createHashMap() {
-    HashMap* map = (HashMap*) malloc(sizeof(HashMap));
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        map->buckets[i] = NULL;
-    }
-    return map;
-}
-
-// Function to insert a key-value pair into the hashmap
-void insertHashMap(HashMap* map, int key, int value) {
-    unsigned int index = hashFunction(key);
-    HashNode* newNode = createHashNode(key, value);
-    if (map->buckets[index] == NULL) {
-        map->buckets[index] = newNode;
-    } else {
-        HashNode* current = map->buckets[index];
-        while (current->next != NULL) {
-            if (current->key == key) {
-                current->value = value; // Update value if key already exists
-                free(newNode);
-                return;
-            }
-            current = current->next;
-        }
-        if (current->key == key) {
-            current->value = value; // Update value if key already exists
-            free(newNode);
-        } else {
-            current->next = newNode; // Insert new node at the end of the list
-        }
-    }
-}
-
-// Function to search for a value by key in the hashmap
-int searchHashMap(HashMap* map, int key) {
-    unsigned int index = hashFunction(key);
-    HashNode* current = map->buckets[index];
-    while (current != NULL) {
-        if (current->key == key) {
-            return current->value;
-        }
-        current = current->next;
-    }
-    return -1; // Return -1 if the key is not found
-}
-
-// Function to delete a hashmap and free its memory
-void deleteHashMap(HashMap* map) {
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        HashNode* current = map->buckets[i];
-        while (current != NULL) {
-            HashNode* temp = current;
-            current = current->next;
-            free(temp);
-        }
-    }
-    free(map);
-}
-*/
-
-// random number coordinate generator for fruit
-/*
-// Function to generate a random coordinate within the specified range
-Coordinate generateRandomCoordinate(int minX, int maxX, int minY, int maxY) {
-    Coordinate randomCoord;
-    randomCoord.x = minX + rand() % (maxX - minX + 1);
-    randomCoord.y = minY + rand() % (maxY - minY + 1);
-    return randomCoord;
-}
-*/
-
-// Queue to keep track of snake body
-/*
-#define MAX_SIZE 100
-
-// Structure defining a pair of coordinates
-typedef struct {
-    int x;
-    int y;
-} Coordinate;
-
-// Structure defining a queue
-typedef struct {
-    Coordinate items[MAX_SIZE];
-    int front;
-    int rear;
-} Queue;
-
-// Function to create a new empty queue
-Queue* createQueue() {
-    Queue* queue = (Queue*)malloc(sizeof(Queue));
-    queue->front = -1;tyy
-    queue->rear = -1;
-    return queue;
-}
-
-// Function to check if the queue is empty
-int isEmpty(Queue* queue) {
-    return (queue->front == -1 && queue->rear == -1);
-}
-
-// Function to check if the queue is full
-int isFull(Queue* queue) {
-    return (queue->rear == MAX_SIZE - 1);
-}
-
-// Function to add an item to the rear of the queue
-void enqueue(Queue* queue, Coordinate value) {
-    if (isFull(queue)) {
-        printf("Queue is full, cannot enqueue!\n");
-        return;
-    } else if (isEmpty(queue)) {
-        queue->front = 0;
-        queue->rear = 0;
-    } else {
-        queue->rear++;
-    }
-    queue->items[queue->rear] = value;
-}
-
-// Function to remove an item from the front of the queue
-Coordinate dequeue(Queue* queue) {
-    Coordinate item;
-    if (isEmpty(queue)) {
-        printf("Queue is empty, cannot dequeue!\n");
-        item.x = -1;
-        item.y = -1;
-        return item;
-    }
-    item = queue->items[queue->front];
-    if (queue->front == queue->rear) {
-        queue->front = -1;
-        queue->rear = -1;
-    } else {
-        queue->front++;
-    }
-    return item;
-}
-
-// Function to display the elements of the queue
-void display(Queue* queue) {
-    if (isEmpty(queue)) {
-        printf("Queue is empty!\n");
-        return;
-    }
-    printf("Queue elements: ");
-    for (int i = queue->front; i <= queue->rear; i++) {
-        printf("{%d, %d} ", queue->items[i].x, queue->items[i].y);
-    }
-    printf("\n");
-}
-
-// Function to get the front element of the queue without removing it
-Coordinate peek(Queue* queue) {
-    Coordinate item;
-    if (isEmpty(queue)) {
-        printf("Queue is empty!\n");
-        item.x = -1;
-        item.y = -1;
-        return item;
-    }
-    return queue->items[queue->front];
-}
-
-// Function to delete the queue and free memory
-void deleteQueue(Queue* queue) {
-    free(queue);
-    printf("Queue deleted and memory freed.\n");
-}
-*/
 
 int direction;
 
@@ -311,21 +111,17 @@ int main()
         return -1;
     }
     
-
+    
+/*
     unsigned short int x = 5;
     unsigned short int y = 5;
     unsigned short int map = 1;
-    
-    
-/*
+
     vla.coordinate_and_map.x = x;
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
-    
     usleep(1);
-    x = 10;
-    y = 10;
 */
 
     unsigned short int mapSprites[40][30];
@@ -349,6 +145,42 @@ int main()
         }
     }
 
-    
+    //actual game logic
+    unsigned short int x_pos = 0; //30 columns
+    unsigned short int y_pos = 0; //40 rows
+
+    while(1){
+
+        if(not new value to controller keep the same){
+            dont let it update the value if its not up, down, left or right
+            - also we cant go from right to left directly vice versa for left to right
+            - also we cant go from up to down directly vice versa for down to up 
+        }
+        //right button means x_pos should increase
+        if (controller right button || start button){
+
+        }
+        //left button means x_pos should decrease
+        else if (controller left button){
+
+        }
+        //up button means y_pos should decrease
+        else if (controller up button){
+        
+        }
+        //down button means y_pos should increase
+        else if (controller down button){
+
+        }
+
+        set_ball_coordinate(&vla);
+
+        //game over scenario
+        if(x_pos < 0 || x_pos > 39 || y_pos < 0 || y_pos > 29){
+            send some data for gameover screen;
+            break;
+        }
+    }
+
   return 0;
 }
