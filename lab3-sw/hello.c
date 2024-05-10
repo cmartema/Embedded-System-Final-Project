@@ -354,7 +354,7 @@ int main()
 
     for (unsigned short int i = 0; i < 40; i++){
         for (unsigned short int j = 0; j < 30; j++){
-            if(i == 10 && j == 15){
+            if(i == 20 && j == 15){
                 vla.coordinate_and_map.x = i;
                 vla.coordinate_and_map.y = j;
                 vla.coordinate_and_map.map = 1;
