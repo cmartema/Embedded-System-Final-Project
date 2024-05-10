@@ -285,7 +285,6 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
-    unsigned short int wholeScreen[1200];
     struct ThreadArgs args;
     
     vga_ball_arg_t vla;
@@ -316,21 +315,13 @@ int main()
         return -1;
     }
     
-    // fruit.coordinate.x = 10;
-    // fruit.coordinate.y = 10;
-
-    // vla.coordinate.x = 10;
-    // vla.coordinate.y = 20;
-
-    // head_up.coordinate.x = 40;
-    // head_up.coordinate.y = 40;
-
-
-    // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
 
     unsigned short int x = 5;
     unsigned short int y = 5;
     unsigned short int map = 1;
+    
+    
+/*
     vla.coordinate_and_map.x = x;
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
@@ -357,40 +348,29 @@ int main()
     vla.coordinate_and_map.y = y;
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
+*/
 
-    /*
-    direction = 0x08;
+    unsigned short int mapSprites[40][30];
 
-    while(1){
+    for (unsigned short int i = 0; i < 40; i++){
+        for (unsigned short int j = 0; j < 30; j++){
+            if(i == 10 && j == 15){
+                vla.coordinate_and_map.x = i;
+                vla.coordinate_and_map.y = j;
+                vla.coordinate_and_map.map = 1;
+                set_ball_coordinate(&vla);
+                usleep(1);
+            }
+            if(i == 10 && j == 10){
+                vla.coordinate_and_map.x = i;
+                vla.coordinate_and_map.y = j;
+                vla.coordinate_and_map.map = 2;
+                set_ball_coordinate(&vla);
+                usleep(1);
+            }
+        }
+    }
+
     
-    set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
-    //fruit.coordinate.y += 1;
-    if (direction == 0x02) {
-        vla.coordinate.x += 1;
-    } else if (direction == 0x06){
-        vla.coordinate.x -= 1;
-    } else if (direction == 0x00) {
-        if (direction_flag == 1){
-            head_up.coordinate.y = vla.coordinate.y;
-            head_up.coordinate.x = vla.coordinate.x;
-            vla.coordinate.y = 40;
-            vla.coordinate.x = 40;
-        } else head_up.coordinate.y -= 1;
-    } else if (direction == 0x04) {
-        vla.coordinate.y += 1;
-    }
-    if (fruit.coordinate.x == vla.coordinate.x && fruit.coordinate.y == vla.coordinate.y){
-        printf("same coordinates\n");
-    }
-    if (vla.coordinate.x == 38 || vla.coordinate.x == 1 || vla.coordinate.y == 3 || vla.coordinate.y == 28){
-        break;
-    }
-
-        usleep(300000);
-    }
-    printf("GAME OVER\n");
-    pthread_join(sony_thread, NULL);
-    printf("thread killed\n");
-    */
   return 0;
 }
