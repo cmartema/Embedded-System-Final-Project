@@ -359,14 +359,14 @@ int main()
                 vla.coordinate_and_map.y = j;
                 vla.coordinate_and_map.map = 1;
                 set_ball_coordinate(&vla);
-                usleep(1);
+                usleep(20);
             }
             if(i == 10 && j == 10){
                 vla.coordinate_and_map.x = i;
                 vla.coordinate_and_map.y = j;
                 vla.coordinate_and_map.map = 2;
                 set_ball_coordinate(&vla);
-                usleep(1);
+                usleep(20);
             }
         }
     }
