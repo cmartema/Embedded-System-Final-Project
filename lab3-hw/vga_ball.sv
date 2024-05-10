@@ -170,9 +170,30 @@ module vga_ball(
     end 
     else if (chipselect && write) begin
       case (address)
-        3'h0 : x_pos <= writedata;
-        3'h1 : y_pos <= writedata;
-        3'h2 : sprite_type <= writedata;
+        8'h0 : {map[0][0], map[0][1], map[0][2], map[0][3], map[0][4]} <= writedata;
+        8'h1 : y_pos <= writedata;
+        8'h2 : sprite_type <= writedata;
+        8'h3 : x_pos <= writedata;
+        8'h4 : y_pos <= writedata;
+        8'h5 : sprite_type <= writedata;
+        8'h6 : x_pos <= writedata;
+        8'h7 : y_pos <= writedata;
+        8'h8 : sprite_type <= writedata;
+        8'h9 : x_pos <= writedata;
+        8'ha : y_pos <= writedata;
+        8'hb : sprite_type <= writedata;
+        8'hc : x_pos <= writedata;
+        8'hd : y_pos <= writedata;
+        8'h2 : sprite_type <= writedata;
+        8'h0 : x_pos <= writedata;
+        8'h1 : y_pos <= writedata;
+        8'h2 : sprite_type <= writedata;
+        8'h0 : x_pos <= writedata;
+        8'h1 : y_pos <= writedata;
+        8'h2 : sprite_type <= writedata;
+        8'h0 : x_pos <= writedata;
+        8'h1 : y_pos <= writedata;
+        8'h2 : sprite_type <= writedata;
       endcase
       // map[x_pos][y_pos] <= sprite_type;
    end
