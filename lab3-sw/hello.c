@@ -237,7 +237,6 @@ void set_ball_coordinate(const vga_ball_coordinate_and_map *coordinate_and_map)
 {
     vga_ball_arg_t vla;
     vla.coordinate_and_map = *coordinate_and_map;
-    // vla.data = *c; 
     if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
         perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
         return;
@@ -285,11 +284,8 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
-    struct ThreadArgs args;
-    
+    struct ThreadArgs args; 
     vga_ball_arg_t vla;
-    
-    int i;
 
     printf("VGA ball Userspace program started\n");
   
@@ -330,28 +326,10 @@ int main()
     usleep(1);
     x = 10;
     y = 10;
-    
-    map = 2;
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
-    usleep(1);
-    
-    
-    // vla.data = 25;
-    // set_ball_coordinate(&vla);
-    x = 10;
-    y = 20;
-    map = 3;
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
 */
 
     unsigned short int mapSprites[40][30];
-
+    //this is for testing
     for (unsigned short int i = 0; i < 40; i++){
         for (unsigned short int j = 0; j < 30; j++){
             if(i == 20 && j == 15){
