@@ -327,7 +327,7 @@ int main()
 
 
     // set_ball_coordinate(&vla.coordinate, &fruit.coordinate, &head_up.coordinate);
-/*
+
     unsigned short int x = 5;
     unsigned short int y = 5;
     unsigned short int map = 1;
@@ -336,7 +336,7 @@ int main()
     vla.coordinate_and_map.map = map;
     set_ball_coordinate(&vla);
     
-    x = 10;
+/*  x = 10;
     y = 10;
     
     map = 2;
