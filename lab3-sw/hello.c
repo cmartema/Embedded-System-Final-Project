@@ -256,7 +256,7 @@ int main()
                         set_ball_coordinate(&vla.grid); 
 
                     }
-                    if (offset == 480 &&  c < 16){  
+                    if (offset == 480 &&  c > 16 && c < 20){  
                         vla.grid.data = combine(0,0,1,0);  
                         vla.grid.offset = offset+c;
                         set_ball_coordinate(&vla.grid); 
