@@ -169,11 +169,11 @@ module vga_ball(
       snake_head_pos_y <= 8'b00001010;
       snake_head_up_pos_x <= 8'b1111;
       snake_head_up_pos_y <= 8'b1111;
+      x_offset <= 9'b0;
+      y_offset <= 9'b0;
     end 
     else if (chipselect && write) begin
-      case (address)
-        9'h0 : {map[x_offset][y_offset], map[x_offset + 1][y_offset], map[x_offset + 2][y_offset], map[x_offset + 3][y_offset]} <= writedata;
-      /*
+      case (address)      
         9'h0 : {map[0][0], map[1][0], map[2][0], map[3][0]} <= writedata;
         9'h1 : {map[4][0], map[5][0], map[6][0], map[7][0]} <= writedata;
         9'h2 : {map[8][0], map[9][0], map[10][0], map[11][0]} <= writedata;
@@ -504,13 +504,14 @@ module vga_ball(
         9'h129 : {map[28][29], map[29][29], map[30][29], map[31][29]} <= writedata;
         9'h12a : {map[32][29], map[33][29], map[34][29], map[35][29]} <= writedata;
         9'h12b : {map[36][29], map[37][29], map[38][29], map[39][29]} <= writedata;
-*/
+
 
 
         
 
       endcase
-      if (x_offset == 39) begin
+      /*
+      if (x_offset == 9'b100111) begin
         x_offset <= 0;
         y_offset <= y_offset + 1;
       end else if (y_offset == 29) begin
@@ -519,6 +520,7 @@ module vga_ball(
       end else begin
         x_offset <= x_offset + 4;
       end
+      */
       // map[x_pos][y_pos] <= sprite_type;
    end
    //map[x_pos][y_pos] <= sprite_type;
