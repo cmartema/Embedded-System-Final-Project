@@ -294,11 +294,11 @@ int main()
     }*/
     
     vla.grid.data = combine(1,1,1,1);  
-    vla.grid.offset = 10;  
+    vla.grid.offset = 15;  
     set_ball_coordinate(&vla.grid);
 
     vla.grid.data = combine(2,2,2,2); 
-    vla.grid.offset = 20;   
+    vla.grid.offset = 25;   
     set_ball_coordinate(&vla.grid);
 
     // vla.grid.data = combine(1,0,0,0); 
