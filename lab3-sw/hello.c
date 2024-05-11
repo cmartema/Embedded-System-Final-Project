@@ -294,12 +294,12 @@ int main()
     }*/
     int count = 0;
     // vla.grid.offset = 0;
-    for (int i = 0; i < 28; i++){
+    for (int i = 0; i < 27; i++){
         vla.grid.data = combine(0,0,1,1);  
         vla.grid.offset = count;  
         set_ball_coordinate(&vla.grid);
         count += 40;
-        printf("count: %d", count);
+        printf("count: %d\n", count);
     }
 
 
