@@ -265,11 +265,11 @@ int main()
                     // vla.grid.offset = offset+c;
                     // set_ball_coordinate(&vla.grid); 
                 }
-                // else{
-                //     vla.grid.data = combine(0,0,0,0);  
-                //     vla.grid.offset = offset+c;
-                //     set_ball_coordinate(&vla.grid); 
-                // }
+                else{
+                    vla.grid.data = combine(0,0,0,0);  
+                    vla.grid.offset = offset+c;
+                    set_ball_coordinate(&vla.grid); 
+                }
             }
             
         }
