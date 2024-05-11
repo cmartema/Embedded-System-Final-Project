@@ -215,6 +215,7 @@ int main()
     
 
     unsigned short int mapSprites[40][30];
+    /*
     //this is for testing
     for (unsigned short int i = 0; i < 40; i++){
         for (unsigned short int j = 0; j < 30; j++){
@@ -234,6 +235,7 @@ int main()
             }
         }
     }
+    */
 
     unsigned short int a = 0;
     unsigned short int b = 0;
@@ -245,37 +247,37 @@ int main()
         for(unsigned short int column = 0; column < 40; column+=4){
             for(unsigned short int it = column; it < column+4; it++){
                 if((column+4)-it) {
-                    if(row = 10 && it == 10){
+                    if(row == 10 && it == 10){
                         a = 1;
                     }
-                    else if (row = 15 && it = 10){
+                    else if (row == 15 && it == 10){
                         a = 2;
                     }
                     else a = 0;
                 }
                 if((column+3)-it) {
-                    if(row = 10 && it == 10){
+                    if(row == 10 && it == 10){
                         b = 1;
                     }
-                    else if (row = 15 && it = 10){
+                    else if (row == 15 && it == 10){
                         b = 2;
                     }
                     else b = 0;
                 }
                 if((column+2)-it) {
-                    if(row = 10 && it == 10){
+                    if(row == 10 && it == 10){
                         c = 1;
                     }
-                    else if (row = 15 && it = 10){
+                    else if (row == 15 && it == 10){
                         c = 2;
                     }
                     else c = 0;
                 }
                 if((column+1)-it) {
-                    if(row = 10 && it == 10){
+                    if(row == 10 && it == 10){
                         d = 1;
                     }
-                    else if (row = 15 && it = 10){
+                    else if (row == 15 && it == 10){
                         d = 2;
                     }
                     else d = 0;
