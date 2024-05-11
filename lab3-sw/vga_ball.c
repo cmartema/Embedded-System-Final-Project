@@ -59,7 +59,7 @@ struct vga_ball_dev{
 static void write_coordinate(grid *grid){
     // Write the data to some register using iowrite64
 	printk("%d \n",grid->data);
-    iowrite32(grid->data, X(dev.virtbase + grid->offset));
+    iowrite8(grid->data, X(dev.virtbase + grid->offset));
 	// dev.data = *data;
 	dev.grid = *grid;
 }
