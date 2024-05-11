@@ -293,6 +293,7 @@ int main()
         }
     }*/
     int count = 0;
+    vla.grid.offset = 0;
     for (int i = 0; i < 28; i++){
         vla.grid.data = combine(0,0,1,1);  
         vla.grid.offset += count;  
