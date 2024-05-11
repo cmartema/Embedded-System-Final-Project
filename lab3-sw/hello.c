@@ -306,9 +306,9 @@ int main()
                 vla.grid.offset = offset+c;
                 set_ball_coordinate(&vla.grid); 
             }
-            usleep(10);
         }
     }
+    usleep(10);
    }
   return 0;
 }
