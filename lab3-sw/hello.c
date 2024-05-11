@@ -250,11 +250,9 @@ int main()
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
                 if(i == 0){
-                    if(r == 15 && c == 15){
                     vla.grid.data = combine(0,0,1,0);  
                     vla.grid.offset = offset+c;
                     set_ball_coordinate(&vla.grid); 
-                    }
                 }
                 else{
                     vla.grid.data = combine(0,0,0,0);  
