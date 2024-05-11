@@ -246,7 +246,7 @@ int main()
 
     unsigned short j = 0;
 
-
+/*
     int count = 160;
     for (int i = 0; i < 1000; i++){
         if (i % 2 == 0){
@@ -261,6 +261,7 @@ int main()
         }
         sleep(5);
     } 
+*/
     // vla.grid.data = combine(0,0,0,0);  
     // vla.grid.offset = count;
     // set_ball_coordinate(&vla.grid); 
