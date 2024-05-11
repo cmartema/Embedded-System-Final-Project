@@ -252,7 +252,7 @@ int main()
     int offset = 0;
     for(int r = 0; r < 30; r++, offset+=40){
         for(int c = 0; c < 40; c+=4){
-            if(r == Y_START && c == X_START){
+            if(r == 15 && c == 15){
                 vla.grid.data = combine(2,0,0,1);  
                 vla.grid.offset = offset+c;
                 set_ball_coordinate(&vla.grid); 
