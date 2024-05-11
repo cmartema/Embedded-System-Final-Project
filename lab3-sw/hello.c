@@ -186,7 +186,6 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
 
 int main()
 {
-    
     struct ThreadArgs args; 
 
     printf("VGA ball Userspace program started\n");
