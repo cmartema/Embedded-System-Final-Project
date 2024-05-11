@@ -314,7 +314,7 @@ int main()
     // }
     int count = 160;
     for (int i = 0; i < 1000; i++){
-        if i % 2 == 0{
+        if (i % 2 == 0){
             vla.grid.data = combine(0,0,1,0);  
             vla.grid.offset = count;
             set_ball_coordinate(&vla.grid); 
