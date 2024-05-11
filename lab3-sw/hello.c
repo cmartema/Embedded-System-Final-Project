@@ -305,6 +305,10 @@ int main()
     vla.grid.offset = 10;   
     set_ball_coordinate(&vla.grid);
 
+    vla.grid.data = combine(2,0,0,0); 
+    vla.grid.offset = 20;   
+    set_ball_coordinate(&vla.grid);
+
     
 
 
