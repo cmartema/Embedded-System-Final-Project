@@ -304,8 +304,8 @@ int main()
     }
     */
     count = 36;   
-    for (int i = 0; i < 26; i++){
-        vla.grid.data = combine(0,0,1,1);  
+    for (int i = 0; i < 25; i++){
+        vla.grid.data = combine(1,1,0,0);  
         vla.grid.offset = count;  
         set_ball_coordinate(&vla.grid);
         count += 40;
