@@ -276,14 +276,13 @@ int main()
                     // vla.grid.offset = offset+c;
                     // set_ball_coordinate(&vla.grid); 
                 }
-                else{
-                    clear_Display(&vla);
             }
             
         }
         offset = 0;
         sleep(10);
     }
+    clear_Display(&vla);
     return 0;
 
 /*
