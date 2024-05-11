@@ -27,7 +27,7 @@ typedef struct {
   // vga_ball_color_t background;
   // vga_ball_coordinate_and_map coordinate_and_map;
   // unsigned short int data
-  grid data;
+  grid grid;
 } vga_ball_arg_t;
 
 
