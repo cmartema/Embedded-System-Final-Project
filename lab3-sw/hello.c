@@ -179,7 +179,7 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
     x |= ((unsigned long int)b) << 16;
     x |= ((unsigned long int)c) << 8;
     x |= (unsigned long int)d;
-
+    printf("%lu\n", x);
     return x;
 }
 
@@ -243,6 +243,7 @@ int main()
     unsigned short int d = 0;
 
     vga_ball_arg_t vla;
+    printf("before for look\n");
     for (unsigned short int row = 0; row < 30; row++){
         for(unsigned short int column = 0; column < 40; column+=4){
             for(unsigned short int it = column; it < column+4; it++){
