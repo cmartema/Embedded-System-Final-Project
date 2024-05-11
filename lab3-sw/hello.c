@@ -21,9 +21,6 @@
 #include <time.h>
 #include "sony.h"
 
-#define X_START 15
-#define Y_START 15
-
 /*
 
 #define MAX_SIZE 1200
@@ -247,27 +244,27 @@ int main()
     vga_ball_arg_t vla;
     printf("before for look\n");
 
-    //initalizing the snake and apple
     unsigned short j = 0;
     int offset = 0;
-    for(int r = 0; r < 30; r++, offset+=40){
-        for(int c = 0; c < 40; c+=4){
-            if(r == 10 && c == 5){
-                vla.grid.data = combine(2,0,0,1);  
-                vla.grid.offset = offset+c;
-                set_ball_coordinate(&vla.grid); 
-            } else {
-                vla.grid.data = combine(0,0,0,0);  
-                vla.grid.offset = offset+c;
-                set_ball_coordinate(&vla.grid); 
+    for(int i = 0; i < 2; i++){
+        for(int r = 0; r < 30; r++, offset+=40){
+            for(int c = 0; c < 40; c+=4){
+                if(i == 0){
+                    vla.grid.data = combine(0,0,1,0);  
+                    vla.grid.offset = offset+c;
+                    set_ball_coordinate(&vla.grid); 
+                }
+                else{
+                    vla.grid.data = combine(0,0,0,0);  
+                    vla.grid.offset = offset+c;
+                    set_ball_coordinate(&vla.grid); 
+                }
             }
+            
         }
-        
+        offset = 0;
+        sleep(10);
     }
-    //offset = 0;
-    //    sleep(10);
-
-    
     return 0;
 
 /*
