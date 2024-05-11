@@ -183,7 +183,7 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
     return x;
 }
 
-void clear_Display( vga_ball_arg_t *vla){
+void clear_Display( vga_ball_arg_t vla){
     int offset = 0;
      for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
@@ -256,7 +256,7 @@ int main()
 
     unsigned short j = 0;
     int offset = 0;
-    clear_Display(&vla);
+    clear_Display(vla);
     for(int i = 0; i < 2; i++){
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
@@ -282,7 +282,7 @@ int main()
         offset = 0;
         sleep(10);
     }
-    clear_Display(&vla);
+    clear_Display(vla);
     return 0;
 
 /*
