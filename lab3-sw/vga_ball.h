@@ -7,6 +7,7 @@
 // this will set the coordinates for any sprites 
 typedef struct {
   unsigned long int data;
+  unsigned short int offset;
 } grid;
 
 
@@ -18,7 +19,7 @@ typedef struct {
 typedef struct {
   // unsigned long int data
   grid grid;
-  unsigned short int offset;
+  // unsigned short int offset;
 } vga_ball_arg_t;
 
 
