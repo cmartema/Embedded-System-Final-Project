@@ -293,8 +293,8 @@ int main()
         }
     }
     */
-//    vla.grid.data = combine(1,b,c,d);    
-//    set_ball_coordinate(&vla.grid);
+    vla.grid.data = combine(1,b,c,d);    
+    set_ball_coordinate(&vla.grid);
 
 
     // 0-> background
