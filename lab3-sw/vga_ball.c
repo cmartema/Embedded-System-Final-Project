@@ -1,376 +1,199 @@
-/*
- * Userspace program that communicates with the vga_ball device driver
- * through ioctls
+/* * Device driver for the VGA video generator
+ *
+ * A Platform device implemented using the misc subsystem
  *
  * Stephen A. Edwards
  * Columbia University
+ *
+ * References:
+ * Linux source: Documentation/driver-model/platform.txt
+ *               drivers/misc/arm-charlcd.c
+ * http://www.linuxforu.com/tag/linux-device-drivers/
+ * http://free-electrons.com/docs/
+ *
+ * "make" to build
+ * insmod vga_ball.ko
+ *
+ * Check code style with
+ * checkpatch.pl --file --no-tree vga_ball.c
  */
 
-#include <stdio.h>
+#include <linux/module.h>
+#include <linux/init.h>
+#include <linux/errno.h>
+#include <linux/version.h>
+#include <linux/kernel.h>
+#include <linux/platform_device.h>
+#include <linux/miscdevice.h>
+#include <linux/slab.h>
+#include <linux/io.h>
+#include <linux/of.h>
+#include <linux/of_address.h>
+#include <linux/fs.h>
+#include <linux/uaccess.h>
 #include "vga_ball.h"
-#include <sys/ioctl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <string.h>
-#include <unistd.h>
-// we added these libraries
-#include <pthread.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "sony.h"
 
-// customized hashmap
+#include <asm/io.h>
+#include <linux/types.h> 
+
+#define DRIVER_NAME "vga_ball"
+
+//int a;
+
+/* Device registers */
+#define X(x) (x)
+// #define Y(x) ((x)+1)
+// #define KEY(x) ((x)+2)
+
+
+struct vga_ball_dev{
+	struct resource res; /* Resource: our registers */
+	void __iomem *virtbase; /* Where registers can be accessed in memory */
+
+	//unsigned long int type
+	grid grid;
+} dev;
+
+
+//created write coordinate for all the sprites
+static void write_coordinate(grid *grid){
+    // Write the data to some register using iowrite64
+	printk("%d \n",grid->data);
+    iowrite32(grid->data, X(dev.virtbase + grid->offset));
+	// dev.data = *data;
+	dev.grid = *grid;
+}
+
+
 /*
+ * Handle ioctl() calls from userspace:
+ * Read or write the segments on single digits.
+ * Note extensive error checking of arguments
+ */
 
-#define TABLE_SIZE 100
-
-typedef struct HashNode {
-    int key;
-    int value;
-    struct HashNode* next;
-} HashNode;
-
-typedef struct HashMap {
-    HashNode* buckets[TABLE_SIZE];
-} HashMap;
-
-// Function to create a hash node
-HashNode* createHashNode(int key, int value) {
-    HashNode* newNode = (HashNode*) malloc(sizeof(HashNode));
-    newNode->key = key;
-    newNode->value = value;
-    newNode->next = NULL;
-    return newNode;
-}
-
-// Hash function to convert a key into an index
-unsigned int hashFunction(int key) {
-    return key % TABLE_SIZE;
-}
-
-// Function to create a hashmap
-HashMap* createHashMap() {
-    HashMap* map = (HashMap*) malloc(sizeof(HashMap));
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        map->buckets[i] = NULL;
-    }
-    return map;
-}
-
-// Function to insert a key-value pair into the hashmap
-void insertHashMap(HashMap* map, int key, int value) {
-    unsigned int index = hashFunction(key);
-    HashNode* newNode = createHashNode(key, value);
-    if (map->buckets[index] == NULL) {
-        map->buckets[index] = newNode;
-    } else {
-        HashNode* current = map->buckets[index];
-        while (current->next != NULL) {
-            if (current->key == key) {
-                current->value = value; // Update value if key already exists
-                free(newNode);
-                return;
-            }
-            current = current->next;
-        }
-        if (current->key == key) {
-            current->value = value; // Update value if key already exists
-            free(newNode);
-        } else {
-            current->next = newNode; // Insert new node at the end of the list
-        }
-    }
-}
-
-// Function to search for a value by key in the hashmap
-int searchHashMap(HashMap* map, int key) {
-    unsigned int index = hashFunction(key);
-    HashNode* current = map->buckets[index];
-    while (current != NULL) {
-        if (current->key == key) {
-            return current->value;
-        }
-        current = current->next;
-    }
-    return -1; // Return -1 if the key is not found
-}
-
-// Function to delete a hashmap and free its memory
-void deleteHashMap(HashMap* map) {
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        HashNode* current = map->buckets[i];
-        while (current != NULL) {
-            HashNode* temp = current;
-            current = current->next;
-            free(temp);
-        }
-    }
-    free(map);
-}
-*/
-
-// random number coordinate generator for fruit
-/*
-// Function to generate a random coordinate within the specified range
-Coordinate generateRandomCoordinate(int minX, int maxX, int minY, int maxY) {
-    Coordinate randomCoord;
-    randomCoord.x = minX + rand() % (maxX - minX + 1);
-    randomCoord.y = minY + rand() % (maxY - minY + 1);
-    return randomCoord;
-}
-*/
-
-// Queue to keep track of snake body
-/*
-#define MAX_SIZE 100
-
-// Structure defining a pair of coordinates
-typedef struct {
-    int x;
-    int y;
-} Coordinate;
-
-// Structure defining a queue
-typedef struct {
-    Coordinate items[MAX_SIZE];
-    int front;
-    int rear;
-} Queue;
-
-// Function to create a new empty queue
-Queue* createQueue() {
-    Queue* queue = (Queue*)malloc(sizeof(Queue));
-    queue->front = -1;tyy
-    queue->rear = -1;
-    return queue;
-}
-
-// Function to check if the queue is empty
-int isEmpty(Queue* queue) {
-    return (queue->front == -1 && queue->rear == -1);
-}
-
-// Function to check if the queue is full
-int isFull(Queue* queue) {
-    return (queue->rear == MAX_SIZE - 1);
-}
-
-// Function to add an item to the rear of the queue
-void enqueue(Queue* queue, Coordinate value) {
-    if (isFull(queue)) {
-        printf("Queue is full, cannot enqueue!\n");
-        return;
-    } else if (isEmpty(queue)) {
-        queue->front = 0;
-        queue->rear = 0;
-    } else {
-        queue->rear++;
-    }
-    queue->items[queue->rear] = value;
-}
-
-// Function to remove an item from the front of the queue
-Coordinate dequeue(Queue* queue) {
-    Coordinate item;
-    if (isEmpty(queue)) {
-        printf("Queue is empty, cannot dequeue!\n");
-        item.x = -1;
-        item.y = -1;
-        return item;
-    }
-    item = queue->items[queue->front];
-    if (queue->front == queue->rear) {
-        queue->front = -1;
-        queue->rear = -1;
-    } else {
-        queue->front++;
-    }
-    return item;
-}
-
-// Function to display the elements of the queue
-void display(Queue* queue) {
-    if (isEmpty(queue)) {
-        printf("Queue is empty!\n");
-        return;
-    }
-    printf("Queue elements: ");
-    for (int i = queue->front; i <= queue->rear; i++) {
-        printf("{%d, %d} ", queue->items[i].x, queue->items[i].y);
-    }
-    printf("\n");
-}
-
-// Function to get the front element of the queue without removing it
-Coordinate peek(Queue* queue) {
-    Coordinate item;
-    if (isEmpty(queue)) {
-        printf("Queue is empty!\n");
-        item.x = -1;
-        item.y = -1;
-        return item;
-    }
-    return queue->items[queue->front];
-}
-
-// Function to delete the queue and free memory
-void deleteQueue(Queue* queue) {
-    free(queue);
-    printf("Queue deleted and memory freed.\n");
-}
-*/
-
-int direction;
-
-// int direction_flag = 0;
-
-int vga_ball_fd;
-
-pthread_t sony_thread;
-void *sony_thread_f(void *);
-
-
-//set the ball position
-void set_ball_coordinate(const vga_ball_coordinate_and_map *coordinate_and_map)
+//this will write backgrounds for apple and snake sprites 
+static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int arg)
 {
-    vga_ball_arg_t vla;
-    vla.coordinate_and_map = *coordinate_and_map;
-    // vla.data = *c; 
-    if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
-        perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
-        return;
-    }
+	vga_ball_arg_t vla;
+
+	switch (cmd) {
+	case VGA_BALL_WRITE_COORDINATE:
+		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
+				   sizeof(vga_ball_arg_t)))
+			return -EACCES;
+		write_coordinate(&vla.grid);
+		break;
+	default:
+		return -EINVAL;
+	}
+
+	return 0;
 }
 
 
-// Define a structure to hold the arguments
-struct ThreadArgs {
-    // Define the arguments here
-    struct libusb_device_handle *sony;
-    uint8_t endpoint_address;
-    // Add more arguments as needed
+/* The operations our device knows how to do */
+static const struct file_operations vga_ball_fops = {
+	.owner		= THIS_MODULE,
+	.unlocked_ioctl = vga_ball_ioctl,
 };
 
-// Function to be executed in the new thread
-void *sony_thread_f(void *args) {
-    // Cast the argument pointer to the correct type
-    struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
-    
-    // Now you can use the arguments
-    struct libusb_device_handle *sony = threadArgs->sony;
-    uint8_t endpoint_address = threadArgs->endpoint_address;
-    // Use the arguments as needed
-    
-    // Don't forget to free the memory allocated for args if necessary
-    struct usb_sony_packet packet;
-    int transferred;
-    for(;;){
-        libusb_interrupt_transfer(sony, endpoint_address,
-                (unsigned char *) &packet, sizeof(packet),
-                &transferred, 0);
+/* Information about our device for the "misc" framework -- like a char dev */
+static struct miscdevice vga_ball_misc_device = {
+	.minor		= MISC_DYNAMIC_MINOR,
+	.name		= DRIVER_NAME,
+	.fops		= &vga_ball_fops,
+};
 
-        if (transferred > 0 && packet.keycode[8] != 0x08 ) {
-            printf("%02x \n", packet.keycode[8]);
-            direction = packet.keycode[8];
-            //direction_flag = 1;
-        } //else direction_flag = 0;
-  }
-
-  return NULL;
-}
-
-
-
-int main()
-{
-    struct ThreadArgs args;
-    
-    vga_ball_arg_t vla;
-    
-    int i;
-
-    printf("VGA ball Userspace program started\n");
-  
-    // opening and connecting to controller
-    uint8_t endpoint_address_temp;
-    struct libusb_device_handle *sony_temp;
-    if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
-        fprintf(stderr, "Did not find sony\n");
-        exit(1);
-    }	
-    
-    args.sony = sony_temp;
-    args.endpoint_address = endpoint_address_temp;
-    
-    // Cast the argument pointer to the correct type
-    // pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
-    pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
-    printf("After pthread create\n");
-
-    static const char filename[] = "/dev/vga_ball";
-    if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
-        fprintf(stderr, "could not open %s\n", filename);
-        return -1;
-    }
-    
-
-    unsigned short int x = 5;
-    unsigned short int y = 5;
-    unsigned short int map = 1;
-    
-    
 /*
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
-    
-    usleep(1);
-    x = 10;
-    y = 10;
-    
-    map = 2;
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
-    usleep(1);
-    
-    
-    // vla.data = 25;
-    // set_ball_coordinate(&vla);
-    x = 10;
-    y = 20;
-    map = 3;
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
-*/
+ * Initialization code: get resources (registers) and display
+ * a welcome message
+ */
+static int __init vga_ball_probe(struct platform_device *pdev)
+{
+	vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
+	//vga_ball_color_t beige = { 0xff, 0x00, 0x00 };
+	int ret;
 
-    unsigned short int mapSprites[40][30];
+	/* Register ourselves as a misc device: creates /dev/vga_ball */
+	ret = misc_register(&vga_ball_misc_device);
 
-    for (unsigned short int i = 0; i < 40; i++){
-        for (unsigned short int j = 0; j < 30; j++){
-            if(i == 20 && j == 15){
-                vla.coordinate_and_map.x = i;
-                vla.coordinate_and_map.y = j;
-                vla.coordinate_and_map.map = 1;
-                set_ball_coordinate(&vla);
-                usleep(20);
-            }
-            if(i == 10 && j == 10){
-                vla.coordinate_and_map.x = i;
-                vla.coordinate_and_map.y = j;
-                vla.coordinate_and_map.map = 2;
-                set_ball_coordinate(&vla);
-                usleep(20);
-            }
-        }
-    }
+	/* Get the address of our registers from the device tree */
+	ret = of_address_to_resource(pdev->dev.of_node, 0, &dev.res);
+	if (ret) {
+		ret = -ENOENT;
+		goto out_deregister;
+	}
 
-    
-  return 0;
+	/* Make sure we can use these registers */
+	if (request_mem_region(dev.res.start, resource_size(&dev.res),
+			       DRIVER_NAME) == NULL) {
+		ret = -EBUSY;
+		goto out_deregister;
+	}
+
+	/* Arrange access to our registers */
+	dev.virtbase = of_iomap(pdev->dev.of_node, 0);
+	if (dev.virtbase == NULL) {
+		ret = -ENOMEM;
+		goto out_release_mem_region;
+	}
+        
+
+	return 0;
+	
+	out_release_mem_region:
+	release_mem_region(dev.res.start, resource_size(&dev.res));
+	out_deregister:
+	misc_deregister(&vga_ball_misc_device);
+	
+	return ret;
 }
+
+/* Clean-up code: release resources */
+static int vga_ball_remove(struct platform_device *pdev)
+{
+	iounmap(dev.virtbase);
+	release_mem_region(dev.res.start, resource_size(&dev.res));
+	misc_deregister(&vga_ball_misc_device);
+	return 0;
+}
+
+/* Which "compatible" string(s) to search for in the Device Tree */
+#ifdef CONFIG_OF
+static const struct of_device_id vga_ball_of_match[] = {
+	{ .compatible = "csee4840,vga_ball-1.0" },
+	{},
+};
+MODULE_DEVICE_TABLE(of, vga_ball_of_match);
+#endif
+
+/* Information for registering ourselves as a "platform" driver */
+static struct platform_driver vga_ball_driver = {
+	.driver	= {
+		.name	= DRIVER_NAME,
+		.owner	= THIS_MODULE,
+		.of_match_table = of_match_ptr(vga_ball_of_match),
+	},
+	.remove	= __exit_p(vga_ball_remove),
+};
+
+/* Called when the module is loaded: set things up */
+static int __init vga_ball_init(void)
+{
+	pr_info(DRIVER_NAME ": init\n");
+	return platform_driver_probe(&vga_ball_driver, vga_ball_probe);
+}
+
+/* Calball when the module is unloaded: release resources */
+static void __exit vga_ball_exit(void)
+{
+	platform_driver_unregister(&vga_ball_driver);
+	pr_info(DRIVER_NAME ": exit\n");
+}
+
+module_init(vga_ball_init);
+module_exit(vga_ball_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Stephen A. Edwards, Columbia University");
+MODULE_DESCRIPTION("VGA ball driver");
