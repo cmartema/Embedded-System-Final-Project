@@ -302,7 +302,7 @@ int main()
     set_ball_coordinate(&vla.grid);
 
     vla.grid.data = combine(1,0,0,0); 
-    vla.grid.offset = 5;   
+    vla.grid.offset = 10;   
     set_ball_coordinate(&vla.grid);
 
     
