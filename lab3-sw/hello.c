@@ -261,73 +261,8 @@ int main()
     printf("before for look\n");
 
     unsigned short j = 0;
-    /*
-    for (unsigned short int row = 0; row < 30; row++){
-        for(unsigned short int column = 0; column < 40; column+=4){
-            for(unsigned short int it = column; it < column+4; it++){
-                if((column+4)-it) {
-                    if(row == 10 && it == 10){
-                        printf("apple if statement\n");
-                        a = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        a = 2;
-                    }
-                    else a = 0;
-                }
-                if((column+3)-it) {
-                    if(row == 10 && it == 10){
-                        b = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        b = 2;
-                    }
-                    else b = 0;
-                }
-                if((column+2)-it) {
-                    if(row == 10 && it == 10){
-                        c = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        c = 2;
-                    }
-                    else c = 0;
-                }
-                if((column+1)-it) {
-                    if(row == 10 && it == 10){
-                        d = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        d = 2;
-                    }
-                    else d = 0;
 
-                }
-            }
-            vla.grid.data = combine(a,b,c,d);
-            set_ball_coordinate(&vla.grid);
-        }
-    }*/
 
-    // vla.grid.data = combine(1,1,1,1);  
-    // vla.grid.offset = 0;  
-    // set_ball_coordinate(&vla.grid);
-
-    // int count = 0;
-    // for(int i = 0; i < 30; i++){
-    //     vla.grid.data = combine(1,1,1,1);  
-    //     vla.grid.offset = count;
-    //     set_ball_coordinate(&vla.grid); 
-    //     count += 40; 
-    // }
-
-    // count = 36;
-    // for(int i = 0; i < 30; i++){
-    //     vla.grid.data = combine(2,2,2,2);  
-    //     vla.grid.offset = count;
-    //     set_ball_coordinate(&vla.grid); 
-    //     count += 40; 
-    // }
     int count = 160;
     vla.grid.data = combine(0,0,1,0);  
     vla.grid.offset = count;
@@ -358,13 +293,16 @@ int main()
     //actual game logic
     unsigned short int x_pos = 0; //30 columns
     unsigned short int y_pos = 0; //40 rows
-
-    if (direction == start){
-        while(1){
-
+    */
+   int offset = 0;
+   for(int i = 0; i < 2; i++){
+    for(int r = 0; r < 30; r++, offset+=40){
+        for(int c = 0; c < 40; c+=4){
+            vla.grid.data = combine(0,0,1,0);  
+            vla.grid.offset = count;
+            set_ball_coordinate(&vla.grid); 
         }
     }
-    */
-
+   }
   return 0;
 }
