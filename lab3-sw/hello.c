@@ -293,13 +293,13 @@ int main()
         }
     }*/
     
-    vla.grid.data = combine(1,2,c,d);  
+    vla.grid.data = combine(2,2,2,2);  
     vla.grid.offset = 0;  
     set_ball_coordinate(&vla.grid);
 
-    vla.grid.data = combine(2,2,2,2); 
-    vla.grid.offset = 1;   
-    set_ball_coordinate(&vla.grid);
+    // vla.grid.data = combine(2,2,2,2); 
+    // vla.grid.offset = 1;   
+    // set_ball_coordinate(&vla.grid);
 
     
 
