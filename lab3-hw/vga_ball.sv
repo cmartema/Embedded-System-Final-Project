@@ -170,30 +170,30 @@ module vga_ball(
     end 
     else if (chipselect && write) begin
       case (address)
-        8'h0 : {map[0][0], map[0][1], map[0][2], map[0][3], map[0][4]} <= writedata;
-        8'h1 : y_pos <= writedata;
-        8'h2 : sprite_type <= writedata;
-        8'h3 : x_pos <= writedata;
-        8'h4 : y_pos <= writedata;
-        8'h5 : sprite_type <= writedata;
-        8'h6 : x_pos <= writedata;
-        8'h7 : y_pos <= writedata;
-        8'h8 : sprite_type <= writedata;
-        8'h9 : x_pos <= writedata;
-        8'ha : y_pos <= writedata;
-        8'hb : sprite_type <= writedata;
-        8'hc : x_pos <= writedata;
-        8'hd : y_pos <= writedata;
-        8'h2 : sprite_type <= writedata;
-        8'h0 : x_pos <= writedata;
-        8'h1 : y_pos <= writedata;
-        8'h2 : sprite_type <= writedata;
-        8'h0 : x_pos <= writedata;
-        8'h1 : y_pos <= writedata;
-        8'h2 : sprite_type <= writedata;
-        8'h0 : x_pos <= writedata;
-        8'h1 : y_pos <= writedata;
-        8'h2 : sprite_type <= writedata;
+        8'h0 : {map[0][0], map[0][1], map[0][2], map[0][3], map[0][4], map[0][5], map[0][6], map[0][7]} <= writedata;
+        8'h1 : {map[0][8], map[0][9], map[0][10], map[0][11], map[0][12], map[0][13], map[0][14], map[0][15]} <= writedata;
+        8'h2 : {map[0][16], map[0][17], map[0][18], map[0][19], map[0][20], map[0][21], map[0][22], map[0][23]} <= writedata;
+        8'h3 : {map[0][24], map[0][25], map[0][26], map[0][27], map[0][28], map[0][29], map[1][0], map[1][1]} <= writedata;
+        8'h4 : {map[1][2], map[1][3], map[1][4], map[1][5], map[1][6], map[1][7], map[1][8], map[1][9]} <= writedata;
+        8'h5 : {map[1][10], map[1][11], map[1][12], map[1][13], map[1][14], map[1][15], map[1][16], map[1][17]} <= writedata;
+        8'h6 : {map[1][18], map[1][19], map[1][20], map[1][21], map[1][22], map[1][23], map[1][24], map[1][25]} <= writedata;
+        8'h7 : {map[1][26], map[1][27], map[1][28], map[1][29], map[2][0], map[2][1], map[2][2], map[2][3]} <= writedata;
+        8'h8 : {map[2][4], map[2][5], map[2][6], map[2][7], map[2][8], map[2][9], map[2][10], map[2][11]} <= writedata;
+        8'h9 : {map[2][12], map[2][13], map[2][14], map[2][15], map[2][16], map[2][17], map[2][18], map[2][19]} <= writedata;
+        8'ha : {map[2][20], map[2][21], map[2][22], map[2][23], map[2][24], map[2][25], map[2][26], map[2][27]} <= writedata;
+        8'hb : {map[2][28], map[2][29], map[3][0], map[3][1], map[3][2], map[3][3], map[3][4], map[3][5]} <= writedata;
+        8'hc : {map[3][6], map[3][7], map[3][8], map[3][9], map[3][10],map[3][], map[3][11], map[3][12]} <= writedata;
+        8'hd : {map[3][13], map[3][14], map[3][15], map[3][16], map[3][17],map[3][18], map[3][19], map[3][20]} <= writedata;
+        8'h2 : {map[3][21], map[3][22], map[3][23], map[3][24], map[3][25],map[3][26], map[3][27], map[3][28]} <= writedata;
+        8'h0 : {map[3][29], map[4][0], map[4][1], map[4][2], map[4][3],map[4][4], map[4][5], map[4][6]} <= writedata;
+        8'h1 : {map[4][7], map[4][8], map[4][9], map[4][10], map[4][11],map[4][12], map[4][13], map[4][14]} <= writedata;
+        8'h2 : {map[4][15], map[4][16], map[4][17], map[4][18], map[4][19],map[4][20], map[4][21], map[4][22]} <= writedata;
+        8'h0 : {map[4][23], map[4][24], map[4][25], map[4][26], map[4][27],map[4][28], map[4][29], map[5][0]} <= writedata;
+        8'h1 : {map[5][1], map[5][2], map[5][3], map[5][4], map[5][5],map[5][6], map[5][7], map[5][8]} <= writedata;
+        8'h2 : {map[5][9], map[5][10], map[5][11], map[5][12], map[5][13],map[5][14], map[5][15], map[5][16]} <= writedata;
+        8'h0 : {map[5][17], map[5][18], map[5][11], map[5][19], map[5][20],map[5][21], map[5][22], map[5][23]} <= writedata;
+        8'h1 : {map[5][24], map[5][25], map[5][26], map[5][27], map[5][28],map[5][29], map[6][0], map[6][1]} <= writedata;
+        8'h2 : {map[6][2], map[6][3], map[6][4], map[6][5], map[6][6], map[6][7], map[6][8], map[6][9]} <= writedata;
       endcase
       // map[x_pos][y_pos] <= sprite_type;
    end
