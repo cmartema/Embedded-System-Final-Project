@@ -171,13 +171,23 @@ void *sony_thread_f(void *args) {
   return NULL;
 }
 
+unsigned long int combine(unsigned short int a, unsigned short int b, unsigned short int c, unsigned short int d) {
+    unsigned long int x = 0;
+
+    // Combine the values using bitwise OR and bit shifting
+    x |= ((unsigned long int)a) << 24;
+    x |= ((unsigned long int)b) << 16;
+    x |= ((unsigned long int)c) << 8;
+    x |= (unsigned long int)d;
+
+    return x;
+}
 
 
 int main()
 {
-    /*
+    
     struct ThreadArgs args; 
-    vga_ball_arg_t vla;
 
     printf("VGA ball Userspace program started\n");
   
@@ -224,7 +234,60 @@ int main()
             }
         }
     }
-    */
+
+    unsigned short int a = 0;
+    unsigned short int b = 0;
+    unsigned short int c = 0;
+    unsigned short int d = 0;
+
+    vga_ball_arg_t vla;
+    for (unsigned short int row = 0; row < 30; row++){
+        for(unsigned short int column = 0; column < 40; column+=4){
+            for(unsigned short int it = column; it < column+4; it++){
+                if((column+4)-it) {
+                    if(row = 10 && it == 10){
+                        a = 1;
+                    }
+                    else if (row = 15 && it = 10){
+                        a = 2;
+                    }
+                    else a = 0;
+                }
+                if((column+3)-it) {
+                    if(row = 10 && it == 10){
+                        b = 1;
+                    }
+                    else if (row = 15 && it = 10){
+                        b = 2;
+                    }
+                    else b = 0;
+                }
+                if((column+2)-it) {
+                    if(row = 10 && it == 10){
+                        c = 1;
+                    }
+                    else if (row = 15 && it = 10){
+                        c = 2;
+                    }
+                    else c = 0;
+                }
+                if((column+1)-it) {
+                    if(row = 10 && it == 10){
+                        d = 1;
+                    }
+                    else if (row = 15 && it = 10){
+                        d = 2;
+                    }
+                    else d = 0;
+
+                }
+            }
+            vla.grid = combine(a,b,c,d);
+            set_ball_coordinate(&vla.grid);
+        }
+    }
+
+
     // 0-> background
     // 1-> apple
     // 2-> head_up
