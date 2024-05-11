@@ -174,26 +174,77 @@ module vga_ball(
         8'h1 : {map[0][8], map[0][9], map[0][10], map[0][11], map[0][12], map[0][13], map[0][14], map[0][15]} <= writedata;
         8'h2 : {map[0][16], map[0][17], map[0][18], map[0][19], map[0][20], map[0][21], map[0][22], map[0][23]} <= writedata;
         8'h3 : {map[0][24], map[0][25], map[0][26], map[0][27], map[0][28], map[0][29], map[1][0], map[1][1]} <= writedata;
+
         8'h4 : {map[1][2], map[1][3], map[1][4], map[1][5], map[1][6], map[1][7], map[1][8], map[1][9]} <= writedata;
         8'h5 : {map[1][10], map[1][11], map[1][12], map[1][13], map[1][14], map[1][15], map[1][16], map[1][17]} <= writedata;
         8'h6 : {map[1][18], map[1][19], map[1][20], map[1][21], map[1][22], map[1][23], map[1][24], map[1][25]} <= writedata;
         8'h7 : {map[1][26], map[1][27], map[1][28], map[1][29], map[2][0], map[2][1], map[2][2], map[2][3]} <= writedata;
+
         8'h8 : {map[2][4], map[2][5], map[2][6], map[2][7], map[2][8], map[2][9], map[2][10], map[2][11]} <= writedata;
         8'h9 : {map[2][12], map[2][13], map[2][14], map[2][15], map[2][16], map[2][17], map[2][18], map[2][19]} <= writedata;
         8'ha : {map[2][20], map[2][21], map[2][22], map[2][23], map[2][24], map[2][25], map[2][26], map[2][27]} <= writedata;
         8'hb : {map[2][28], map[2][29], map[3][0], map[3][1], map[3][2], map[3][3], map[3][4], map[3][5]} <= writedata;
-        8'hc : {map[3][6], map[3][7], map[3][8], map[3][9], map[3][10],map[3][], map[3][11], map[3][12]} <= writedata;
-        8'hd : {map[3][13], map[3][14], map[3][15], map[3][16], map[3][17],map[3][18], map[3][19], map[3][20]} <= writedata;
-        8'h2 : {map[3][21], map[3][22], map[3][23], map[3][24], map[3][25],map[3][26], map[3][27], map[3][28]} <= writedata;
-        8'h0 : {map[3][29], map[4][0], map[4][1], map[4][2], map[4][3],map[4][4], map[4][5], map[4][6]} <= writedata;
-        8'h1 : {map[4][7], map[4][8], map[4][9], map[4][10], map[4][11],map[4][12], map[4][13], map[4][14]} <= writedata;
-        8'h2 : {map[4][15], map[4][16], map[4][17], map[4][18], map[4][19],map[4][20], map[4][21], map[4][22]} <= writedata;
-        8'h0 : {map[4][23], map[4][24], map[4][25], map[4][26], map[4][27],map[4][28], map[4][29], map[5][0]} <= writedata;
-        8'h1 : {map[5][1], map[5][2], map[5][3], map[5][4], map[5][5],map[5][6], map[5][7], map[5][8]} <= writedata;
-        8'h2 : {map[5][9], map[5][10], map[5][11], map[5][12], map[5][13],map[5][14], map[5][15], map[5][16]} <= writedata;
-        8'h0 : {map[5][17], map[5][18], map[5][11], map[5][19], map[5][20],map[5][21], map[5][22], map[5][23]} <= writedata;
-        8'h1 : {map[5][24], map[5][25], map[5][26], map[5][27], map[5][28],map[5][29], map[6][0], map[6][1]} <= writedata;
-        8'h2 : {map[6][2], map[6][3], map[6][4], map[6][5], map[6][6], map[6][7], map[6][8], map[6][9]} <= writedata;
+
+        8'hc : {map[3][6], map[3][7], map[3][8], map[3][9], map[3][10], map[3][11], map[3][12], map[3][13]} <= writedata;
+        8'hd : {map[3][14], map[3][15], map[3][16], map[3][17],map[3][18], map[3][19], map[3][20], map[3][21]} <= writedata;
+        8'he : {map[3][22], map[3][23], map[3][24], map[3][25],map[3][26], map[3][27], map[3][28], map[3][29]} <= writedata;
+
+        8'hf : {map[4][0], map[4][1], map[4][2], map[4][3],map[4][4], map[4][5], map[4][6], map[4][7], } <= writedata;
+        8'h10 : { map[4][9], map[4][10], map[4][11],map[4][12], map[4][13], map[4][14]} <= writedata;
+        8'h11 : {map[4][15], map[4][16], map[4][17], map[4][18], map[4][19],map[4][20], map[4][21], map[4][22]} <= writedata;
+        8'h12 : {map[4][23], map[4][24], map[4][25], map[4][26], map[4][27],map[4][28], map[4][29], map[5][0]} <= writedata;
+
+        8'h13 : {map[5][1], map[5][2], map[5][3], map[5][4], map[5][5],map[5][6], map[5][7], map[5][8]} <= writedata;
+        8'h14 : {map[5][9], map[5][10], map[5][11], map[5][12], map[5][13],map[5][14], map[5][15], map[5][16]} <= writedata;
+        8'h15 : {map[5][17], map[5][18],  map[5][19], map[5][20],map[5][21], map[5][22], map[5][23], map[5][24]} <= writedata;
+        8'h16 : {map[5][25], map[5][26], map[5][27], map[5][28],map[5][29], map[6][0], map[6][1], map[6][2]} <= writedata;
+
+        8'h17 : {map[6][3], map[6][4], map[6][5], map[6][6], map[6][7], map[6][8], map[6][9], map[6][10]} <= writedata;
+        8'h18 : {map[6][11], map[6][12], map[6][13], map[6][14], map[6][15], map[6][16], map[6][17], map[6][18]} <= writedata;
+        8'h19 : {map[6][19], map[6][20], map[6][21], map[6][22], map[6][23], map[6][24], map[6][25], map[6][26]} <= writedata;
+        8'h1a : {map[6][27], map[6][28], map[6][29], map[7][0], map[7][1], map[7][2], map[7][3], map[7][4]} <= writedata;
+
+        8'h1b : {map[7][5], map[7][6], map[7][7], map[7][8], map[7][9], map[7][10], map[7][11], map[7][12]} <= writedata;
+        8'h1c : {map[7][13], map[7][24], map[7][15], map[7][16], map[7][17], map[7][18], map[7][19], map[7][20]} <= writedata;
+        8'h1d : {map[7][21], map[7][22], map[7][23], map[7][24], map[7][25], map[7][26], map[7][27], map[7][28]} <= writedata;
+        8'h1e : {map[7][29], map[8][0], map[8][1], map[8][2], map[8][3], map[8][4], map[8][5], map[8][6]} <= writedata;
+
+        8'h1f : {map[8][7], map[8][8], map[8][9], map[8][10], map[8][11], map[8][12], map[8][13], map[8][14]} <= writedata;
+        8'h20 : {map[8][15], map[8][16], map[8][17], map[8][18], map[8][19], map[8][20], map[8][21], map[8][22]} <= writedata;
+        8'h21 : {map[8][23], map[8][24], map[8][25], map[8][26], map[8][27], map[8][28], map[8][29], map[9][0]} <= writedata;
+
+        8'h22 : {map[9][1], map[9][2], map[9][3], map[9][4], map[9][5], map[9][6], map[9][7], map[9][8]} <= writedata;
+        8'h23 : {map[9][9], map[9][10], map[9][11], map[9][12], map[9][13], map[9][14], map[9][15], map[9][16]} <= writedata;
+        8'h24 : {map[9][17], map[9][18], map[9][19], map[9][20], map[9][21], map[9][22], map[9][23], map[9][24]} <= writedata;
+        8'h25 : {map[9][25], map[9][26], map[9][27], map[9][28], map[9][29], map[10][0], map[10][1], map[10][11]} <= writedata;
+/*
+        8'h26 : {map[3][21], map[3][22], map[3][23], map[3][24], map[3][25],map[3][26], map[3][27], map[3][28]} <= writedata;
+        8'h27 : {map[3][29], map[4][0], map[4][1], map[4][2], map[4][3],map[4][4], map[4][5], map[4][6]} <= writedata;
+        8'h28 : {map[4][7], map[4][8], map[4][9], map[4][10], map[4][11],map[4][12], map[4][13], map[4][14]} <= writedata;
+        8'h29 : {map[4][15], map[4][16], map[4][17], map[4][18], map[4][19],map[4][20], map[4][21], map[4][22]} <= writedata;
+        8'h2a : {map[4][23], map[4][24], map[4][25], map[4][26], map[4][27],map[4][28], map[4][29], map[5][0]} <= writedata;
+        8'h2b : {map[5][1], map[5][2], map[5][3], map[5][4], map[5][5],map[5][6], map[5][7], map[5][8]} <= writedata;
+        8'h2c : {map[5][9], map[5][10], map[5][11], map[5][12], map[5][13],map[5][14], map[5][15], map[5][16]} <= writedata;
+        8'h2d : {map[5][17], map[5][18], map[5][11], map[5][19], map[5][20],map[5][21], map[5][22], map[5][23]} <= writedata;
+        8'h2e : {map[5][24], map[5][25], map[5][26], map[5][27], map[5][28],map[5][29], map[6][0], map[6][1]} <= writedata;
+        8'h2f : {map[6][2], map[6][3], map[6][4], map[6][5], map[6][6], map[6][7], map[6][8], map[6][9]} <= writedata;
+        8'h30 : {map[0][0], map[0][1], map[0][2], map[0][3], map[0][4], map[0][5], map[0][6], map[0][7]} <= writedata;
+        8'h31 : {map[0][8], map[0][9], map[0][10], map[0][11], map[0][12], map[0][13], map[0][14], map[0][15]} <= writedata;
+        8'h32 : {map[0][16], map[0][17], map[0][18], map[0][19], map[0][20], map[0][21], map[0][22], map[0][23]} <= writedata;
+        8'h33 : {map[0][24], map[0][25], map[0][26], map[0][27], map[0][28], map[0][29], map[1][0], map[1][1]} <= writedata;
+        8'h34 : {map[1][2], map[1][3], map[1][4], map[1][5], map[1][6], map[1][7], map[1][8], map[1][9]} <= writedata;
+        8'h35 : {map[1][10], map[1][11], map[1][12], map[1][13], map[1][14], map[1][15], map[1][16], map[1][17]} <= writedata;
+        8'h36 : {map[1][18], map[1][19], map[1][20], map[1][21], map[1][22], map[1][23], map[1][24], map[1][25]} <= writedata;
+        8'h37 : {map[1][26], map[1][27], map[1][28], map[1][29], map[2][0], map[2][1], map[2][2], map[2][3]} <= writedata;
+        8'h38 : {map[2][4], map[2][5], map[2][6], map[2][7], map[2][8], map[2][9], map[2][10], map[2][11]} <= writedata;
+        8'h39 : {map[2][12], map[2][13], map[2][14], map[2][15], map[2][16], map[2][17], map[2][18], map[2][19]} <= writedata;
+        8'h3a : {map[2][20], map[2][21], map[2][22], map[2][23], map[2][24], map[2][25], map[2][26], map[2][27]} <= writedata;
+        8'h3b : {map[2][28], map[2][29], map[3][0], map[3][1], map[3][2], map[3][3], map[3][4], map[3][5]} <= writedata;
+        8'h3c : {map[3][6], map[3][7], map[3][8], map[3][9], map[3][10],map[3][], map[3][11], map[3][12]} <= writedata;
+        8'h3d : {map[3][13], map[3][14], map[3][15], map[3][16], map[3][17],map[3][18], map[3][19], map[3][20]} <= writedata;
+        8'h3e : {map[3][21], map[3][22], map[3][23], map[3][24], map[3][25],map[3][26], map[3][27], map[3][28]} <= writedata;
+        8'h3f : {map[3][29], map[4][0], map[4][1], map[4][2], map[4][3],map[4][4], map[4][5], map[4][6]} <= writedata;
+       */
       endcase
       // map[x_pos][y_pos] <= sprite_type;
    end
