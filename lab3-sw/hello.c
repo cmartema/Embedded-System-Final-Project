@@ -41,7 +41,7 @@ void initializeDeque(Deque* dq) {
     dq->front = -1;
     dq->rear = 0;
 }
-
+/*
 bool isFull(const Deque* dq) {
     return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
 }
@@ -49,6 +49,7 @@ bool isFull(const Deque* dq) {
 bool isEmpty(const Deque* dq) {
     return dq->front == -1;
 }
+*/
 
 void insertFront(Deque* dq, Map pos) {
     if (isFull(dq)) {
