@@ -243,6 +243,8 @@ int main()
 
     vga_ball_arg_t vla;
     printf("before for look\n");
+
+    unsigned short j = 0;
    /* 
     for (unsigned short int row = 0; row < 30; row++){
         for(unsigned short int column = 0; column < 40; column+=4){
@@ -252,7 +254,7 @@ int main()
                         printf("apple if statement\n");
                         a = 1;
                     }
-                    else if (row == 15 && it == 10){
+                    else if (row == 15+j && it == 10){
                         a = 2;
                     }
                     else a = 0;
@@ -261,7 +263,7 @@ int main()
                     if(row == 10 && it == 10){
                         b = 1;
                     }
-                    else if (row == 15 && it == 10){
+                    else if (row == 15+j && it == 10){
                         b = 2;
                     }
                     else b = 0;
@@ -270,7 +272,7 @@ int main()
                     if(row == 10 && it == 10){
                         c = 1;
                     }
-                    else if (row == 15 && it == 10){
+                    else if (row == 15+j && it == 10){
                         c = 2;
                     }
                     else c = 0;
@@ -279,7 +281,7 @@ int main()
                     if(row == 10 && it == 10){
                         d = 1;
                     }
-                    else if (row == 15 && it == 10){
+                    else if (row == 15+j && it == 10){
                         d = 2;
                     }
                     else d = 0;
