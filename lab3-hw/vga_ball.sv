@@ -170,7 +170,7 @@ module vga_ball(
     end 
     else if (chipselect && write) begin
       case (address)
-        9'h0 : {map[1][0], map[2][0], map[3][0], map[4][0]} <= writedata;
+        9'h0 : {map[0][0], map[1][0], map[2][0], map[3][0]} <= writedata;
         9'h1 : {map[4][0], map[5][0], map[6][0], map[7][0]} <= writedata;
         9'h2 : {map[8][0], map[9][0], map[10][0], map[11][0]} <= writedata;
         9'h3 : {map[12][0], map[13][0], map[14][0], map[15][0]} <= writedata;
