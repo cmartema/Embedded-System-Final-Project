@@ -58,8 +58,6 @@ struct vga_ball_dev{
 static void write_coordinate(grid *grid){
     // Write the data to some register using iowrite64
 	printk("%d \n",grid->data);
-	// iowrite8(coordinate_and_map->x, X(dev.virtbase));
-	// iowrite8(coordinate_and_map->y, Y(dev.virtbase));
     iowrite32(grid->data, X(dev.virtbase));
 	// dev.data = *data;
 	dev.grid = *grid;
@@ -82,7 +80,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int a
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.data);
+		write_coordinate(&vla.grid);
 		break;
 	default:
 		return -EINVAL;
