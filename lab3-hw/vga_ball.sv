@@ -157,6 +157,8 @@ module vga_ball(
   reg [7:0] sprite_type;
 
   reg [7:0] map [39:0][29:0];
+  reg [8:0] x_offset;
+  reg [8:0] y_offset;
   
   always_ff @(posedge clk) begin
     if (reset) begin
@@ -170,6 +172,8 @@ module vga_ball(
     end 
     else if (chipselect && write) begin
       case (address)
+        9'h0 : {map[x_offset][y_offset], map[x_offset + 1][y_offset], map[x_offset + 2][y_offset], map[x_offset + 3][y_offset]} <= writedata;
+      /*
         9'h0 : {map[0][0], map[1][0], map[2][0], map[3][0]} <= writedata;
         9'h1 : {map[4][0], map[5][0], map[6][0], map[7][0]} <= writedata;
         9'h2 : {map[8][0], map[9][0], map[10][0], map[11][0]} <= writedata;
@@ -500,15 +504,24 @@ module vga_ball(
         9'h129 : {map[28][29], map[29][29], map[30][29], map[31][29]} <= writedata;
         9'h12a : {map[32][29], map[33][29], map[34][29], map[35][29]} <= writedata;
         9'h12b : {map[36][29], map[37][29], map[38][29], map[39][29]} <= writedata;
-
+*/
 
 
         
 
       endcase
+      if (x_offset == 39) begin
+        x_offset <= 0;
+        y_offset <= y_offset + 1;
+      end else if (y_offset == 29) begin
+        x_offset <= 0;
+        y_offset <= 0;
+      end else begin
+        x_offset <= x_offset + 4;
+      end
       // map[x_pos][y_pos] <= sprite_type;
    end
-   map[x_pos][y_pos] <= sprite_type;
+   //map[x_pos][y_pos] <= sprite_type;
   end
    
   //logic for generating vga output
