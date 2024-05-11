@@ -297,21 +297,25 @@ int main()
     // vla.grid.offset = 0;  
     // set_ball_coordinate(&vla.grid);
 
-    int count = 0;
-    for(int i = 0; i < 30; i++){
-        vla.grid.data = combine(1,1,1,1);  
-        vla.grid.offset = count;
-        set_ball_coordinate(&vla.grid); 
-        count += 40; 
-    }
+    // int count = 0;
+    // for(int i = 0; i < 30; i++){
+    //     vla.grid.data = combine(1,1,1,1);  
+    //     vla.grid.offset = count;
+    //     set_ball_coordinate(&vla.grid); 
+    //     count += 40; 
+    // }
 
-    count = 36;
-    for(int i = 0; i < 30; i++){
-        vla.grid.data = combine(2,2,2,2);  
-        vla.grid.offset = count;
-        set_ball_coordinate(&vla.grid); 
-        count += 40; 
-    }
+    // count = 36;
+    // for(int i = 0; i < 30; i++){
+    //     vla.grid.data = combine(2,2,2,2);  
+    //     vla.grid.offset = count;
+    //     set_ball_coordinate(&vla.grid); 
+    //     count += 40; 
+    // }
+    int count = 160;
+    vla.grid.data = combine(0,1,0,0);  
+    vla.grid.offset = count;
+    set_ball_coordinate(&vla.grid); 
 
 
     // 0-> background
