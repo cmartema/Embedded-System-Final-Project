@@ -184,22 +184,6 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
 }
 
 
-void clear_diplay(){
-    //     int count = 160;
-    // vla.grid.data = combine(0,1,0,0);  
-    // vla.grid.offset = count;
-    // set_ball_coordinate(&vla.grid); 
-
-    // for (int col = 0; col < 40; col++){
-    //     for (int row = 0; row <)
-
-    //     col += 4;
-
-    // }
-
-}
-
-
 int main()
 {
     struct ThreadArgs args; 
@@ -329,19 +313,32 @@ int main()
     //     count += 40; 
     // }
     int count = 160;
-    vla.grid.data = combine(0,0,1,0);  
-    vla.grid.offset = count;
-    set_ball_coordinate(&vla.grid); 
-
-    count = 1120;
+    for (int i = 0; i < 1000; i++){
+        if i % 2 == 0{
+            vla.grid.data = combine(0,0,1,0);  
+            vla.grid.offset = count;
+            set_ball_coordinate(&vla.grid); 
+        }
+        else{
+            vla.grid.data = combine(0,0,0,0);  
+            vla.grid.offset = count;
+            set_ball_coordinate(&vla.grid); 
+        }
+    }
+    int count = 160;
     vla.grid.data = combine(0,0,0,0);  
     vla.grid.offset = count;
     set_ball_coordinate(&vla.grid); 
 
-    count = 1080;
-    vla.grid.data = combine(0,0,1,0);  
-    vla.grid.offset = count;
-    set_ball_coordinate(&vla.grid); 
+    // count = 1120;
+    // vla.grid.data = combine(0,0,0,0);  
+    // vla.grid.offset = count;
+    // set_ball_coordinate(&vla.grid); 
+
+    // count = 1080;
+    // vla.grid.data = combine(0,0,1,0);  
+    // vla.grid.offset = count;
+    // set_ball_coordinate(&vla.grid); 
 
 
 
