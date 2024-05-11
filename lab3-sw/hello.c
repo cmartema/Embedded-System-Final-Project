@@ -296,6 +296,9 @@ int main()
     vla.grid.data = combine(1,2,c,d);    
     set_ball_coordinate(&vla.grid);
 
+    vla.grid.data = combine(1,2,c,d);    
+    set_ball_coordinate(&vla.grid);
+
     
 
 
