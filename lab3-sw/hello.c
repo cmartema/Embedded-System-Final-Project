@@ -183,6 +183,16 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
     return x;
 }
 
+void clear_Display( vga_ball_arg_t *vla){
+    int offset = 0;
+     for(int r = 0; r < 30; r++, offset+=40){
+            for(int c = 0; c < 40; c+=4){
+                vla.grid.data = combine(0,0,0,0);  
+                vla.grid.offset = offset+c;
+                set_ball_coordinate(&vla.grid); 
+            }
+     }
+}
 
 int main()
 {
@@ -246,6 +256,7 @@ int main()
 
     unsigned short j = 0;
     int offset = 0;
+    clear_Display(&vla);
     for(int i = 0; i < 2; i++){
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
@@ -266,10 +277,7 @@ int main()
                     // set_ball_coordinate(&vla.grid); 
                 }
                 else{
-                    vla.grid.data = combine(0,0,0,0);  
-                    vla.grid.offset = offset+c;
-                    set_ball_coordinate(&vla.grid); 
-                }
+                    clear_Display(&vla);
             }
             
         }
