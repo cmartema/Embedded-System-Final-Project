@@ -179,7 +179,7 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
     x |= ((unsigned long int)b) << 16;
     x |= ((unsigned long int)c) << 8;
     x |= (unsigned long int)d;
-    printf("%lu\n", x);
+    //printf("%lu\n", x);
     return x;
 }
 
@@ -249,6 +249,7 @@ int main()
             for(unsigned short int it = column; it < column+4; it++){
                 if((column+4)-it) {
                     if(row == 10 && it == 10){
+                        printf("apple if statement\n");
                         a = 1;
                     }
                     else if (row == 15 && it == 10){
