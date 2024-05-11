@@ -324,8 +324,7 @@ int main()
             vla.grid.offset = count;
             set_ball_coordinate(&vla.grid); 
         }
-    }
-    int count = 160;
+    } 
     vla.grid.data = combine(0,0,0,0);  
     vla.grid.offset = count;
     set_ball_coordinate(&vla.grid); 
