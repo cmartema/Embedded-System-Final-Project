@@ -334,6 +334,11 @@ int main()
     set_ball_coordinate(&vla.grid); 
 
     count = 1120;
+    vla.grid.data = combine(0,0,0,0);  
+    vla.grid.offset = count;
+    set_ball_coordinate(&vla.grid); 
+
+    count = 1080;
     vla.grid.data = combine(0,0,1,0);  
     vla.grid.offset = count;
     set_ball_coordinate(&vla.grid); 
