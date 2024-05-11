@@ -308,7 +308,7 @@ int main()
             }
         }
     }
-    usleep(10);
+    sleep(10);
    }
   return 0;
 }
