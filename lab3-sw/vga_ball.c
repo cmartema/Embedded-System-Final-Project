@@ -48,15 +48,16 @@
 struct vga_ball_dev{
 	struct resource res; /* Resource: our registers */
 	void __iomem *virtbase; /* Where registers can be accessed in memory */
-	// unsigned short int data;
-	grid data;
+
+	//unsigned long int type
+	grid grid;
 } dev;
 
 
 //created write coordinate for all the sprites
 static void write_coordinate(grid *grid){
     // Write the data to some register using iowrite64
-	printk("%d %d %d\n",coordinate_and_map->x, coordinate_and_map->y, coordinate_and_map->map);
+	printk("%d \n",grid->data);
 	// iowrite8(coordinate_and_map->x, X(dev.virtbase));
 	// iowrite8(coordinate_and_map->y, Y(dev.virtbase));
     iowrite32(grid->data, X(dev.virtbase));
