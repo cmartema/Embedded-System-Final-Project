@@ -21,113 +21,223 @@
 #include <time.h>
 #include "sony.h"
 
+// customized hashmap
 /*
 
-#define MAX_SIZE 1200
+#define TABLE_SIZE 100
 
-typedef struct {
-    unsigned short int x_pos;
-    unsigned short int y_pos;
-    unsigned short int map;
-} Map;
+typedef struct HashNode {
+    int key;
+    int value;
+    struct HashNode* next;
+} HashNode;
 
+typedef struct HashMap {
+    HashNode* buckets[TABLE_SIZE];
+} HashMap;
+
+// Function to create a hash node
+HashNode* createHashNode(int key, int value) {
+    HashNode* newNode = (HashNode*) malloc(sizeof(HashNode));
+    newNode->key = key;
+    newNode->value = value;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Hash function to convert a key into an index
+unsigned int hashFunction(int key) {
+    return key % TABLE_SIZE;
+}
+
+// Function to create a hashmap
+HashMap* createHashMap() {
+    HashMap* map = (HashMap*) malloc(sizeof(HashMap));
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        map->buckets[i] = NULL;
+    }
+    return map;
+}
+
+// Function to insert a key-value pair into the hashmap
+void insertHashMap(HashMap* map, int key, int value) {
+    unsigned int index = hashFunction(key);
+    HashNode* newNode = createHashNode(key, value);
+    if (map->buckets[index] == NULL) {
+        map->buckets[index] = newNode;
+    } else {
+        HashNode* current = map->buckets[index];
+        while (current->next != NULL) {
+            if (current->key == key) {
+                current->value = value; // Update value if key already exists
+                free(newNode);
+                return;
+            }
+            current = current->next;
+        }
+        if (current->key == key) {
+            current->value = value; // Update value if key already exists
+            free(newNode);
+        } else {
+            current->next = newNode; // Insert new node at the end of the list
+        }
+    }
+}
+
+// Function to search for a value by key in the hashmap
+int searchHashMap(HashMap* map, int key) {
+    unsigned int index = hashFunction(key);
+    HashNode* current = map->buckets[index];
+    while (current != NULL) {
+        if (current->key == key) {
+            return current->value;
+        }
+        current = current->next;
+    }
+    return -1; // Return -1 if the key is not found
+}
+
+// Function to delete a hashmap and free its memory
+void deleteHashMap(HashMap* map) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        HashNode* current = map->buckets[i];
+        while (current != NULL) {
+            HashNode* temp = current;
+            current = current->next;
+            free(temp);
+        }
+    }
+    free(map);
+}
+*/
+
+// random number coordinate generator for fruit
+/*
+// Function to generate a random coordinate within the specified range
+Coordinate generateRandomCoordinate(int minX, int maxX, int minY, int maxY) {
+    Coordinate randomCoord;
+    randomCoord.x = minX + rand() % (maxX - minX + 1);
+    randomCoord.y = minY + rand() % (maxY - minY + 1);
+    return randomCoord;
+}
+*/
+
+// Queue to keep track of snake body
+/*
+#define MAX_SIZE 100
+
+// Structure defining a pair of coordinates
 typedef struct {
-    Map arr[MAX_SIZE];
+    int x;
+    int y;
+} Coordinate;
+
+// Structure defining a queue
+typedef struct {
+    Coordinate items[MAX_SIZE];
     int front;
     int rear;
-} Deque;
+} Queue;
 
-void initializeDeque(Deque* dq) {
-    dq->front = -1;
-    dq->rear = 0;
+// Function to create a new empty queue
+Queue* createQueue() {
+    Queue* queue = (Queue*)malloc(sizeof(Queue));
+    queue->front = -1;tyy
+    queue->rear = -1;
+    return queue;
 }
 
-bool isFull(const Deque* dq) {
-    return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
+// Function to check if the queue is empty
+int isEmpty(Queue* queue) {
+    return (queue->front == -1 && queue->rear == -1);
 }
 
-bool isEmpty(const Deque* dq) {
-    return dq->front == -1;
+// Function to check if the queue is full
+int isFull(Queue* queue) {
+    return (queue->rear == MAX_SIZE - 1);
 }
 
+// Function to add an item to the rear of the queue
+void enqueue(Queue* queue, Coordinate value) {
+    if (isFull(queue)) {
+        printf("Queue is full, cannot enqueue!\n");
+        return;
+    } else if (isEmpty(queue)) {
+        queue->front = 0;
+        queue->rear = 0;
+    } else {
+        queue->rear++;
+    }
+    queue->items[queue->rear] = value;
+}
 
-void insertFront(Deque* dq, Map pos) {
-    if (isFull(dq)) {
-        printf("Deque is full. Cannot insert.\n");
+// Function to remove an item from the front of the queue
+Coordinate dequeue(Queue* queue) {
+    Coordinate item;
+    if (isEmpty(queue)) {
+        printf("Queue is empty, cannot dequeue!\n");
+        item.x = -1;
+        item.y = -1;
+        return item;
+    }
+    item = queue->items[queue->front];
+    if (queue->front == queue->rear) {
+        queue->front = -1;
+        queue->rear = -1;
+    } else {
+        queue->front++;
+    }
+    return item;
+}
+
+// Function to display the elements of the queue
+void display(Queue* queue) {
+    if (isEmpty(queue)) {
+        printf("Queue is empty!\n");
         return;
     }
-    if (dq->front == -1) {
-        dq->front = dq->rear = 0;
-    } else if (dq->front == 0) {
-        dq->front = MAX_SIZE - 1;
-    } else {
-        dq->front--;
+    printf("Queue elements: ");
+    for (int i = queue->front; i <= queue->rear; i++) {
+        printf("{%d, %d} ", queue->items[i].x, queue->items[i].y);
     }
-    dq->arr[dq->front] = pos;
+    printf("\n");
 }
 
-void insertRear(Deque* dq, Map pos) {
-    if (isFull(dq)) {
-        printf("Deque is full. Cannot insert.\n");
-        return;
+// Function to get the front element of the queue without removing it
+Coordinate peek(Queue* queue) {
+    Coordinate item;
+    if (isEmpty(queue)) {
+        printf("Queue is empty!\n");
+        item.x = -1;
+        item.y = -1;
+        return item;
     }
-    if (dq->front == -1) {
-        dq->front = dq->rear = 0;
-    } else if (dq->rear == MAX_SIZE - 1) {
-        dq->rear = 0;
-    } else {
-        dq->rear++;
-    }
-    dq->arr[dq->rear] = pos;
+    return queue->items[queue->front];
 }
 
-Map removeFront(Deque* dq) {
-    Map removed;
-    if (isEmpty(dq)) {
-        printf("Deque is empty. Cannot remove.\n");
-        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
-        return removed;
-    }
-    removed = dq->arr[dq->front];
-    if (dq->front == dq->rear) {
-        dq->front = dq->rear = -1;
-    } else if (dq->front == MAX_SIZE - 1) {
-        dq->front = 0;
-    } else {
-        dq->front++;
-    }
-    return removed;
-}
-Map removeRear(Deque* dq) {
-    Map removed;
-    if (isEmpty(dq)) {
-        printf("Deque is empty. Cannot remove.\n");
-        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
-        return removed;
-    }
-    removed = dq->arr[dq->rear];
-    if (dq->front == dq->rear) {
-        dq->front = dq->rear = -1;
-    } else if (dq->rear == 0) {
-        dq->rear = MAX_SIZE - 1;
-    } else {
-        dq->rear--;
-    }
-    return removed;
+// Function to delete the queue and free memory
+void deleteQueue(Queue* queue) {
+    free(queue);
+    printf("Queue deleted and memory freed.\n");
 }
 */
 
 int direction;
+
+// int direction_flag = 0;
+
 int vga_ball_fd;
 
 pthread_t sony_thread;
 void *sony_thread_f(void *);
 
+
 //set the ball position
-void set_ball_coordinate(const grid *grid)
+void set_ball_coordinate(const vga_ball_coordinate_and_map *coordinate_and_map)
 {
     vga_ball_arg_t vla;
-    vla.grid = *grid;
+    vla.coordinate_and_map = *coordinate_and_map;
+    // vla.data = *c; 
     if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
         perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
         return;
@@ -171,20 +281,15 @@ void *sony_thread_f(void *args) {
   return NULL;
 }
 
-unsigned long int combine(unsigned short int a, unsigned short int b) {
-    unsigned long int x = 0;
-
-    // Combine the values using bitwise OR and bit shifting
-    x |= ((unsigned long int)a) << 24;
-    x |= ((unsigned long int)b);
-    //printf("%lu\n", x);
-    return x;
-}
 
 
 int main()
 {
-    struct ThreadArgs args; 
+    struct ThreadArgs args;
+    
+    vga_ball_arg_t vla;
+    
+    int i;
 
     printf("VGA ball Userspace program started\n");
   
@@ -211,9 +316,42 @@ int main()
     }
     
 
+    unsigned short int x = 5;
+    unsigned short int y = 5;
+    unsigned short int map = 1;
+    
+    
+/*
+    vla.coordinate_and_map.x = x;
+    vla.coordinate_and_map.y = y;
+    vla.coordinate_and_map.map = map;
+    set_ball_coordinate(&vla);
+    
+    usleep(1);
+    x = 10;
+    y = 10;
+    
+    map = 2;
+    vla.coordinate_and_map.x = x;
+    vla.coordinate_and_map.y = y;
+    vla.coordinate_and_map.map = map;
+    set_ball_coordinate(&vla);
+    usleep(1);
+    
+    
+    // vla.data = 25;
+    // set_ball_coordinate(&vla);
+    x = 10;
+    y = 20;
+    map = 3;
+    vla.coordinate_and_map.x = x;
+    vla.coordinate_and_map.y = y;
+    vla.coordinate_and_map.map = map;
+    set_ball_coordinate(&vla);
+*/
+
     unsigned short int mapSprites[40][30];
-    /*
-    //this is for testing
+
     for (unsigned short int i = 0; i < 40; i++){
         for (unsigned short int j = 0; j < 30; j++){
             if(i == 20 && j == 15){
@@ -232,115 +370,7 @@ int main()
             }
         }
     }
-    */
 
-
-
-    unsigned short int a = 0;
-    unsigned short int b = 0;
-    unsigned short int c = 0;
-    unsigned short int d = 0;
-
-    vga_ball_arg_t vla;
-    printf("before for look\n");
-
-    unsigned short j = 0;
-    /*
-    for (unsigned short int row = 0; row < 30; row++){
-        for(unsigned short int column = 0; column < 40; column+=4){
-            for(unsigned short int it = column; it < column+4; it++){
-                if((column+4)-it) {
-                    if(row == 10 && it == 10){
-                        printf("apple if statement\n");
-                        a = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        a = 2;
-                    }
-                    else a = 0;
-                }
-                if((column+3)-it) {
-                    if(row == 10 && it == 10){
-                        b = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        b = 2;
-                    }
-                    else b = 0;
-                }
-                if((column+2)-it) {
-                    if(row == 10 && it == 10){
-                        c = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        c = 2;
-                    }
-                    else c = 0;
-                }
-                if((column+1)-it) {
-                    if(row == 10 && it == 10){
-                        d = 1;
-                    }
-                    else if (row == 15+j && it == 10){
-                        d = 2;
-                    }
-                    else d = 0;
-
-                }
-            }
-            vla.grid.data = combine(a,b,c,d);
-            set_ball_coordinate(&vla.grid);
-        }
-    }*/
-    int count = 0;
-    // vla.grid.offset = 0;
-    // for (int i = 0; i < 27; i++){
-    //     vla.grid.data = combine(0,0,1,1);  
-    //     vla.grid.offset = count;  
-    //     set_ball_coordinate(&vla.grid);
-    //     count += 40;
-    //     printf("count: %d\n", count);
-    // }
     
-    // count = 36;   
-    // for (int i = 0; i < 26; i++){
-    //     vla.grid.data = combine(1,1,0,0);  
-    //     vla.grid.offset = count;  
-    //     set_ball_coordinate(&vla.grid);
-    //     count += 40;
-    //     printf("count: %d\n", count);
-    // }
-    
-
-   vla.grid.data = 1;
-   int temp = 1;
-   for (int i = 0; i < 11 ; i++){
-        vla.grid.offset = combine(temp + i ,11);
-        set_ball_coordinate(&vla.grid);
-
-   }
-
-
-
-    // 0-> background
-    // 1-> apple
-    // 2-> head_up
-    // 3-> head_down
-    // 4-> 
-    /*
-    Deque dq;
-    Map right_head = {10, 10, 5};
-    Map horizontal = {9, 10, 7};
-    //actual game logic
-    unsigned short int x_pos = 0; //30 columns
-    unsigned short int y_pos = 0; //40 rows
-
-    if (direction == start){
-        while(1){
-
-        }
-    }
-    */
-
   return 0;
 }
