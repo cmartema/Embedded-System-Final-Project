@@ -6,10 +6,8 @@
 
 // this will set the coordinates for any sprites 
 typedef struct {
-  unsigned short int x;
-  unsigned short int y;
-  unsigned short int map;
-} vga_ball_coordinate_and_map;
+  unsigned long int data;
+} grid;
 
 
 typedef struct {
@@ -22,12 +20,14 @@ typedef struct {
   vga_ball_color_t background;
   vga_ball_coordinate coordinate;
   sv_map data;
-} vga_ball_arg_t;*/
+} vga_ball_arg_t;
+*/
 
 typedef struct {
   // vga_ball_color_t background;
-  vga_ball_coordinate_and_map coordinate_and_map;
+  // vga_ball_coordinate_and_map coordinate_and_map;
   // unsigned short int data
+  grid grid;
 } vga_ball_arg_t;
 
 

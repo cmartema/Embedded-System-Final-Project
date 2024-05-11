@@ -22,21 +22,111 @@
 #include "sony.h"
 
 
+
+#define MAX_SIZE 1200
+
+typedef struct {
+    unsigned short int x_pos;
+    unsigned short int y_pos;
+    unsigned short int map;
+} Map;
+
+typedef struct {
+    Map arr[MAX_SIZE];
+    int front;
+    int rear;
+} Deque;
+
+void initializeDeque(Deque* dq) {
+    dq->front = -1;
+    dq->rear = 0;
+}
+
+bool isFull(const Deque* dq) {
+    return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
+}
+
+bool isEmpty(const Deque* dq) {
+    return dq->front == -1;
+}
+
+void insertFront(Deque* dq, Map pos) {
+    if (isFull(dq)) {
+        printf("Deque is full. Cannot insert.\n");
+        return;
+    }
+    if (dq->front == -1) {
+        dq->front = dq->rear = 0;
+    } else if (dq->front == 0) {
+        dq->front = MAX_SIZE - 1;
+    } else {
+        dq->front--;
+    }
+    dq->arr[dq->front] = pos;
+}
+
+void insertRear(Deque* dq, Map pos) {
+    if (isFull(dq)) {
+        printf("Deque is full. Cannot insert.\n");
+        return;
+    }
+    if (dq->front == -1) {
+        dq->front = dq->rear = 0;
+    } else if (dq->rear == MAX_SIZE - 1) {
+        dq->rear = 0;
+    } else {
+        dq->rear++;
+    }
+    dq->arr[dq->rear] = pos;
+}
+
+Map removeFront(Deque* dq) {
+    Map removed;
+    if (isEmpty(dq)) {
+        printf("Deque is empty. Cannot remove.\n");
+        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
+        return removed;
+    }
+    removed = dq->arr[dq->front];
+    if (dq->front == dq->rear) {
+        dq->front = dq->rear = -1;
+    } else if (dq->front == MAX_SIZE - 1) {
+        dq->front = 0;
+    } else {
+        dq->front++;
+    }
+    return removed;
+}
+Map removeRear(Deque* dq) {
+    Map removed;
+    if (isEmpty(dq)) {
+        printf("Deque is empty. Cannot remove.\n");
+        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
+        return removed;
+    }
+    removed = dq->arr[dq->rear];
+    if (dq->front == dq->rear) {
+        dq->front = dq->rear = -1;
+    } else if (dq->rear == 0) {
+        dq->rear = MAX_SIZE - 1;
+    } else {
+        dq->rear--;
+    }
+    return removed;
+}
+
+
 int direction;
-
-// int direction_flag = 0;
-
 int vga_ball_fd;
 
 pthread_t sony_thread;
 void *sony_thread_f(void *);
 
-
 //set the ball position
-void set_ball_coordinate(const vga_ball_coordinate_and_map *coordinate_and_map)
+void set_ball_coordinate(const grid *grid)
 {
     vga_ball_arg_t vla;
-    vla.coordinate_and_map = *coordinate_and_map;
+    vla.grid = *grid;
     if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
         perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
         return;
@@ -84,6 +174,7 @@ void *sony_thread_f(void *args) {
 
 int main()
 {
+    /*
     struct ThreadArgs args; 
     vga_ball_arg_t vla;
 
@@ -111,18 +202,6 @@ int main()
         return -1;
     }
     
-    
-/*
-    unsigned short int x = 5;
-    unsigned short int y = 5;
-    unsigned short int map = 1;
-
-    vla.coordinate_and_map.x = x;
-    vla.coordinate_and_map.y = y;
-    vla.coordinate_and_map.map = map;
-    set_ball_coordinate(&vla);
-    usleep(1);
-*/
 
     unsigned short int mapSprites[40][30];
     //this is for testing
@@ -144,43 +223,26 @@ int main()
             }
         }
     }
-
+    */
+    // 0-> background
+    // 1-> apple
+    // 2-> head_up
+    // 3-> head_down
+    // 4-> 
+    /*
+    Deque dq;
+    Map right_head = {10, 10, 5};
+    Map horizontal = {9, 10, 7};
     //actual game logic
     unsigned short int x_pos = 0; //30 columns
     unsigned short int y_pos = 0; //40 rows
 
-    while(1){
+    if (direction == start){
+        while(1){
 
-        if(not new value to controller keep the same){
-            dont let it update the value if its not up, down, left or right
-            - also we cant go from right to left directly vice versa for left to right
-            - also we cant go from up to down directly vice versa for down to up 
-        }
-        //right button means x_pos should increase
-        if (controller right button || start button){
-
-        }
-        //left button means x_pos should decrease
-        else if (controller left button){
-
-        }
-        //up button means y_pos should decrease
-        else if (controller up button){
-        
-        }
-        //down button means y_pos should increase
-        else if (controller down button){
-
-        }
-
-        set_ball_coordinate(&vla);
-
-        //game over scenario
-        if(x_pos < 0 || x_pos > 39 || y_pos < 0 || y_pos > 29){
-            send some data for gameover screen;
-            break;
         }
     }
+    */
 
   return 0;
 }
