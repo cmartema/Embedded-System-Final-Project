@@ -245,7 +245,7 @@ int main()
     printf("before for look\n");
 
     unsigned short j = 0;
-   /* 
+   
     for (unsigned short int row = 0; row < 30; row++){
         for(unsigned short int column = 0; column < 40; column+=4){
             for(unsigned short int it = column; it < column+4; it++){
@@ -292,9 +292,9 @@ int main()
             set_ball_coordinate(&vla.grid);
         }
     }
-    */
-    vla.grid.data = combine(1,b,c,d);    
-    set_ball_coordinate(&vla.grid);
+    
+    // vla.grid.data = combine(1,b,c,d);    
+    // set_ball_coordinate(&vla.grid);
 
 
     // 0-> background
