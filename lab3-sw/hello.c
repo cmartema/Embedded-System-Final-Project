@@ -302,7 +302,7 @@ int main()
         count += 40;
         printf("count: %d\n", count);
     }
-    /
+    
     count = 36;   
     for (int i = 0; i < 26; i++){
         vla.grid.data = combine(1,1,0,0);  
