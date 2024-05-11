@@ -21,8 +21,8 @@
 #include <time.h>
 #include "sony.h"
 
-#define X_START = 15
-#define Y_START = 15
+#define X_START 15
+#define Y_START 15
 
 /*
 
