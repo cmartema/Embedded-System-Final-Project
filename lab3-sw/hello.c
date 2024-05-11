@@ -314,9 +314,8 @@ int main()
 
    vla.grid.data = 1;
    int temp = 11;
-   for (int i = 0: i < 15; i++){
-        vla.grid.offset = combine(11, temp);
-        temp += i;
+   for (int i = 0; i < 15; i++){
+        vla.grid.offset = combine(11, temp + i);
         set_ball_coordinate(&vla.grid);
 
    }
