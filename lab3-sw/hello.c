@@ -307,7 +307,9 @@ int main()
                 set_ball_coordinate(&vla.grid); 
             }
         }
+        
     }
+    offset = 0;
     sleep(10);
    }
   return 0;
