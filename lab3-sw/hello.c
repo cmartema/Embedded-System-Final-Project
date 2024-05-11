@@ -294,7 +294,7 @@ int main()
     }*/
 
     vla.grid.data = combine(1,1,1,1);  
-    vla.grid.offset = 35;  
+    vla.grid.offset = 34;  
     set_ball_coordinate(&vla.grid);
 
 
