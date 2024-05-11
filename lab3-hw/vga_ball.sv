@@ -170,16 +170,16 @@ module vga_ball(
     end 
     else if (chipselect && write) begin
       case (address)
-        9'h0 : {map[0][0], map[0][1], map[0][2], map[0][3]} <= writedata;
-        9'h1 : {map[0][4], map[0][5], map[0][6], map[0][7]}  <= writedata;
-        9'h2 : {map[0][8], map[0][9], map[0][10], map[0][11]}  <= writedata;
-        9'h3 : {map[0][12], map[0][13], map[0][14], map[0][15]}  <= writedata;
-        9'h4 : {map[0][16], map[0][17], map[0][18], map[0][19]}  <= writedata;
-        9'h5 : {map[0][20], map[0][21], map[0][22], map[0][23]}  <= writedata;
-        9'h6 : {map[0][24], map[0][25], map[0][26], map[0][27]}  <= writedata;
-        9'h7 : {map[0][28], map[0][29], map[1][0], map[1][1]}  <= writedata;
-        9'h8 : {map[1][2], map[1][3], map[1][4], map[1][5]}  <= writedata;
-        9'h9 : {map[1][6], map[1][7], map[1][8], map[1][9]}  <= writedata;
+        9'h0 : {map[1][0], map[2][0], map[3][0], map[4][0]} <= writedata;
+        9'h1 : {map[4][0], map[5][0], map[6][0], map[7][0]} <= writedata;
+        9'h2 : {map[8][0], map[9][0], map[10][0], map[11][0]} <= writedata;
+        9'h3 : {map[12][0], map[13][0], map[14][0], map[15][0]} <= writedata;
+        9'h4 : {map[16][0], map[17][0], map[18][0], map[19][0]} <= writedata;
+        9'h5 : {map[20][0], map[21][0], map[22][0], map[23][0]} <= writedata;
+        9'h6 : {map[24][0], map[25][0], map[26][0], map[27][0]} <= writedata;
+        9'h7 : {map[28][0], map[29][0], map[30][0], map[31][0]} <= writedata;
+        9'h8 : {map[32][0], map[33][0], map[34][0], map[35][0]} <= writedata;
+        9'h9 : {map[36][0], map[37][0], map[38][0], map[39][0]} <= writedata;
 
         9'ha : {map[0][1], map[1][1], map[2][1], map[3][1]} <= writedata;
         9'hb : {map[4][1], map[5][1], map[6][1], map[7][1]} <= writedata;
