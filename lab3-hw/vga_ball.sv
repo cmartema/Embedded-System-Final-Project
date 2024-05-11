@@ -8,10 +8,10 @@
 module vga_ball(
     input logic         clk,
 	  input logic 	      reset,
-		input logic [31:0]   writedata,
+		input logic [7:0]   writedata,
 		input logic 	      write,
 		input 		          chipselect,
-		input logic [7:0]   address,
+		input logic [15:0]   address,
 
 		output logic [7:0] VGA_R, VGA_G, VGA_B,
 		output logic 	   VGA_CLK, VGA_HS, VGA_VS,
@@ -156,7 +156,7 @@ module vga_ball(
   reg [7:0] y_pos;
   reg [7:0] sprite_type;
 
-  reg [10:0] map [39:0][29:0];
+  reg [7:0] map [39:0][29:0];
   reg [8:0] x_offset;
   reg [8:0] y_offset;
   
@@ -173,7 +173,8 @@ module vga_ball(
       y_offset <= 9'b0;
     end 
     else if (chipselect && write) begin
-      case (address)      
+      map[address[7:0]][address[15:8]] <= writedata;
+      /*case (address)      
         9'h0 : {map[0][0], map[1][0], map[2][0], map[3][0]} <= writedata;
         9'h1 : {map[4][0], map[5][0], map[6][0], map[7][0]} <= writedata;
         9'h2 : {map[8][0], map[9][0], map[10][0], map[11][0]} <= writedata;
@@ -510,6 +511,7 @@ module vga_ball(
         
 
       endcase
+      */
       /*
       if (x_offset == 9'b100111) begin
         x_offset <= 0;
