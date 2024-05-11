@@ -302,15 +302,15 @@ int main()
         count += 40;
         printf("count: %d\n", count);
     }
-    /*
+    /
     count = 36;   
-    for (int i = 0; i < 25; i++){
+    for (int i = 0; i < 26; i++){
         vla.grid.data = combine(1,1,0,0);  
         vla.grid.offset = count;  
         set_ball_coordinate(&vla.grid);
         count += 40;
         printf("count: %d\n", count);
-    }*/
+    }
 
 
     // 0-> background
