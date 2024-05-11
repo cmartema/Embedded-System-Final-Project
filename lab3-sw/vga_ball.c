@@ -82,7 +82,7 @@ static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int a
 		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
 				   sizeof(vga_ball_arg_t)))
 			return -EACCES;
-		write_coordinate(&vla.grid);
+		write_coordinate(&vla.data);
 		break;
 	default:
 		return -EINVAL;
