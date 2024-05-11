@@ -293,10 +293,12 @@ int main()
         }
     }*/
     
-    vla.grid.data = combine(1,2,c,d);    
+    vla.grid.data = combine(1,2,c,d);  
+    vla.offset = 0;  
     set_ball_coordinate(&vla.grid);
 
-    vla.grid.data = combine(1,0,c,d);    
+    vla.grid.data = combine(1,0,c,d); 
+    vla.offset = 1;   
     set_ball_coordinate(&vla.grid);
 
     

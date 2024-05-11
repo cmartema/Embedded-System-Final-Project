@@ -3,7 +3,7 @@
 
 #include <linux/ioctl.h>
 
-
+// int offset;
 // this will set the coordinates for any sprites 
 typedef struct {
   unsigned long int data;
@@ -18,6 +18,7 @@ typedef struct {
 typedef struct {
   // unsigned long int data
   grid grid;
+  unsigned short int offset = 0;
 } vga_ball_arg_t;
 
 
