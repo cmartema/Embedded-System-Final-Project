@@ -294,6 +294,7 @@ int main()
     }*/
     int count = 0;
     // vla.grid.offset = 0;
+<<<<<<< HEAD
     for (int i = 0; i < 25; i++){
         vla.grid.data = combine(0,0,1,1);  
         vla.grid.offset = count;  
@@ -301,6 +302,34 @@ int main()
         count += 40;
         printf("count: %d\n", count);
     }
+=======
+    // for (int i = 0; i < 27; i++){
+    //     vla.grid.data = combine(0,0,1,1);  
+    //     vla.grid.offset = count;  
+    //     set_ball_coordinate(&vla.grid);
+    //     count += 40;
+    //     printf("count: %d\n", count);
+    // }
+    
+    // count = 36;   
+    // for (int i = 0; i < 26; i++){
+    //     vla.grid.data = combine(1,1,0,0);  
+    //     vla.grid.offset = count;  
+    //     set_ball_coordinate(&vla.grid);
+    //     count += 40;
+    //     printf("count: %d\n", count);
+    // }
+    
+
+   vla.grid.data = 1;
+   int temp = 1;
+   for (int i = 0; i < 11 ; i++){
+        vla.grid.offset = combine(temp + i ,11);
+        set_ball_coordinate(&vla.grid);
+
+   }
+
+>>>>>>> 0bb4eaeb6849c24f07fc4a0c8e28fcb822ff71b0
 
 
     // 0-> background

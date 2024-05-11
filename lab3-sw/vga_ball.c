@@ -1,199 +1,346 @@
-/* * Device driver for the VGA video generator
- *
- * A Platform device implemented using the misc subsystem
+/*
+ * Userspace program that communicates with the vga_ball device driver
+ * through ioctls
  *
  * Stephen A. Edwards
  * Columbia University
- *
- * References:
- * Linux source: Documentation/driver-model/platform.txt
- *               drivers/misc/arm-charlcd.c
- * http://www.linuxforu.com/tag/linux-device-drivers/
- * http://free-electrons.com/docs/
- *
- * "make" to build
- * insmod vga_ball.ko
- *
- * Check code style with
- * checkpatch.pl --file --no-tree vga_ball.c
  */
 
-#include <linux/module.h>
-#include <linux/init.h>
-#include <linux/errno.h>
-#include <linux/version.h>
-#include <linux/kernel.h>
-#include <linux/platform_device.h>
-#include <linux/miscdevice.h>
-#include <linux/slab.h>
-#include <linux/io.h>
-#include <linux/of.h>
-#include <linux/of_address.h>
-#include <linux/fs.h>
-#include <linux/uaccess.h>
+#include <stdio.h>
 #include "vga_ball.h"
-
-#include <asm/io.h>
-#include <linux/types.h> 
-
-#define DRIVER_NAME "vga_ball"
-
-//int a;
-
-/* Device registers */
-#define X(x) (x)
-// #define Y(x) ((x)+1)
-// #define KEY(x) ((x)+2)
-
-
-struct vga_ball_dev{
-	struct resource res; /* Resource: our registers */
-	void __iomem *virtbase; /* Where registers can be accessed in memory */
-
-	//unsigned long int type
-	grid grid;
-} dev;
-
-
-//created write coordinate for all the sprites
-static void write_coordinate(grid *grid){
-    // Write the data to some register using iowrite64
-	printk("%d \n",grid->data);
-    iowrite32(grid->data, X(dev.virtbase + grid->offset));
-	// dev.data = *data;
-	dev.grid = *grid;
-}
-
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
+#include <unistd.h>
+// we added these libraries
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "sony.h"
 
 /*
- * Handle ioctl() calls from userspace:
- * Read or write the segments on single digits.
- * Note extensive error checking of arguments
- */
 
-//this will write backgrounds for apple and snake sprites 
-static long vga_ball_ioctl(struct file *f, unsigned int cmd, unsigned long int arg)
-{
-	vga_ball_arg_t vla;
+#define MAX_SIZE 1200
 
-	switch (cmd) {
-	case VGA_BALL_WRITE_COORDINATE:
-		if (copy_from_user(&vla, (vga_ball_arg_t *) arg,
-				   sizeof(vga_ball_arg_t)))
-			return -EACCES;
-		write_coordinate(&vla.grid);
-		break;
-	default:
-		return -EINVAL;
-	}
+typedef struct {
+    unsigned short int x_pos;
+    unsigned short int y_pos;
+    unsigned short int map;
+} Map;
 
-	return 0;
+typedef struct {
+    Map arr[MAX_SIZE];
+    int front;
+    int rear;
+} Deque;
+
+void initializeDeque(Deque* dq) {
+    dq->front = -1;
+    dq->rear = 0;
+}
+
+bool isFull(const Deque* dq) {
+    return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
+}
+
+bool isEmpty(const Deque* dq) {
+    return dq->front == -1;
 }
 
 
-/* The operations our device knows how to do */
-static const struct file_operations vga_ball_fops = {
-	.owner		= THIS_MODULE,
-	.unlocked_ioctl = vga_ball_ioctl,
+void insertFront(Deque* dq, Map pos) {
+    if (isFull(dq)) {
+        printf("Deque is full. Cannot insert.\n");
+        return;
+    }
+    if (dq->front == -1) {
+        dq->front = dq->rear = 0;
+    } else if (dq->front == 0) {
+        dq->front = MAX_SIZE - 1;
+    } else {
+        dq->front--;
+    }
+    dq->arr[dq->front] = pos;
+}
+
+void insertRear(Deque* dq, Map pos) {
+    if (isFull(dq)) {
+        printf("Deque is full. Cannot insert.\n");
+        return;
+    }
+    if (dq->front == -1) {
+        dq->front = dq->rear = 0;
+    } else if (dq->rear == MAX_SIZE - 1) {
+        dq->rear = 0;
+    } else {
+        dq->rear++;
+    }
+    dq->arr[dq->rear] = pos;
+}
+
+Map removeFront(Deque* dq) {
+    Map removed;
+    if (isEmpty(dq)) {
+        printf("Deque is empty. Cannot remove.\n");
+        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
+        return removed;
+    }
+    removed = dq->arr[dq->front];
+    if (dq->front == dq->rear) {
+        dq->front = dq->rear = -1;
+    } else if (dq->front == MAX_SIZE - 1) {
+        dq->front = 0;
+    } else {
+        dq->front++;
+    }
+    return removed;
+}
+Map removeRear(Deque* dq) {
+    Map removed;
+    if (isEmpty(dq)) {
+        printf("Deque is empty. Cannot remove.\n");
+        removed.x_pos = removed.y_pos = removed.map = 0; // Default values
+        return removed;
+    }
+    removed = dq->arr[dq->rear];
+    if (dq->front == dq->rear) {
+        dq->front = dq->rear = -1;
+    } else if (dq->rear == 0) {
+        dq->rear = MAX_SIZE - 1;
+    } else {
+        dq->rear--;
+    }
+    return removed;
+}
+*/
+
+int direction;
+int vga_ball_fd;
+
+pthread_t sony_thread;
+void *sony_thread_f(void *);
+
+//set the ball position
+void set_ball_coordinate(const grid *grid)
+{
+    vga_ball_arg_t vla;
+    vla.grid = *grid;
+    if (ioctl(vga_ball_fd, VGA_BALL_WRITE_COORDINATE, &vla)) {
+        perror("ioctl(VGA_BALL_WRITE_COORDINATE) failed");
+        return;
+    }
+}
+
+
+// Define a structure to hold the arguments
+struct ThreadArgs {
+    // Define the arguments here
+    struct libusb_device_handle *sony;
+    uint8_t endpoint_address;
+    // Add more arguments as needed
 };
 
-/* Information about our device for the "misc" framework -- like a char dev */
-static struct miscdevice vga_ball_misc_device = {
-	.minor		= MISC_DYNAMIC_MINOR,
-	.name		= DRIVER_NAME,
-	.fops		= &vga_ball_fops,
-};
+// Function to be executed in the new thread
+void *sony_thread_f(void *args) {
+    // Cast the argument pointer to the correct type
+    struct ThreadArgs *threadArgs = (struct ThreadArgs *)args;
+    
+    // Now you can use the arguments
+    struct libusb_device_handle *sony = threadArgs->sony;
+    uint8_t endpoint_address = threadArgs->endpoint_address;
+    // Use the arguments as needed
+    
+    // Don't forget to free the memory allocated for args if necessary
+    struct usb_sony_packet packet;
+    int transferred;
+    for(;;){
+        libusb_interrupt_transfer(sony, endpoint_address,
+                (unsigned char *) &packet, sizeof(packet),
+                &transferred, 0);
 
-/*
- * Initialization code: get resources (registers) and display
- * a welcome message
- */
-static int __init vga_ball_probe(struct platform_device *pdev)
-{
-	vga_ball_color_t beige = { 0xf9, 0xe4, 0xb7 };
-	//vga_ball_color_t beige = { 0xff, 0x00, 0x00 };
-	int ret;
+        if (transferred > 0 && packet.keycode[8] != 0x08 ) {
+            printf("%02x \n", packet.keycode[8]);
+            direction = packet.keycode[8];
+            //direction_flag = 1;
+        } //else direction_flag = 0;
+  }
 
-	/* Register ourselves as a misc device: creates /dev/vga_ball */
-	ret = misc_register(&vga_ball_misc_device);
-
-	/* Get the address of our registers from the device tree */
-	ret = of_address_to_resource(pdev->dev.of_node, 0, &dev.res);
-	if (ret) {
-		ret = -ENOENT;
-		goto out_deregister;
-	}
-
-	/* Make sure we can use these registers */
-	if (request_mem_region(dev.res.start, resource_size(&dev.res),
-			       DRIVER_NAME) == NULL) {
-		ret = -EBUSY;
-		goto out_deregister;
-	}
-
-	/* Arrange access to our registers */
-	dev.virtbase = of_iomap(pdev->dev.of_node, 0);
-	if (dev.virtbase == NULL) {
-		ret = -ENOMEM;
-		goto out_release_mem_region;
-	}
-        
-
-	return 0;
-	
-	out_release_mem_region:
-	release_mem_region(dev.res.start, resource_size(&dev.res));
-	out_deregister:
-	misc_deregister(&vga_ball_misc_device);
-	
-	return ret;
+  return NULL;
 }
 
-/* Clean-up code: release resources */
-static int vga_ball_remove(struct platform_device *pdev)
-{
-	iounmap(dev.virtbase);
-	release_mem_region(dev.res.start, resource_size(&dev.res));
-	misc_deregister(&vga_ball_misc_device);
-	return 0;
+unsigned long int combine(unsigned short int a, unsigned short int b) {
+    unsigned long int x = 0;
+
+    // Combine the values using bitwise OR and bit shifting
+    x |= ((unsigned long int)a) << 24;
+    x |= ((unsigned long int)b);
+    //printf("%lu\n", x);
+    return x;
 }
 
-/* Which "compatible" string(s) to search for in the Device Tree */
-#ifdef CONFIG_OF
-static const struct of_device_id vga_ball_of_match[] = {
-	{ .compatible = "csee4840,vga_ball-1.0" },
-	{},
-};
-MODULE_DEVICE_TABLE(of, vga_ball_of_match);
-#endif
 
-/* Information for registering ourselves as a "platform" driver */
-static struct platform_driver vga_ball_driver = {
-	.driver	= {
-		.name	= DRIVER_NAME,
-		.owner	= THIS_MODULE,
-		.of_match_table = of_match_ptr(vga_ball_of_match),
-	},
-	.remove	= __exit_p(vga_ball_remove),
-};
-
-/* Called when the module is loaded: set things up */
-static int __init vga_ball_init(void)
+int main()
 {
-	pr_info(DRIVER_NAME ": init\n");
-	return platform_driver_probe(&vga_ball_driver, vga_ball_probe);
+    struct ThreadArgs args; 
+
+    printf("VGA ball Userspace program started\n");
+  
+    // opening and connecting to controller
+    uint8_t endpoint_address_temp;
+    struct libusb_device_handle *sony_temp;
+    if ((sony_temp = opensony(&endpoint_address_temp)) == NULL ) {
+        fprintf(stderr, "Did not find sony\n");
+        exit(1);
+    }	
+    
+    args.sony = sony_temp;
+    args.endpoint_address = endpoint_address_temp;
+    
+    // Cast the argument pointer to the correct type
+    // pthread_create(&sony_thread, NULL, sony_thread_f, NULL);
+    pthread_create(&sony_thread, NULL, sony_thread_f, (void *)&args);
+    printf("After pthread create\n");
+
+    static const char filename[] = "/dev/vga_ball";
+    if ( (vga_ball_fd = open(filename, O_RDWR)) == -1) {
+        fprintf(stderr, "could not open %s\n", filename);
+        return -1;
+    }
+    
+
+    unsigned short int mapSprites[40][30];
+    /*
+    //this is for testing
+    for (unsigned short int i = 0; i < 40; i++){
+        for (unsigned short int j = 0; j < 30; j++){
+            if(i == 20 && j == 15){
+                vla.coordinate_and_map.x = i;
+                vla.coordinate_and_map.y = j;
+                vla.coordinate_and_map.map = 1;
+                set_ball_coordinate(&vla);
+                usleep(20);
+            }
+            if(i == 10 && j == 10){
+                vla.coordinate_and_map.x = i;
+                vla.coordinate_and_map.y = j;
+                vla.coordinate_and_map.map = 2;
+                set_ball_coordinate(&vla);
+                usleep(20);
+            }
+        }
+    }
+    */
+
+
+
+    unsigned short int a = 0;
+    unsigned short int b = 0;
+    unsigned short int c = 0;
+    unsigned short int d = 0;
+
+    vga_ball_arg_t vla;
+    printf("before for look\n");
+
+    unsigned short j = 0;
+    /*
+    for (unsigned short int row = 0; row < 30; row++){
+        for(unsigned short int column = 0; column < 40; column+=4){
+            for(unsigned short int it = column; it < column+4; it++){
+                if((column+4)-it) {
+                    if(row == 10 && it == 10){
+                        printf("apple if statement\n");
+                        a = 1;
+                    }
+                    else if (row == 15+j && it == 10){
+                        a = 2;
+                    }
+                    else a = 0;
+                }
+                if((column+3)-it) {
+                    if(row == 10 && it == 10){
+                        b = 1;
+                    }
+                    else if (row == 15+j && it == 10){
+                        b = 2;
+                    }
+                    else b = 0;
+                }
+                if((column+2)-it) {
+                    if(row == 10 && it == 10){
+                        c = 1;
+                    }
+                    else if (row == 15+j && it == 10){
+                        c = 2;
+                    }
+                    else c = 0;
+                }
+                if((column+1)-it) {
+                    if(row == 10 && it == 10){
+                        d = 1;
+                    }
+                    else if (row == 15+j && it == 10){
+                        d = 2;
+                    }
+                    else d = 0;
+
+                }
+            }
+            vla.grid.data = combine(a,b,c,d);
+            set_ball_coordinate(&vla.grid);
+        }
+    }*/
+    int count = 0;
+    // vla.grid.offset = 0;
+    // for (int i = 0; i < 27; i++){
+    //     vla.grid.data = combine(0,0,1,1);  
+    //     vla.grid.offset = count;  
+    //     set_ball_coordinate(&vla.grid);
+    //     count += 40;
+    //     printf("count: %d\n", count);
+    // }
+    
+    // count = 36;   
+    // for (int i = 0; i < 26; i++){
+    //     vla.grid.data = combine(1,1,0,0);  
+    //     vla.grid.offset = count;  
+    //     set_ball_coordinate(&vla.grid);
+    //     count += 40;
+    //     printf("count: %d\n", count);
+    // }
+    
+
+   vla.grid.data = 1;
+   int temp = 1;
+   for (int i = 0; i < 11 ; i++){
+        vla.grid.offset = combine(temp + i ,11);
+        set_ball_coordinate(&vla.grid);
+
+   }
+
+
+
+    // 0-> background
+    // 1-> apple
+    // 2-> head_up
+    // 3-> head_down
+    // 4-> 
+    /*
+    Deque dq;
+    Map right_head = {10, 10, 5};
+    Map horizontal = {9, 10, 7};
+    //actual game logic
+    unsigned short int x_pos = 0; //30 columns
+    unsigned short int y_pos = 0; //40 rows
+
+    if (direction == start){
+        while(1){
+
+        }
+    }
+    */
+
+  return 0;
 }
-
-/* Calball when the module is unloaded: release resources */
-static void __exit vga_ball_exit(void)
-{
-	platform_driver_unregister(&vga_ball_driver);
-	pr_info(DRIVER_NAME ": exit\n");
-}
-
-module_init(vga_ball_init);
-module_exit(vga_ball_exit);
-
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Stephen A. Edwards, Columbia University");
-MODULE_DESCRIPTION("VGA ball driver");
