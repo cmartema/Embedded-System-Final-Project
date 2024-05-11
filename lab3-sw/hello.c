@@ -171,12 +171,14 @@ void *sony_thread_f(void *args) {
   return NULL;
 }
 
-unsigned long int combine(unsigned short int a, unsigned short int b) {
+unsigned long int combine(unsigned short int a, unsigned short int b, unsigned short int c, unsigned short int d) {
     unsigned long int x = 0;
 
     // Combine the values using bitwise OR and bit shifting
     x |= ((unsigned long int)a) << 24;
-    x |= ((unsigned long int)b);
+    x |= ((unsigned long int)b) << 16;
+    x |= ((unsigned long int)c) << 8;
+    x |= (unsigned long int)d;
     //printf("%lu\n", x);
     return x;
 }
@@ -233,8 +235,6 @@ int main()
         }
     }
     */
-
-
 
     unsigned short int a = 0;
     unsigned short int b = 0;
@@ -294,28 +294,13 @@ int main()
     }*/
     int count = 0;
     // vla.grid.offset = 0;
-    /*
-    for (int i = 0; i < 27; i++){
+    for (int i = 0; i < 25; i++){
         vla.grid.data = combine(0,0,1,1);  
         vla.grid.offset = count;  
         set_ball_coordinate(&vla.grid);
         count += 40;
         printf("count: %d\n", count);
     }
-    
-    count = 36;   
-    for (int i = 0; i < 26; i++){
-        vla.grid.data = combine(1,1,0,0);  
-        vla.grid.offset = count;  
-        set_ball_coordinate(&vla.grid);
-        count += 40;
-        printf("count: %d\n", count);
-    }
-    */
-
-   vla.grid.data = 1;
-   vla.grid.offset = combine(10,10);
-   set_ball_coordinate(&vla.grid);
 
 
     // 0-> background
