@@ -298,7 +298,7 @@ int main()
     set_ball_coordinate(&vla.grid);
 
     vla.grid.data = combine(2,2,2,2);  
-    vla.grid.offset = 0;  
+    vla.grid.offset = 4;  
     set_ball_coordinate(&vla.grid);
 
     vla.grid.data = combine(1,1,1,1);  
