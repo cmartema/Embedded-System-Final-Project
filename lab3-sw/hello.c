@@ -293,40 +293,9 @@ int main()
         }
     }*/
 
-    vla.grid.data = combine(0,0,1,1);  
-    vla.grid.offset = 200;  
-    set_ball_coordinate(&vla.grid);
-
-
-    vla.grid.data = combine(2,2,2,2);  
-    vla.grid.offset = 4;  
-    set_ball_coordinate(&vla.grid);
-
     vla.grid.data = combine(1,1,1,1);  
-    vla.grid.offset = 20;  
+    vla.grid.offset = 0;  
     set_ball_coordinate(&vla.grid);
-
-    vla.grid.data = combine(1,1,1,1);  
-    vla.grid.offset = 24;  
-    set_ball_coordinate(&vla.grid);
-
-    vla.grid.data = combine(2,2,2,2); 
-    vla.grid.offset = 60;   
-    set_ball_coordinate(&vla.grid);
-
-    vla.grid.data = combine(2,2,2,2); 
-    vla.grid.offset = 100;   
-    set_ball_coordinate(&vla.grid);
-
-    // vla.grid.data = combine(1,0,0,0); 
-    // vla.grid.offset = 9;   
-    // set_ball_coordinate(&vla.grid);
-
-    // vla.grid.data = combine(1,0,0,0); 
-    // vla.grid.offset = 14;   
-    // set_ball_coordinate(&vla.grid);
-
-    
 
 
     // 0-> background
