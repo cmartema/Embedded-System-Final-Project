@@ -284,7 +284,7 @@ int main()
 
                 }
             }
-            vla.grid = combine(a,b,c,d);
+            vla.grid.data = combine(a,b,c,d);
             set_ball_coordinate(&vla.grid);
         }
     }
