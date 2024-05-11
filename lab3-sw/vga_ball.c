@@ -38,6 +38,7 @@
 
 #define DRIVER_NAME "vga_ball"
 
+//int a;
 
 /* Device registers */
 #define X(x) (x)
@@ -58,7 +59,7 @@ struct vga_ball_dev{
 static void write_coordinate(grid *grid){
     // Write the data to some register using iowrite64
 	printk("%d \n",grid->data);
-    iowrite32(grid->data, X(dev.virtbase));
+    iowrite32(grid->data, X(dev.virtbase + grid->offset));
 	// dev.data = *data;
 	dev.grid = *grid;
 }
