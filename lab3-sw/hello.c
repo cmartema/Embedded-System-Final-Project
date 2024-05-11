@@ -305,6 +305,14 @@ int main()
         count += 40; 
     }
 
+    count = 36;
+    for(int i = 0; i < 30; i++){
+        vla.grid.data = combine(2,2,2,2);  
+        vla.grid.offset = count;
+        set_ball_coordinate(&vla.grid); 
+        count += 40; 
+    }
+
 
     // 0-> background
     // 1-> apple
