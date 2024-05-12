@@ -444,8 +444,8 @@ int main()
                         temp_tail_left.x_pos += 1;
                     } else if (direction == 3){
                         temp_tail_left.y_pos -= 1;
-                        temp_tail_dir.dir = 3;
-                        temp_tail_dir.map = 13;
+                        temp_tail_left.dir = 3;
+                        temp_tail_left.map = 13;
                     }
                     /*
                     if (temp_tail_left.dir == 1){
