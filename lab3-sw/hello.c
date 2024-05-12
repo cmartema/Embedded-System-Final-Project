@@ -402,18 +402,7 @@ int main()
                         temp.y_pos -= 1;
                         temp.dir = 3;
                         temp.map = 2;
-                    }
-                    /*
-                    if (temp.dir == 1){
-                        temp.x_pos += 1;
-                    } else if (temp.dir == 2){
-                        temp.x_pos -= 1;
-                    } else if (temp.dir == 3){
-                        temp.y_pos -= 1;
-                    } else if (temp.dir == 4){
-                        temp.y_pos += 1;
-                    }        
-                    */   
+                    } 
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
                     // printf("coords val for head: %d, %d\n", coords.col, coords.row);
@@ -424,6 +413,12 @@ int main()
                     break;
                 case 7:
                     temp_h_body = removeFront(&snake);
+                    if (temp_h_body.dir == direction && direction == 1){
+                        temp_h_body.x_pos += 1;
+                    } else if (temp_h_body.dir == direction && direction == 2){
+                        temp_h_body.x_pos -= 1;
+                    }
+                    /*
                     if (temp_h_body.dir == 1){
                         temp_h_body.x_pos += 1;
                     } else if (temp_h_body.dir == 2){
@@ -433,6 +428,7 @@ int main()
                     } else if (temp_h_body.dir == 4){
                         temp_h_body.y_pos += 1;
                     }
+                    */
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
                     //printf("map val for b: %d\n", temp_h_body.map);
                     //printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
@@ -444,6 +440,14 @@ int main()
                     temp_tail_left = removeFront(&snake);
                     Key temp_c = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     update(screen_map, temp_c, 0);
+                    if (direction == 1 || direction == 2){
+                        temp_tail_left.x_pos += 1;
+                    } else if (direction == 3){
+                        temp_tail_left.y_pos -= 1;
+                        temp_tail_dir.dir = 3;
+                        temp_tail_dir.map = 13;
+                    }
+                    /*
                     if (temp_tail_left.dir == 1){
                         temp_tail_left.x_pos += 1;
                     } else if (temp_tail_left.dir == 2){
@@ -453,6 +457,7 @@ int main()
                     } else if (temp_tail_left.dir == 4){
                         temp_tail_left.y_pos += 1;
                     }
+                    */
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     //printf("map val for tail: %d\n", temp_tail_left.map);
                     //printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
