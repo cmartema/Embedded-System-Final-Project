@@ -333,15 +333,15 @@ int main()
     //right snake head
 
 
-    // Map initial_snake = {4, 4, 1, 5};
-    insertFront(&snake, {4, 4, 1, 5});
-    //horizontal snake body directed right
-    // Map initial_snake1 = {4, 3, 1, 7};
-    insertFront(&snake, {4, 3, 1, 7});
+    Map initial_snake = {4, 4, 1, 5};
+    insertFront(&snake, initial_snake);
+    // horizontal snake body directed right
+    Map initial_snake1 = {4, 3, 1, 7};
+    insertFront(&snake, initial_snake1);
     //right snake tail
-    // Map initial_snake2 = {4, 2, 1, 14};
-    insertFront(&snake, {4, 2, 1, 14});
-
+    Map initial_snake2 = {4, 2, 1, 14};
+    insertFront(&snake, initial_snake2);
+/*
     //testing 
     unsigned short int c = removeFront(&snake).map;
     unsigned short int d = removeFront(&snake).map;
@@ -352,8 +352,8 @@ int main()
     vla.grid.data = combine(a, 0, 0, 0);
     vla.grid.offset = 164;
     set_ball_coordinate(&vla.grid);
-  
-/*
+*/
+
 
     while(1){
         switch {}{
@@ -371,7 +371,7 @@ int main()
             }
         }
     }
-*/
+
 
     // clear_Display(vla); //clear the display independently rather than depending on a for loop
     //initalize snake body and apple
