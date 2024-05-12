@@ -557,7 +557,7 @@ int main()
         }
 
         writeScreen:
-        printf("line 405\n");
+        //printf("line 405\n");
         offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
