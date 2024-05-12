@@ -318,9 +318,9 @@ int main()
     Deque snake;
     initializeDeque(&snake);
 
-    HashMap *map = createHashMap();
+    HashMap *screen_map = createHashMap();
     // Initialize the hashmap with all values set to 0
-    initializeHashMap(map);
+    initializeHashMap(screen_map);
 
     // Map: {x_pos, y_pos, direction, spriteType}
     // direction:
@@ -354,44 +354,76 @@ int main()
     set_ball_coordinate(&vla.grid);
 */
 
-
     while(1){
-        switch (getFront(&snake).map){
-            case 5:
-                Map temp = removeFront(&snake);
-                if (temp[2] == 1){
-                    temp[0] += 1;
-                } else if (temp[2] == 2){
-                    temp[0] -= 1;
-                } else if (temp[2] == 3){
-                    temp[1] -= 1;
-                } else if (temp[2] == 4){
-                    temp[1] += 1;
-                }
-                break;
-            case 7:
-                Map temp_h_body = removeFront(&snake);
-                  if (temp[2] == 1){
-                    temp[0] += 1;
-                } else if (temp[2] == 2){
-                    temp[0] -= 1;
-                } else if (temp[2] == 3){
-                    temp[1] -= 1;
-                } else if (temp[2] == 4){
-                    temp[1] += 1;
-                }
-                break;
-            case 14:
-
-
+        while(1){
+            switch (getFront(&snake).map){
+                case 5:
+                    Map temp = removeFront(&snake);
+                    if (temp.dir == 1){
+                        temp.x_pos += 1;
+                    } else if (temp.dir == 2){
+                        temp.x_pos -= 1;
+                    } else if (temp.dir == 3){
+                        temp.y_pos -= 1;
+                    } else if (temp.dir == 4){
+                        temp.y_pos += 1;
+                    }           
+                    Key coords = {temp.x_pos, temp.y_pos}
+                    update(screen_map, coords, temp.map)
+                    insertRear(&snake, temp);
+                    break;
+                case 7:
+                    Map temp_h_body = removeFront(&snake);
+                    if (temp_h_body.dir == 1){
+                        temp_h_body.x_pos += 1;
+                    } else if (temp_h_body.dir == 2){
+                        temp_h_body.x_pos -= 1;
+                    } else if (temp_h_body.dir == 3){
+                        temp_h_body.y_pos -= 1;
+                    } else if (temp_h_body.dir == 4){
+                        temp_h_body.y_pos += 1;
+                    }
+                    Key coords = {temp_h_body.x_pos, temp_h_body.y_pos}
+                    update(screen_map, coords, temp_h_body.map)
+                    insertRear(&snake, temp_h_body);
+                    break;
+                case 14:
+                    Map temp_tail_left = removeFront(&snake);
+                    if (temp_tail_left.dir == 1){
+                        temp_tail_left.x_pos += 1;
+                    } else if (temp_tail_left.dir == 2){
+                        temp_tail_left.x_pos -= 1;
+                    } else if (temp_tail_left.dir == 3){
+                        temp_tail_left.y_pos -= 1;
+                    } else if (temp_tail_left.dir == 4){
+                        temp_tail_left.y_pos += 1;
+                    }
+                    Key coords = {temp_tail_left.x_pos, temp_tail_left.y_pos}
+                    update(screen_map, coords, temp_tail_left.map)
+                    insertRear(&snake, temp_tail_left);
+                    goto writeScreen;
+                    break;
+                
+            }
         }
 
+        writeScreen:
+        printf("line 405\n");
         int offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
+                //get(map, (Key){0, 0})
+                int sprite1 = get(screen_map, (Key){r, c});
+                int sprite2 = get(screen_map, (Key){r, c+1});
+                int sprite3 = get(screen_map, (Key){r, c+2});
+                int sprite4 = get(screen_map, (Key){r, c+3});
 
+                vla.grid.data = combine(sprite1,sprite2,sprite3,sprite4);  
+                vla.grid.offset = offset + c;
+                set_ball_coordinate(&vla.grid);
             }
+            
         }
     }
 
