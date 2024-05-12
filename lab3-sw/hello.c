@@ -369,7 +369,7 @@ int main()
 
     int offset;
     while(1){
-        usleep(1000);
+        usleep(100000);
         while(1){
             //sleep(1);
             Map temp;
