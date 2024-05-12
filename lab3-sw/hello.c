@@ -320,8 +320,7 @@ int main()
 
     //basic snake 
     //right snake head
-    Map initial_snake;
-    initial_snake = {4, 4, 1, 5};
+    Map initial_snake = {4, 4, 1, 5};
     insertFront(&snake, initial_snake);
     //horizontal snake body directed right
     initial_snake = {4, 3, 1, 7};
@@ -363,7 +362,7 @@ int main()
 
     // clear_Display(vla); //clear the display independently rather than depending on a for loop
     //initalize snake body and apple
-    
+ /*   
     for(int r = 0; r < 30; r++, offset+=40){
         for(int c = 0; c < 40; c+=4){
             if(r == 15 && c == 12){
@@ -381,7 +380,7 @@ int main()
                 set_ball_coordinate(&vla.grid);
             }   
         }
-    }
+    }*/
     
     return 0;   
    
