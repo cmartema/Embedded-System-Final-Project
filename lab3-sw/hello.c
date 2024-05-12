@@ -368,6 +368,7 @@ int main()
                     } else if (temp.dir == 3){
                         temp.y_pos -= 1;
                     } else if (temp.dir == 4){
+                        printf("\nIN IF 1\n");
                         temp.y_pos += 1;
                     }           
                     Key coords = {temp.x_pos, temp.y_pos};
@@ -387,6 +388,7 @@ int main()
                     } else if (temp_h_body.dir == 3){
                         temp_h_body.y_pos -= 1;
                     } else if (temp_h_body.dir == 4){
+                        printf("\nIN IF 2\n");
                         temp_h_body.y_pos += 1;
                     }
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
@@ -405,6 +407,7 @@ int main()
                     } else if (temp_tail_left.dir == 3){
                         temp_tail_left.y_pos -= 1;
                     } else if (temp_tail_left.dir == 4){
+                        printf("\nIN IF 3\n");
                         temp_tail_left.y_pos += 1;
                     }
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
