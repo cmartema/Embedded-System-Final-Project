@@ -293,15 +293,11 @@ void clear_Display( vga_ball_arg_t vla){
      }
 }
 
-typedef struct {
-    int x;
-    int y;
-} Coordinate;
 
-Coordinate generate_random_coordinates(int min_x, int max_x, int min_y, int max_y) {
-    Coordinate coord;
-    coord.x = rand() % (max_x - min_x + 1) + min_x;
-    coord.y = rand() % (max_y - min_y + 1) + min_y;
+Key generate_random_coordinates(int min_x, int max_x, int min_y, int max_y) {
+    Key coord;
+    coord.col = rand() % (max_x - min_x + 1) + min_x;
+    coord.row = rand() % (max_y - min_y + 1) + min_y;
     return coord;
 }
 
@@ -368,7 +364,7 @@ int main()
     Map initial_change_point = {2, 4, 1, 1};
     insertRear(&change_point, initial_change_point);
 
-    Coordinate apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
+    Key apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
     update(screen_map, Coordinate, 1);
 
     int offset;
