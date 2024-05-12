@@ -408,7 +408,7 @@ int main()
                         if(temp_h_body_cp.dir == 3 && temp_h_body.dir == 1){
                             Key new_coords = {temp_h_body.x, temp_h_body.y};
                             update(screen_map, new_coords, 11);
-                            break;
+                            break
                         }
                     }
                     

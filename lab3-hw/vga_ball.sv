@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 /*
  * Avalon memory-mapped peripheral that generates VGA
  *
@@ -944,3 +946,4 @@ module vga_counters(
    assign VGA_CLK = hcount[0]; // 25 MHz clock: rising edge sensitive
    
 endmodule
+>>>>>>> 4ec3bdeb81017703f152429efd8bab1e5eea5cf9
