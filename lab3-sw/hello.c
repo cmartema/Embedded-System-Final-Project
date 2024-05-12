@@ -372,7 +372,7 @@ int main()
                         printf("\nIN IF 1\n");
                         temp.y_pos += 1;
                     }           
-                    Key coords = {temp.x_pos, temp.y_pos};
+                    Key coords = {temp.y_pos, temp.x_pos};
                     printf("map val for head: %d\n", temp.map);
                     printf("coords val for head: %d, %d\n", coords.col, coords.row);
                     update(screen_map, coords, temp.map);
@@ -392,7 +392,7 @@ int main()
                         printf("\nIN IF 2\n");
                         temp_h_body.y_pos += 1;
                     }
-                    Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
+                    Key coords_h = {temp_h_body.y_pos, temp_h_body.x_pos};
                     printf("map val for b: %d\n", temp_h_body.map);
                     printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
                     update(screen_map, coords_h, temp_h_body.map);
@@ -411,7 +411,7 @@ int main()
                         printf("\nIN IF 3\n");
                         temp_tail_left.y_pos += 1;
                     }
-                    Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
+                    Key coords_t_l = {temp_tail_left.y_pos, temp_tail_left.x_pos};
                     printf("map val for tail: %d\n", temp_tail_left.map);
                     printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
                     update(screen_map, coords_t_l, temp_tail_left.map);
