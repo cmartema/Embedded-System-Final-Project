@@ -99,6 +99,56 @@ module vga_ball(
    logic [15:0]     wall_sprite_output;
    logic [9:0]      wall_sprite_addr;
    logic [1:0]      wall_sprite_en;
+
+   // zero
+   logic [15:0]     zero_sprite_output;
+   logic [9:0]      zero_sprite_addr;
+   logic [1:0]      zero_sprite_en;
+
+   // one
+   logic [15:0]     one_sprite_output;
+   logic [9:0]      one_sprite_addr;
+   logic [1:0]      one_sprite_en;
+
+   // two
+   logic [15:0]     two_sprite_output;
+   logic [9:0]      two_sprite_addr;
+   logic [1:0]      two_sprite_en;
+
+   // three
+   logic [15:0]     three_sprite_output;
+   logic [9:0]      three_sprite_addr;
+   logic [1:0]      three_sprite_en;
+
+   // four
+   logic [15:0]     four_sprite_output;
+   logic [9:0]      four_sprite_addr;
+   logic [1:0]      four_sprite_en;
+
+   // five
+   logic [15:0]     five_sprite_output;
+   logic [9:0]      five_sprite_addr;
+   logic [1:0]      five_sprite_en;
+
+   // six
+   logic [15:0]     six_sprite_output;
+   logic [9:0]      six_sprite_addr;
+   logic [1:0]      six_sprite_en;
+
+   // seven
+   logic [15:0]     seven_sprite_output;
+   logic [9:0]      seven_sprite_addr;
+   logic [1:0]      seven_sprite_en;
+
+   // eight
+   logic [15:0]     eight_sprite_output;
+   logic [9:0]      eight_sprite_addr;
+   logic [1:0]      eight_sprite_en;
+
+   // nine
+   logic [15:0]     nine_sprite_output;
+   logic [9:0]      nine_sprite_addr;
+   logic [1:0]      nine_sprite_en;
 	
    vga_counters counters(.clk50(clk), .*);
   
@@ -137,7 +187,7 @@ module vga_ball(
   soc_system_snake_tail_right_sprite snake_tail_right_sprite(.address(snake_tail_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_right_sprite_output));
   // wall
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
-  /*
+  
   // zero
   soc_system_zero_sprite zero_sprite(.address(zero_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(zero_sprite_output));
   // one
@@ -151,14 +201,14 @@ module vga_ball(
   // five
   soc_system_five_sprite five_sprite(.address(five_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(five_sprite_output));
   // six
-  soc_system_six_sprite six_sprite(.address(six_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(six_sprite_output));
+  //soc_system_six_sprite six_sprite(.address(six_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(six_sprite_output));
   // seven
   soc_system_seven_sprite seven_sprite(.address(seven_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(seven_sprite_output));
   // eight
   soc_system_eight_sprite eight_sprite(.address(eight_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(eight_sprite_output));
   // nine
   soc_system_nine_sprite nine_sprite(.address(nine_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(nine_sprite_output));
-  */
+  
   
 
 
@@ -573,7 +623,7 @@ module vga_ball(
       */
       // apple - 1
       if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin 
-        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        apple_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= {apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
@@ -600,8 +650,8 @@ module vga_ball(
         c <= {snake_head_left_sprite_output[4:0], 3'b0};
       end
       // head right - 5
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b101) begin 
-        snake_head_right_sprite_addr <= hcount[4:1] - 4'b111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b101 && hcount[4:1] >= 4'b1010) begin 
+        snake_head_right_sprite_addr <= hcount[4:1] - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
@@ -614,8 +664,8 @@ module vga_ball(
         c <= {snake_body_vertical_sprite_output[4:0], 3'b0};
       end
       // body horizontal - 7
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b111) begin 
-        snake_body_horizontal_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b111 && hcount[4:1] >= 4'b1010) begin 
+        snake_body_horizontal_sprite_addr <= hcount[4:1] + - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
         b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
         c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
@@ -663,8 +713,8 @@ module vga_ball(
         c <= {snake_tail_down_sprite_output[4:0], 3'b0};
       end
       // tail left - 14
-      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b1110 && hcount[4:1] >= 4'b1111) begin 
-        snake_tail_left_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b1110 && hcount[4:1] >= 4'b1010) begin 
+        snake_tail_left_sprite_addr <= hcount[4:1] - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_tail_left_sprite_output[15:11], 3'b0};
         b <= {snake_tail_left_sprite_output[10:5], 2'b0};
         c <= {snake_tail_left_sprite_output[4:0], 3'b0};
@@ -676,7 +726,7 @@ module vga_ball(
         b <= {snake_tail_right_sprite_output[10:5], 2'b0};
         c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
-      /*
+      
       // zero - 16
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10000) begin 
         zero_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -684,6 +734,7 @@ module vga_ball(
         b <= {zero_sprite_output[10:5], 2'b0};
         c <= {zero_sprite_output[4:0], 3'b0};
       end
+      
       // one - 17
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10001) begin 
         one_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -691,6 +742,7 @@ module vga_ball(
         b <= {one_sprite_output[10:5], 2'b0};
         c <= {one_sprite_output[4:0], 3'b0};
       end
+      
       // two - 18
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10010) begin 
         two_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -720,12 +772,14 @@ module vga_ball(
         c <= {five_sprite_output[4:0], 3'b0};
       end
       // six - 22
+      
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10110) begin 
         six_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {six_sprite_output[15:11], 3'b0};
         b <= {six_sprite_output[10:5], 2'b0};
         c <= {six_sprite_output[4:0], 3'b0};
       end
+      
       // seven - 23
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10111) begin 
         seven_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -747,7 +801,7 @@ module vga_ball(
         b <= {nine_sprite_output[10:5], 2'b0};
         c <= {nine_sprite_output[4:0], 3'b0};
       end
-      */
+      
 
       
       // static sprites
