@@ -83,6 +83,17 @@ void insertRear(Deque* dq, Map pos) {
     dq->arr[dq->rear] = pos;
 }
 
+Map getFront(const Deque* dq) {
+    Map frontMap;
+    if (isEmpty(dq)) {
+        printf("Deque is empty. No front element.\n");
+        frontMap.x_pos = frontMap.y_pos = frontMap.dir = frontMap.map = 0; // Default values
+    } else {
+        frontMap = dq->arr[dq->front];
+    }
+    return frontMap;
+}
+
 Map removeFront(Deque* dq) {
     Map removed;
     if (isEmpty(dq)) {
@@ -320,13 +331,15 @@ int main()
 
     //basic snake 
     //right snake head
+
+    
     Map initial_snake = {4, 4, 1, 5};
     insertFront(&snake, initial_snake);
     //horizontal snake body directed right
     Map initial_snake1 = {4, 3, 1, 7};
     insertFront(&snake, initial_snake1);
     //right snake tail
-    Map initial_snake2 = {4, 2, 1, 15};
+    Map initial_snake2 = {4, 2, 1, 14};
     insertFront(&snake, initial_snake2);
 
     //testing 
@@ -339,12 +352,12 @@ int main()
     vla.grid.data = combine(a, 0, 0, 0);
     vla.grid.offset = 164;
     set_ball_coordinate(&vla.grid);
+    
 
 /*
     while(1){
         switch {snake->front}{
             case 5:
-
             break;
             case 7:
             break;
