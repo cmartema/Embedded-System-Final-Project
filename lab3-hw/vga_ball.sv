@@ -800,6 +800,11 @@ module vga_ball(
         b <= {nine_sprite_output[10:5], 2'b0};
         c <= {nine_sprite_output[4:0], 3'b0};
       end
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b0 && hcount[10:6] > 8'b1 && hcount[10:6] < 8'b100110 && vcount[9:4] > 8'b011 && vcount[9:4]< 8'b11100) begin 
+        a <= 8'h0;
+        b <= 8'h0;
+        c <= 8'h0;
+      end
       
 
       
