@@ -249,7 +249,7 @@ void *sony_thread_f(void *args) {
                 &transferred, 0);
 
         if (transferred > 0 && packet.keycode[8] != 0x08 ) {
-            printf("%02x \n", packet.keycode[8]);
+            //printf("%02x \n", packet.keycode[8]);
             int temp_d = packet.keycode[8];
             if (temp_d == 0x02){
                 direction = 1;
