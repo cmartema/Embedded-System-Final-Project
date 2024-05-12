@@ -350,6 +350,7 @@ int main()
 
     Deque change_point;
     initializeDeque(&change_point);
+    Map initial_change_point = {4, 4, 1, 1};
     int offset;
     while(1){
         sleep(1);
