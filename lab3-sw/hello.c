@@ -347,18 +347,9 @@ int main()
     //right snake tail
     Map initial_snake2 = {2, 4, 1, 14};
     insertRear(&snake, initial_snake2);
-/*
-    //testing 
-    unsigned short int c = removeFront(&snake).map;
-    unsigned short int d = removeFront(&snake).map;
-    vla.grid.data = combine(0, 0, c, d);
-    vla.grid.offset = 160;
-    set_ball_coordinate(&vla.grid);
-    unsigned short int a = removeFront(&snake).map;
-    vla.grid.data = combine(a, 0, 0, 0);
-    vla.grid.offset = 164;
-    set_ball_coordinate(&vla.grid);
-*/
+
+    Deque change_point;
+    initializeDeque(&change_point);
     int offset;
     while(1){
         sleep(1);
@@ -368,6 +359,7 @@ int main()
             Map temp_head_up;
             Map temp_h_body;
             Map temp_tail_left;
+            Map temp_h_body_cp; //idk if this is supposed to be Map
             switch (getFront(&snake).map){
                 case 2:
                     temp_head_up = removeFront(&snake);
@@ -378,10 +370,13 @@ int main()
                         temp_head_up.x_pos += 1;
                         temp_head_up.dir = direction;
                         temp_head_up.map = 5;
+
+                        insertRear(&change_point, {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0});
                     } else if (direction == 2){
                         temp_head_up.x_pos -= 1;
                         temp_head_up.dir = direction;
                         temp_head_up.map = 4;
+                        insertRear(&change_point, {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0});
                     }
                     Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
                     update(screen_map, coords_head_up, temp_head_up.map);
@@ -396,6 +391,7 @@ int main()
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
+                        insertRear(&change_point, {temp.x_pos, temp.y_pos});
                     } 
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
@@ -407,7 +403,16 @@ int main()
                     break;
                 case 7:
                     temp_h_body = removeFront(&snake);
-                    if (temp_h_body.dir == direction && direction == 1){
+                    temp_h_body_cp = getFront(&change_point);
+                    if (temp_h_body_cp.x_pos == temp_h_body.x_pos && temp_h_body_cp.y_pos == temp_h_body.y_pos){
+                        if(temp_h_body_cp.dir == 3 && temp_h_body.dir == 1){
+                            Key new_coords = {temp_h_body.x, temp_h_body.y};
+                            update(screen_map, new_coords, 11);
+                            break;
+                        }
+                    }
+                    
+                    else if (temp_h_body.dir == direction && direction == 1){
                         temp_h_body.x_pos += 1;
                     } else if (temp_h_body.dir == direction && direction == 2){
                         temp_h_body.x_pos -= 1;
