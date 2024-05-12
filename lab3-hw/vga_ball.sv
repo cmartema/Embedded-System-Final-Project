@@ -572,7 +572,6 @@ module vga_ball(
         9'h12b : {map[36][29], map[37][29], map[38][29], map[39][29]} <= writedata;
 
 
-
         
 
       endcase
