@@ -130,8 +130,8 @@ Map removeRear(Deque* dq) {
 }
 
 /*----------------------------------------- Hash Map -----------------------------------------------*/
-#define NUM_ROWS 40
-#define NUM_COLS 30
+#define NUM_ROWS 30
+#define NUM_COLS 40
 #define HASHMAP_SIZE (NUM_ROWS * NUM_COLS)
 
 // Define a struct for the key (row, column)
@@ -372,7 +372,7 @@ int main()
                     }           
                     Key coords = {temp.x_pos, temp.y_pos};
                     printf("map val for head: %d\n", temp.map);
-                    printf("coords val for head: %d, %d\n", coords.row, coords.col);
+                    printf("coords val for head: %d, %d\n", coords.col, coords.row);
                     update(screen_map, coords, temp.map);
                     printf("mapping for head: %d\n", get(screen_map, coords));
                     insertRear(&snake, temp);
@@ -390,7 +390,7 @@ int main()
                     }
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
                     printf("map val for b: %d\n", temp_h_body.map);
-                    printf("coords val for b: %d, %d\n", coords_h.row, coords_h.col);
+                    printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
                     update(screen_map, coords, temp_h_body.map);
                     printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
@@ -408,7 +408,7 @@ int main()
                     }
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     printf("map val for tail: %d\n", temp_tail_left.map);
-                    printf("coords val for tail: %d, %d\n", coords_t_l.row, coords_t_l.col);
+                    printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
                     update(screen_map, coords, temp_tail_left.map);
                     printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
                     insertRear(&snake, temp_tail_left);
