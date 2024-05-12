@@ -462,14 +462,19 @@ int main()
                     //printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
                     break;
-                /*
+                
                 case 8:
                     temp_turn_1 = getFront(&snake);
-                    if (direction == 1 || direction == 2){
+                    Key temp_h = {temp_turn_1.x_pos - 1, temp_turn_1.y_pos};
+                    int temp_val = get(screen_map, temp_h);
+                    if (temp_val == 7){
+                        Key temp_c = {temp_turn_1.x_pos, temp_turn_1.y_pos-1};
+                        update(screen_map, temp_c, 6);
+                    }
 
                         
                     break;
-                */
+                
 
 
 
