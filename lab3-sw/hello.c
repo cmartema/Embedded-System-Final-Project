@@ -394,13 +394,13 @@ int main()
                         temp.x_pos += 1;
                     
                     } else if (direction == 3){ // up
+                        Key temp_c = {temp.y_pos, temp.x_pos};
+                        update(screen_map, temp_c, 10);
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
                         //Map new_coords = {temp.x_pos, temp.y_pos, direction, 0};
                         //insertRear(&chan ge_point, new_coords);
-                        Key temp_c = {temp.y_pos +1, temp.x_pos};
-                        update(screen_map, temp_c, 11);
                     } 
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
