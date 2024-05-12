@@ -392,7 +392,7 @@ int main()
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
-                        Key new_coords = {temp.x_pos, temp.y_pos};
+                        Map new_coords = {temp.x_pos, temp.y_pos, direction, 0};
                         insertRear(&change_point, new_coords);
                     } 
                     Key coords = {temp.x_pos, temp.y_pos};
