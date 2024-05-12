@@ -330,12 +330,12 @@ int main()
     insertFront(&snake, initial_snake2);
 
     //testing 
-    unsigned short int c = removeFront(&dq).map;
-    unsigned short int d = removeFront(&dq).map;
+    unsigned short int c = removeFront(&snake).map;
+    unsigned short int d = removeFront(&snake).map;
     vla.grid.data = combine(0, 0, c, d);
     vla.grid.offset = 160;
     set_ball_coordinate(&vla.grid);
-    unsigned short int a = removeFront(&dq).map;
+    unsigned short int a = removeFront(&snake).map;
     vla.grid.data = combine(a, 0, 0, 0);
     vla.grid.offset = 164;
     set_ball_coordinate(&vla.grid);
