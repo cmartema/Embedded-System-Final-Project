@@ -387,7 +387,29 @@ int main()
                     Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
                     update(screen_map, coords_head_up, temp_head_up.map);
                     insertRear(&snake, temp_head_up);
-                    
+                    break;
+                case 2:
+                    temp_head_down = removeFront(&snake);
+                    if (direction == 3 || direction == 4){
+                        temp_head_up.y_pos += 1;
+                    }
+                     else if (direction == 1){
+                        temp_head_up.x_pos += 1;
+                        temp_head_up.dir = direction;
+                        temp_head_up.map = 5;
+                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
+                        insertRear(&change_point, temp_cp);
+                    } else if (direction == 2){
+                        temp_head_up.x_pos -= 1;
+                        temp_head_up.dir = direction;
+                        temp_head_up.map = 4;
+                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
+                        insertRear(&change_point, temp_cp);
+                    }
+                    Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
+                    update(screen_map, coords_head_up, temp_head_up.map);
+                    insertRear(&snake, temp_head_up);
+                    break;
                 case 5:
                     temp = removeFront(&snake);
                     if (direction == 1 || direction == 2){ //right or left
@@ -401,7 +423,11 @@ int main()
                         temp.map = 2;
                         //Map new_coords = {temp.x_pos, temp.y_pos, direction, 0};
                         //insertRear(&chan ge_point, new_coords);
-                    } 
+                    }  else if (direction == 4){ // down
+                        temp.y_pos += 1;
+                        temp.dir = direction;
+                        temp.map = 3;
+                    }
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
                     // printf("coords val for head: %d, %d\n", coords.col, coords.row);
