@@ -21,7 +21,7 @@
 #include <time.h>
 #include "sony.h"
 
-/*
+
 
 #define MAX_SIZE 1200
 
@@ -42,11 +42,11 @@ void initializeDeque(Deque* dq) {
     dq->rear = 0;
 }
 
-bool isFull(const Deque* dq) {
+int isFull(const Deque* dq) {
     return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
 }
 
-bool isEmpty(const Deque* dq) {
+int isEmpty(const Deque* dq) {
     return dq->front == -1;
 }
 
@@ -115,7 +115,7 @@ Map removeRear(Deque* dq) {
     }
     return removed;
 }
-*/
+
 
 int direction;
 int vga_ball_fd;
