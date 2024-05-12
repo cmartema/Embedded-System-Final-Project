@@ -103,25 +103,25 @@ module vga_ball(
    vga_counters counters(.clk50(clk), .*);
   
   //  apple  
-   soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
+  soc_system_apple_sprite apple_sprite(.address(apple_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(apple_sprite_output));
   //  face right
-   soc_system_snake_head_right_sprite snake_head_right_sprite(.address(snake_head_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_right_sprite_output));
+  soc_system_snake_head_right_sprite snake_head_right_sprite(.address(snake_head_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_right_sprite_output));
   //  face left
-   soc_system_snake_head_left_sprite snake_head_left_sprite(.address(snake_head_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_left_sprite_output));
+  soc_system_snake_head_left_sprite snake_head_left_sprite(.address(snake_head_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_left_sprite_output));
   //  face up
-   soc_system_snake_head_up_sprite snake_head_up_sprite(.address(snake_head_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_up_sprite_output));
+  soc_system_snake_head_up_sprite snake_head_up_sprite(.address(snake_head_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_up_sprite_output));
   //  face down
-   soc_system_snake_head_down_sprite snake_head_down_sprite(.address(snake_head_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_down_sprite_output));
+  soc_system_snake_head_down_sprite snake_head_down_sprite(.address(snake_head_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_head_down_sprite_output));
 
   // snake body
   // bottom left
-   soc_system_snake_body_bottomleft_sprite snake_body_bottomleft_sprite(.address(snake_body_bottomleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomleft_sprite_output));
+  soc_system_snake_body_bottomleft_sprite snake_body_bottomleft_sprite(.address(snake_body_bottomleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomleft_sprite_output));
   // bottom right
-   soc_system_snake_body_bottomright_sprite snake_body_bottomright_sprite(.address(snake_body_bottomright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomright_sprite_output));
+  soc_system_snake_body_bottomright_sprite snake_body_bottomright_sprite(.address(snake_body_bottomright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_bottomright_sprite_output));
   // top left
-   soc_system_snake_body_topleft_sprite snake_body_topleft_sprite(.address(snake_body_topleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topleft_sprite_output));
+  soc_system_snake_body_topleft_sprite snake_body_topleft_sprite(.address(snake_body_topleft_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topleft_sprite_output));
   // top right
-   soc_system_snake_body_topright_sprite snake_body_topright_sprite(.address(snake_body_topright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topright_sprite_output));
+  soc_system_snake_body_topright_sprite snake_body_topright_sprite(.address(snake_body_topright_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_topright_sprite_output));
 
   // body horizontal
    soc_system_snake_body_horizontal_sprite snake_body_horizontal_sprite(.address(snake_body_horizontal_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_horizontal_sprite_output));
@@ -129,20 +129,36 @@ module vga_ball(
    soc_system_snake_body_vertical_sprite snake_body_vertical_sprite(.address(snake_body_vertical_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_vertical_sprite_output));
 
   // tail up
-   soc_system_snake_tail_up_sprite snake_tail_up_sprite(.address(snake_tail_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_up_sprite_output));
+  soc_system_snake_tail_up_sprite snake_tail_up_sprite(.address(snake_tail_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_up_sprite_output));
   // tail down
-   soc_system_snake_tail_down_sprite snake_tail_down_sprite(.address(snake_tail_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_down_sprite_output));
+  soc_system_snake_tail_down_sprite snake_tail_down_sprite(.address(snake_tail_down_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_down_sprite_output));
   // tail left
-   soc_system_snake_tail_left_sprite snake_tail_left_sprite(.address(snake_tail_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_left_sprite_output));
+  soc_system_snake_tail_left_sprite snake_tail_left_sprite(.address(snake_tail_left_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_left_sprite_output));
   // tail right
   soc_system_snake_tail_right_sprite snake_tail_right_sprite(.address(snake_tail_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_right_sprite_output));
   // wall
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
-
-
-  //Register for the offsetting the screen
-  //reg [63:0] map [0:74]; // 75 register and each register is 64 bits wide
-
+  // zero
+  soc_system_zero_sprite zero_sprite(.address(zero_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(zero_sprite_output));
+  // one
+  soc_system_one_sprite one_sprite(.address(one_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(one_sprite_output));
+  // two
+  soc_system_two_sprite two_sprite(.address(two_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(two_sprite_output));
+  // three
+  soc_system_three_sprite three_sprite(.address(three_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(three_sprite_output));
+  // four
+  soc_system_four_sprite four_sprite(.address(four_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(four_sprite_output));
+  // five
+  soc_system_five_sprite five_sprite(.address(five_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(five_sprite_output));
+  // six
+  soc_system_six_sprite six_sprite(.address(six_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(six_sprite_output));
+  // seven
+  soc_system_seven_sprite seven_sprite(.address(seven_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(seven_sprite_output));
+  // eight
+  soc_system_eight_sprite eight_sprite(.address(eight_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(eight_sprite_output));
+  // nine
+  soc_system_nine_sprite nine_sprite(.address(nine_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(nine_sprite_output));
+  
   
 
 
@@ -540,54 +556,212 @@ module vga_ball(
    
   // -------------------------------------
   always_ff @(posedge clk) begin
-    
-    //this is the snake fruit
     if (VGA_BLANK_n) begin
-      if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin
+      // Dynamic Sprites
+      // apple - 1
+      if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin 
         apple_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= {apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
       end 
-      // this is snake head right 
-      else if (map[{hcount[10:5]}][{vcount[9:4]}] == 8'b10) begin
+      // head up - 2
+      else if (map[{hcount[10:5]}][{vcount[9:4]}] == 8'b10) begin 
+        snake_head_up_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_head_up_sprite_output[15:11], 3'b0};
+        b <= {snake_head_up_sprite_output[10:5], 2'b0};
+        c <= {snake_head_up_sprite_output[4:0], 3'b0};
+      end 
+      // head down - 3
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b11) begin 
+        snake_head_down_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_head_down_sprite_output[15:11], 3'b0};
+        b <= {snake_head_down_sprite_output[10:5], 2'b0};
+        c <= {snake_head_down_sprite_output[4:0], 3'b0};
+      end
+      // head left - 4
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b100) begin 
+        snake_head_left_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_head_left_sprite_output[15:11], 3'b0};
+        b <= {snake_head_left_sprite_output[10:5], 2'b0};
+        c <= {snake_head_left_sprite_output[4:0], 3'b0};
+      end
+      // head right - 5
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b101) begin 
         snake_head_right_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
-      end 
-      else if (map[{2'b00, hcount[10:5]}][{2'b00, vcount[9:4]}] == 8'b11) begin
+      end
+      // body vertical - 6
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b110) begin 
+        snake_body_vertical_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_body_vertical_sprite_output[15:11], 3'b0};
+        b <= {snake_body_vertical_sprite_output[10:5], 2'b0};
+        c <= {snake_body_vertical_sprite_output[4:0], 3'b0};
+      end
+      // body horizontal - 7
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b111) begin 
         snake_body_horizontal_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
         b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
         c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
       end
+      // body top left - 8
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1000) begin 
+        snake_body_topleft_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_body_topleft_sprite_output[15:11], 3'b0};
+        b <= {snake_body_topleft_sprite_output[10:5], 2'b0};
+        c <= {snake_body_topleft_sprite_output[4:0], 3'b0};
+      end
+      // body bottom left - 9
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1001) begin 
+        snake_body_bottomleft_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_body_bottomleft_sprite_output[15:11], 3'b0};
+        b <= {snake_body_bottomleft_sprite_output[10:5], 2'b0};
+        c <= {snake_body_bottomleft_sprite_output[4:0], 3'b0};
+      end
+      // body top right - 10
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1010) begin 
+        snake_body_topright_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_body_topright_sprite_output[15:11], 3'b0};
+        b <= {snake_body_topright_sprite_output[10:5], 2'b0};
+        c <= {snake_body_topright_sprite_output[4:0], 3'b0};
+      end
+      // body bottom right - 11
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1011) begin 
+        snake_body_bottomright_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_body_bottomright_sprite_output[15:11], 3'b0};
+        b <= {snake_body_bottomright_sprite_output[10:5], 2'b0};
+        c <= {snake_body_bottomright_sprite_output[4:0], 3'b0};
+      end
+      // tail up - 12
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1100) begin 
+        snake_tail_up_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_tail_up_sprite_output[15:11], 3'b0};
+        b <= {snake_tail_up_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_up_sprite_output[4:0], 3'b0};
+      end
+      // tail down - 13
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1101) begin 
+        snake_tail_down_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_tail_down_sprite_output[15:11], 3'b0};
+        b <= {snake_tail_down_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_down_sprite_output[4:0], 3'b0};
+      end
+      // tail left - 14
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1110) begin 
+        snake_tail_left_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_tail_left_sprite_output[15:11], 3'b0};
+        b <= {snake_tail_left_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_left_sprite_output[4:0], 3'b0};
+      end
+      // tail right - 15
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b1111) begin 
+        snake_tail_right_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {snake_right_left_sprite_output[15:11], 3'b0};
+        b <= {snake_right_left_sprite_output[10:5], 2'b0};
+        c <= {snake_right_left_sprite_output[4:0], 3'b0};
+      end
+      // zero - 16
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10000) begin 
+        zero_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {zero_sprite_output[15:11], 3'b0};
+        b <= {zero_sprite_output[10:5], 2'b0};
+        c <= {zero_sprite_output[4:0], 3'b0};
+      end
+      // one - 17
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10001) begin 
+        one_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {one_sprite_output[15:11], 3'b0};
+        b <= {one_sprite_output[10:5], 2'b0};
+        c <= {one_sprite_output[4:0], 3'b0};
+      end
+      // two - 18
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10010) begin 
+        two_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {two_sprite_output[15:11], 3'b0};
+        b <= {two_sprite_output[10:5], 2'b0};
+        c <= {two_sprite_output[4:0], 3'b0};
+      end
+      // three - 19
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10011) begin 
+        three_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {three_sprite_output[15:11], 3'b0};
+        b <= {three_sprite_output[10:5], 2'b0};
+        c <= {three_sprite_output[4:0], 3'b0};
+      end
+      //four - 20
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10100) begin 
+        four_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {four_sprite_output[15:11], 3'b0};
+        b <= {four_sprite_output[10:5], 2'b0};
+        c <= {four_sprite_output[4:0], 3'b0};
+      end
+      // five - 21
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10101) begin 
+        five_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {five_sprite_output[15:11], 3'b0};
+        b <= {five_sprite_output[10:5], 2'b0};
+        c <= {five_sprite_output[4:0], 3'b0};
+      end
+      // six - 22
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10110) begin 
+        six_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {six_sprite_output[15:11], 3'b0};
+        b <= {six_sprite_output[10:5], 2'b0};
+        c <= {six_sprite_output[4:0], 3'b0};
+      end
+      // seven - 23
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b10111) begin 
+        seven_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {seven_sprite_output[15:11], 3'b0};
+        b <= {seven_sprite_output[10:5], 2'b0};
+        c <= {seven_sprite_output[4:0], 3'b0};
+      end
+      // eight - 24
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b11000) begin 
+        eight_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {eight_sprite_output[15:11], 3'b0};
+        b <= {eight_sprite_output[10:5], 2'b0};
+        c <= {eight_sprite_output[4:0], 3'b0};
+      end
+      // nine - 25
+      else if (map[hcount[10:5]][vcount[9:4]] == 8'b11001) begin 
+        nine_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
+        a <= {nine_sprite_output[15:11], 3'b0};
+        b <= {nine_sprite_output[10:5], 2'b0};
+        c <= {nine_sprite_output[4:0], 3'b0};
+      end
+
+      
+      // static sprites
       //left wall column
       else if(hcount[10:6] == 5'b00000 && vcount[9:5] > 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       //right
       else if(hcount[10:6] == 5'b10011 && vcount[9:5] > 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end
       //top
       else if( vcount[9:5] == 5'b00001) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       //bottom
       else if( vcount[9:5] == 5'b01110) begin
         wall_sprite_addr <= hcount[5:1] + (vcount[4:0])*32;
         a <= {wall_sprite_output[15:11], 3'b0};
-        b <= { wall_sprite_output[10:5], 2'b0};
+        b <= {wall_sprite_output[10:5], 2'b0};
         c <= {wall_sprite_output[4:0], 3'b0};
       end 
       else begin
