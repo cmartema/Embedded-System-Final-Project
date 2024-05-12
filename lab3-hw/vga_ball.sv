@@ -141,7 +141,7 @@ module vga_ball(
   // zero
   soc_system_zero_sprite zero_sprite(.address(zero_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(zero_sprite_output));
   // one
-  soc_system_one_sprite one_sprite(.address(one_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(one_sprite_output));
+  //soc_system_one_sprite one_sprite(.address(one_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(one_sprite_output));
   // two
   soc_system_two_sprite two_sprite(.address(two_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(two_sprite_output));
   // three
@@ -151,7 +151,7 @@ module vga_ball(
   // five
   soc_system_five_sprite five_sprite(.address(five_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(five_sprite_output));
   // six
-  soc_system_six_sprite six_sprite(.address(six_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(six_sprite_output));
+  //soc_system_six_sprite six_sprite(.address(six_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(six_sprite_output));
   // seven
   soc_system_seven_sprite seven_sprite(.address(seven_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(seven_sprite_output));
   // eight
@@ -684,6 +684,7 @@ module vga_ball(
         b <= {zero_sprite_output[10:5], 2'b0};
         c <= {zero_sprite_output[4:0], 3'b0};
       end
+      /*
       // one - 17
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10001) begin 
         one_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -691,6 +692,7 @@ module vga_ball(
         b <= {one_sprite_output[10:5], 2'b0};
         c <= {one_sprite_output[4:0], 3'b0};
       end
+      */
       // two - 18
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10010) begin 
         two_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -720,12 +722,14 @@ module vga_ball(
         c <= {five_sprite_output[4:0], 3'b0};
       end
       // six - 22
+      /*
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10110) begin 
         six_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {six_sprite_output[15:11], 3'b0};
         b <= {six_sprite_output[10:5], 2'b0};
         c <= {six_sprite_output[4:0], 3'b0};
       end
+      */
       // seven - 23
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10111) begin 
         seven_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
