@@ -357,7 +357,7 @@ int main()
     while(1){
         sleep(10);
         while(1){
-            sleep(10);
+            //sleep(1);
             Map temp;
             Map temp_h_body;
             Map temp_tail_left;
@@ -374,6 +374,8 @@ int main()
                         temp.y_pos += 1;
                     }           
                     Key coords = {temp.x_pos, temp.y_pos};
+                    printf("map val for head: %d\n", temp.map);
+                    printf("coords val for head: %d\n", coords);
                     update(screen_map, coords, temp.map);
                     insertRear(&snake, temp);
                     break;
@@ -389,6 +391,8 @@ int main()
                         temp_h_body.y_pos += 1;
                     }
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
+                    printf("map val for b: %d\n", temp_h_body.map);
+                    printf("coords val for b: %d\n", coords_h);
                     update(screen_map, coords, temp_h_body.map);
                     insertRear(&snake, temp_h_body);
                     break;
@@ -404,6 +408,8 @@ int main()
                         temp_tail_left.y_pos += 1;
                     }
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
+                    printf("map val for tail: %d\n", temp_tail_left);
+                    printf("coords val for tail: %d\n", coords_t_l);
                     update(screen_map, coords, temp_tail_left.map);
                     insertRear(&snake, temp_tail_left);
                     goto writeScreen;
@@ -419,6 +425,7 @@ int main()
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
                 //get(map, (Key){0, 0})
+                
                 int sprite1 = get(screen_map, (Key){r, c});
                 int sprite2 = get(screen_map, (Key){r, c+1});
                 int sprite3 = get(screen_map, (Key){r, c+2});
