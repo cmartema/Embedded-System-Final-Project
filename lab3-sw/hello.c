@@ -361,7 +361,7 @@ int main()
 */
     int offset;
     while(1){
-        sleep(.5);
+        sleep(1);
         while(1){
             //sleep(1);
             Map temp;
