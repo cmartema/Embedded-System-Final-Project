@@ -370,13 +370,13 @@ int main()
                         temp_head_up.x_pos += 1;
                         temp_head_up.dir = direction;
                         temp_head_up.map = 5;
-                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0}
+                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
                         insertRear(&change_point, temp_cp);
                     } else if (direction == 2){
                         temp_head_up.x_pos -= 1;
                         temp_head_up.dir = direction;
                         temp_head_up.map = 4;
-                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0}
+                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
                         insertRear(&change_point, temp_cp);
                     }
                     Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
@@ -407,7 +407,7 @@ int main()
                     temp_h_body_cp = getFront(&change_point);
                     if (temp_h_body_cp.x_pos == temp_h_body.x_pos && temp_h_body_cp.y_pos == temp_h_body.y_pos){
                         if(temp_h_body_cp.dir == 3 && temp_h_body.dir == 1){
-                            Key new_coords = {temp_h_body.x, temp_h_body.y};
+                            Key new_coords = {temp_h_body.x_pos, temp_h_body.y_pos};
                             update(screen_map, new_coords, 11);
                             break;
                         }
