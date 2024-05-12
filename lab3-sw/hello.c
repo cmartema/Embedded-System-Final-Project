@@ -31,6 +31,9 @@ typedef struct {
     unsigned short int y_pos;
     unsigned short int dir;
     unsigned short int map;
+
+    unsigned short int change_x;
+    unsigned short int change_y;
 } Map;
 
 typedef struct {
@@ -394,8 +397,10 @@ int main()
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
-                        Map new_coords = {temp.x_pos, temp.y_pos, direction, 0};
-                        insertRear(&change_point, new_coords);
+                        //Map new_coords = {temp.x_pos, temp.y_pos, direction, 0};
+                        //insertRear(&chan ge_point, new_coords);
+                        Key temp_c = {temp.y_pos +1, temp.x_pos};
+                        update(screen_map, temp_c, 11);
                     } 
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
