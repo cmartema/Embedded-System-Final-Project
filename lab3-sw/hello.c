@@ -416,7 +416,7 @@ int main()
                 
                 case 4:
                     temp_head_left = removeFront(&snake);
-                    if (direction == 1 || direction == 1){
+                    if (direction == 1){
                         temp_head_down.x_pos -= 1;
                     }
                      else if (direction == 3){
@@ -438,7 +438,7 @@ int main()
                     break;
                 case 5:
                     temp = removeFront(&snake);
-                    if (direction == 1 || direction == 2){ //right or left
+                    if (direction == 1){ //right or left
                         temp.x_pos += 1;
                     
                     } else if (direction == 3){ // up
@@ -506,7 +506,7 @@ int main()
                     temp_tail_left = removeFront(&snake);
                     Key temp_c = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     update(screen_map, temp_c, 0);
-                    if (direction == 1 || direction == 2){
+                    if (direction == 1){
                         temp_tail_left.x_pos += 1;
                     } 
                     // else if (direction == 3){
