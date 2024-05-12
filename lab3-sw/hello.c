@@ -408,7 +408,7 @@ int main()
                         temp_tail_left.y_pos += 1;
                     }
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
-                    printf("map val for tail: %d\n", temp_tail_left);
+                    printf("map val for tail: %d\n", temp_tail_left.map);
                     printf("coords val for tail: %d, %d\n", coords_t_l.row, coords_t_l.col);
                     update(screen_map, coords, temp_tail_left.map);
                     insertRear(&snake, temp_tail_left);
