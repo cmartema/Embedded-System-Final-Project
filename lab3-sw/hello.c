@@ -424,11 +424,8 @@ int main()
                 //get(map, (Key){0, 0})
                 int sprite1 = get(screen_map, (Key){c, r});
                 int sprite2 = get(screen_map, (Key){c+1, r});
-                printf("sprite2 %d\n", sprite2);
                 int sprite3 = get(screen_map, (Key){c+2, r});
-                printf("sprite3 %d\n", sprite3);
                 int sprite4 = get(screen_map, (Key){c+3, r});
-                printf("sprite4 %d\n", sprite4);
                 if(sprite1 > 0 ){
                     printf("sprite1 %d\n", sprite1);
                 }
