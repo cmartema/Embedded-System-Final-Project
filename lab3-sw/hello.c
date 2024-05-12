@@ -427,8 +427,10 @@ int main()
         printf("line 405\n");
         offset = 0;
         //writing the whole screen
-        for(int r = 0; r < 30; r++, offset+=40){
-            for(int c = 0; c < 40; c+=4){
+        //for(int r = 0; r < 30; r++, offset+=40){
+        //    
+        for(int c = 0; c < 40; c+=4){
+            for(int r = 0; r < 30; r++, offset+=40){
                 //get(map, (Key){0, 0})
                 unsigned short int sprite1 = get(screen_map, (Key){r, c});
                 unsigned short int sprite2 = get(screen_map, (Key){r, c+1});
