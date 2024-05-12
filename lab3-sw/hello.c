@@ -356,6 +356,9 @@ int main()
 
     while(1){
         while(1){
+            Map temp;
+            Map temp_h_body;
+            Map temp_tail_left;
             switch (getFront(&snake).map){
                 case 5:
                     temp = removeFront(&snake);
