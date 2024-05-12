@@ -428,7 +428,8 @@ int main()
                     break;
                 case 14:
                     temp_tail_left = removeFront(&snake);
-                    update(screen_map, Key({temp_tail_left.x_pos, temp_tail_left.y_pos}), 0);
+                    Key temp_c = {temp_tail_left.x_pos, temp_tail_left.y_pos};
+                    update(screen_map, temp_c, 0);
                     if (temp_tail_left.dir == 1){
                         temp_tail_left.x_pos += 1;
                     } else if (temp_tail_left.dir == 2){
