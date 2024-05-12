@@ -358,7 +358,7 @@ int main()
         while(1){
             switch (getFront(&snake).map){
                 case 5:
-                    Map temp = removeFront(&snake);
+                    temp = removeFront(&snake);
                     if (temp.dir == 1){
                         temp.x_pos += 1;
                     } else if (temp.dir == 2){
@@ -368,12 +368,12 @@ int main()
                     } else if (temp.dir == 4){
                         temp.y_pos += 1;
                     }           
-                    Key coords = {temp.x_pos, temp.y_pos}
-                    update(screen_map, coords, temp.map)
+                    Key coords = {temp.x_pos, temp.y_pos};
+                    update(screen_map, coords, temp.map);
                     insertRear(&snake, temp);
                     break;
                 case 7:
-                    Map temp_h_body = removeFront(&snake);
+                    temp_h_body = removeFront(&snake);
                     if (temp_h_body.dir == 1){
                         temp_h_body.x_pos += 1;
                     } else if (temp_h_body.dir == 2){
@@ -383,12 +383,12 @@ int main()
                     } else if (temp_h_body.dir == 4){
                         temp_h_body.y_pos += 1;
                     }
-                    Key coords = {temp_h_body.x_pos, temp_h_body.y_pos}
-                    update(screen_map, coords, temp_h_body.map)
+                    Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
+                    update(screen_map, coords, temp_h_body.map);
                     insertRear(&snake, temp_h_body);
                     break;
                 case 14:
-                    Map temp_tail_left = removeFront(&snake);
+                    temp_tail_left = removeFront(&snake);
                     if (temp_tail_left.dir == 1){
                         temp_tail_left.x_pos += 1;
                     } else if (temp_tail_left.dir == 2){
@@ -398,8 +398,8 @@ int main()
                     } else if (temp_tail_left.dir == 4){
                         temp_tail_left.y_pos += 1;
                     }
-                    Key coords = {temp_tail_left.x_pos, temp_tail_left.y_pos}
-                    update(screen_map, coords, temp_tail_left.map)
+                    Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
+                    update(screen_map, coords, temp_tail_left.map);
                     insertRear(&snake, temp_tail_left);
                     goto writeScreen;
                     break;
@@ -423,7 +423,7 @@ int main()
                 vla.grid.offset = offset + c;
                 set_ball_coordinate(&vla.grid);
             }
-            
+
         }
     }
 
