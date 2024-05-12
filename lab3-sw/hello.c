@@ -417,7 +417,7 @@ int main()
                 case 4:
                     temp_head_left = removeFront(&snake);
                     if (direction == 2){
-                        temp_head_down.x_pos -= 1;
+                        temp_head_left.x_pos -= 1;
                     }
                      else if (direction == 3){
                         temp_head_left.y_pos -= 1;
