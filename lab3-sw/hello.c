@@ -22,12 +22,14 @@
 #include "sony.h"
 
 
+/*----------------------------------------- Deque -----------------------------------------------*/
 
 #define MAX_SIZE 1200
 
 typedef struct {
     unsigned short int x_pos;
     unsigned short int y_pos;
+    unsigned short int dir;
     unsigned short int map;
 } Map;
 
@@ -116,6 +118,80 @@ Map removeRear(Deque* dq) {
     return removed;
 }
 
+/*----------------------------------------- Hash Map -----------------------------------------------*/
+#define NUM_ROWS 30
+#define NUM_COLS 40
+#define HASHMAP_SIZE (NUM_ROWS * NUM_COLS)
+
+// Define a struct for the key (row, column)
+typedef struct {
+    int row;
+    int col;
+} Key;
+
+// Define a struct for the hashmap entry
+typedef struct {
+    Key key;
+    int value;
+} Entry;
+
+// Define the hashmap structure
+typedef struct {
+    Entry *entries[HASHMAP_SIZE];
+} HashMap;
+
+// Hash function for the key
+int hash(Key key) {
+    return (key.row * NUM_COLS + key.col) % HASHMAP_SIZE;
+}
+
+// Function to initialize the hashmap
+HashMap *createHashMap() {
+    HashMap *map = (HashMap *)malloc(sizeof(HashMap));
+    for (int i = 0; i < HASHMAP_SIZE; i++) {
+        map->entries[i] = NULL;
+    }
+    return map;
+}
+
+// Function to insert a key-value pair into the hashmap
+void insert(HashMap *map, Key key, int value) {
+    int index = hash(key);
+    Entry *entry = (Entry *)malloc(sizeof(Entry));
+    entry->key = key;
+    entry->value = value;
+    map->entries[index] = entry;
+}
+
+// Function to retrieve the value associated with a key from the hashmap
+int get(HashMap *map, Key key) {
+    int index = hash(key);
+    if (map->entries[index] != NULL && map->entries[index]->key.row == key.row && map->entries[index]->key.col == key.col) {
+        return map->entries[index]->value;
+    } else {
+        return -1; // Key not found
+    }
+}
+
+// Function to update the value associated with a key in the hashmap
+void update(HashMap *map, Key key, int value) {
+    int index = hash(key);
+    if (map->entries[index] != NULL && map->entries[index]->key.row == key.row && map->entries[index]->key.col == key.col) {
+        map->entries[index]->value = value;
+    }
+}
+
+// Function to initialize the hashmap with all values set to 0
+void initializeHashMap(HashMap *map) {
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < NUM_COLS; j++) {
+            Key key = {i, j};
+            insert(map, key, 0);
+        }
+    }
+}
+
+/*------------------------------------- Rest of the code ---------------------------------------*/
 
 int direction;
 int vga_ball_fd;
