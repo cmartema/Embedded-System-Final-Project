@@ -417,8 +417,8 @@ int main()
                         temp.x_pos += 1;
                     
                     } else if (direction == 3){ // up
-                        Key temp_c = {temp.y_pos, temp.x_pos};
-                        update(screen_map, temp_c, 10);
+                        Key temp_c = {temp.x_pos, temp.y_pos};
+                        update(screen_map, temp_c, 9);
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
