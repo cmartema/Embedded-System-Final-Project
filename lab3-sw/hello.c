@@ -363,7 +363,9 @@ int main()
                     temp = removeFront(&snake);
                     if (temp.dir == 1){
                         printf("\nIN IF 1\n");
+                        printf("%d\n"temp.x_pos);
                         temp.x_pos += 1;
+                        printf("%d\n"temp.x_pos);
                     } else if (temp.dir == 2){
                         temp.x_pos -= 1;
                     } else if (temp.dir == 3){
