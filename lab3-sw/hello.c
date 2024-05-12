@@ -368,6 +368,7 @@ int main()
                     } else if (temp.dir == 3){
                         temp.y_pos -= 1;
                     } else if (temp.dir == 4){
+                        printf("Why the duck is this changing\n");
                         temp.y_pos += 1;
                     }           
                     Key coords = {temp.x_pos, temp.y_pos};
