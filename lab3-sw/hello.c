@@ -430,10 +430,10 @@ int main()
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
                 //get(map, (Key){0, 0})
-                unsigned short int sprite1 = get(screen_map, (Key){r, c});
-                unsigned short int sprite2 = get(screen_map, (Key){r, c+1});
-                unsigned short int sprite3 = get(screen_map, (Key){r, c+2});
-                unsigned short int sprite4 = get(screen_map, (Key){r, c+3});
+                unsigned short int sprite1 = get(screen_map, (Key){c, r});
+                unsigned short int sprite2 = get(screen_map, (Key){c+1, r});
+                unsigned short int sprite3 = get(screen_map, (Key){c+2, r});
+                unsigned short int sprite4 = get(screen_map, (Key){c+3, r});
                 if(sprite1 > 0 ){
                     printf("sprite1 %d\n", sprite1);
                 }
