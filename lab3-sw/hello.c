@@ -366,6 +366,7 @@ int main()
             Map temp_tail_left;
             Map temp_h_body_cp; //idk if this is supposed to be Map
             Map temp_head_down;
+            Map temp_turn_1;
             switch (getFront(&snake).map){
                 case 2:
                     temp_head_up = removeFront(&snake);
@@ -461,6 +462,17 @@ int main()
                     //printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
                     break;
+                /*
+                case 8:
+                    temp_turn_1 = getFront(&snake);
+                    if (direction == 1 || direction == 2){
+
+                        
+                    break;
+                */
+
+
+
                 case 14:
                     temp_tail_left = removeFront(&snake);
                     Key temp_c = {temp_tail_left.x_pos, temp_tail_left.y_pos};
