@@ -453,7 +453,7 @@ int main()
                         Map temp_cp = {temp_head_left.x_pos, temp_head_left.y_pos, temp_head_left.dir, 0};
                         insertRear(&change_point, temp_cp);
                     }
-                    if(apple_coordinate.row == temp_head_left.y_pos && apple_coordinate.left == temp_head_up.x_pos){
+                    if(apple_coordinate.row == temp_head_left.y_pos && apple_coordinate.col == temp_head_up.x_pos){
                         apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
                         update(screen_map, apple_coordinate , 1);
                     }
