@@ -361,16 +361,16 @@ int main()
             switch (getFront(&snake).map){
                 case 5:
                     temp = removeFront(&snake);
-                    if (temp.dir == 1){
+                    if (temp.dir == 2){
                         printf("\nIN IF 1\n");
                         printf("%d\n",temp.x_pos);
                         temp.x_pos += 1;
                         printf("%d\n",temp.x_pos);
-                    } else if (temp.dir == 2){
+                    } else if (temp.dir == 1){
                         temp.x_pos -= 1;
-                    } else if (temp.dir == 3){
-                        temp.y_pos -= 1;
                     } else if (temp.dir == 4){
+                        temp.y_pos -= 1;
+                    } else if (temp.dir == 3){
                         printf("\nIN IF 1\n");
                         temp.y_pos += 1;
                     }           
