@@ -296,19 +296,73 @@ int main()
         return -1;
     }
 
-    unsigned short int a = 0;
-    unsigned short int b = 0;
-    unsigned short int c = 0;
-    unsigned short int d = 0;
+    // unsigned short int a = 0;
+    // unsigned short int b = 0;
+    // unsigned short int c = 0;
+    // unsigned short int d = 0;
 
     vga_ball_arg_t vla;
     printf("before for look\n");
 
-    int offset = 0;
+    Deque snake;
+    initializeDeque(&snake);
+
+    HashMap *map = createHashMap();
+    // Initialize the hashmap with all values set to 0
+    initializeHashMap(map);
+
+    // Map: {x_pos, y_pos, direction, spriteType}
+    // direction:
+    //      1->right
+    //      2->left
+    //      3->up
+    //      4->down
+
+    //basic snake 
+    //right snake head
+    Map initial_snake = {4, 4, 1, 5};
+    insertFront(&snake, initial_snake);
+    //horizontal snake body directed right
+    Map initial_snake1 = {4, 3, 1, 7};
+    insertFront(&snake, initial_snake1);
+    //right snake tail
+    Map initial_snake2 = {4, 2, 1, 15};
+    insertFront(&snake, initial_snake2);
+
+    //testing 
+    unsigned short int c = removeFront(&snake).map;
+    unsigned short int d = removeFront(&snake).map;
+    vla.grid.data = combine(0, 0, c, d);
+    vla.grid.offset = 160;
+    set_ball_coordinate(&vla.grid);
+    unsigned short int a = removeFront(&snake).map;
+    vla.grid.data = combine(a, 0, 0, 0);
+    vla.grid.offset = 164;
+    set_ball_coordinate(&vla.grid);
+
+/*
+    while(1){
+        switch {snake->front}{
+            case 5:
+
+            break;
+            case 7:
+            break;
+        }
+
+        int offset = 0;
+        //writing the whole screen
+        for(int r = 0; r < 30; r++, offset+=40){
+            for(int c = 0; c < 40; c+=4){
+
+            }
+        }
+    }
+*/
 
     // clear_Display(vla); //clear the display independently rather than depending on a for loop
     //initalize snake body and apple
-    
+ /*   
     for(int r = 0; r < 30; r++, offset+=40){
         for(int c = 0; c < 40; c+=4){
             if(r == 15 && c == 12){
@@ -326,7 +380,7 @@ int main()
                 set_ball_coordinate(&vla.grid);
             }   
         }
-    }
+    }*/
     
     return 0;   
    
