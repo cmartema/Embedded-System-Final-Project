@@ -130,8 +130,8 @@ Map removeRear(Deque* dq) {
 }
 
 /*----------------------------------------- Hash Map -----------------------------------------------*/
-#define NUM_ROWS 30
-#define NUM_COLS 40
+#define NUM_ROWS 40
+#define NUM_COLS 30
 #define HASHMAP_SIZE (NUM_ROWS * NUM_COLS)
 
 // Define a struct for the key (row, column)
