@@ -362,6 +362,7 @@ int main()
                 case 5:
                     temp = removeFront(&snake);
                     if (temp.dir == 1){
+                        printf("\nIN IF 1\n");
                         temp.x_pos += 1;
                     } else if (temp.dir == 2){
                         temp.x_pos -= 1;
