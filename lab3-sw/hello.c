@@ -296,10 +296,10 @@ int main()
         return -1;
     }
 
-    unsigned short int a = 0;
-    unsigned short int b = 0;
-    unsigned short int c = 0;
-    unsigned short int d = 0;
+    // unsigned short int a = 0;
+    // unsigned short int b = 0;
+    // unsigned short int c = 0;
+    // unsigned short int d = 0;
 
     vga_ball_arg_t vla;
     printf("before for look\n");
