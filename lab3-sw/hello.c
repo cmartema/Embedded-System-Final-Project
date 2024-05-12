@@ -414,7 +414,8 @@ int main()
 
         writeScreen:
         // printf("line 405\n");
-        int offset = 0;
+        int offset;
+        offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
