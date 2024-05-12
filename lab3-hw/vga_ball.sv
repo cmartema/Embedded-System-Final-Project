@@ -574,7 +574,7 @@ module vga_ball(
       end 
       // head down - 3
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b11) begin 
-        snake_head_down_addr <= hcount[4:1] + (vcount[3:0])*16;
+        snake_head_down_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {snake_head_down_sprite_output[15:11], 3'b0};
         b <= {snake_head_down_sprite_output[10:5], 2'b0};
         c <= {snake_head_down_sprite_output[4:0], 3'b0};
