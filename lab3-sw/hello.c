@@ -356,10 +356,13 @@ int main()
 
 
     while(1){
-        switch {}{
+        switch (getFront(&snake)){
             case 5:
+                
                 break;
             case 7:
+                break;
+            case 14:
                 break;
         }
 
