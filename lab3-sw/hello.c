@@ -407,6 +407,7 @@ int main()
                     temp_h_body = removeFront(&snake);
                     temp_h_body_cp = getFront(&change_point);
                     if (temp_h_body_cp.x_pos == temp_h_body.x_pos && temp_h_body_cp.y_pos == temp_h_body.y_pos){
+                        printf("change_point\n");
                         if(temp_h_body_cp.dir == 3 && temp_h_body.dir == 1){
                             Key new_coords = {temp_h_body.x_pos, temp_h_body.y_pos};
                             update(screen_map, new_coords, 11);
