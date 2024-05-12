@@ -392,7 +392,8 @@ int main()
                         temp.y_pos -= 1;
                         temp.dir = direction;
                         temp.map = 2;
-                        insertRear(&change_point, {temp.x_pos, temp.y_pos});
+                        Key new_coords = {temp.x_pos, temp.y_pos}
+                        insertRear(&change_point, new_coords);
                     } 
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
