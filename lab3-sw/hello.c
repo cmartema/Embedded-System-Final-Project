@@ -368,7 +368,6 @@ int main()
             Map temp_head_up;
             Map temp_h_body;
             Map temp_tail_left;
-            Map temp_head_up;
             switch (getFront(&snake).map){
                 case 2:
                     temp_head_up = removeFront(&snake);
