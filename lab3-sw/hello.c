@@ -196,10 +196,9 @@ void clear_Display( vga_ball_arg_t vla){
 
 int main()
 {
-    struct ThreadArgs args; 
 
+    struct ThreadArgs args; 
     printf("VGA ball Userspace program started\n");
-  
     // opening and connecting to controller
     uint8_t endpoint_address_temp;
     struct libusb_device_handle *sony_temp;
@@ -207,7 +206,6 @@ int main()
         fprintf(stderr, "Did not find sony\n");
         exit(1);
     }	
-    
     args.sony = sony_temp;
     args.endpoint_address = endpoint_address_temp;
     
@@ -221,30 +219,6 @@ int main()
         fprintf(stderr, "could not open %s\n", filename);
         return -1;
     }
-    
-
-    unsigned short int mapSprites[40][30];
-    /*
-    //this is for testing
-    for (unsigned short int i = 0; i < 40; i++){
-        for (unsigned short int j = 0; j < 30; j++){
-            if(i == 20 && j == 15){
-                vla.coordinate_and_map.x = i;
-                vla.coordinate_and_map.y = j;
-                vla.coordinate_and_map.map = 1;
-                set_ball_coordinate(&vla);
-                usleep(20);
-            }
-            if(i == 10 && j == 10){
-                vla.coordinate_and_map.x = i;
-                vla.coordinate_and_map.y = j;
-                vla.coordinate_and_map.map = 2;
-                set_ball_coordinate(&vla);
-                usleep(20);
-            }
-        }
-    }
-    */
 
     unsigned short int a = 0;
     unsigned short int b = 0;
@@ -257,6 +231,21 @@ int main()
     unsigned short j = 0;
     int offset = 0;
     clear_Display(vla); //clear the display independently rather than depending on a for loop
+    for(int r = 0; r < 30; r++, offset+=40){
+        for(int c = 0; c < 40; c+=4){
+            if(r == 15 && c == 12){
+                vla.grid.data = combine(0,14,7,5); // Snake head_right and tail_left placed of the first two columns of the corresponding row
+                vla.grid.offset = offset+c;
+                set_ball_coordinate(&vla.grid);
+            } else {
+                vla.grid.data = combine(0,0,0,0); // Snake head_right and tail_left placed of the first two columns of the corresponding row
+                vla.grid.offset = offset+c;
+                set_ball_coordinate(&vla.grid);
+            }   
+        }
+    }
+    
+    /*
     for(int i = 0; i < 2; i++){
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
@@ -282,6 +271,7 @@ int main()
         sleep(10);
     }
     clear_Display(vla);
+    */
     return 0;
 
 /*
