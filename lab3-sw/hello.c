@@ -304,10 +304,11 @@ int main()
     vga_ball_arg_t vla;
     printf("before for look\n");
 
-    unsigned short j = 0;
     int offset = 0;
-    clear_Display(vla); //clear the display independently rather than depending on a for loop
+
+    // clear_Display(vla); //clear the display independently rather than depending on a for loop
     //initalize snake body and apple
+    /*
     for(int r = 0; r < 30; r++, offset+=40){
         for(int c = 0; c < 40; c+=4){
             if(r == 15 && c == 12){
@@ -325,82 +326,8 @@ int main()
                 set_ball_coordinate(&vla.grid);
             }   
         }
-    }
+    }*/
     
-    /*
-    for(int i = 0; i < 2; i++){
-        for(int r = 0; r < 30; r++, offset+=40){
-            for(int c = 0; c < 40; c+=4){
-                if(i == 0){
-                    
-                    //Start: setting up the apple and the snake body 
-                    if (offset == 560 &&  c < 4){  
-                        vla.grid.data = combine(0,0,14,5); // Snake head_right and tail_left placed of the first two columns of the corresponding row
-                        vla.grid.offset = offset+c;
-                        set_ball_coordinate(&vla.grid);
-
-                    }
-                    if (offset == 560 &&  c > 15 && c < 19){  
-                        vla.grid.data = combine(0,0,0,1);  // Apple
-                        vla.grid.offset = offset+c;
-                        set_ball_coordinate(&vla.grid); 
-                    }
-                }
-            }
-            
-        }
-        offset = 0;
-        sleep(10);
-    }
-    clear_Display(vla);
-    */
-    return 0;
-
-/*
-    int count = 160;
-    for (int i = 0; i < 1000; i++){
-        if (i % 2 == 0){
-            vla.grid.data = combine(0,0,1,0);  
-            vla.grid.offset = count;
-            set_ball_coordinate(&vla.grid); 
-        }
-        else{
-            vla.grid.data = combine(0,0,0,0);  
-            vla.grid.offset = count;
-            set_ball_coordinate(&vla.grid); 
-        }
-        sleep(5);
-    } 
-*/
-    // vla.grid.data = combine(0,0,0,0);  
-    // vla.grid.offset = count;
-    // set_ball_coordinate(&vla.grid); 
-
-    // count = 1120;
-    // vla.grid.data = combine(0,0,0,0);  
-    // vla.grid.offset = count;
-    // set_ball_coordinate(&vla.grid); 
-
-    // count = 1080;
-    // vla.grid.data = combine(0,0,1,0);  
-    // vla.grid.offset = count;
-    // set_ball_coordinate(&vla.grid); 
-
-
-
-
-    // 0-> background
-    // 1-> apple
-    // 2-> head_up
-    // 3-> head_down
-    // 4-> 
-    /*
-    Deque dq;
-    Map right_head = {10, 10, 5};
-    Map horizontal = {9, 10, 7};
-    //actual game logic
-    unsigned short int x_pos = 0; //30 columns
-    unsigned short int y_pos = 0; //40 rows
-    */
+    return 0;   
    
 }
