@@ -323,11 +323,11 @@ int main()
     Map initial_snake = {4, 4, 1, 5};
     insertFront(&snake, initial_snake);
     //horizontal snake body directed right
-    initial_snake = {4, 3, 1, 7};
-    insertFront(&snake, initial_snake);
+    Map initial_snake1 = {4, 3, 1, 7};
+    insertFront(&snake, initial_snake1);
     //right snake tail
-    initial_snake = {4, 2, 1, 15};
-    insertFront(&snake, initial_snake);
+    Map initial_snake2 = {4, 2, 1, 15};
+    insertFront(&snake, initial_snake2);
 
     //testing 
     unsigned short int c = removeFront(&dq).map;
