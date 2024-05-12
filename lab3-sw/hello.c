@@ -353,7 +353,7 @@ int main()
     vla.grid.offset = 164;
     set_ball_coordinate(&vla.grid);
 */
-
+    int offset;
     while(1){
         sleep(10);
         while(1){
@@ -414,7 +414,6 @@ int main()
 
         writeScreen:
         // printf("line 405\n");
-        int offset;
         offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
