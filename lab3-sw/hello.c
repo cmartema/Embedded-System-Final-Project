@@ -356,9 +356,34 @@ int main()
         while(1){
             //sleep(1);
             Map temp;
+            Map temp_head_up;
             Map temp_h_body;
             Map temp_tail_left;
             switch (getFront(&snake).map){
+                /*
+                case 2:
+                    temp_head_up = removeFront(&snake);
+                    if (temp_head_up.dir == 1){
+                        // printf("\nIN IF 1\n");
+                        // printf("%d\n",temp_head_up.x_pos);
+                        temp_head_up.x_pos += 1;
+                        temp_head
+                        printf("%d\n",temp.x_pos);
+                    } else if (temp_head_up.dir == 2){
+                        temp_head_up.x_pos -= 1;
+                    } else if (temp.dir == 3){
+                        temp_head_up.y_pos -= 1;
+                    } else if (temp.dir == 4){
+                        printf("\nIN IF 1\n");
+                        temp_head_up.y_pos += 1;
+                    }           
+                    Key coords = {temp.x_pos, temp.y_pos};
+                    // printf("map val for head: %d\n", temp.map);
+                    // printf("coords val for head: %d, %d\n", coords.col, coords.row);
+                    update(screen_map, coords, temp.map);
+                    // printf("mapping for head: %d\n", get(screen_map, coords));
+                    insertRear(&snake, temp);
+                    */
                 case 5:
                     temp = removeFront(&snake);
                     if (temp.dir == 1){
@@ -375,10 +400,10 @@ int main()
                         temp.y_pos += 1;
                     }           
                     Key coords = {temp.x_pos, temp.y_pos};
-                    printf("map val for head: %d\n", temp.map);
-                    printf("coords val for head: %d, %d\n", coords.col, coords.row);
+                    // printf("map val for head: %d\n", temp.map);
+                    // printf("coords val for head: %d, %d\n", coords.col, coords.row);
                     update(screen_map, coords, temp.map);
-                    printf("mapping for head: %d\n", get(screen_map, coords));
+                    // printf("mapping for head: %d\n", get(screen_map, coords));
                     insertRear(&snake, temp);
 
                     break;
