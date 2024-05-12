@@ -376,6 +376,7 @@ int main()
                     update(screen_map, coords, temp.map);
                     printf("mapping for head: %d\n", get(screen_map, coords));
                     insertRear(&snake, temp);
+
                     break;
                 case 7:
                     temp_h_body = removeFront(&snake);
@@ -391,7 +392,7 @@ int main()
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
                     printf("map val for b: %d\n", temp_h_body.map);
                     printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
-                    update(screen_map, coords, temp_h_body.map);
+                    update(screen_map, coords_h, temp_h_body.map);
                     printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
                     break;
@@ -409,7 +410,7 @@ int main()
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     printf("map val for tail: %d\n", temp_tail_left.map);
                     printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
-                    update(screen_map, coords, temp_tail_left.map);
+                    update(screen_map, coords_t_l, temp_tail_left.map);
                     printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
                     insertRear(&snake, temp_tail_left);
                     goto writeScreen;
