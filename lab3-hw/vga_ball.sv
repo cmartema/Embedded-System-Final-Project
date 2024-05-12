@@ -222,7 +222,7 @@ module vga_ball(
   reg [7:0] y_pos;
   reg [7:0] sprite_type;
 
-  reg [7:0] map [29:0][39:0];
+  reg [7:0] map [39:0][29:0];
   reg [8:0] x_offset;
   reg [8:0] y_offset;
   
