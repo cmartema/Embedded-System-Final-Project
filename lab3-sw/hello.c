@@ -21,8 +21,7 @@
 #include <time.h>
 #include "sony.h"
 
-#define WIDTH 40  // Width of the game area
-#define HEIGHT 30 // Height of the game area
+
 
 #define MAX_SIZE 1200
 
@@ -42,100 +41,6 @@ void initializeDeque(Deque* dq) {
     dq->front = -1;
     dq->rear = 0;
 }
-
-int checkCollision(Map head, Deque* dq) {
-    // Check wall collision
-    if (head.x_pos < 0 || head.x_pos >= WIDTH || head.y_pos < 0 || head.y_pos >= HEIGHT) {
-        return 1; // Collision detected
-    }
-
-    // Check self collision
-    for (int i = dq->front + 1; i != dq->rear; i = (i + 1) % MAX_SIZE) {
-        if (dq->arr[i].x_pos == head.x_pos && dq->arr[i].y_pos == head.y_pos) {
-            return 1; // Collision detected
-        }
-    }
-    return 0; // No collision
-}
-
-void moveSnake(Deque* dq, vga_ball_arg_t *vla) {
-    // Get current head position
-    Map head = dq->arr[dq->front];
-    Map newHead = head;
-
-    // Determine new head position based on direction
-    switch (direction) {
-        case UP:
-            newHead.y_pos--;
-            break;
-        case DOWN:
-            newHead.y_pos++;
-            break;
-        case LEFT:
-            newHead.x_pos--;
-            break;
-        case RIGHT:
-            newHead.x_pos++;
-            break;
-    }
-
-    // Check for collisions
-    if (checkCollision(newHead, dq)) {
-        printf("Game Over!\n");
-        exit(0); // Terminate the game
-    }
-
-    // Insert new head to the front of deque
-    insertFront(dq, newHead);
-
-    // Check if the new head's position is where the apple is
-    if (mapSprites[newHead.x_pos][newHead.y_pos] == 1) {
-        // Eat the apple and grow
-        mapSprites[newHead.x_pos][newHead.y_pos] = 0; // Remove apple from the map
-        // Optionally, place a new apple on the map
-    } else {
-        // Remove tail and update VGA display
-        Map tail = removeRear(dq);
-
-        // Clear the VGA display where the tail was
-        vla->grid.x_pos = tail.x_pos;
-        vla->grid.y_pos = tail.y_pos;
-        vla->grid.data = combine(0,0,0,0); // Clear this position
-        set_ball_coordinate(&(vla->grid));
-    }
-
-    // Update the VGA display for the new head
-    vla->grid.x_pos = newHead.x_pos;
-    vla->grid.y_pos = newHead.y_pos;
-    vla->grid.data = combine(0,0,14,5); // assuming snake head data
-    set_ball_coordinate(&(vla->grid));
-}
-
-void displaySprites(Deque* dq, vga_ball_arg_t *vla) {
-    // Clear display first
-    clear_Display(*vla);
-
-    // Display snake
-    for (int i = dq->front; i != dq->rear; i = (i + 1) % MAX_SIZE) {
-        vla->grid.x_pos = dq->arr[i].x_pos;
-        vla->grid.y_pos = dq->arr[i].y_pos;
-        vla->grid.data = combine(0,0,14,5); // assuming snake body data
-        set_ball_coordinate(&(vla->grid));
-    }
-
-    // Display apples
-    for (int x = 0; x < WIDTH; x++) {
-        for (int y = 0; y < HEIGHT; y++) {
-            if (mapSprites[x][y] == 1) {
-                vla->grid.x_pos = x;
-                vla->grid.y_pos = y;
-                vla->grid.data = combine(0,0,0,1); // assuming apple data
-                set_ball_coordinate(&(vla->grid));
-            }
-        }
-    }
-}
-
 
 int isFull(const Deque* dq) {
     return (dq->front == 0 && dq->rear == MAX_SIZE - 1) || (dq->front == dq->rear + 1);
@@ -291,10 +196,6 @@ void clear_Display( vga_ball_arg_t vla){
 
 int main()
 {
-    vga_ball_arg_t vla;
-    Deque dq;
-    initializeDeque(&dq);
-
     struct ThreadArgs args; 
 
     printf("VGA ball Userspace program started\n");
@@ -320,36 +221,6 @@ int main()
         fprintf(stderr, "could not open %s\n", filename);
         return -1;
     }
-
-    Map initialHead = {20, 15, 1}; // Initial position of the snake's head
-    insertFront(&dq, initialHead); // Place the initial head on the deque
-
-    // Setup initial apple position
-    mapSprites[10][10] = 1; // Place an apple at position (10, 10)
-
-    // Define game running state
-    int game_running = 1;
-
-    while (game_running) {
-        moveSnake(&dq, &vla);  // Move the snake based on the current direction
-        displaySprites(&dq, &vla);  // Draw all elements on the VGA display
-
-        // Delay for better visualization, adjust as needed
-        usleep(200000);
-
-        // Other game logic...
-        // Check for game over conditions
-        if (checkCollision(dq.arr[dq.front], &dq)) {
-            game_running = 0; // Stop the game loop if a collision occurs
-            printf("Game Over! Collision detected.\n");
-        }
-
-        // Implement input handling or timer-based mechanics as required
-    }
-
-    // Clear the display once the game is over
-    clear_Display(vla);
-
     
 
     unsigned short int mapSprites[40][30];
@@ -380,9 +251,9 @@ int main()
     unsigned short int c = 0;
     unsigned short int d = 0;
 
-    //vga_ball_arg_t vla;
+    vga_ball_arg_t vla;
     printf("before for look\n");
-    /*
+
     unsigned short j = 0;
     int offset = 0;
     clear_Display(vla); //clear the display independently rather than depending on a for loop
@@ -412,7 +283,7 @@ int main()
     }
     clear_Display(vla);
     return 0;
-*/
+
 /*
     int count = 160;
     for (int i = 0; i < 1000; i++){
