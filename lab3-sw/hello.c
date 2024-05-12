@@ -327,6 +327,7 @@ int main()
     //      2->left
     //      3->up
     //      4->down
+
     //basic snake 
     //right snake head
     Map initial_snake = {4, 4, 1, 5};
@@ -369,10 +370,11 @@ int main()
                     } else if (temp.dir == 4){
                         temp.y_pos += 1;
                     }           
-                    Key coords = {temp.y_pos, temp.x_pos};
+                    Key coords = {temp.x_pos, temp.y_pos};
                     printf("map val for head: %d\n", temp.map);
                     printf("coords val for head: %d, %d\n", coords.row, coords.col);
                     update(screen_map, coords, temp.map);
+                    printf("mapping for head: %d\n", get(screen_map, coords));
                     insertRear(&snake, temp);
                     break;
                 case 7:
@@ -386,10 +388,11 @@ int main()
                     } else if (temp_h_body.dir == 4){
                         temp_h_body.y_pos += 1;
                     }
-                    Key coords_h = {temp_h_body.y_pos, temp_h_body.x_pos};
+                    Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
                     printf("map val for b: %d\n", temp_h_body.map);
                     printf("coords val for b: %d, %d\n", coords_h.row, coords_h.col);
                     update(screen_map, coords, temp_h_body.map);
+                    printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
                     break;
                 case 14:
@@ -403,10 +406,11 @@ int main()
                     } else if (temp_tail_left.dir == 4){
                         temp_tail_left.y_pos += 1;
                     }
-                    Key coords_t_l = {temp_tail_left.y_pos, temp_tail_left.x_pos};
+                    Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     printf("map val for tail: %d\n", temp_tail_left.map);
                     printf("coords val for tail: %d, %d\n", coords_t_l.row, coords_t_l.col);
                     update(screen_map, coords, temp_tail_left.map);
+                    printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
                     insertRear(&snake, temp_tail_left);
                     goto writeScreen;
                     break;
