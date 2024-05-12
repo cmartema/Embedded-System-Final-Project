@@ -313,7 +313,6 @@ int main()
     // unsigned short int d = 0;
 
     vga_ball_arg_t vla;
-    printf("before for look\n");
 
     Deque snake;
     initializeDeque(&snake);
@@ -417,17 +416,17 @@ int main()
         }
 
         writeScreen:
-        // printf("line 405\n");
+        printf("line 405\n");
         offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
                 //get(map, (Key){0, 0})
                 
-                int sprite1 = get(screen_map, (Key){r, c});
-                int sprite2 = get(screen_map, (Key){r, c+1});
-                int sprite3 = get(screen_map, (Key){r, c+2});
-                int sprite4 = get(screen_map, (Key){r, c+3});
+                int sprite1 = get(screen_map, (Key){c, r});
+                int sprite2 = get(screen_map, (Key){c+1, r});
+                int sprite3 = get(screen_map, (Key){c+2, r});
+                int sprite4 = get(screen_map, (Key){c+3, r});
 
                 vla.grid.data = combine(sprite1,sprite2,sprite3,sprite4);  
                 vla.grid.offset = offset + c;
