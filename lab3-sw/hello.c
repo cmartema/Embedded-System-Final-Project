@@ -423,14 +423,24 @@ int main()
             for(int c = 0; c < 40; c+=4){
                 //get(map, (Key){0, 0})
                 int sprite1 = get(screen_map, (Key){c, r});
-                printf("sprite1 %d\n", sprite1);
                 int sprite2 = get(screen_map, (Key){c+1, r});
                 printf("sprite2 %d\n", sprite2);
                 int sprite3 = get(screen_map, (Key){c+2, r});
                 printf("sprite3 %d\n", sprite3);
                 int sprite4 = get(screen_map, (Key){c+3, r});
                 printf("sprite4 %d\n", sprite4);
-
+                if(sprite1 > 0 ){
+                    printf("sprite1 %d\n", sprite1);
+                }
+                if(sprite2 > 0 ){
+                    printf("sprite2 %d\n", sprite2);
+                }
+                if(sprite3 > 0 ){
+                    printf("sprite3 %d\n", sprite3);
+                }
+                if(sprite4 > 0 ){
+                    printf("sprite4 %d\n", sprite4);
+                }
                 vla.grid.data = combine(sprite1,sprite2,sprite3,sprite4);  
                 vla.grid.offset = offset + c;
                 set_ball_coordinate(&vla.grid);
