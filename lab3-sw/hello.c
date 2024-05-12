@@ -356,14 +356,34 @@ int main()
 
 
     while(1){
-        switch (getFront(&snake)){
+        switch (getFront(&snake).map){
             case 5:
-                
+                Map temp = removeFront(&snake);
+                if (temp[2] == 1){
+                    temp[0] += 1;
+                } else if (temp[2] == 2){
+                    temp[0] -= 1;
+                } else if (temp[2] == 3){
+                    temp[1] -= 1;
+                } else if (temp[2] == 4){
+                    temp[1] += 1;
+                }
                 break;
             case 7:
+                Map temp_h_body = removeFront(&snake);
+                  if (temp[2] == 1){
+                    temp[0] += 1;
+                } else if (temp[2] == 2){
+                    temp[0] -= 1;
+                } else if (temp[2] == 3){
+                    temp[1] -= 1;
+                } else if (temp[2] == 4){
+                    temp[1] += 1;
+                }
                 break;
             case 14:
-                break;
+
+
         }
 
         int offset = 0;
