@@ -27,8 +27,8 @@
 #define MAX_SIZE 1200
 
 typedef struct {
-    unsigned short int x_pos;
     unsigned short int y_pos;
+    unsigned short int x_pos;
     unsigned short int dir;
     unsigned short int map;
 } Map;
