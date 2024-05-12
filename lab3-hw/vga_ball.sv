@@ -127,7 +127,6 @@ module vga_ball(
    soc_system_snake_body_horizontal_sprite snake_body_horizontal_sprite(.address(snake_body_horizontal_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_horizontal_sprite_output));
   // body vertical
    soc_system_snake_body_vertical_sprite snake_body_vertical_sprite(.address(snake_body_vertical_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_body_vertical_sprite_output));
-
   // tail up
   soc_system_snake_tail_up_sprite snake_tail_up_sprite(.address(snake_tail_up_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_up_sprite_output));
   // tail down
@@ -138,6 +137,7 @@ module vga_ball(
   soc_system_snake_tail_right_sprite snake_tail_right_sprite(.address(snake_tail_right_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(snake_tail_right_sprite_output));
   // wall
   soc_system_wall_sprite wall_sprite(.address(wall_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(wall_sprite_output));
+  /*
   // zero
   soc_system_zero_sprite zero_sprite(.address(zero_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(zero_sprite_output));
   // one
@@ -158,7 +158,7 @@ module vga_ball(
   soc_system_eight_sprite eight_sprite(.address(eight_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(eight_sprite_output));
   // nine
   soc_system_nine_sprite nine_sprite(.address(nine_sprite_addr), .clk(clk), .clken(1), .reset_req(0), .readdata(nine_sprite_output));
-  
+  */
   
 
 
@@ -659,10 +659,11 @@ module vga_ball(
       // tail right - 15
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b1111) begin 
         snake_tail_right_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
-        a <= {snake_right_left_sprite_output[15:11], 3'b0};
-        b <= {snake_right_left_sprite_output[10:5], 2'b0};
-        c <= {snake_right_left_sprite_output[4:0], 3'b0};
+        a <= {snake_tail_right_sprite_output[15:11], 3'b0};
+        b <= {snake_tail_right_sprite_output[10:5], 2'b0};
+        c <= {snake_tail_right_sprite_output[4:0], 3'b0};
       end
+      /*
       // zero - 16
       else if (map[hcount[10:5]][vcount[9:4]] == 8'b10000) begin 
         zero_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
@@ -733,6 +734,7 @@ module vga_ball(
         b <= {nine_sprite_output[10:5], 2'b0};
         c <= {nine_sprite_output[4:0], 3'b0};
       end
+      */
 
       
       // static sprites
