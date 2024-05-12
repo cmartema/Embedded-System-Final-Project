@@ -332,15 +332,15 @@ int main()
     //basic snake 
     //right snake head
 
-    
-    Map initial_snake = {4, 4, 1, 5};
-    insertFront(&snake, initial_snake);
+
+    // Map initial_snake = {4, 4, 1, 5};
+    insertFront(&snake, {4, 4, 1, 5});
     //horizontal snake body directed right
-    Map initial_snake1 = {4, 3, 1, 7};
-    insertFront(&snake, initial_snake1);
+    // Map initial_snake1 = {4, 3, 1, 7};
+    insertFront(&snake, {4, 3, 1, 7});
     //right snake tail
-    Map initial_snake2 = {4, 2, 1, 14};
-    insertFront(&snake, initial_snake2);
+    // Map initial_snake2 = {4, 2, 1, 14};
+    insertFront(&snake, {4, 2, 1, 14});
 
     //testing 
     unsigned short int c = removeFront(&snake).map;
@@ -352,15 +352,15 @@ int main()
     vla.grid.data = combine(a, 0, 0, 0);
     vla.grid.offset = 164;
     set_ball_coordinate(&vla.grid);
-    
-
+  
 /*
+
     while(1){
-        switch {snake->front}{
+        switch {}{
             case 5:
-            break;
+                break;
             case 7:
-            break;
+                break;
         }
 
         int offset = 0;
