@@ -432,7 +432,7 @@ int main()
                 //get(map, (Key){0, 0})
                 unsigned short int sprite1 = get(screen_map, (Key){c, r});
                 unsigned short int sprite2 = get(screen_map, (Key){c+1, r});
-                unsigned short int sprite3 = get(screen_map, (Key){c+2 r});
+                unsigned short int sprite3 = get(screen_map, (Key){c+2, r});
                 unsigned short int sprite4 = get(screen_map, (Key){c+3, r});
                 if(sprite1 > 0 ){
                     printf("sprite1 %d\n", sprite1);
