@@ -183,6 +183,16 @@ unsigned long int combine(unsigned short int a, unsigned short int b, unsigned s
     return x;
 }
 
+void clear_Display( vga_ball_arg_t vla){
+    int offset = 0;
+     for(int r = 0; r < 30; r++, offset+=40){
+            for(int c = 0; c < 40; c+=4){
+                vla.grid.data = combine(0,0,0,0);  
+                vla.grid.offset = offset+c;
+                set_ball_coordinate(&vla.grid); 
+            }
+     }
+}
 
 int main()
 {
@@ -246,36 +256,32 @@ int main()
 
     unsigned short j = 0;
     int offset = 0;
+    clear_Display(vla); //clear the display independently rather than depending on a for loop
     for(int i = 0; i < 2; i++){
         for(int r = 0; r < 30; r++, offset+=40){
             for(int c = 0; c < 40; c+=4){
                 if(i == 0){
-                    if (offset == 480 &&  c < 4){  
-                        vla.grid.data = combine(0,0,2,0);  
+                    
+                    //Start: setting up the apple and the snake body 
+                    if (offset == 560 &&  c < 4){  
+                        vla.grid.data = combine(0,0,14,5); // Snake head_right and tail_left placed of the first two columns of the corresponding row
                         vla.grid.offset = offset+c;
-                        set_ball_coordinate(&vla.grid); 
+                        set_ball_coordinate(&vla.grid);
 
                     }
-                    if (offset == 480 &&  c > 16 && c < 20){  
-                        vla.grid.data = combine(0,0,1,0);  
+                    if (offset == 560 &&  c > 15 && c < 19){  
+                        vla.grid.data = combine(0,0,0,1);  // Apple
                         vla.grid.offset = offset+c;
                         set_ball_coordinate(&vla.grid); 
                     }
-                    // vla.grid.data = combine(0,0,1,0);  
-                    // vla.grid.offset = offset+c;
-                    // set_ball_coordinate(&vla.grid); 
                 }
-                // else{
-                //     vla.grid.data = combine(0,0,0,0);  
-                //     vla.grid.offset = offset+c;
-                //     set_ball_coordinate(&vla.grid); 
-                // }
             }
             
         }
         offset = 0;
         sleep(10);
     }
+    clear_Display(vla);
     return 0;
 
 /*
