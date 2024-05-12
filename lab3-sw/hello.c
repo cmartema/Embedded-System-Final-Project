@@ -488,7 +488,7 @@ int main()
                     
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
                     //printf("map val for tail: %d\n", temp_tail_left.map);
-                    //printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
+                    printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
                     update(screen_map, coords_t_l, temp_tail_left.map);
                     //printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
                     insertRear(&snake, temp_tail_left);
