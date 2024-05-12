@@ -388,7 +388,7 @@ int main()
                     update(screen_map, coords_head_up, temp_head_up.map);
                     insertRear(&snake, temp_head_up);
                     break;
-                case 2:
+                case 3:
                     temp_head_down = removeFront(&snake);
                     if (direction == 3 || direction == 4){
                         temp_head_up.y_pos += 1;
