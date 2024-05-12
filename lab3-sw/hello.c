@@ -250,7 +250,16 @@ void *sony_thread_f(void *args) {
 
         if (transferred > 0 && packet.keycode[8] != 0x08 ) {
             printf("%02x \n", packet.keycode[8]);
-            direction = packet.keycode[8];
+            int temp_d = packet.keycode[8];
+            if (temp_d == 0x02){
+                direction = 1;
+            } else if (temp_d == 0x06){
+                direction = 2;
+            } else if (temp_d == 0x00){
+                direction = 3;
+            } else if (temp_d == 0x04){
+                direction = 1;
+            }
             //direction_flag = 1;
         } //else direction_flag = 0;
   }
@@ -386,19 +395,25 @@ int main()
                     */
                 case 5:
                     temp = removeFront(&snake);
-                    if (temp.dir == 1){
-                        printf("\nIN IF 1\n");
-                        printf("%d\n",temp.x_pos);
+                    if (direction == 1 || direction == 2){ //right or left
                         temp.x_pos += 1;
-                        printf("%d\n",temp.x_pos);
+                    
+                    } else if (direction == 3){ // up
+                        temp.y_pos -= 1;
+                        temp.dir = 3;
+                        temp.map = 2;
+                    }
+                    /*
+                    if (temp.dir == 1){
+                        temp.x_pos += 1;
                     } else if (temp.dir == 2){
                         temp.x_pos -= 1;
                     } else if (temp.dir == 3){
                         temp.y_pos -= 1;
                     } else if (temp.dir == 4){
-                        printf("\nIN IF 1\n");
                         temp.y_pos += 1;
-                    }           
+                    }        
+                    */   
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
                     // printf("coords val for head: %d, %d\n", coords.col, coords.row);
@@ -416,14 +431,13 @@ int main()
                     } else if (temp_h_body.dir == 3){
                         temp_h_body.y_pos -= 1;
                     } else if (temp_h_body.dir == 4){
-                        printf("\nIN IF 2\n");
                         temp_h_body.y_pos += 1;
                     }
                     Key coords_h = {temp_h_body.x_pos, temp_h_body.y_pos};
-                    printf("map val for b: %d\n", temp_h_body.map);
-                    printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
+                    //printf("map val for b: %d\n", temp_h_body.map);
+                    //printf("coords val for b: %d, %d\n", coords_h.col, coords_h.row);
                     update(screen_map, coords_h, temp_h_body.map);
-                    printf("mapping for body: %d\n", get(screen_map, coords_h));
+                    //printf("mapping for body: %d\n", get(screen_map, coords_h));
                     insertRear(&snake, temp_h_body);
                     break;
                 case 14:
@@ -437,14 +451,13 @@ int main()
                     } else if (temp_tail_left.dir == 3){
                         temp_tail_left.y_pos -= 1;
                     } else if (temp_tail_left.dir == 4){
-                        printf("\nIN IF 3\n");
                         temp_tail_left.y_pos += 1;
                     }
                     Key coords_t_l = {temp_tail_left.x_pos, temp_tail_left.y_pos};
-                    printf("map val for tail: %d\n", temp_tail_left.map);
-                    printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
+                    //printf("map val for tail: %d\n", temp_tail_left.map);
+                    //printf("coords val for tail: %d, %d\n", coords_t_l.col, coords_t_l.row);
                     update(screen_map, coords_t_l, temp_tail_left.map);
-                    printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
+                    //printf("mapping for tail: %d\n", get(screen_map, coords_t_l));
                     insertRear(&snake, temp_tail_left);
                     goto writeScreen;
                     break;
@@ -463,18 +476,18 @@ int main()
                 unsigned short int sprite2 = get(screen_map, (Key){c+1, r});
                 unsigned short int sprite3 = get(screen_map, (Key){c+2, r});
                 unsigned short int sprite4 = get(screen_map, (Key){c+3, r});
-                if(sprite1 > 0 ){
-                    printf("sprite1 %d\n", sprite1);
-                }
-                if(sprite2 > 0 ){
-                    printf("sprite2 %d\n", sprite2);
-                }
-                if(sprite3 > 0 ){
-                    printf("sprite3 %d\n", sprite3);
-                }
-                if(sprite4 > 0 ){
-                    printf("sprite4 %d\n", sprite4);
-                }
+                // if(sprite1 > 0 ){
+                //     printf("sprite1 %d\n", sprite1);
+                // }
+                // if(sprite2 > 0 ){
+                //     printf("sprite2 %d\n", sprite2);
+                // }
+                // if(sprite3 > 0 ){
+                //     printf("sprite3 %d\n", sprite3);
+                // }
+                // if(sprite4 > 0 ){
+                //     printf("sprite4 %d\n", sprite4);
+                // }
                 vla.grid.data = combine(sprite1,sprite2,sprite3,sprite4);  
                 vla.grid.offset = offset + c;
                 set_ball_coordinate(&vla.grid);
