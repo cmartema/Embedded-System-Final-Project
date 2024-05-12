@@ -261,7 +261,7 @@ void *sony_thread_f(void *args) {
             } else if (temp_d == 0x00){
                 direction = 3;
             } else if (temp_d == 0x04){
-                direction = 1;
+                direction = 4;
             }
             //direction_flag = 1;
         } //else direction_flag = 0;
