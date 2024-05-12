@@ -355,7 +355,9 @@ int main()
 */
 
     while(1){
+        sleep(10);
         while(1){
+            sleep(10);
             Map temp;
             Map temp_h_body;
             Map temp_tail_left;
@@ -411,7 +413,7 @@ int main()
         }
 
         writeScreen:
-        printf("line 405\n");
+        // printf("line 405\n");
         int offset = 0;
         //writing the whole screen
         for(int r = 0; r < 30; r++, offset+=40){
