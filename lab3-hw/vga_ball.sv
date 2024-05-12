@@ -623,7 +623,7 @@ module vga_ball(
       */
       // apple - 1
       if (map[hcount[10:5]][vcount[9:4]] == 8'b1) begin 
-        apple_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+        apple_sprite_addr <= hcount[4:1] + (vcount[3:0])*16;
         a <= {apple_sprite_output[15:11], 3'b0};
         b <= {apple_sprite_output[10:5], 2'b0};
         c <= {apple_sprite_output[4:0], 3'b0};
@@ -650,8 +650,8 @@ module vga_ball(
         c <= {snake_head_left_sprite_output[4:0], 3'b0};
       end
       // head right - 5
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b101) begin 
-        snake_head_right_sprite_addr <= hcount[4:1] - 4'b111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b101 && hcount[4:1] >= 4'b1010) begin 
+        snake_head_right_sprite_addr <= hcount[4:1] - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_head_right_sprite_output[15:11], 3'b0};
         b <= {snake_head_right_sprite_output[10:5], 2'b0};
         c <= {snake_head_right_sprite_output[4:0], 3'b0};
@@ -664,8 +664,8 @@ module vga_ball(
         c <= {snake_body_vertical_sprite_output[4:0], 3'b0};
       end
       // body horizontal - 7
-      else if (map[hcount[10:5]][vcount[9:4]] == 8'b111) begin 
-        snake_body_horizontal_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b111 && hcount[4:1] >= 4'b1010) begin 
+        snake_body_horizontal_sprite_addr <= hcount[4:1] + - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_body_horizontal_sprite_output[15:11], 3'b0};
         b <= {snake_body_horizontal_sprite_output[10:5], 2'b0};
         c <= {snake_body_horizontal_sprite_output[4:0], 3'b0};
@@ -713,8 +713,8 @@ module vga_ball(
         c <= {snake_tail_down_sprite_output[4:0], 3'b0};
       end
       // tail left - 14
-      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b1110 && hcount[4:1] >= 4'b1111) begin 
-        snake_tail_left_sprite_addr <= hcount[4:1] - 4'b1111 + (vcount[3:0])*16;
+      else if (map[hcount[10:5] + 6'b1][vcount[9:4]] == 8'b1110 && hcount[4:1] >= 4'b1010) begin 
+        snake_tail_left_sprite_addr <= hcount[4:1] - 4'b1010 + (vcount[3:0])*16;
         a <= {snake_tail_left_sprite_output[15:11], 3'b0};
         b <= {snake_tail_left_sprite_output[10:5], 2'b0};
         c <= {snake_tail_left_sprite_output[4:0], 3'b0};
