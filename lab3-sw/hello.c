@@ -365,6 +365,7 @@ int main()
             Map temp_h_body;
             Map temp_tail_left;
             Map temp_h_body_cp; //idk if this is supposed to be Map
+            Map temp_head_down;
             switch (getFront(&snake).map){
                 case 2:
                     temp_head_up = removeFront(&snake);
@@ -391,24 +392,24 @@ int main()
                 case 3:
                     temp_head_down = removeFront(&snake);
                     if (direction == 3 || direction == 4){
-                        temp_head_up.y_pos += 1;
+                        temp_head_down.y_pos += 1;
                     }
                      else if (direction == 1){
-                        temp_head_up.x_pos += 1;
-                        temp_head_up.dir = direction;
-                        temp_head_up.map = 5;
-                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
+                        temp_head_down.x_pos += 1;
+                        temp_head_down.dir = direction;
+                        temp_head_down.map = 5;
+                        Map temp_cp = {temp_head_down.x_pos, temp_head_down.y_pos, temp_head_down.dir, 0};
                         insertRear(&change_point, temp_cp);
                     } else if (direction == 2){
-                        temp_head_up.x_pos -= 1;
-                        temp_head_up.dir = direction;
-                        temp_head_up.map = 4;
-                        Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
+                        temp_head_down.x_pos -= 1;
+                        temp_head_down.dir = direction;
+                        temp_head_down.map = 4;
+                        Map temp_cp = {temp_head_down.x_pos, temp_head_down.y_pos, temp_head_down.dir, 0};
                         insertRear(&change_point, temp_cp);
                     }
-                    Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
-                    update(screen_map, coords_head_up, temp_head_up.map);
-                    insertRear(&snake, temp_head_up);
+                    Key coords_head_down = {temp_head_down.x_pos, temp_head_down.y_pos};
+                    update(screen_map, coords_head_down, temp_head_down.map);
+                    insertRear(&snake, temp_head_down);
                     break;
                 case 5:
                     temp = removeFront(&snake);
