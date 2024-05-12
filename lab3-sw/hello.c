@@ -378,7 +378,7 @@ int main()
                     else if (direction == 1){
                         temp_head_up.x_pos += 1;
                         temp_head_up.dir = direction;
-                        temp_head_up.map = 5
+                        temp_head_up.map = 5;
                     } else if (direction == 2){
                         temp_head_up.x_pos -= 1;
                         temp_head_up.dir = direction;
