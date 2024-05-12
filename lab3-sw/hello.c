@@ -365,7 +365,7 @@ int main()
     insertRear(&change_point, initial_change_point);
 
     Key apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
-    update(screen_map, Coordinate, 1);
+    update(screen_map, apple_coordinate , 1);
 
     int offset;
     while(1){
