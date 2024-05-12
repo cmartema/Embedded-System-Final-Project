@@ -396,8 +396,13 @@ int main()
                         temp_head_up.x_pos -= 1;
                         temp_head_up.dir = direction;
                         temp_head_up.map = 4;
+
                         Map temp_cp = {temp_head_up.x_pos, temp_head_up.y_pos, temp_head_up.dir, 0};
                         insertRear(&change_point, temp_cp);
+                    }
+                    if(apple_coordinate.row == temp_head_up.y_pos && apple_coordinate.col == temp_head_up.x_pos){
+                        apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
+                        update(screen_map, apple_coordinate , 1);
                     }
                     Key coords_head_up = {temp_head_up.x_pos, temp_head_up.y_pos};
                     update(screen_map, coords_head_up, temp_head_up.map);
@@ -420,6 +425,10 @@ int main()
                         temp_head_down.map = 4;
                         Map temp_cp = {temp_head_down.x_pos, temp_head_down.y_pos, temp_head_down.dir, 0};
                         insertRear(&change_point, temp_cp);
+                    }
+                    if(apple_coordinate.row == temp_head_down.y_pos && apple_coordinate.col == temp_head_down.x_pos){
+                        apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
+                        update(screen_map, apple_coordinate , 1);
                     }
                     Key coords_head_down = {temp_head_down.x_pos, temp_head_down.y_pos};
                     update(screen_map, coords_head_down, temp_head_down.map);
@@ -444,6 +453,10 @@ int main()
                         Map temp_cp = {temp_head_left.x_pos, temp_head_left.y_pos, temp_head_left.dir, 0};
                         insertRear(&change_point, temp_cp);
                     }
+                    if(apple_coordinate.row == temp_head_left.y_pos && apple_coordinate.left == temp_head_up.x_pos){
+                        apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
+                        update(screen_map, apple_coordinate , 1);
+                    }
                     Key coords_head_left = {temp_head_left.x_pos, temp_head_left.y_pos};
                     update(screen_map, coords_head_left, temp_head_left.map);
                     insertRear(&snake, temp_head_left);
@@ -465,6 +478,10 @@ int main()
                         temp.y_pos += 1;
                         temp.dir = direction;
                         temp.map = 3;
+                    }
+                    if(apple_coordinate.row == temp.y_pos && apple_coordinate.col == temp.x_pos){
+                        apple_coordinate = generate_random_coordinates(3, 37, 2, 27);
+                        update(screen_map, apple_coordinate , 1);
                     }
                     Key coords = {temp.x_pos, temp.y_pos};
                     // printf("map val for head: %d\n", temp.map);
